@@ -20,19 +20,21 @@ window.PlanReserve=(()=>{
  }
  function selectedMonth(value,fiscal){return n(value)>=1&&n(value)<=12?n(value):(fiscal===1?12:3)}
  function migrateLegacy(plan){
-  if(plan.reserveSchemaVersion)return false;
+  if(n(plan.reserveSchemaVersion)>=2)return false;
   let changed=false;
   for(const e of plan.events||[]){
-   const match=String(e.name||'').match(/積立\s*(\d{1,2})\s*年/);
-   const years=Number(match?.[1]);
-   if(e.savingRole||!String(e.savingGroup||'').trim()||year(e.interval)!==1||!positive(e.expense)||!years||years>40)continue;
+   const label=String(e.name||'').replace(/[０-９]/g,c=>String(c.charCodeAt(0)-65296));
+   const years=Number(label.match(/(\d{1,2})\s*年/)?.[1]);
+   const statedCost=Number(label.match(/(\d+(?:\.\d+)?)\s*万/)?.[1])*10000;
+   const matchesTotal=Number.isFinite(statedCost)&&Math.abs(statedCost-positive(e.expense)*years)<1;
+   if(e.savingRole||!String(e.savingGroup||'').trim()||year(e.interval)!==1||!positive(e.expense)||!years||years>40||!(label.includes('積立')||matchesTotal))continue;
    e.savingRole='annual';e.savingPurchaseYears=years;
    e.savingPurchaseAmount=positive(e.expense)*years;
    e.savingFirstPurchaseYear=year(e.startYear)+years;
    e.savingPurchaseMonth=0;
    changed=true;
   }
-  plan.reserveSchemaVersion=1;
+  plan.reserveSchemaVersion=2;
   return changed;
  }
  function build(plan){
