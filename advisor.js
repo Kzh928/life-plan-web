@@ -1,0 +1,35 @@
+window.PlanAdvice=(()=>{
+const E=window.PlanEngine,M=window.PlanModel,n=x=>Number.isFinite(Number(x))?Number(x):0,fmt=x=>new Intl.NumberFormat('ja-JP').format(Math.round(x)),yen=x=>fmt(x)+'円';
+const SOURCE='https://www.stat.go.jp/data/kakei/sokuhou/tsuki/pdf/fies_gaikyo2025.pdf';
+const BENCHMARKS=[{label:'食費',names:['食費'],average:94895},{label:'水道光熱',names:['水道光熱','光熱費','水道光熱費'],average:24547},{label:'医療',names:['医療','医療費'],average:15863},{label:'交通・通信',names:['交通費','通信費'],average:45730}];
+function result(plan,master){const years=E.annual(plan,master),months=E.monthlyShortfall(plan,years);return {years,months,first:months.first,firstRow:months.months.find(x=>x.key===months.first)}}
+function activeStage(list,year){return [...(list||[])].filter(x=>n(x.startYear)<=year).sort((a,b)=>n(b.startYear)-n(a.startYear))[0]}
+function activeProfile(plan,year){return plan.expenseProfiles?.[activeStage(plan.expenseStages,year)?.profileId||'A']||[]}
+function comparisons(plan){const year=n(plan.startYear);if(year<2025||year>2027)return [];const profile=activeProfile(plan,year);return BENCHMARKS.map(b=>({label:b.label,average:b.average,amount:profile.filter(x=>b.names.includes(x.name)).reduce((s,x)=>s+n(x.monthly)+n(x.annual)/12,0)})).filter(x=>x.amount>0)}
+function diagnosis(plan,base){if(!base.first)return [];const year=n(base.first.slice(0,4)),row=base.years.find(x=>x.year===year),prior=base.years.find(x=>x.year===year-1),out=[];if(!row)return out;const income=Math.max(1,row.baseIncome);
+if(row.housing/income>=.25)out.push(`住居費はこの年の世帯基本収入の約${Math.round(row.housing/income*100)}％。負担を見直す余地があるかもしれません。`);
+const college=row.children.filter(c=>c.age>=18&&c.age<=22&&c.amount>0);if(college.length>=2)out.push(`${college.length}人の大学期が重なり、教育費は年間${yen(row.education)}です。`);else if(row.education/income>=.2)out.push(`教育費はこの年の基本収入の約${Math.round(row.education/income*100)}％です。`);
+if(prior&&row.baseIncome<prior.baseIncome*.85)out.push(`前年より世帯基本収入が約${yen(prior.baseIncome-row.baseIncome)}減っています。働き方の切替を確認してください。`);
+if(row.eventExpense>row.baseIncome*.1&&row.eventExpense>0)out.push(`この年のイベント支出は${yen(row.eventExpense)}。実施時期を変える場合も比較できます。`);
+if(row.contribution>0&&row.cash<0)out.push(`同じ年にNISA積立が${yen(row.contribution)}あります。積立額を一時調整した場合の現金も比較できます。`);
+for(const c of comparisons(plan))if(c.amount>c.average*1.3)out.push(`現在の${c.label}設定は月${yen(c.amount)}。2025年の二人以上世帯平均（月${yen(c.average)}）を上回ります。世帯構成や地域が違うため、削減の必要性を示すものではありません。`);
+if(!out.length)out.push(`この年の年間収支は${yen(row.net)}です。複数の支出と収入の組合せを確認してください。`);return out}
+function apply(plan,changes){const next=M.clone(plan),housing=Math.max(0,n(changes.housing)),living=Math.max(0,n(changes.living));for(const home of Object.values(next.housingProfiles||{}))home.monthly=Math.max(0,n(home.monthly)-housing);
+for(const profile of Object.values(next.expenseProfiles||{})){for(const [names,key] of [[['食費'],'food'],[['水道光熱','光熱費','水道光熱費'],'utilities']]){const item=profile.find(x=>names.includes(x.name));if(item)item.monthly=Math.max(0,n(item.monthly)-Math.max(0,n(changes[key])))}let remaining=Math.min(living,profile.reduce((s,x)=>s+Math.max(0,n(x.monthly)),0));while(remaining>0){const positive=profile.filter(x=>n(x.monthly)>0),total=positive.reduce((s,x)=>s+n(x.monthly),0);if(!total)break;let cutTotal=0;for(const item of positive){const cut=Math.min(n(item.monthly),Math.max(1,Math.round(remaining*n(item.monthly)/total)));item.monthly-=cut;cutTotal+=cut;if(cutTotal>=remaining)break}remaining=Math.max(0,remaining-cutTotal)}}
+for(let i=0;i<2;i++){const delta=Math.max(0,n(changes[`income${i+1}`])),original=plan.parents?.[i],parent=next.parents?.[i];if(!delta||!original||!parent||original.usePromotion)continue;for(let y=n(plan.startYear);y<n(plan.startYear)+n(plan.horizon);y++){const current=E.parentIncome(original,y,plan);if(!['正社員','正社員２','パート'].includes(current.mode))continue;(parent.yearly[String(y)]||={})[current.mode]=current.amount+delta}}
+next.annualContribution=Math.max(0,n(next.annualContribution)-Math.max(0,n(changes.investContribution)));
+if(Number.isInteger(changes.universityChild)&&next.children?.[changes.universityChild]){const c=next.children[changes.universityChild],old=c.choices?.university||'';if(old.includes('私立'))c.choices.university=old.includes('理系')?'大学/国公立理系':'大学/国公立文系'}
+if(Number.isInteger(changes.delayEvent)&&next.events?.[changes.delayEvent]){const e=next.events[changes.delayEvent];e.startYear=n(e.startYear)+1;if(n(e.endYear))e.endYear=n(e.endYear)+1}return next}
+function recommend(plan,master,base){if(!base.first)return [];const year=n(base.first.slice(0,4)),home=plan.housingProfiles?.[activeStage(plan.housingStages,year)?.profileId||'A'],profile=activeProfile(plan,year),sum=profile.reduce((s,x)=>s+n(x.monthly),0),byName=name=>n(profile.find(x=>x.name===name)?.monthly),row=base.years.find(x=>x.year===year),options=[];
+if(n(home?.monthly)>0)options.push({id:'housing',label:'住居費を月1万円見直す',changes:{housing:Math.min(10000,n(home.monthly))}});
+if(sum>0)options.push({id:'living',label:'生活費を月1万円見直す',changes:{living:Math.min(10000,Math.round(sum*.05/1000)*1000)}});
+const food=comparisons(plan).find(x=>x.label==='食費');if(food&&food.amount>food.average*1.15)options.push({id:'food',label:'食費を月5千円見直す',changes:{food:Math.min(5000,byName('食費'))}});
+const utilities=comparisons(plan).find(x=>x.label==='水道光熱');if(utilities&&utilities.amount>utilities.average*1.15)options.push({id:'utilities',label:'水道光熱を月3千円見直す',changes:{utilities:Math.min(3000,byName('水道光熱'))}});
+const working=[0,1].find(i=>!plan.parents?.[i]?.usePromotion&&['正社員','正社員２','パート'].includes(row?.[`parent${i+1}`]?.mode));if(working!==undefined)options.push({id:'income',label:`${working===0?'本人':'パートナー'}の手取り年12万円増を仮定`,changes:{[`income${working+1}`]:120000}});
+if(n(plan.annualContribution)>0)options.push({id:'invest',label:'NISAの基本積立を年12万円調整',changes:{investContribution:Math.min(120000,n(plan.annualContribution))}});
+const collegeIndex=(plan.children||[]).findIndex((c,i)=>c.choices?.university?.includes('私立')&&row?.children?.[i]?.age>=18&&row.children[i].age<=22);if(collegeIndex>=0)options.push({id:'university',label:`${plan.children[collegeIndex].name}の大学進路を国公立案と比較`,changes:{universityChild:collegeIndex}});
+const eventIndex=(plan.events||[]).findIndex(e=>e.enabled&&n(e.startYear)===year&&n(e.expense)>0&&!n(e.interval));if(eventIndex>=0)options.push({id:'event',label:`「${plan.events[eventIndex].name}」を1年後にした場合`,changes:{delayEvent:eventIndex}});
+if(n(home?.monthly)>0&&sum>0)options.push({id:'mix',label:'住居費と生活費を月5千円ずつ見直す',changes:{housing:Math.min(5000,n(home.monthly)),living:Math.min(5000,Math.round(sum*.03/1000)*1000)}});
+const before=base.months.months.find(m=>m.key===base.first);return options.map(o=>{const trial=result(apply(plan,o.changes),master),after=trial.months.months.find(m=>m.key===base.first);return {...o,improvement:n(after?.cash)-n(before?.cash),first:trial.first,clearsOriginal:n(after?.cash)>=0}}).filter(o=>o.improvement>0).sort((a,b)=>Number(b.clearsOriginal)-Number(a.clearsOriginal)||b.improvement-a.improvement)}
+return {result,diagnosis,apply,recommend,comparisons,SOURCE};
+})();
