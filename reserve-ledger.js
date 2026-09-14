@@ -1,59 +1,100 @@
-// 用途別の「積立メモ」。現金・投資残高には加減算しない。
+// 用途別の取り分け記録。実際の現金・投資残高には加減算しない。
 window.PlanReserve=(()=>{
  const n=x=>Number(String(x??0).replaceAll(',',''))||0;
+ const positive=x=>Math.max(0,n(x));
+ const year=x=>Math.floor(n(x));
  function schedule(plan){
-  const start=Math.floor(n(plan.startYear)),h=Math.max(1,Math.min(80,Math.floor(n(plan.horizon)||40))),fiscal=n(plan.fiscalStartMonth)===1?1:4;
+  const start=year(plan.startYear),h=Math.max(1,Math.min(80,year(plan.horizon)||40));
+  const fiscal=n(plan.fiscalStartMonth)===1?1:4;
   const firstMonth=Math.max(1,Math.min(12,n(plan.firstYearStartMonth)||fiscal));
   const months=[];
   for(let k=0;k<h;k++){
-   const year=start+k,sequence=Array.from({length:12},(_,i)=>(fiscal-1+i)%12+1);
+   const sequence=Array.from({length:12},(_,i)=>(fiscal-1+i)%12+1);
    const selected=k===0&&fiscal!==1?sequence.slice(Math.max(0,sequence.indexOf(firstMonth))):sequence;
-   for(const month of selected)months.push({year,month});
+   for(const month of selected)months.push({year:start+k,month});
   }
   return months;
  }
- function build(plan){
-  const months=schedule(plan),groups=new Map(),allEvents=plan.events||[];
-  for(const [index,e] of allEvents.entries()){
-   const group=String(e.savingGroup||'').trim(),cost=Math.max(0,n(e.expense));
-   if(!group||!cost)continue;
-   if(!groups.has(group))groups.set(group,{name:group,events:[],rows:[],monthlyGuide:0});
-   const g=groups.get(group),period=Math.floor(n(e.interval)),from=Math.floor(n(e.startYear)),to=Math.floor(n(e.endYear));
-   const oneOff=!period||!to;
-   const due=[];
-   for(let i=0;i<months.length;i++){
-    const cell=months[i];
-    if(!(oneOff?cell.year===from:cell.year>=from&&cell.year<=to&&(cell.year-from)%period===0))continue;
-    const eventMonth=n(e.month)>=1&&n(e.month)<=12?n(e.month):(n(plan.fiscalStartMonth)===1?12:3);
-    if(cell.month===eventMonth)due.push(i);
-   }
-   g.events.push({index,name:e.name||'名前のないイベント',cost,interval:period,firstYear:from,enabled:!!e.enabled,dueCount:due.length});
-   if(!due.length)continue;
-   let previous=-1;
-   for(const at of due){
-    const monthly=cost/(at-previous);
-    for(let i=previous+1;i<=at;i++){
-     const row=g.rows[i]||={setAside:0,purchase:0,balance:0};
-     row.setAside+=monthly;
-     if(i===at)row.purchase+=cost;
-    }
-    previous=at;
-   }
-   g.monthlyGuide+=cost/(due[0]+1);
+ function occurs(cell,from,to,period,oneOff){
+  return oneOff?cell.year===from:cell.year>=from&&cell.year<=to&&(cell.year-from)%period===0;
+ }
+ function selectedMonth(value,fiscal){return n(value)>=1&&n(value)<=12?n(value):(fiscal===1?12:3)}
+ function migrateLegacy(plan){
+  if(plan.reserveSchemaVersion)return false;
+  let changed=false;
+  for(const e of plan.events||[]){
+   const match=String(e.name||'').match(/積立\s*(\d{1,2})\s*年/);
+   const years=Number(match?.[1]);
+   if(e.savingRole||!String(e.savingGroup||'').trim()||year(e.interval)!==1||!positive(e.expense)||!years||years>40)continue;
+   e.savingRole='annual';e.savingPurchaseYears=years;
+   e.savingPurchaseAmount=positive(e.expense)*years;
+   e.savingFirstPurchaseYear=year(e.startYear)+years;
+   e.savingPurchaseMonth=0;
+   changed=true;
   }
-  const result=[];
-  for(const g of groups.values()){
+  plan.reserveSchemaVersion=1;
+  return changed;
+ }
+ function build(plan){
+  const months=schedule(plan),groups=new Map(),events=plan.events||[];
+  const fiscal=n(plan.fiscalStartMonth)===1?1:4;
+  for(const [index,e] of events.entries()){
+   const name=String(e.savingGroup||'').trim(),cost=positive(e.expense);
+   if(!name||!cost)continue;
+   if(!groups.has(name))groups.set(name,{name,events:[],rows:[],monthlyGuide:0});
+   const group=groups.get(name),role=e.savingRole==='annual'?'annual':'purchase';
+   const from=year(e.startYear),to=year(e.endYear),interval=year(e.interval);
+   const oneOff=!interval||!to,eventMonth=selectedMonth(e.month,fiscal);
+   let contributionCount=0,purchaseCount=0;
+   if(role==='annual'){
+    for(let i=0;i<months.length;i++){
+     const cell=months[i];
+     if(occurs(cell,from,to,interval,oneOff)&&cell.month===eventMonth){
+      (group.rows[i]||={setAside:0,purchase:0}).setAside+=cost;
+      contributionCount++;
+     }
+    }
+    const cycle=Math.max(1,year(e.savingPurchaseYears)||10);
+    const first=year(e.savingFirstPurchaseYear)||from+cycle;
+    const purchaseCost=positive(e.savingPurchaseAmount)||cost*cycle;
+    const purchaseMonth=n(e.savingPurchaseMonth)>=1&&n(e.savingPurchaseMonth)<=12?n(e.savingPurchaseMonth):fiscal;
+    for(let i=0;i<months.length;i++){
+     const cell=months[i];
+     if(cell.year<first||to&&cell.year>to+1||(cell.year-first)%cycle!==0||cell.month!==purchaseMonth)continue;
+     (group.rows[i]||={setAside:0,purchase:0}).purchase+=purchaseCost;
+     purchaseCount++;
+    }
+    group.monthlyGuide+=cost/Math.max(1,interval||1)/12;
+    group.events.push({index,name:e.name||'名前のないイベント',role,cost,interval,firstYear:from,enabled:!!e.enabled,
+     dueCount:purchaseCount,contributionCount,purchaseCost,cycle,firstPurchaseYear:first});
+   }else{
+    const due=[];
+    for(let i=0;i<months.length;i++){
+     const cell=months[i];
+     if(occurs(cell,from,to,interval,oneOff)&&cell.month===eventMonth)due.push(i);
+    }
+    let previous=-1;
+    for(const at of due){
+     const monthly=cost/(at-previous);
+     for(let i=previous+1;i<=at;i++)(group.rows[i]||={setAside:0,purchase:0}).setAside+=monthly;
+     group.rows[at].purchase+=cost;
+     previous=at;
+    }
+    if(due.length)group.monthlyGuide+=cost/(due[0]+1);
+    group.events.push({index,name:e.name||'名前のないイベント',role,cost,interval,firstYear:from,enabled:!!e.enabled,dueCount:due.length});
+   }
+  }
+  return [...groups.values()].map(group=>{
    let balance=0;
    const byYear=[];
    for(let i=0;i<months.length;i++){
-    const row=g.rows[i]||{setAside:0,purchase:0};
-    balance=Math.max(0,balance+row.setAside-row.purchase);
+    const row=group.rows[i]||{setAside:0,purchase:0};
+    balance+=row.setAside-row.purchase;
     if(!byYear.length||byYear.at(-1).year!==months[i].year)byYear.push({year:months[i].year,setAside:0,purchase:0,balance:0});
     const annual=byYear.at(-1);annual.setAside+=row.setAside;annual.purchase+=row.purchase;annual.balance=balance;
    }
-   g.rows=byYear;result.push(g);
-  }
-  return result;
+   group.rows=byYear;return group;
+  });
  }
- return {build};
+ return {build,migrateLegacy};
 })();
