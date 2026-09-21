@@ -35,3 +35,5 @@ nav.guide-locked button.active{border-color:transparent;color:#87979e}
 .setup-status li span{font-size:.85rem;color:#607985}
 .setup-done b{color:#18765f}.setup-model b{color:#286b87}.setup-later b{color:#aa6a2b}
 @media(max-width:700px){nav.guide-locked{margin-left:-8px;margin-right:-8px}.wizard-actions{display:grid;grid-template-columns:1fr 1fr}.wizard-actions #wizardNext{grid-column:2}.guide-exit{width:100%;min-height:46px}.setup-status li{align-items:center}}
+
+.expense-item-list{display:grid;gap:8px;margin-top:12px}.expense-item{margin:0}.expense-item>summary{display:flex;justify-content:space-between;gap:12px;align-items:center}.expense-item>summary small{white-space:nowrap}.expense-item .entry-body.grid{padding-top:12px}@media(max-width:640px){.expense-item>summary{align-items:flex-start;flex-direction:column;gap:3px}.expense-item>summary small{white-space:normal}.expense-item-list .grid{grid-template-columns:1fr}}

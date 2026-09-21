@@ -5,8 +5,8 @@ window.PlanReserve=(()=>{
  const year=x=>Math.floor(n(x));
  function schedule(plan){
   const start=year(plan.startYear),h=Math.max(1,Math.min(80,year(plan.horizon)||40));
-  const fiscal=n(plan.fiscalStartMonth)===1?1:4;
-  const firstMonth=Math.max(1,Math.min(12,n(plan.firstYearStartMonth)||fiscal));
+  const fiscal=4;
+  const firstMonth=fiscal;
   const months=[];
   for(let k=0;k<h;k++){
    const sequence=Array.from({length:12},(_,i)=>(fiscal-1+i)%12+1);
@@ -39,14 +39,14 @@ window.PlanReserve=(()=>{
  }
  function build(plan){
   const months=schedule(plan),groups=new Map(),events=plan.events||[];
-  const fiscal=n(plan.fiscalStartMonth)===1?1:4;
+  const fiscal=4;
   for(const [index,e] of events.entries()){
    const name=String(e.savingGroup||'').trim(),cost=positive(e.expense);
    if(!name||!cost)continue;
    if(!groups.has(name))groups.set(name,{name,events:[],rows:[],monthlyGuide:0});
    const group=groups.get(name),role=e.savingRole==='annual'?'annual':'purchase';
    const from=year(e.startYear),to=year(e.endYear),interval=year(e.interval);
-   const oneOff=!interval||!to,eventMonth=selectedMonth(e.month,fiscal);
+   const oneOff=!interval||!to,eventMonth=fiscal;
    let contributionCount=0,purchaseCount=0;
    if(role==='annual'){
     for(let i=0;i<months.length;i++){
@@ -59,7 +59,7 @@ window.PlanReserve=(()=>{
     const cycle=Math.max(1,year(e.savingPurchaseYears)||10);
     const first=year(e.savingFirstPurchaseYear)||from+cycle;
     const purchaseCost=positive(e.savingPurchaseAmount)||cost*cycle;
-    const purchaseMonth=n(e.savingPurchaseMonth)>=1&&n(e.savingPurchaseMonth)<=12?n(e.savingPurchaseMonth):fiscal;
+    const purchaseMonth=fiscal;
     for(let i=0;i<months.length;i++){
      const cell=months[i];
      if(cell.year<first||to&&cell.year>to+1||(cell.year-first)%cycle!==0||cell.month!==purchaseMonth)continue;
