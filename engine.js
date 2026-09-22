@@ -20,8 +20,9 @@ window.PlanEngine=(()=>{
   let eventIncome=0,eventExpense=0,reserveSetAside=0,reservePurchase=0,reserveShortfall=0,events=[];
   const purposeActivity={};
   for(const e of plan.events||[]){
-   if(!e.enabled||!occurs(e,year)||!(e.eventType==='sinking'||e.savingRole==='annual'))continue;
-   const id=purposeId(e.savingGroup),amount=Math.max(0,n(e.expense));
+   const isSinking=e.eventType==='sinking'||e.savingRole==='annual',from=n(e.startYear),to=n(e.endYear)||from;
+   if(!e.enabled||!isSinking||year<from||year>to)continue;
+   const id=purposeId(e.savingGroup),amount=window.PlanReserve?.annualAmount(e)??Math.max(0,n(e.expense))/Math.max(1,n(e.interval)||1);
    if(id){purposeBalances[id]=n(purposeBalances[id])+amount;reserveSetAside+=amount;(purposeActivity[id]||={setAside:0,purchase:0,shortfall:0}).setAside+=amount}
    events.push({...e,income:0,expense:0,reserveSetAside:amount});
   }
