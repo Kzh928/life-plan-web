@@ -1,4 +1,4 @@
-// 用途別積立は現金の内訳。「必要額÷周期」を毎年移し、自動買替または別の購入イベントで総資産を減らす。
+// 用途別積立は現金の内訳。「必要額÷周期」を毎年移し、周期到来時の買替で総資産を減らす。
 window.PlanReserve=(()=>{
  const n=x=>Number(String(x??0).replaceAll(',',''))||0;
  const year=x=>Math.floor(n(x));
@@ -11,6 +11,17 @@ window.PlanReserve=(()=>{
   plan.savingPurposes=Array.isArray(plan.savingPurposes)?plan.savingPurposes:[];
   const valid=new Set(plan.savingPurposes.flatMap(p=>[p.id,p.name]).filter(Boolean));
   for(const e of plan.events||[]){for(const field of ['savingGroup','fundingPurpose']){const value=String(e[field]||'').trim();if(value&&!valid.has(value))e[field]=''}}
+  for(const [index,e] of (plan.events||[]).entries()){
+   if(e.eventType!=='sinking')continue;
+   let purpose=plan.savingPurposes.find(p=>p.id===e.savingGroup||p.name===e.savingGroup);
+   if(!purpose){
+    const id=e.reserveLinkId||`reserve-${Date.now()}-${index}`;e.reserveLinkId=id;
+    purpose={id:`purpose-${id}`,name:`${String(e.name||'新しいイベント').trim()||'新しいイベント'}用積立`,initialBalance:0,color:'#9b6bc3',note:'積立イベントから自動作成',autoLinked:true,linkedEventId:id};
+    plan.savingPurposes.push(purpose);
+   }
+   e.savingGroup=purpose.id;e.autoPurchase=true;e.savingRole='annual';
+   if(purpose.autoLinked)purpose.name=`${String(e.name||'新しいイベント').trim()||'新しいイベント'}用積立`;
+  }
   return plan.savingPurposes;
  }
  function migrateLegacy(plan){
@@ -21,7 +32,7 @@ window.PlanReserve=(()=>{
   ensure(plan);
   for(const e of plan.events||[]){
    if(e.savingRole==='annual'&&!e.eventType){e.eventType='sinking';changed=true}
-   if(e.eventType==='sinking'){e.flow='expense';e.savingRole='annual';e.sinkingMode='auto';if(!e.interval||e.interval<1)e.interval=1;e.startYear||=n(plan.startYear);e.endYear||=n(plan.startYear)+n(plan.horizon)-1}
+   if(e.eventType==='sinking'){e.flow='expense';e.savingRole='annual';e.sinkingMode='auto';e.autoPurchase=true;if(!e.interval||e.interval<1)e.interval=1;e.startYear||=n(plan.startYear);e.endYear||=n(plan.startYear)+n(plan.horizon)-1}
   }
   if(n(plan.reserveSchemaVersion)<4){plan.reserveSchemaVersion=4;changed=true}
   return changed;
