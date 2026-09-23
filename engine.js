@@ -24,7 +24,11 @@ window.PlanEngine=(()=>{
    if(!e.enabled||!isSinking||year<from||year>to)continue;
    const id=purposeId(e.savingGroup),amount=window.PlanReserve?.annualAmount(e)??Math.max(0,n(e.expense))/Math.max(1,n(e.interval)||1);
    if(id){purposeBalances[id]=n(purposeBalances[id])+amount;reserveSetAside+=amount;(purposeActivity[id]||={setAside:0,purchase:0,shortfall:0}).setAside+=amount}
-   events.push({...e,income:0,expense:0,reserveSetAside:amount});
+   let automaticPurchase=0;
+   if(id&&window.PlanReserve?.sinkingPurchaseDue(e,year)){
+    automaticPurchase=Math.max(0,n(e.expense));const available=Math.max(0,n(purposeBalances[id])),used=Math.min(available,automaticPurchase),short=Math.max(0,automaticPurchase-used);purposeBalances[id]=available-used;reservePurchase+=used;reserveShortfall+=short;eventExpense+=automaticPurchase;const row=purposeActivity[id]||={setAside:0,purchase:0,shortfall:0};row.purchase+=used;row.shortfall+=short;
+   }
+   events.push({...e,income:0,expense:automaticPurchase,reserveSetAside:amount,automaticPurchase});
   }
   for(const e of plan.events||[]){
    if(!e.enabled||!occurs(e,year)||e.eventType==='sinking'||e.savingRole==='annual')continue;

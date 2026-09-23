@@ -1,10 +1,11 @@
-// 用途別積立は現金の内訳。積立イベントの「必要額÷周期」を毎年移し、購入イベントでだけ総資産を減らす。
+// 用途別積立は現金の内訳。「必要額÷周期」を毎年移し、自動買替または別の購入イベントで総資産を減らす。
 window.PlanReserve=(()=>{
  const n=x=>Number(String(x??0).replaceAll(',',''))||0;
  const year=x=>Math.floor(n(x));
  const inRange=(e,y)=>{const from=year(e.startYear),to=year(e.endYear)||year(e.startYear);return y>=from&&y<=to};
  const occurs=(e,y)=>{const from=year(e.startYear),to=year(e.endYear)||from,period=Math.max(0,year(e.interval));return (!period||!e.endYear)?y===from:y>=from&&y<=to&&(y-from)%period===0};
  const annualAmount=e=>Math.max(0,n(e.expense))/Math.max(1,year(e.interval)||1);
+ const sinkingPurchaseDue=(e,y)=>{const from=year(e.startYear),to=year(e.endYear)||from,cycle=Math.max(1,year(e.interval)||1);return !!e.autoPurchase&&y>=from&&y<=to&&(y-from+1)%cycle===0};
  const purposeId=(plan,value)=>{const text=String(value||'').trim();const found=(plan.savingPurposes||[]).find(p=>p.id===text||p.name===text);return found?.id||''};
  function ensure(plan){
   plan.savingPurposes=Array.isArray(plan.savingPurposes)?plan.savingPurposes:[];
@@ -30,7 +31,7 @@ window.PlanReserve=(()=>{
   const groups=purposes.map(p=>({id:p.id,name:p.name||'名称未設定',color:p.color||'#9b6bc3',note:p.note||'',events:[],rows:[],monthlyGuide:0,initialBalance:Math.max(0,n(p.initialBalance))}));
   for(const g of groups){let balance=g.initialBalance;for(let i=0;i<h;i++){const y=start+i;let setAside=0,purchase=0;for(const [index,e] of (plan.events||[]).entries()){
     if(!e.enabled)continue;
-    if(e.eventType==='sinking'&&purposeId(plan,e.savingGroup)===g.id&&inRange(e,y)){const annual=annualAmount(e);setAside+=annual;if(!g.events.some(x=>x.index===index))g.events.push({index,name:e.name||'積立',role:'annual',cost:annual,target:n(e.expense),cycle:Math.max(1,year(e.interval)||1),firstYear:year(e.startYear),enabled:true})}
+    if(e.eventType==='sinking'&&purposeId(plan,e.savingGroup)===g.id&&inRange(e,y)){const annual=annualAmount(e);setAside+=annual;if(sinkingPurchaseDue(e,y))purchase+=Math.max(0,n(e.expense));if(!g.events.some(x=>x.index===index))g.events.push({index,name:e.name||'積立',role:'annual',cost:annual,target:n(e.expense),cycle:Math.max(1,year(e.interval)||1),firstYear:year(e.startYear),autoPurchase:!!e.autoPurchase,enabled:true})}
     if(e.eventType!=='sinking'&&e.flow!=='income'&&purposeId(plan,e.fundingPurpose)===g.id&&occurs(e,y)){purchase+=Math.max(0,n(e.expense));if(!g.events.some(x=>x.index===index))g.events.push({index,name:e.name||'購入',role:'purchase',cost:n(e.expense),firstYear:year(e.startYear),interval:year(e.interval),enabled:true})}
    }balance+=setAside-purchase;g.rows.push({year:y,setAside,purchase,balance});}
    g.monthlyGuide=g.rows.reduce((s,r)=>s+r.setAside,0)/Math.max(1,h)/12;
@@ -38,5 +39,5 @@ window.PlanReserve=(()=>{
   return groups;
  }
  function balancesForYears(plan){const groups=build(plan);return Array.from({length:Math.max(1,Math.min(80,year(plan.horizon)||40))},(_,i)=>{const balances={};let total=0;for(const g of groups){const value=n(g.rows[i]?.balance);balances[g.id]=value;total+=value}return {year:year(plan.startYear)+i,total,balances}})}
- return {build,ensure,migrateLegacy,balancesForYears,purposeId,annualAmount};
+ return {build,ensure,migrateLegacy,balancesForYears,purposeId,annualAmount,sinkingPurchaseDue};
 })();
