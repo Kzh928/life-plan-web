@@ -14,13 +14,13 @@ window.PlanReserve=(()=>{
   for(const [index,e] of (plan.events||[]).entries()){
    if(e.eventType!=='sinking')continue;
    let purpose=plan.savingPurposes.find(p=>p.id===e.savingGroup||p.name===e.savingGroup);
+   if(!purpose&&plan.savingPurposes.length)purpose=plan.savingPurposes[0];
    if(!purpose){
     const id=e.reserveLinkId||`reserve-${Date.now()}-${index}`;e.reserveLinkId=id;
-    purpose={id:`purpose-${id}`,name:`${String(e.name||'新しいイベント').trim()||'新しいイベント'}用積立`,initialBalance:0,color:'#9b6bc3',note:'積立イベントから自動作成',autoLinked:true,linkedEventId:id};
+    purpose={id:`purpose-${id}`,name:'家電',initialBalance:0,color:'#9b6bc3',note:'積立イベントから自動作成',autoLinked:true,linkedEventId:id};
     plan.savingPurposes.push(purpose);
    }
    e.savingGroup=purpose.id;e.autoPurchase=true;e.savingRole='annual';
-   if(purpose.autoLinked)purpose.name=`${String(e.name||'新しいイベント').trim()||'新しいイベント'}用積立`;
   }
   return plan.savingPurposes;
  }
