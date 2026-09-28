@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#176f75"><title>家計簿</title><link rel="stylesheet" href="styles.css?v=11"></head><body>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#176f75"><title>家計簿</title><link rel="stylesheet" href="styles.css?v=12"></head><body>
 <header><div><small>予定・実績・資産を月ごとに確認</small><h1 id="bookTitle">家計簿</h1><p id="saveState">この端末に自動保存</p></div><button id="newMonth" class="primary">今月を記録</button></header>
 <nav aria-label="画面"><button data-page="home" class="active">ホーム</button><button data-page="plan">予定</button><button data-page="month">月の記録</button><button data-page="analysis">推移・平均</button><button data-page="link">ライフプラン連携</button><button data-page="data">保存</button></nav>
 <main>
@@ -11,6 +11,6 @@
 </main>
 <dialog id="categoryDialog"><form method="dialog" class="dialog"><h2>基本の費目を追加</h2><p class="hint">大項目を選び、その中に追加する費目名と予定額を入力します。</p><label>大項目<select id="newGroup"></select></label><label id="newGroupNameWrap" hidden>新しい大項目名<input id="newGroupName" placeholder="例：ペット費"></label><label>費目名<input id="newCategoryName" placeholder="例：電気"></label><label>種類<select id="newCategoryType"><option value="expense">支出</option><option value="income">収入</option><option value="investment">投資</option><option value="reserve">用途別積立</option></select></label><label><span>新しい月の標準予定額</span><span class="money-field"><input id="newDefaultPlanned" data-money inputmode="decimal" placeholder="未入力なら0"><b>円</b></span></label><div class="actions"><button value="cancel">戻る</button><button id="confirmCategory" value="default" class="primary">追加する</button></div></form></dialog>
 <dialog id="plannedSpecialDialog"><form method="dialog" class="dialog"><h2 id="plannedSpecialTitle">特別な予定を追加</h2><input id="plannedSpecialId" type="hidden"><label>年月<input id="plannedSpecialMonth" type="month"></label><label>種類<select id="plannedSpecialKind"><option value="expense">特別支出</option><option value="income">特別収入</option></select></label><label>項目名<input id="plannedSpecialName" placeholder="例：賞与、旅行、冷蔵庫"></label><label><span>金額</span><span class="money-field"><input id="plannedSpecialAmount" data-money inputmode="decimal"><b>円</b></span></label><div class="actions"><button value="cancel">戻る</button><button id="confirmPlannedSpecial" value="default" class="primary">保存する</button></div></form></dialog>
-<script src="app.js?v=11"></script></body></html>
+<script src="app.js?v=12"></script></body></html>
 
 
