@@ -40,3 +40,6 @@
 /* v16: 予定費目の開始・終了と反映先 */
 .plan-link{display:block;color:#607980;font-size:.76rem;font-weight:400;margin-top:3px}.plan-category-item>span>strong{display:block}.plan-category-item>button{white-space:nowrap}
 @media(max-width:700px){.plan-category-item>button{min-height:42px}.plan-row>.actions button{width:100%}}
+/* v17: 資産グラフの月別内訳 */
+.asset-outlook-detail{min-height:150px}.asset-source{display:block;color:#607980;font-size:.85rem;margin-bottom:9px}.asset-detail-grid{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:8px 14px}.asset-detail-grid span{display:grid;gap:2px;color:#607980;font-size:.82rem}.asset-detail-grid b{color:#173640;font-size:.95rem}
+@media(max-width:700px){.asset-outlook-detail{min-height:220px}.asset-detail-grid{grid-template-columns:1fr 1fr;gap:9px}.asset-detail-grid b{font-size:.9rem}}
