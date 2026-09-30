@@ -46,3 +46,20 @@
 .asset-outlook-detail{min-height:150px}.asset-source{display:block;color:#607980;font-size:.85rem;margin-bottom:9px}.asset-detail-grid{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:8px 14px}.asset-detail-grid span{display:grid;gap:2px;color:#607980;font-size:.82rem}.asset-detail-grid b{color:#173640;font-size:.95rem}
 .asset-reference{display:grid;gap:3px;margin-top:12px;padding-top:10px;border-top:1px solid #c8dddd;color:#49676f;font-size:.82rem}.asset-reference strong{margin:0;color:#254851}.asset-reference small{color:#607980}
 @media(max-width:700px){.asset-outlook-detail{min-height:220px}.asset-detail-grid{grid-template-columns:1fr 1fr;gap:9px}.asset-detail-grid b{font-size:.9rem}}
+
+
+/* v23: mobile continuous input stability and overflow prevention */
+@media(max-width:700px){
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+main,.page,#monthGroups,#planChangeRows,#plannedSpecialRows,.plan-category-groups,.group-body,.subgroup-body{min-width:0;max-width:100%}
+.group,.subgroup,.item,.plan-row,.plan-category-group,.plan-subgroup,.plan-category-item,.manager-entry,.special-plan-row{min-width:0;max-width:100%}
+.plan-category-item>*{min-width:0}
+.plan-category-item label{grid-template-columns:minmax(0,1fr) minmax(110px,1fr);min-width:0}
+.money-field,input,select,textarea{min-width:0;max-width:100%}
+input,select,textarea{font-size:16px}
+details{scroll-margin-top:145px}
+}
+@media(max-width:380px){
+.plan-category-item label{grid-template-columns:1fr}
+.plan-category-item .money-field{grid-template-columns:minmax(0,1fr) auto}
+}
