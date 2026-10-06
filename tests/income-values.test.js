@@ -1,0 +1,28 @@
+// このテストは，入力値の反映，年度独立性，JSONの検証と旧データの除去を確認します．
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
+const ctx={window:{}};vm.createContext(ctx);
+for(const file of ['income-values.js','model.js','engine.js','advisor.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'..',file),'utf8'),ctx);
+const {PlanIncome:I,PlanModel:M,PlanEngine:E,PlanAdvice:A}=ctx.window;
+const p=M.empty();p.horizon=3;p.returnRate=0;
+p.parents[0].patterns['働き方1'].years={2026:{gross:6000000,net:4100000,retirementNet:null},2027:{gross:null,net:0,retirementNet:700000}};
+p.parents[1].patterns['働き方1'].years={2026:{gross:3000000,net:2400000,retirementNet:null}};
+let rows=E.annual(p,{});
+assert.equal(rows[0].baseIncome,6500000);assert.equal(rows[1].baseIncome,0);assert.equal(rows[1].eventIncome,700000);assert.equal(rows[2].eventIncome,0);
+assert.equal(E.parentIncome(p.parents[0],2027,p).entered,true);assert.equal(E.parentIncome(p.parents[0],2028,p).entered,false);
+p.parents[0].patterns['働き方1'].years[2028]={gross:9000000,net:null,retirementNet:null};
+assert.equal(E.parentIncome(p.parents[0],2028,p).amount,0);
+p.parents[0].patterns['別の働き方']={years:{2027:{gross:null,net:1700000,retirementNet:0}}};p.parents[0].stages.push({startYear:2027,mode:'別の働き方'});
+assert.equal(E.parentIncome(p.parents[0],2027,p).amount,1700000);
+const json=I.exportValues(p.parents[0].patterns['働き方1']);assert.equal(json.years[0].net,4100000);assert.equal(I.parse(json)[2027].net,0);
+assert.deepEqual(Object.keys(json),['format','version','years']);assert.deepEqual(Object.keys(json.years[0]),['year','gross','net','retirementNet']);
+const valid={format:'lifeplan.income.values',version:1,years:[{year:2026,gross:null,net:1234567,retirementNet:0}]};
+assert.equal(I.parse(valid)[2026].net,1234567);
+for(const payload of [{...valid,company:'example'},{...valid,years:[{year:2026,net:-1}]},{...valid,years:[{year:2026,net:'100'}]},{...valid,years:[{year:2026,net:Infinity}]},{...valid,years:[{year:2026,net:1e13}]},{...valid,years:[{year:2026,net:1,formula:'x'}]},{...valid,years:[{year:2026,net:1},{year:2026,net:2}]},{...valid,years:[{year:2026.5,net:1}]}])assert.throws(()=>I.parse(payload));
+assert.throws(()=>I.parse(JSON.parse('{"format":"lifeplan.income.values","version":1,"years":[],"__proto__":{}}')));
+const legacy={startYear:2026,baseAge:25,parents:[{name:'本人',patterns:{仕事:{base:100,amountType:'手取り',raiseType:'定率',raisePercent:9}},yearly:{2027:{仕事:200}},promotion:[{monthlyPay:123}],prepayMonthly:999,stages:[{startYear:2026,mode:'仕事'}]}],retirement:{age:26,payout:300},taxBrackets:[{}]};
+I.normalize(legacy);assert.equal(legacy.parents[0].patterns.仕事.years[2026].net,100);assert.equal(legacy.parents[0].patterns.仕事.years[2027].net,200);assert.equal(legacy.parents[0].patterns.仕事.years[2027].retirementNet,300);assert(!('retirement' in legacy));assert(!('taxBrackets' in legacy));assert.deepEqual(Object.keys(legacy.parents[0]),['name','birthYear','patterns','stages']);assert.deepEqual(Object.keys(legacy.parents[0].patterns.仕事),['years']);
+const before=JSON.stringify(legacy);I.normalize(legacy);assert.equal(JSON.stringify(legacy),before);
+const trial=A.apply(p,{income1:10000});assert.equal(E.parentIncome(trial.parents[0],2026,trial).amount,4110000);assert.equal(E.parentIncome(trial.parents[0],2028,trial).entered,false);assert.equal(E.parentIncome(p.parents[0],2026,p).amount,4100000);
+const restored=JSON.parse(JSON.stringify(p));I.normalize(restored);assert.equal(E.parentIncome(restored.parents[0],2026,restored).amount,4100000);
+for(const file of ['app.js','engine.js','model.js','index.html','advisor.js','income-values.js']){const text=fs.readFileSync(path.join(__dirname,'..',file),'utf8');assert(!/17500|monthlyPay|performanceBonus|retirementPoints|retirementRatio|prepayMonthly|promotionSummary|rateTable|raisePercent|raiseAmount|data-retirement/.test(text),file+' contains removed company calculations');}
+console.log('PASS: independent owner/year values, no automatic conversions, one-time retirement, working-mode switches, numeric-only JSON validation, sanitized migration, backup round trip and advice isolation');
