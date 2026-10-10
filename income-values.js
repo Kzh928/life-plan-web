@@ -63,5 +63,14 @@ window.PlanIncome = (() => {
   function exportValues(pattern) {
     return {format:'lifeplan.income.values', version:1, years:Object.entries(pattern.years || {}).filter(([year])=>validYear(year)).sort((a,b)=>Number(a[0])-Number(b[0])).map(([year, values])=>({year:Number(year), ...row(values)}))};
   }
-  return {normalize, parse, exportValues, row, validMode};
+  function setPayout(pattern, oldYear, year, value) {
+    if (!validYear(year) || amount(value) === null) throw Error('年度は1900〜2300，金額は0以上1兆円以下で入力してください．');
+    const years = pattern.years ||= {}, target = String(Number(year));
+    if (String(oldYear) !== target && amount(years[target]?.retirementNet) > 0) throw Error('その年度には退職金が登録済みです．登録済みの行を編集してください．');
+    if (oldYear != null && String(oldYear) !== target && years[oldYear]) years[oldYear].retirementNet = null;
+    years[target] ||= row();
+    years[target].retirementNet = value;
+  }
+  return {normalize, parse, exportValues, row, validMode, setPayout};
 })();
+

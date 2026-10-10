@@ -25,4 +25,9 @@ const before=JSON.stringify(legacy);I.normalize(legacy);assert.equal(JSON.string
 const trial=A.apply(p,{income1:10000});assert.equal(E.parentIncome(trial.parents[0],2026,trial).amount,4110000);assert.equal(E.parentIncome(trial.parents[0],2028,trial).entered,false);assert.equal(E.parentIncome(p.parents[0],2026,p).amount,4100000);
 const restored=JSON.parse(JSON.stringify(p));I.normalize(restored);assert.equal(E.parentIncome(restored.parents[0],2026,restored).amount,4100000);
 for(const file of ['app.js','engine.js','model.js','index.html','advisor.js','income-values.js']){const text=fs.readFileSync(path.join(__dirname,'..',file),'utf8');assert(!/17500|monthlyPay|performanceBonus|retirementPoints|retirementRatio|prepayMonthly|promotionSummary|rateTable|raisePercent|raiseAmount|data-retirement/.test(text),file+' contains removed company calculations');}
-console.log('PASS: independent owner/year values, no automatic conversions, one-time retirement, working-mode switches, numeric-only JSON validation, sanitized migration, backup round trip and advice isolation');
+const payout={years:{2026:{gross:100,net:80,retirementNet:50},2027:{gross:200,net:160,retirementNet:null}}};
+I.setPayout(payout,2026,2027,70);assert.equal(payout.years[2026].retirementNet,null);assert.equal(payout.years[2026].net,80);assert.equal(payout.years[2027].net,160);assert.equal(payout.years[2027].retirementNet,70);
+assert.throws(()=>I.setPayout(payout,null,2027,90));assert.equal(payout.years[2027].retirementNet,70);
+for(const [year,value] of [[2027.5,10],[1899,10],[2028,-1],[2028,NaN],[2028,1e13]])assert.throws(()=>I.setPayout(payout,2027,year,value));
+I.setPayout(payout,2027,2028,0);assert.equal(payout.years[2027].retirementNet,null);assert.equal(payout.years[2028].retirementNet,0);assert.equal(I.parse(I.exportValues(payout))[2027].net,160);
+console.log('PASS: independent owner/year values, one-time retirement year moves, conflict/invalid input rejection, numeric-only JSON, migration, backup and advice');
