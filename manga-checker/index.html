@@ -88,7 +88,40 @@ var save=function(){try{localStorage.setItem(STORE,JSON.stringify(db));return tr
 function refresh(){var s=series();$("seriesSel").innerHTML=db.series.map(function(x){return '<option value="'+esc(x.id)+'">'+esc(x.name)+'</option>'}).join("");$("seriesSel").value=s.id;$("progressInput").value=s.volume;renderPeople();renderTeams();updateSelects();renderStats()}
 function renderStats(){$("countPeople").textContent=series().people.length;$("countSamples").textContent=series().people.reduce(function(n,p){return n+(p.embeds||[]).length},0);$("peopleCount").textContent=available().length+"人 / 登録"+series().people.length+"人";$("peopleRange").textContent=vol()+"巻読了時点"}
 function updateSelects(){var arr=available();$("trainWho").innerHTML=arr.length?arr.map(function(p){return '<option value="'+esc(p.id)+'">'+esc(p.name)+'</option>'}).join(""):'<option value="">表示できる人物がいません</option>';if(currentImg)$("learnButton").disabled=!arr.length}
-function renderPeople(){var q=norm($("searchPeople").value),arr=available().filter(function(p){return aliases(p).some(function(a){return norm(a).includes(q)})||shownFacts(p).some(function(f){return (f.type==="所属"||f.type==="臨時隊"||f.type==="役割")&&norm(f.text).includes(q)})});$("peopleList").innerHTML=arr.length?arr.map(function(p){var a=shownFacts(p).filter(function(f){return f.type==="呼び名"}).map(function(f){return f.text}).join(" / "),t=shownFacts(p).filter(function(f){return f.type==="所属"}).map(function(f){return f.text}).join(" / ");return '<button class="person" data-person="'+esc(p.id)+'"><span class="avatar">'+esc(p.name.replace(/\s/g,"").slice(0,1))+'</span><span style="flex:1"><span class="name">'+esc(p.name)+'</span><span class="mini">'+esc(a||"別名の登録なし")+(t?'<br>'+esc(t):"")+'</span></span><span class="arrow">›</span></button>'}).join(""):'<div class="notice">この巻数で表示できる人物がいません．名前を追加するか，読了巻数を確認してください．</div>'}
+
+var avatarObserver=null,listAvatarURLs=[],avatarRenderToken=0;
+async function firstPersonPhoto(owner){
+ var database=await photoDB();
+ return new Promise(function(resolve,reject){
+  var tx=database.transaction("images","readonly"),request=tx.objectStore("images").index("owner").getAll(owner,1);
+  request.onsuccess=function(){resolve((request.result||[])[0]||null)};
+  request.onerror=function(){reject(request.error)}
+ })
+}
+function renderListPhotoAvatars(){
+ var token=++avatarRenderToken;
+ if(avatarObserver){avatarObserver.disconnect();avatarObserver=null}
+ listAvatarURLs.forEach(function(u){URL.revokeObjectURL(u)});listAvatarURLs=[];
+ var nodes=$("peopleList").querySelectorAll("[data-personavatar]");
+ function load(node){
+  if(node.dataset.photoLoading)return;
+  node.dataset.photoLoading="1";
+  var p=personById(node.dataset.personavatar);if(!p)return;
+  firstPersonPhoto(photoKey(p)).then(function(item){
+   if(!item||token!==avatarRenderToken||!node.isConnected)return;
+   var u=URL.createObjectURL(item.blob);listAvatarURLs.push(u);
+   var img=document.createElement("img");img.alt="";img.loading="lazy";img.src=u;
+   img.onerror=function(){img.remove();node.textContent=p.name.replace(/\s/g,"").slice(0,1)};
+   node.textContent="";node.appendChild(img)
+  }).catch(function(){})
+ }
+ if(window.IntersectionObserver){
+  avatarObserver=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){avatarObserver.unobserve(entry.target);load(entry.target)}})},{rootMargin:"200px"});
+  nodes.forEach(function(node){avatarObserver.observe(node)})
+ }else Array.from(nodes).slice(0,35).forEach(load)
+}
+
+function renderPeople(){var q=norm($("searchPeople").value),arr=available().filter(function(p){return aliases(p).some(function(a){return norm(a).includes(q)})||shownFacts(p).some(function(f){return (f.type==="所属"||f.type==="臨時隊"||f.type==="役割")&&norm(f.text).includes(q)})});$("peopleList").innerHTML=arr.length?arr.map(function(p){var a=shownFacts(p).filter(function(f){return f.type==="呼び名"}).map(function(f){return f.text}).join(" / "),t=shownFacts(p).filter(function(f){return f.type==="所属"}).map(function(f){return f.text}).join(" / ");return '<button class="person" data-person="'+esc(p.id)+'"><span class="avatar" data-personavatar="'+esc(p.id)+'">'+esc(p.name.replace(/\s/g,"").slice(0,1))+'</span><span style="flex:1"><span class="name">'+esc(p.name)+'</span><span class="mini">'+esc(a||"別名の登録なし")+(t?'<br>'+esc(t):"")+'</span></span><span class="arrow">›</span></button>'}).join(""):'<div class="notice">この巻数で表示できる人物がいません．名前を追加するか，読了巻数を確認してください．</div>';renderListPhotoAvatars()}
 function renderTeams(){var mode=$("teamsMode").value,groups=[];if(mode!=="temporary")groups.push({type:"所属",label:"普段の所属隊"});if(mode!=="usual"&&vol()>=23)groups.push({type:"臨時隊",label:"遠征選抜試験の臨時部隊"});if(mode==="temporary"&&vol()<23){$("teamsList").innerHTML='<div class="notice">23巻を読み終えると，臨時部隊の編成が表示されます．</div>';return}var html="";groups.forEach(function(g){var map={};available().forEach(function(p){shownFacts(p).filter(function(f){return f.type===g.type}).forEach(function(f){(map[f.text]||(map[f.text]=[])).push(p)})});var names=Object.keys(map).sort(function(a,b){return a.localeCompare(b,"ja",{numeric:true})});if(!names.length)return;html+='<div class="eyebrow" style="margin:13px 0">'+esc(g.label)+'</div>'+names.map(function(n){return '<details class="group"><summary class="row" style="cursor:pointer"><strong>'+esc(n)+'</strong><span class="chip">'+map[n].length+'人　⌄</span></summary><div class="sectionline"></div>'+map[n].map(function(p){return '<button class="btn light small" data-person="'+esc(p.id)+'" style="margin:3px">'+esc(p.name)+'</button>'}).join("")+'</details>'}).join("")});$("teamsList").innerHTML=html||'<div class="notice">この読了巻までの所属情報は登録されていません．</div>'}
 $("teamsMode").addEventListener("change",renderTeams);
 function showPage(p){["scan","people","teams","settings"].forEach(function(n){$(n+"Page").classList.toggle("hidden",n!==p)});document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("active",x.dataset.page===p)});window.scrollTo({top:0,behavior:"smooth"})}
