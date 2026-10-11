@@ -99,9 +99,162 @@ $("searchPeople").addEventListener("input",renderPeople);
 document.addEventListener("click",function(e){var b=e.target.closest("[data-person]");if(b)openPerson(b.dataset.person)});
 $("newChar").addEventListener("click",newPerson);$("closeModal").addEventListener("click",closeModal);
 $("modal").addEventListener("click",function(e){if(e.target===$("modal"))closeModal()});
-function closeModal(){$("modal").hidden=true;$("modalBody").innerHTML=""}
+function closeModal(){closePhoto();clearGalleryUrls();$("modal").hidden=true;$("modalBody").innerHTML=""}
 function openModal(title,body){$("modalTitle").textContent=title;$("modalBody").innerHTML=body;$("modal").hidden=false}
 function personById(id){return series().people.find(function(p){return p.id===id})}
+
+var photoDbPromise=null,photoObjectUrls=[],shownPhoto=null;
+function photoKey(p){return db.active+":"+p.id}
+function photoDB(){
+ if(photoDbPromise)return photoDbPromise;
+ photoDbPromise=new Promise(function(resolve,reject){
+  if(!window.indexedDB){reject(Error("このブラウザは写真保存に対応していません"));return}
+  var req=window.indexedDB.open("komanohito-photo-store-v1",1);
+  req.onupgradeneeded=function(){
+   var database=req.result;
+   if(!database.objectStoreNames.contains("images")){
+    var store=database.createObjectStore("images",{keyPath:"id",autoIncrement:true});
+    store.createIndex("owner","owner",{unique:false});
+   }
+  };
+  req.onsuccess=function(){resolve(req.result)};
+  req.onerror=function(){reject(req.error||Error("写真データベースを開けません"))}
+ }).catch(function(e){photoDbPromise=null;throw e});
+ return photoDbPromise
+}
+async function photosFor(owner){
+ var database=await photoDB();
+ return new Promise(function(resolve,reject){
+  var tx=database.transaction("images","readonly"),req=tx.objectStore("images").index("owner").getAll(owner);
+  req.onsuccess=function(){resolve(req.result||[])};
+  req.onerror=function(){reject(req.error)}
+ })
+}
+async function writePhoto(owner,blob,filename){
+ var database=await photoDB();
+ return new Promise(function(resolve,reject){
+  var tx=database.transaction("images","readwrite");
+  tx.objectStore("images").add({owner:owner,blob:blob,filename:filename||"",date:Date.now()});
+  tx.oncomplete=function(){resolve()};
+  tx.onerror=function(){reject(tx.error||Error("写真を保存できません"))}
+ })
+}
+async function erasePhoto(id){
+ var database=await photoDB();
+ return new Promise(function(resolve,reject){
+  var tx=database.transaction("images","readwrite");
+  tx.objectStore("images").delete(Number(id));
+  tx.oncomplete=function(){resolve()};
+  tx.onerror=function(){reject(tx.error)}
+ })
+}
+function clearGalleryUrls(){
+ photoObjectUrls.forEach(function(url){URL.revokeObjectURL(url)});
+ photoObjectUrls=[]
+}
+function photoObjectURL(blob){
+ var url=URL.createObjectURL(blob);photoObjectUrls.push(url);return url
+}
+async function compressPhoto(file){
+ if(!file.type.startsWith("image/")||file.size>20000000)throw Error("20MB以下の画像を選択してください");
+ var img=await new Promise(function(resolve,reject){
+  var url=URL.createObjectURL(file),image=new Image();
+  image.onload=function(){URL.revokeObjectURL(url);resolve(image)};
+  image.onerror=function(){URL.revokeObjectURL(url);reject(Error("画像を読み込めません"))};
+  image.src=url
+ });
+ var max=1000,w=img.naturalWidth||img.width,h=img.naturalHeight||img.height;
+ if(w<1||h<1)throw Error("画像サイズが不正です");
+ var scale=Math.min(1,max/Math.max(w,h));
+ var c=document.createElement("canvas");c.width=Math.max(1,Math.round(w*scale));c.height=Math.max(1,Math.round(h*scale));
+ var cx=c.getContext("2d");cx.fillStyle="#ffffff";cx.fillRect(0,0,c.width,c.height);cx.drawImage(img,0,0,c.width,c.height);
+ return new Promise(function(resolve,reject){c.toBlob(function(blob){blob?resolve(blob):reject(Error("画像を変換できません"))},"image/jpeg",0.85)})
+}
+async function renderPhotoGallery(p){
+ var root=$("personPhotoGallery");
+ if(!root||$("modal").hidden)return;
+ var photos;try{photos=await photosFor(photoKey(p))}catch(e){$("personPhotoStatus").textContent="写真保存機能が使えません："+e.message;return}
+ if($("modal").hidden||!$("personPhotoGallery"))return;
+ clearGalleryUrls();
+ if(!photos.length){
+  root.innerHTML='<div class="notice" style="grid-column:1/-1">まだこの人物の写真はありません．「ネットの画像を探す」から検索して，利用できる写真を端末から追加できます．</div>';return
+ }
+ root.innerHTML=photos.slice().reverse().map(function(entry){
+  return '<div class="photo-tile"><button class="photo-show" data-viewphoto="'+entry.id+'" aria-label="写真を拡大"><img src="'+photoObjectURL(entry.blob)+'" alt="登録した人物の画像" loading="lazy"></button><button class="photo-remove" data-delphoto="'+entry.id+'" aria-label="画像を削除">×</button></div>'
+ }).join("");
+ root.querySelectorAll("[data-viewphoto]").forEach(function(button){
+  button.onclick=function(){var item=photos.find(function(x){return String(x.id)===button.dataset.viewphoto});if(item)openPhoto(p,item)}
+ });
+ root.querySelectorAll("[data-delphoto]").forEach(function(button){
+  button.onclick=async function(){
+   if(!confirm("この写真を削除しますか？"))return;
+   try{await erasePhoto(button.dataset.delphoto);await renderPhotoGallery(p)}catch(e){alert(e.message)}
+  }
+ });
+ $("personPhotoStatus").textContent=photos.length+"枚の写真をこの端末に保存しています．"
+}
+function closePhoto(){
+ $("photoLightbox").hidden=true;shownPhoto=null;
+ $("largePhoto").removeAttribute("src")
+}
+function openPhoto(p,item){
+ shownPhoto={personId:p.id,item:item};
+ $("largePhoto").src=photoObjectURL(item.blob);
+ $("photoLightbox").hidden=false
+}
+$("photoLightboxClose").onclick=closePhoto;
+$("closePhotoAlt").onclick=closePhoto;
+$("photoLightbox").onclick=function(e){if(e.target===$("photoLightbox"))closePhoto()};
+$("learnSavedPhoto").onclick=async function(){
+ if(!shownPhoto)return;
+ var id=shownPhoto.personId,p=personById(id),item=shownPhoto.item;
+ if(!p)return;
+ var button=this;button.disabled=true;
+ try{
+  var image=await new Promise(function(resolve,reject){
+   var url=URL.createObjectURL(item.blob),im=new Image();
+   im.onload=function(){URL.revokeObjectURL(url);resolve(im)};
+   im.onerror=function(){URL.revokeObjectURL(url);reject(Error("画像を開けません"))};
+   im.src=url
+  });
+  var c=document.createElement("canvas"),r=Math.min(1,640/Math.max(image.width,image.height));
+  c.width=Math.max(1,Math.round(image.width*r));c.height=Math.max(1,Math.round(image.height*r));
+  c.getContext("2d").drawImage(image,0,0,c.width,c.height);
+  var feature=await embed(c);
+  p.embeds=p.embeds||[];p.embeds.push(feature);if(p.embeds.length>12)p.embeds.shift();
+  save();renderStats();alert(p.name+"の認識用特徴を登録しました．")
+ }catch(e){alert("特徴抽出ができませんでした："+e.message)}
+ finally{button.disabled=false}
+};
+function wirePersonGallery(p){
+ $("searchPersonImages").onclick=function(){
+  if(!confirm("画像検索の結果には24巻より先のネタバレ画像が表示される可能性があります．外部サイトを開きますか？"))return;
+  var query="ワールドトリガー "+p.name+" キャラクター 公式 アニメ 漫画";
+  window.open("https://www.google.com/search?tbm=isch&q="+encodeURIComponent(query),"_blank","noopener,noreferrer")
+ };
+ $("addPersonPhotos").onclick=function(){$("personPhotoInput").click()};
+ $("personPhotoInput").onchange=async function(){
+  var files=Array.from(this.files||[]);this.value="";
+  if(!files.length)return;
+  if(files.length>35&&!confirm("一度に35枚まで登録します．最初の35枚を追加しますか？"))return;
+  files=files.slice(0,35);var added=0,errors=0,owner=photoKey(p);
+  $("addPersonPhotos").disabled=true;
+  try{
+   var existing=await photosFor(owner);
+   var remain=Math.max(0,80-existing.length);
+   if(!remain){alert("この人物は80枚の上限に達しています");return}
+   for(var i=0;i<Math.min(remain,files.length);i++){
+    $("personPhotoStatus").textContent=(i+1)+"/"+Math.min(remain,files.length)+"枚を保存中…";
+    try{var blob=await compressPhoto(files[i]);await writePhoto(owner,blob,files[i].name);added++}catch(e){errors++}
+   }
+   await renderPhotoGallery(p);
+   $("personPhotoStatus").textContent=added+"枚を保存しました．"+(errors?errors+"枚は保存できませんでした．":"")
+  }catch(e){$("personPhotoStatus").textContent="保存できませんでした："+e.message}
+  finally{$("addPersonPhotos").disabled=false}
+ };
+ renderPhotoGallery(p)
+}
+
 function openPerson(id){var p=personById(id);if(!p||Number(p.from)>vol())return;var facts=shownFacts(p);var all=p.facts||[];
 var list=facts.length?facts.map(function(f){var i=all.indexOf(f);return '<div class="fact"><span class="facttype">'+esc(f.type)+'</span><div class="factbody">'+esc(f.text)+(f.target&&personById(f.target)&&Number(personById(f.target).from)<=vol()?' → '+esc(personById(f.target).name):"")+'<div class="factmeta">'+f.from+'巻'+(f.to?"〜"+f.to+"巻":"〜")+'</div></div><button data-deletefact="'+i+'" aria-label="この情報を削除">×</button></div>'}).join(""):'<div class="hint">まだ表示できるメモはありません．</div>';
 openModal(p.name,'<div class="row"><div class="avatar">'+esc(p.name.replace(/\s/g,"").slice(0,1))+'</div><span class="chip safe">ネタバレ防止中 · '+vol()+'巻</span></div><div class="sectionline"></div><div class="details">'+list+'</div><div class="sectionline"></div><div class="eyebrow">CHARACTER GALLERY</div><div class="h2" style="font-size:16px">この人物の画像</div><div class="photo-guide">ネットの画像は検索先で見られます．画像を端末に保存してここへ追加すると，人物ページに何枚も並べて確認できます．公式の画像を公開サーバーへ無断転載しない構成です．</div><div class="buttons"><button class="btn primary small" id="searchPersonImages">⌕ ネットの画像を探す</button><button class="btn pale small" id="addPersonPhotos">＋ 写真をまとめて追加</button></div><input type="file" id="personPhotoInput" accept="image/*" multiple hidden><div id="personPhotoStatus" class="status" aria-live="polite"></div><div id="personPhotoGallery" class="photo-gallery"></div><div class="sectionline"></div><div id="sourcesBlock"></div><div class="h2" style="font-size:16px">情報を追加・修正</div><p class="hint">未来の情報は判明した巻数を指定すれば，その巻まで隠れます．</p><div class="grid2"><div class="field"><label>情報の種類</label><select id="factType"><option>呼び名</option><option>所属</option><option>役割</option><option>関係</option><option>メモ</option></select></div><div class="field"><label>判明する巻</label><input id="factFrom" type="number" min="1" max="99" value="'+vol()+'"></div></div><div class="field"><label>内容（関係の場合は名前と関係を書く）</label><input id="factText" placeholder="例：〇〇隊，〇〇の先輩"></div><div class="field"><label>いつまで有効？（変更前の所属など）</label><input id="factTo" type="number" min="1" max="99" placeholder="空欄ならずっと有効"></div><button class="btn primary full" id="saveFact">＋ この情報を保存</button><div class="sectionline"></div><div class="buttons"><button class="btn outline small" id="renamePerson">名前・初登場巻を編集</button><button class="btn danger small" id="deletePerson">人物を削除</button></div><div class="hint" style="margin-top:10px">この人物を覚えた見た目：'+(p.embeds||[]).length+'枚分</div>');
@@ -111,6 +264,7 @@ if(p.nameVerified&&p.sources&&p.sources.length){
  }else{
  $("sourcesBlock").innerHTML='<p class="hint">公式サイトの人物名との個別照合は未完了です．</p>';
  }
+ wirePersonGallery(p);
  $("saveFact").onclick=function(){var type=$("factType").value,text=$("factText").value.trim(),from=Math.floor(Number($("factFrom").value)),to=$("factTo").value?Math.floor(Number($("factTo").value)):null;if(!text||!Number.isInteger(from)||from<1||from>99||to!==null&&(!Number.isInteger(to)||to<from)){alert("内容と巻数を確認してください．");return}p.facts.push({type:type,text:text,from:from,to:to});save();refresh();openPerson(p.id)};
 document.querySelectorAll("[data-deletefact]").forEach(function(b){b.onclick=function(){if(confirm("この情報を削除しますか？")){var f=p.facts[Number(b.dataset.deletefact)];if(f.origin==="catalog-24"){p.hiddenCatalogFacts=p.hiddenCatalogFacts||[];p.hiddenCatalogFacts.push(f.type+"|"+f.text+"|"+f.from+"|"+(f.to||""))}p.facts.splice(Number(b.dataset.deletefact),1);save();refresh();openPerson(p.id)}}});
 $("renamePerson").onclick=function(){var name=prompt("表示名",p.name);if(name===null)return;name=name.trim();if(!name)return;var n=prompt("初登場巻（安全側で設定）",p.from);if(n===null)return;var from=Math.floor(Number(n));if(!Number.isFinite(from)||from<1||from>99){alert("1〜99の数字を入力");return}p.name=name;p.from=from;p.origin="edited";save();refresh();if(p.from>vol())closeModal();else openPerson(p.id)};
