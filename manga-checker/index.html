@@ -94,9 +94,9 @@ function openPerson(id){var p=personById(id);if(!p||Number(p.from)>vol())return;
 var list=facts.length?facts.map(function(f){var i=all.indexOf(f);return '<div class="fact"><span class="facttype">'+esc(f.type)+'</span><div class="factbody">'+esc(f.text)+(f.target&&personById(f.target)&&Number(personById(f.target).from)<=vol()?' → '+esc(personById(f.target).name):"")+'<div class="factmeta">'+f.from+'巻'+(f.to?"〜"+f.to+"巻":"〜")+'</div></div><button data-deletefact="'+i+'" aria-label="この情報を削除">×</button></div>'}).join(""):'<div class="hint">まだ表示できるメモはありません．</div>';
 openModal(p.name,'<div class="row"><div class="avatar">'+esc(p.name.replace(/\s/g,"").slice(0,1))+'</div><span class="chip safe">ネタバレ防止中 · '+vol()+'巻</span></div><div class="sectionline"></div><div class="details">'+list+'</div><div class="sectionline"></div><div class="h2" style="font-size:16px">情報を追加・修正</div><p class="hint">未来の情報は判明した巻数を指定すれば，その巻まで隠れます．</p><div class="grid2"><div class="field"><label>情報の種類</label><select id="factType"><option>呼び名</option><option>所属</option><option>役割</option><option>関係</option><option>メモ</option></select></div><div class="field"><label>判明する巻</label><input id="factFrom" type="number" min="1" max="99" value="'+vol()+'"></div></div><div class="field"><label>内容（関係の場合は名前と関係を書く）</label><input id="factText" placeholder="例：〇〇隊，〇〇の先輩"></div><div class="field"><label>いつまで有効？（変更前の所属など）</label><input id="factTo" type="number" min="1" max="99" placeholder="空欄ならずっと有効"></div><button class="btn primary full" id="saveFact">＋ この情報を保存</button><div class="sectionline"></div><div class="buttons"><button class="btn outline small" id="renamePerson">名前・初登場巻を編集</button><button class="btn danger small" id="deletePerson">人物を削除</button></div><div class="hint" style="margin-top:10px">この人物を覚えた見た目：'+(p.embeds||[]).length+'枚分</div>');
 $("saveFact").onclick=function(){var type=$("factType").value,text=$("factText").value.trim(),from=Math.floor(Number($("factFrom").value)),to=$("factTo").value?Math.floor(Number($("factTo").value)):null;if(!text||!Number.isInteger(from)||from<1||from>99||to!==null&&(!Number.isInteger(to)||to<from)){alert("内容と巻数を確認してください．");return}p.facts.push({type:type,text:text,from:from,to:to});save();refresh();openPerson(p.id)};
-document.querySelectorAll("[data-deletefact]").forEach(function(b){b.onclick=function(){if(confirm("この情報を削除しますか？")){p.facts.splice(Number(b.dataset.deletefact),1);save();refresh();openPerson(p.id)}}});
-$("renamePerson").onclick=function(){var name=prompt("表示名",p.name);if(name===null)return;name=name.trim();if(!name)return;var n=prompt("初登場巻（安全側で設定）",p.from);if(n===null)return;var from=Math.floor(Number(n));if(!Number.isFinite(from)||from<1||from>99){alert("1〜99の数字を入力");return}p.name=name;p.from=from;save();refresh();if(p.from>vol())closeModal();else openPerson(p.id)};
-$("deletePerson").onclick=function(){if(confirm(p.name+" を削除しますか？")){series().people=series().people.filter(function(c){return c.id!==p.id});save();refresh();closeModal()}};
+document.querySelectorAll("[data-deletefact]").forEach(function(b){b.onclick=function(){if(confirm("この情報を削除しますか？")){var f=p.facts[Number(b.dataset.deletefact)];if(f.origin==="catalog-24"){p.hiddenCatalogFacts=p.hiddenCatalogFacts||[];p.hiddenCatalogFacts.push(f.type+"|"+f.text+"|"+f.from+"|"+(f.to||""))}p.facts.splice(Number(b.dataset.deletefact),1);save();refresh();openPerson(p.id)}}});
+$("renamePerson").onclick=function(){var name=prompt("表示名",p.name);if(name===null)return;name=name.trim();if(!name)return;var n=prompt("初登場巻（安全側で設定）",p.from);if(n===null)return;var from=Math.floor(Number(n));if(!Number.isFinite(from)||from<1||from>99){alert("1〜99の数字を入力");return}p.name=name;p.from=from;p.origin="edited";save();refresh();if(p.from>vol())closeModal();else openPerson(p.id)};
+$("deletePerson").onclick=function(){if(confirm(p.name+" を削除しますか？")){if(db.active==="wt"&&(p.origin==="catalog-24"||p.origin==="edited"||p.id.startsWith("wt_full_"))){var s=series();s.deletedCatalogIds=s.deletedCatalogIds||[];s.deletedCatalogIds.push(p.id)}series().people=series().people.filter(function(c){return c.id!==p.id});save();refresh();closeModal()}};
 }
 function newPerson(){openModal("人物を追加",'<p class="hint">初登場巻は確実に登場すると確認できた巻数にしてください．ここより前には名前も表示しません．</p><div class="field"><label>人物名</label><input id="newPersonName" placeholder="例：〇〇 〇〇"></div><div class="field"><label>初登場巻</label><input id="newPersonFrom" type="number" min="1" max="99" value="'+Math.max(1,vol())+'"></div><button id="saveNewPerson" class="btn primary full">追加する</button>');$("saveNewPerson").onclick=function(){var name=$("newPersonName").value.trim(),from=Math.floor(Number($("newPersonFrom").value));if(!name||!Number.isFinite(from)||from<1||from>99){alert("名前と初登場巻を入力してください．");return}var p={id:"c"+Date.now().toString(36)+Math.random().toString(36).slice(2,7),name:name,from:from,facts:[],embeds:[]};series().people.push(p);save();refresh();closeModal();if(from<=vol())openPerson(p.id)}}
 $("addSeries").onclick=function(){var name=$("newSeriesName").value.trim();if(!name)return;if(db.series.some(function(s){return s.name===name})){alert("同名の作品があります");return}var id="s"+Date.now().toString(36);db.series.push({id:id,name:name,volume:0,people:[]});db.active=id;save();$("newSeriesName").value="";refresh();$("resultBox").innerHTML="";showPage("people")};
@@ -141,7 +141,7 @@ $("learnButton").onclick=async function(){var id=$("trainWho").value,p=personByI
 async function loadRoster(){
  var banner=$("rosterBanner");
  try{
- var response=await fetch("./roster.json?v=2",{cache:"no-store"});
+ var response=await fetch("./roster.json",{cache:"no-store"});
  if(!response.ok)throw Error("名簿取得に失敗");
  var data=await response.json();
  if(data.version!==2||data.volumeLimit!==24||!Array.isArray(data.people))throw Error("名簿形式が不正");
@@ -153,11 +153,12 @@ async function loadRoster(){
  var newCount=0,updatedCount=0;
  data.people.forEach(function(p){
  if(!p||!p.name||!Array.isArray(p.facts)||!Number.isFinite(Number(p.from)))return;
- var person=byName.get(normName(p.name))||wt.people.find(function(x){return x.id===special[normName(p.name)]});
+ if((wt.deletedCatalogIds||[]).indexOf(p.id)>=0) return;
+ var person=wt.people.find(function(x){return x.id===p.id})||byName.get(normName(p.name))||wt.people.find(function(x){return x.id===special[normName(p.name)]});
  if(!person){person={id:p.id,name:p.name,from:p.from,facts:[],embeds:[],origin:"catalog-24"};wt.people.push(person);newCount++;byName.set(normName(p.name),person)}
  else{updatedCount++;if(!person.facts)person.facts=[];if(!person.embeds)person.embeds=[];if(person.origin==="catalog-24"){person.from=p.from;person.name=p.name;person.facts=person.facts.filter(function(f){return f.origin!=="catalog-24"})}}
  var seen=new Set(person.facts.map(function(f){return f.type+"|"+f.text+"|"+f.from+"|"+(f.to||"")}));
- p.facts.forEach(function(f){var sig=f.type+"|"+f.text+"|"+f.from+"|"+(f.to||"");if(!seen.has(sig)){person.facts.push(Object.assign({},f,{origin:"catalog-24"}));seen.add(sig)}});
+ p.facts.forEach(function(f){var sig=f.type+"|"+f.text+"|"+f.from+"|"+(f.to||"");if(!seen.has(sig)&&(person.hiddenCatalogFacts||[]).indexOf(sig)<0){person.facts.push(Object.assign({},f,{origin:"catalog-24"}));seen.add(sig)}});
  });
  // ユーザーの意思で指定された24巻を既存v1アプリにも適用（以降の変更は維持）
  if(!wt.volumeSetV2){wt.volume=24;wt.volumeSetV2=true}
