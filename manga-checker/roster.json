@@ -96,6 +96,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 15,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 5,
+          "day": 25
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -190,6 +201,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 15,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 18
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -272,6 +294,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 14,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 2,
+          "day": 11
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -342,6 +375,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 6,
+          "day": 12
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -404,6 +448,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 21,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 2
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -471,6 +526,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 28
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -543,6 +609,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 5,
+          "day": 9
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -600,6 +677,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 27
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -730,7 +818,14 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 24,
+        "ageReference": "第199話・3月5日時点"
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_013",
@@ -794,6 +889,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 19,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 9
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -819,6 +925,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 12,
+          "day": 3
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -873,6 +990,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 20,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 8,
+          "day": 29
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -894,7 +1022,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 9,
+          "day": 21
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_017",
@@ -915,7 +1054,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 6,
+          "day": 30
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_018",
@@ -941,7 +1091,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 2,
+          "day": 2
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_019",
@@ -971,6 +1132,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 29,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 1,
+          "day": 3
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1006,6 +1178,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 7
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1027,7 +1210,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 3,
+          "day": 1
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_022",
@@ -1081,6 +1275,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 21,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 9,
+          "day": 24
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1107,7 +1312,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 6,
+          "day": 10
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_024",
@@ -1159,6 +1375,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 12,
+          "day": 14
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1180,7 +1407,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 2,
+          "day": 23
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_026",
@@ -1201,7 +1439,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 15,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 2,
+          "day": 9
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_027",
@@ -1239,6 +1488,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 14,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 10,
+          "day": 20
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1260,7 +1520,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 19
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_029",
@@ -1294,7 +1565,18 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 8,
+          "day": 22
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_030",
@@ -1315,7 +1597,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 2,
+          "day": 10
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_031",
@@ -1374,6 +1667,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 19,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 29
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1428,6 +1732,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 15,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 6,
+          "day": 26
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1470,6 +1785,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 12
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1500,6 +1826,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 1
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1521,7 +1858,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 5,
+          "day": 4
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_036",
@@ -1551,6 +1899,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 20,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 12,
+          "day": 25
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1581,6 +1940,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 13,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 11,
+          "day": 30
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1597,7 +1967,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 2,
+          "day": 28
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_039",
@@ -1618,7 +1999,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 1,
+          "day": 10
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_040",
@@ -1667,6 +2059,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 10,
+          "day": 2
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1716,6 +2119,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 11,
+          "day": 29
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1765,6 +2179,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 9,
+          "day": 14
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1819,6 +2244,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 11,
+          "day": 10
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -1840,7 +2276,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 19,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 25
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_045",
@@ -1861,7 +2308,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 6,
+          "day": 29
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_046",
@@ -1882,7 +2340,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 5
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_047",
@@ -1903,7 +2372,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 5,
+          "day": 15
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_048",
@@ -1924,7 +2404,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 15
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_049",
@@ -1945,7 +2436,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 3,
+          "day": 3
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_050",
@@ -2017,6 +2519,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 20,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 10,
+          "day": 27
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2060,6 +2573,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 5,
+          "day": 1
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2108,6 +2632,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 8,
+          "day": 16
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2134,7 +2669,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 1,
+          "day": 25
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_054",
@@ -2173,7 +2719,18 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 6,
+          "day": 4
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_055",
@@ -2209,7 +2766,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 15
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_056",
@@ -2248,7 +2816,18 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "profile": {
+        "age": 14,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 12,
+          "day": 9
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_057",
@@ -2274,7 +2853,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 27
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_058",
@@ -2327,6 +2917,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 19,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 29
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2370,6 +2971,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 12,
+          "day": 5
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2410,6 +3022,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 9,
+          "day": 30
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2453,6 +3076,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 11,
+          "day": 7
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2493,6 +3127,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 14
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2527,7 +3172,18 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "profile": {
+        "age": 19,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 30
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_064",
@@ -2561,7 +3217,18 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "profile": {
+        "age": 14,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 2,
+          "day": 4
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_065",
@@ -2595,7 +3262,18 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 11,
+          "day": 21
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_066",
@@ -2621,7 +3299,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 19,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 10,
+          "day": 24
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_067",
@@ -2674,6 +3363,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 1,
+          "day": 11
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2722,6 +3422,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 9,
+          "day": 3
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2757,6 +3468,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 15,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 5,
+          "day": 29
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2787,6 +3509,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 19,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 8,
+          "day": 14
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2830,6 +3563,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 20,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 2,
+          "day": 18
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2873,6 +3617,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 6,
+          "day": 15
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2908,6 +3663,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 11,
+          "day": 27
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -2934,7 +3700,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 9,
+          "day": 1
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_075",
@@ -2968,7 +3745,18 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "profile": {
+        "age": 25,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 1,
+          "day": 3
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_076",
@@ -2994,7 +3782,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 24
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_077",
@@ -3020,7 +3819,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 5,
+          "day": 20
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_078",
@@ -3041,7 +3851,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 8,
+          "day": 28
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_079",
@@ -3101,6 +3922,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 10,
+          "day": 18
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3151,6 +3983,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 9,
+          "day": 3
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3201,6 +4044,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 16
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3248,6 +4102,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 18
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3310,6 +4175,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 21,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 8,
+          "day": 1
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3353,6 +4229,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 20,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 10,
+          "day": 11
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3396,6 +4283,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 1,
+          "day": 18
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3422,7 +4320,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 3
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_087",
@@ -3457,6 +4366,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 9,
+          "day": 9
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3492,6 +4412,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 6,
+          "day": 15
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3527,6 +4458,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 2,
+          "day": 10
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3553,7 +4495,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 9,
+          "day": 19
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_091",
@@ -3591,6 +4544,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 6,
+          "day": 16
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3634,6 +4598,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 14
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3672,6 +4647,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 15,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 7
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3698,7 +4684,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 8,
+          "day": 9
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_095",
@@ -3748,6 +4745,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 19,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 11,
+          "day": 25
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3783,6 +4791,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 21
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3818,6 +4837,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 14,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 12,
+          "day": 2
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3853,6 +4883,17 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 26
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -3884,7 +4925,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 12,
+          "day": 28
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_100",
@@ -3910,7 +4962,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 11,
+          "day": 10
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_101",
@@ -3931,7 +4994,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 10,
+          "day": 30
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_102",
@@ -3952,7 +5026,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 16,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 10
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_103",
@@ -3968,7 +5053,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 17,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 5,
+          "day": 1
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_104",
@@ -4037,7 +5133,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 15,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 5
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_108",
@@ -4623,6 +5730,17 @@
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
         }
+      ],
+      "profile": {
+        "age": 25,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 7,
+          "day": 22
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
       ]
     },
     {
@@ -4639,7 +5757,18 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 21,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 11,
+          "day": 5
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_136",
@@ -4649,7 +5778,18 @@
       "facts": [],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "profile": {
+        "age": 14,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 4,
+          "day": 12
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_137",
@@ -5175,7 +6315,18 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点",
+        "birthday": {
+          "month": 1,
+          "day": 14
+        }
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_160",
@@ -5193,7 +6344,14 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "profile": {
+        "age": 18,
+        "ageReference": "第199話・3月5日時点"
+      },
+      "profileSources": [
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+      ]
     },
     {
       "id": "wt_full_161",
