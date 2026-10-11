@@ -123,12 +123,14 @@
         "commander": true,
         "positionFrom": 24,
         "heightCm": 168,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "梶裕貴"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "戦術を工夫する玉狛第2の隊長．眼鏡が目印",
@@ -278,12 +280,14 @@
         "squadAtCh199": "玉狛第2",
         "commander": false,
         "positionFrom": 24,
-        "heightCm": 141
+        "heightCm": 141,
+        "voiceActor": "村中知"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "白髪の少年．近界での経験が豊富で近接戦が得意",
@@ -429,12 +433,14 @@
         "commander": false,
         "positionFrom": 24,
         "heightCm": 140,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "田村奈央"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "大きなトリオン能力を持つ玉狛第2のスナイパー",
@@ -567,12 +573,14 @@
         "squadAtCh199": "玉狛第2",
         "commander": false,
         "positionFrom": 24,
-        "heightCm": 171
+        "heightCm": 171,
+        "voiceActor": "島崎信長"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "角のあるアフトクラトル出身の隊員．剣を使う",
@@ -654,12 +662,14 @@
         "commander": true,
         "positionFrom": 24,
         "heightCm": 191,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "前野智昭"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "大柄で筋肉質．あらゆる距離に対応する玉狛第1の隊長",
@@ -755,12 +765,14 @@
         "commander": false,
         "positionFrom": 24,
         "heightCm": 157,
-        "bloodType": "B"
+        "bloodType": "B",
+        "voiceActor": "釘宮理恵"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "玉狛第1のアタッカー．双月を使い，からかわれやすい",
@@ -868,12 +880,14 @@
         "commander": false,
         "positionFrom": 24,
         "heightCm": 178,
-        "bloodType": "O"
+        "bloodType": "O",
+        "voiceActor": "福山潤"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "修の師匠．時間制限つきのガイストを使う",
@@ -966,12 +980,14 @@
         "commander": false,
         "positionFrom": 24,
         "heightCm": 160,
-        "bloodType": "O"
+        "bloodType": "O",
+        "voiceActor": "中尾衣里"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "玉狛のオペレーター．眼鏡が好きで隊員をサポート",
@@ -1020,7 +1036,8 @@
         "position": "玉狛支部長",
         "positionFrom": 24,
         "heightCm": 179,
-        "bloodType": "AB"
+        "bloodType": "AB",
+        "voiceActor": "藤原啓治"
       },
       "reminder": {
         "text": "玉狛支部長．飄々とした雰囲気の古参メンバー",
@@ -1029,7 +1046,8 @@
         "certainty": "secondary-research"
       },
       "profileSources": [
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ]
     },
     {
@@ -1242,12 +1260,14 @@
         "commander": false,
         "positionFrom": 24,
         "heightCm": 179,
-        "bloodType": "O"
+        "bloodType": "O",
+        "voiceActor": "中村悠一"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "サングラスが目印の実力派．少し先の未来を予知できる",
@@ -1387,12 +1407,14 @@
         "commander": true,
         "positionFrom": 24,
         "heightCm": 180,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "浪川大輔"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "ボーダーのNo.1アタッカー．剣の腕に優れる",
@@ -1795,12 +1817,14 @@
         "commander": false,
         "positionFrom": 24,
         "heightCm": 158,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "緑川光"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "小柄で寡黙なNo.2アタッカー．隠密戦を指揮",
@@ -1948,12 +1972,14 @@
         "commander": false,
         "positionFrom": 24,
         "heightCm": 164,
-        "bloodType": "O"
+        "bloodType": "O",
+        "voiceActor": "菅沼久義"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "聞こえ方が鋭くなるサイドエフェクトを持つ",
@@ -2370,12 +2396,14 @@
         "commander": true,
         "positionFrom": 24,
         "heightCm": 179,
-        "bloodType": "O"
+        "bloodType": "O",
+        "voiceActor": "岡本信彦"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "広報の顔として活動する嵐山隊長．連携が得意",
@@ -2465,12 +2493,14 @@
         "commander": false,
         "positionFrom": 24,
         "heightCm": 161,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "花澤香菜"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "青髪のエリート隊員．修に厳しくも助言する",
@@ -2541,12 +2571,14 @@
         "commander": false,
         "positionFrom": 24,
         "heightCm": 167,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "粕谷雄太"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "味方の援護が上手な嵐山隊のオールラウンダー",
@@ -2913,12 +2945,14 @@
         "commander": true,
         "positionFrom": 24,
         "heightCm": 174,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "森田成一"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "近界民への反感が強い三輪隊長．鉛弾を駆使する",
@@ -2996,12 +3030,14 @@
         "commander": false,
         "positionFrom": 24,
         "heightCm": 175,
-        "bloodType": "B"
+        "bloodType": "B",
+        "voiceActor": "岸尾だいすけ"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "槍の弧月を使う陽気な戦闘員",
@@ -3070,12 +3106,14 @@
         "commander": false,
         "positionFrom": 24,
         "heightCm": 177,
-        "bloodType": "AB"
+        "bloodType": "AB",
+        "voiceActor": "織田優成"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "精密射撃が得意なNo.2スナイパー",
@@ -3165,12 +3203,14 @@
         "commander": false,
         "positionFrom": 24,
         "heightCm": 167,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "高戸靖広"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "三輪隊のスナイパー．状況判断が得意",
@@ -6229,12 +6269,14 @@
         "commander": true,
         "positionFrom": 24,
         "heightCm": 178,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "沼田祐介"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "顎ひげと煙草が目印のガンナー隊長",
@@ -8279,7 +8321,8 @@
         "position": "最高司令官",
         "positionFrom": 24,
         "heightCm": 178,
-        "bloodType": "O"
+        "bloodType": "O",
+        "voiceActor": "桐本琢也"
       },
       "reminder": {
         "text": "ボーダー最高司令官．組織の指針を決める",
@@ -8288,7 +8331,8 @@
         "certainty": "secondary-research"
       },
       "profileSources": [
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ]
     },
     {
@@ -8338,7 +8382,8 @@
         "position": "本部長",
         "positionFrom": 24,
         "heightCm": 181,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "草尾毅"
       },
       "reminder": {
         "text": "ボーダー本部長．剣の腕でも知られる",
@@ -8347,7 +8392,8 @@
         "certainty": "secondary-research"
       },
       "profileSources": [
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ]
     },
     {
@@ -8397,7 +8443,8 @@
         "position": "開発室長",
         "positionFrom": 24,
         "heightCm": 161,
-        "bloodType": "B"
+        "bloodType": "B",
+        "voiceActor": "塩屋浩三"
       },
       "reminder": {
         "text": "ボーダーの技術開発を統括する",
@@ -8406,7 +8453,8 @@
         "certainty": "secondary-research"
       },
       "profileSources": [
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ]
     },
     {
@@ -8456,7 +8504,8 @@
         "position": "メディア対策室長",
         "positionFrom": 24,
         "heightCm": 167,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "島田敏"
       },
       "reminder": {
         "text": "ボーダーの広報・報道対応を担う",
@@ -8465,7 +8514,8 @@
         "certainty": "secondary-research"
       },
       "profileSources": [
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ]
     },
     {
@@ -8508,7 +8558,8 @@
         "position": "外務・営業部長",
         "positionFrom": 24,
         "heightCm": 177,
-        "bloodType": "B"
+        "bloodType": "B",
+        "voiceActor": "竹本英史"
       },
       "reminder": {
         "text": "外務や企業との交渉を担う幹部",
@@ -8517,7 +8568,8 @@
         "certainty": "secondary-research"
       },
       "profileSources": [
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ]
     },
     {
@@ -8573,11 +8625,13 @@
         "position": "本部長補佐",
         "positionFrom": 24,
         "heightCm": 164,
-        "bloodType": "A"
+        "bloodType": "A",
+        "voiceActor": "桑島法子"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://worldtrigger.info/article/border.php"
+        "https://worldtrigger.info/article/border.php",
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ],
       "reminder": {
         "text": "本部長を補佐する元アタッカー",
@@ -8753,6 +8807,12 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "voiceActor": "佐々木望"
+      },
+      "profileSources": [
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ]
     },
     {
@@ -8785,6 +8845,12 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "voiceActor": "小堀友里絵"
+      },
+      "profileSources": [
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ]
     },
     {
@@ -8817,6 +8883,12 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "voiceActor": "中博史"
+      },
+      "profileSources": [
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ]
     },
     {
@@ -8849,6 +8921,12 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "voiceActor": "柳田淳一"
+      },
+      "profileSources": [
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ]
     },
     {
@@ -8881,6 +8959,12 @@
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
         }
+      ],
+      "profile": {
+        "voiceActor": "古川登志夫"
+      },
+      "profileSources": [
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
       ]
     },
     {
@@ -9380,14 +9464,18 @@
       ],
       "profile": {
         "position": "トリオン兵",
-        "positionFrom": 24
+        "positionFrom": 24,
+        "voiceActor": "田中秀幸"
       },
       "reminder": {
         "text": "黒い小型の多目的トリオン兵．遊真を助ける",
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "profileSources": [
+        "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/"
+      ]
     },
     {
       "id": "wt_full_168",
