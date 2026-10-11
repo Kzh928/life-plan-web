@@ -125,7 +125,37 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_001",
+          "name": "空閑 遊真",
+          "kind": "玉狛第2の仲間",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_002",
+          "name": "雨取 千佳",
+          "kind": "幼なじみ・同じ隊",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_006",
+          "name": "烏丸 京介",
+          "kind": "師弟",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_032",
+          "name": "木虎 藍",
+          "kind": "訓練で助言を受ける",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_001",
@@ -241,7 +271,37 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_155",
+          "name": "空閑 有吾",
+          "kind": "親子",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_167",
+          "name": "レプリカ",
+          "kind": "行動を共にする相棒",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_000",
+          "name": "三雲 修",
+          "kind": "玉狛第2の仲間",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_002",
+          "name": "雨取 千佳",
+          "kind": "玉狛第2の仲間",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_002",
@@ -352,7 +412,37 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_000",
+          "name": "三雲 修",
+          "kind": "幼なじみ・同じ隊",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_004",
+          "name": "木崎 レイジ",
+          "kind": "狙撃の師弟",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_156",
+          "name": "雨取 麟児",
+          "kind": "兄妹",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_056",
+          "name": "絵馬 ユズル",
+          "kind": "同い年の狙撃手仲間",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_003",
@@ -535,7 +625,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_002",
+          "name": "雨取 千佳",
+          "kind": "狙撃を指導",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_005",
@@ -624,7 +723,23 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_004",
+          "name": "木崎 レイジ",
+          "kind": "玉狛第1",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_006",
+          "name": "烏丸 京介",
+          "kind": "玉狛第1",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_006",
@@ -718,7 +833,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_000",
+          "name": "三雲 修",
+          "kind": "訓練を指導",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_007",
@@ -1065,7 +1189,23 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_027",
+          "name": "緑川 駿",
+          "kind": "慕われている先輩",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_015",
+          "name": "太刀川 慶",
+          "kind": "旧知の戦闘仲間",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_014",
@@ -1188,7 +1328,23 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_130",
+          "name": "忍田 真史",
+          "kind": "剣術の師弟",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_044",
+          "name": "月見 蓮",
+          "kind": "幼なじみ・戦術を教わる",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_016",
@@ -1231,7 +1387,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_041",
+          "name": "米屋 陽介",
+          "kind": "親しい知人",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_017",
@@ -1550,7 +1715,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_024",
+          "name": "菊地原 士郎",
+          "kind": "同じ風間隊",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_023",
@@ -1825,7 +1999,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_013",
+          "name": "迅 悠一",
+          "kind": "尊敬する先輩",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_028",
@@ -1924,7 +2107,23 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_063",
+          "name": "弓場 拓磨",
+          "kind": "射撃の師匠",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_050",
+          "name": "二宮 匡貴",
+          "kind": "戦い方を手本にする",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_030",
@@ -2048,7 +2247,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_033",
+          "name": "時枝 充",
+          "kind": "嵐山隊の連携仲間",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_032",
@@ -2124,7 +2332,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_000",
+          "name": "三雲 修",
+          "kind": "訓練に助言",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_033",
@@ -2539,7 +2756,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_041",
+          "name": "米屋 陽介",
+          "kind": "同じ三輪隊",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_041",
@@ -2681,7 +2907,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_043",
+          "name": "古寺 章平",
+          "kind": "同じ三輪隊の狙撃手",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_043",
@@ -2843,7 +3078,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_075",
+          "name": "東 春秋",
+          "kind": "元東隊で指導を受けた",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_046",
@@ -2886,7 +3130,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_075",
+          "name": "東 春秋",
+          "kind": "元東隊の指導者",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_047",
@@ -3109,7 +3362,37 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_051",
+          "name": "犬飼 澄晴",
+          "kind": "同じ二宮隊",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_052",
+          "name": "辻 新之助",
+          "kind": "同じ二宮隊",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_159",
+          "name": "鳩原 未来",
+          "kind": "元隊員",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_053",
+          "name": "氷見 亜季",
+          "kind": "二宮隊のオペレーター",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_051",
@@ -3181,7 +3464,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_052",
+          "name": "辻 新之助",
+          "kind": "二宮隊の仲間",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_052",
@@ -3251,7 +3543,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_051",
+          "name": "犬飼 澄晴",
+          "kind": "同じ隊のガンナー",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_053",
@@ -3299,7 +3600,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_052",
+          "name": "辻 新之助",
+          "kind": "同じ隊で会話できる相手",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_054",
@@ -3486,7 +3796,23 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_159",
+          "name": "鳩原 未来",
+          "kind": "尊敬する元指導者",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_002",
+          "name": "雨取 千佳",
+          "kind": "同年代の狙撃手",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_057",
@@ -3616,7 +3942,23 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_059",
+          "name": "水上 敏志",
+          "kind": "隊長と作戦の補佐役",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_060",
+          "name": "隠岐 孝二",
+          "kind": "同じ生駒隊",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_059",
@@ -4189,7 +4531,23 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_068",
+          "name": "蔵内 和紀",
+          "kind": "ともに元弓場隊",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_063",
+          "name": "弓場 拓磨",
+          "kind": "元の隊長",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_068",
@@ -4266,7 +4624,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_063",
+          "name": "弓場 拓磨",
+          "kind": "元の隊長",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_069",
@@ -4447,7 +4814,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_072",
+          "name": "村上 鋼",
+          "kind": "同じ鈴鳴第一",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_072",
@@ -4512,7 +4888,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_087",
+          "name": "荒船 哲次",
+          "kind": "剣の指導を受けた",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_073",
@@ -4673,7 +5058,23 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_076",
+          "name": "小荒井 登",
+          "kind": "同じ隊の教え子",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_077",
+          "name": "奥寺 常幸",
+          "kind": "同じ隊の教え子",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_076",
@@ -4721,7 +5122,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_077",
+          "name": "奥寺 常幸",
+          "kind": "二人で連携して戦う",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_077",
@@ -4908,7 +5318,30 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_082",
+          "name": "染井 華",
+          "kind": "幼なじみ",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_081",
+          "name": "若村 麓郎",
+          "kind": "同じ隊でしばしば意見がぶつかる",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_080",
+          "name": "三浦 雄太",
+          "kind": "同じ隊",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_080",
@@ -5066,7 +5499,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_080",
+          "name": "三浦 雄太",
+          "kind": "香取隊の仲間",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_082",
@@ -5135,7 +5577,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_079",
+          "name": "香取 葉子",
+          "kind": "幼なじみ",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_083",
@@ -5397,7 +5848,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_083",
+          "name": "諏訪 洸太郎",
+          "kind": "諏訪隊オペレーター",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_087",
@@ -5454,7 +5914,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_072",
+          "name": "村上 鋼",
+          "kind": "剣の指導をした",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_088",
@@ -5683,7 +6152,23 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_092",
+          "name": "熊谷 友子",
+          "kind": "信頼できる仲間",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        },
+        {
+          "target": "wt_full_093",
+          "name": "日浦 茜",
+          "kind": "同じ那須隊の仲間",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_092",
@@ -5748,7 +6233,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_091",
+          "name": "那須 玲",
+          "kind": "親しい仲間",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_093",
@@ -5808,7 +6302,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_136",
+          "name": "夏目 出穂",
+          "kind": "狙撃の先輩",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_094",
@@ -5928,7 +6431,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_031",
+          "name": "嵐山 准",
+          "kind": "元嵐山隊",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_096",
@@ -5992,7 +6504,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_095",
+          "name": "柿崎 国治",
+          "kind": "尊敬する隊長",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_097",
@@ -6049,7 +6570,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "relations": [
+        {
+          "target": "wt_full_095",
+          "name": "柿崎 国治",
+          "kind": "尊敬する隊長",
+          "from": 24,
+          "source": "https://worldtrigger.info/article/border.php"
+        }
+      ]
     },
     {
       "id": "wt_full_098",
