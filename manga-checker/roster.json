@@ -1,0 +1,3608 @@
+{
+  "version": 2,
+  "volumeLimit": 24,
+  "scope": "単行本1〜24巻（第213話まで）",
+  "note": "公開開始巻はネタバレ防止のため安全側に設定．厳密な初登場巻とは異なる場合があります．",
+  "people": [
+    {
+      "id": "wt_full_000",
+      "name": "三雲 修",
+      "from": 1,
+      "group": "玉狛第2",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "玉狛第2（三雲隊）",
+          "from": 6
+        },
+        {
+          "type": "役割",
+          "text": "シューター／隊長",
+          "from": 6
+        },
+        {
+          "type": "呼び名",
+          "text": "オサム",
+          "from": 1
+        },
+        {
+          "type": "呼び名",
+          "text": "修",
+          "from": 1
+        },
+        {
+          "type": "呼び名",
+          "text": "メガネ君",
+          "from": 1
+        },
+        {
+          "type": "呼び名",
+          "text": "メガネ",
+          "from": 1
+        },
+        {
+          "type": "臨時隊",
+          "text": "諏訪7番隊",
+          "from": 23
+        },
+        {
+          "type": "関係",
+          "text": "雨取千佳：幼なじみ",
+          "from": 2
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_001",
+      "name": "空閑 遊真",
+      "from": 1,
+      "group": "玉狛第2",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "玉狛第2（三雲隊）",
+          "from": 6
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 6
+        },
+        {
+          "type": "呼び名",
+          "text": "ユーマ",
+          "from": 1
+        },
+        {
+          "type": "呼び名",
+          "text": "遊真",
+          "from": 1
+        },
+        {
+          "type": "呼び名",
+          "text": "クーガー",
+          "from": 1
+        },
+        {
+          "type": "臨時隊",
+          "text": "歌川1番隊",
+          "from": 23
+        },
+        {
+          "type": "関係",
+          "text": "空閑有吾：父親",
+          "from": 3
+        },
+        {
+          "type": "関係",
+          "text": "レプリカ：行動を共にする相棒",
+          "from": 1
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_002",
+      "name": "雨取 千佳",
+      "from": 2,
+      "group": "玉狛第2",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "玉狛第2（三雲隊）",
+          "from": 6
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 6
+        },
+        {
+          "type": "呼び名",
+          "text": "チカ",
+          "from": 2
+        },
+        {
+          "type": "呼び名",
+          "text": "千佳",
+          "from": 2
+        },
+        {
+          "type": "臨時隊",
+          "text": "二宮8番隊",
+          "from": 23
+        },
+        {
+          "type": "関係",
+          "text": "三雲修：幼なじみ",
+          "from": 2
+        },
+        {
+          "type": "関係",
+          "text": "雨取麟児：兄",
+          "from": 2
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_003",
+      "name": "ヒュース",
+      "from": 8,
+      "group": "玉狛第2",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "アフトクラトル",
+          "from": 8,
+          "to": 19
+        },
+        {
+          "type": "所属",
+          "text": "玉狛第2（三雲隊）",
+          "from": 20
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 8
+        },
+        {
+          "type": "呼び名",
+          "text": "ヒューストン",
+          "from": 8
+        },
+        {
+          "type": "臨時隊",
+          "text": "若村11番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_004",
+      "name": "木崎 レイジ",
+      "from": 3,
+      "group": "玉狛第1",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "玉狛第1",
+          "from": 3
+        },
+        {
+          "type": "役割",
+          "text": "パーフェクトオールラウンダー／隊長",
+          "from": 3
+        },
+        {
+          "type": "呼び名",
+          "text": "レイジさん",
+          "from": 3
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_005",
+      "name": "小南 桐絵",
+      "from": 3,
+      "group": "玉狛第1",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "玉狛第1",
+          "from": 3
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 3
+        },
+        {
+          "type": "呼び名",
+          "text": "小南先輩",
+          "from": 3
+        },
+        {
+          "type": "呼び名",
+          "text": "コナミ",
+          "from": 3
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_006",
+      "name": "烏丸 京介",
+      "from": 3,
+      "group": "玉狛第1",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "玉狛第1",
+          "from": 3
+        },
+        {
+          "type": "役割",
+          "text": "オールラウンダー",
+          "from": 3
+        },
+        {
+          "type": "呼び名",
+          "text": "とりまる",
+          "from": 3
+        },
+        {
+          "type": "呼び名",
+          "text": "とりまる先輩",
+          "from": 3
+        },
+        {
+          "type": "関係",
+          "text": "小南桐絵：玉狛第1の仲間",
+          "from": 3
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_007",
+      "name": "宇佐美 栞",
+      "from": 3,
+      "group": "玉狛支部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "玉狛支部",
+          "from": 3
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 3
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_008",
+      "name": "林藤 匠",
+      "from": 3,
+      "group": "玉狛支部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "玉狛支部",
+          "from": 3
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_009",
+      "name": "林藤 陽太郎",
+      "from": 3,
+      "group": "玉狛支部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "玉狛支部",
+          "from": 3
+        },
+        {
+          "type": "呼び名",
+          "text": "陽太郎",
+          "from": 3
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_010",
+      "name": "雷神丸",
+      "from": 3,
+      "group": "玉狛支部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "玉狛支部",
+          "from": 3
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_011",
+      "name": "ミカエル・クローニン",
+      "from": 20,
+      "group": "玉狛支部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "玉狛支部",
+          "from": 20
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_012",
+      "name": "林藤 ゆり",
+      "from": 20,
+      "group": "玉狛支部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "玉狛支部",
+          "from": 20
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_013",
+      "name": "迅 悠一",
+      "from": 2,
+      "group": "S級・隊外",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "S級・隊外",
+          "from": 2
+        },
+        {
+          "type": "呼び名",
+          "text": "迅さん",
+          "from": 2
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_014",
+      "name": "天羽 月彦",
+      "from": 6,
+      "group": "S級・隊外",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "S級・隊外",
+          "from": 6
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_015",
+      "name": "太刀川 慶",
+      "from": 4,
+      "group": "太刀川隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "太刀川隊",
+          "from": 4
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー／隊長",
+          "from": 4
+        },
+        {
+          "type": "呼び名",
+          "text": "太刀川さん",
+          "from": 4
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_016",
+      "name": "出水 公平",
+      "from": 4,
+      "group": "太刀川隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "太刀川隊",
+          "from": 4
+        },
+        {
+          "type": "役割",
+          "text": "シューター",
+          "from": 4
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_017",
+      "name": "唯我 尊",
+      "from": 16,
+      "group": "太刀川隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "太刀川隊",
+          "from": 16
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー",
+          "from": 16
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_018",
+      "name": "国近 柚宇",
+      "from": 8,
+      "group": "太刀川隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "太刀川隊",
+          "from": 8
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 8
+        },
+        {
+          "type": "呼び名",
+          "text": "国近",
+          "from": 8
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_019",
+      "name": "冬島 慎次",
+      "from": 9,
+      "group": "冬島隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "冬島隊",
+          "from": 9
+        },
+        {
+          "type": "役割",
+          "text": "トラッパー／隊長",
+          "from": 9
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_020",
+      "name": "当真 勇",
+      "from": 4,
+      "group": "冬島隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "冬島隊",
+          "from": 9
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 9
+        },
+        {
+          "type": "呼び名",
+          "text": "当真",
+          "from": 4
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_021",
+      "name": "真木 理佐",
+      "from": 24,
+      "group": "冬島隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "冬島隊",
+          "from": 24
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_022",
+      "name": "風間 蒼也",
+      "from": 4,
+      "group": "風間隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "風間隊",
+          "from": 4
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー／隊長",
+          "from": 4
+        },
+        {
+          "type": "呼び名",
+          "text": "風間さん",
+          "from": 4
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_023",
+      "name": "歌川 遼",
+      "from": 4,
+      "group": "風間隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "風間隊",
+          "from": 4
+        },
+        {
+          "type": "役割",
+          "text": "オールラウンダー",
+          "from": 4
+        },
+        {
+          "type": "臨時隊",
+          "text": "歌川1番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_024",
+      "name": "菊地原 士郎",
+      "from": 4,
+      "group": "風間隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "風間隊",
+          "from": 4
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 4
+        },
+        {
+          "type": "呼び名",
+          "text": "菊地原",
+          "from": 4
+        },
+        {
+          "type": "臨時隊",
+          "text": "北添4番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_025",
+      "name": "三上 歌歩",
+      "from": 8,
+      "group": "風間隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "風間隊",
+          "from": 8
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 8
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_026",
+      "name": "草壁 早紀",
+      "from": 24,
+      "group": "草壁隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "草壁隊",
+          "from": 24
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター／隊長",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_027",
+      "name": "緑川 駿",
+      "from": 5,
+      "group": "草壁隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "草壁隊",
+          "from": 5
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_028",
+      "name": "佐伯 竜司",
+      "from": 24,
+      "group": "草壁隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "草壁隊",
+          "from": 24
+        },
+        {
+          "type": "役割",
+          "text": "オールラウンダー",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_029",
+      "name": "里見 一馬",
+      "from": 21,
+      "group": "草壁隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "草壁隊",
+          "from": 21
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー",
+          "from": 24
+        },
+        {
+          "type": "呼び名",
+          "text": "里見",
+          "from": 21
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_030",
+      "name": "宇野 隼人",
+      "from": 24,
+      "group": "草壁隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "草壁隊",
+          "from": 24
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_031",
+      "name": "嵐山 准",
+      "from": 1,
+      "group": "嵐山隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "嵐山隊",
+          "from": 1
+        },
+        {
+          "type": "役割",
+          "text": "オールラウンダー／隊長",
+          "from": 1
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_032",
+      "name": "木虎 藍",
+      "from": 1,
+      "group": "嵐山隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "嵐山隊",
+          "from": 1
+        },
+        {
+          "type": "役割",
+          "text": "オールラウンダー",
+          "from": 1
+        },
+        {
+          "type": "臨時隊",
+          "text": "古寺6番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_033",
+      "name": "時枝 充",
+      "from": 1,
+      "group": "嵐山隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "嵐山隊",
+          "from": 1
+        },
+        {
+          "type": "役割",
+          "text": "オールラウンダー",
+          "from": 1
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_034",
+      "name": "佐鳥 賢",
+      "from": 5,
+      "group": "嵐山隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "嵐山隊",
+          "from": 5
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 5
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_035",
+      "name": "綾辻 遥",
+      "from": 8,
+      "group": "嵐山隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "嵐山隊",
+          "from": 8
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 8
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_036",
+      "name": "加古 望",
+      "from": 11,
+      "group": "加古隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "加古隊",
+          "from": 11
+        },
+        {
+          "type": "役割",
+          "text": "シューター／隊長",
+          "from": 11
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_037",
+      "name": "黒江 双葉",
+      "from": 11,
+      "group": "加古隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "加古隊",
+          "from": 11
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 11
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_038",
+      "name": "喜多川 真衣",
+      "from": 24,
+      "group": "加古隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "加古隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_039",
+      "name": "小早川 杏",
+      "from": 24,
+      "group": "加古隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "加古隊",
+          "from": 24
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_040",
+      "name": "三輪 秀次",
+      "from": 2,
+      "group": "三輪隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "三輪隊",
+          "from": 2
+        },
+        {
+          "type": "役割",
+          "text": "オールラウンダー／隊長",
+          "from": 2
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_041",
+      "name": "米屋 陽介",
+      "from": 2,
+      "group": "三輪隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "三輪隊",
+          "from": 2
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 2
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_042",
+      "name": "奈良坂 透",
+      "from": 2,
+      "group": "三輪隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "三輪隊",
+          "from": 2
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 2
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_043",
+      "name": "古寺 章平",
+      "from": 2,
+      "group": "三輪隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "三輪隊",
+          "from": 2
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 2
+        },
+        {
+          "type": "臨時隊",
+          "text": "古寺6番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_044",
+      "name": "月見 蓮",
+      "from": 9,
+      "group": "三輪隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "三輪隊",
+          "from": 9
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 9
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_045",
+      "name": "片桐 隆明",
+      "from": 24,
+      "group": "片桐隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "片桐隊",
+          "from": 24
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー／隊長",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_046",
+      "name": "一条 雪丸",
+      "from": 24,
+      "group": "片桐隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "片桐隊",
+          "from": 24
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_047",
+      "name": "桃園 藤一郎",
+      "from": 24,
+      "group": "片桐隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "片桐隊",
+          "from": 24
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_048",
+      "name": "尼倉 亜澄",
+      "from": 24,
+      "group": "片桐隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "片桐隊",
+          "from": 24
+        },
+        {
+          "type": "役割",
+          "text": "オールラウンダー",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_049",
+      "name": "結束 夏凛",
+      "from": 20,
+      "group": "片桐隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "片桐隊",
+          "from": 24
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_050",
+      "name": "二宮 匡貴",
+      "from": 13,
+      "group": "二宮隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "二宮隊",
+          "from": 13
+        },
+        {
+          "type": "役割",
+          "text": "シューター／隊長",
+          "from": 13
+        },
+        {
+          "type": "呼び名",
+          "text": "ニノ",
+          "from": 13
+        },
+        {
+          "type": "臨時隊",
+          "text": "二宮8番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_051",
+      "name": "犬飼 澄晴",
+      "from": 13,
+      "group": "二宮隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "二宮隊",
+          "from": 13
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー",
+          "from": 13
+        },
+        {
+          "type": "臨時隊",
+          "text": "柿崎3番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_052",
+      "name": "辻 新之助",
+      "from": 13,
+      "group": "二宮隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "二宮隊",
+          "from": 13
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 13
+        },
+        {
+          "type": "呼び名",
+          "text": "辻ちゃん",
+          "from": 13
+        },
+        {
+          "type": "臨時隊",
+          "text": "王子2番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_053",
+      "name": "氷見 亜季",
+      "from": 14,
+      "group": "二宮隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "二宮隊",
+          "from": 14
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 14
+        },
+        {
+          "type": "臨時隊",
+          "text": "村上10番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_054",
+      "name": "影浦 雅人",
+      "from": 13,
+      "group": "影浦隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "影浦隊",
+          "from": 13
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー／隊長",
+          "from": 13
+        },
+        {
+          "type": "呼び名",
+          "text": "カゲ",
+          "from": 13
+        },
+        {
+          "type": "臨時隊",
+          "text": "柿崎3番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_055",
+      "name": "北添 尋",
+      "from": 13,
+      "group": "影浦隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "影浦隊",
+          "from": 13
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー",
+          "from": 13
+        },
+        {
+          "type": "呼び名",
+          "text": "ゾエ",
+          "from": 13
+        },
+        {
+          "type": "呼び名",
+          "text": "ゾエさん",
+          "from": 13
+        },
+        {
+          "type": "臨時隊",
+          "text": "北添4番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_056",
+      "name": "絵馬 ユズル",
+      "from": 13,
+      "group": "影浦隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "影浦隊",
+          "from": 13
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 13
+        },
+        {
+          "type": "呼び名",
+          "text": "ユズル",
+          "from": 13
+        },
+        {
+          "type": "臨時隊",
+          "text": "二宮8番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_057",
+      "name": "仁礼 光",
+      "from": 14,
+      "group": "影浦隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "影浦隊",
+          "from": 14
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 14
+        },
+        {
+          "type": "臨時隊",
+          "text": "王子2番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_058",
+      "name": "生駒 達人",
+      "from": 18,
+      "group": "生駒隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "生駒隊",
+          "from": 18
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー／隊長",
+          "from": 18
+        },
+        {
+          "type": "呼び名",
+          "text": "イコさん",
+          "from": 18
+        },
+        {
+          "type": "臨時隊",
+          "text": "王子2番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_059",
+      "name": "水上 敏志",
+      "from": 18,
+      "group": "生駒隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "生駒隊",
+          "from": 18
+        },
+        {
+          "type": "役割",
+          "text": "シューター",
+          "from": 18
+        },
+        {
+          "type": "臨時隊",
+          "text": "水上9番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_060",
+      "name": "隠岐 孝二",
+      "from": 18,
+      "group": "生駒隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "生駒隊",
+          "from": 18
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 18
+        },
+        {
+          "type": "呼び名",
+          "text": "オッキー",
+          "from": 18
+        },
+        {
+          "type": "臨時隊",
+          "text": "諏訪7番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_061",
+      "name": "南沢 海",
+      "from": 18,
+      "group": "生駒隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "生駒隊",
+          "from": 18
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 18
+        },
+        {
+          "type": "臨時隊",
+          "text": "北添4番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_062",
+      "name": "細井 真織",
+      "from": 18,
+      "group": "生駒隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "生駒隊",
+          "from": 18
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 18
+        },
+        {
+          "type": "呼び名",
+          "text": "マリオ",
+          "from": 18
+        },
+        {
+          "type": "臨時隊",
+          "text": "若村11番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_063",
+      "name": "弓場 拓磨",
+      "from": 21,
+      "group": "弓場隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "弓場隊",
+          "from": 21
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー／隊長",
+          "from": 21
+        },
+        {
+          "type": "臨時隊",
+          "text": "来馬5番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_064",
+      "name": "帯島 ユカリ",
+      "from": 21,
+      "group": "弓場隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "弓場隊",
+          "from": 21
+        },
+        {
+          "type": "役割",
+          "text": "オールラウンダー",
+          "from": 21
+        },
+        {
+          "type": "臨時隊",
+          "text": "王子2番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_065",
+      "name": "外岡 一斗",
+      "from": 21,
+      "group": "弓場隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "弓場隊",
+          "from": 21
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 21
+        },
+        {
+          "type": "臨時隊",
+          "text": "北添4番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_066",
+      "name": "藤丸 のの",
+      "from": 21,
+      "group": "弓場隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "弓場隊",
+          "from": 21
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 21
+        },
+        {
+          "type": "臨時隊",
+          "text": "柿崎3番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_067",
+      "name": "王子 一彰",
+      "from": 19,
+      "group": "王子隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "王子隊",
+          "from": 19
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー／隊長",
+          "from": 19
+        },
+        {
+          "type": "呼び名",
+          "text": "王子",
+          "from": 19
+        },
+        {
+          "type": "臨時隊",
+          "text": "王子2番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_068",
+      "name": "蔵内 和紀",
+      "from": 19,
+      "group": "王子隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "王子隊",
+          "from": 19
+        },
+        {
+          "type": "役割",
+          "text": "シューター",
+          "from": 19
+        },
+        {
+          "type": "臨時隊",
+          "text": "村上10番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_069",
+      "name": "樫尾 由多嘉",
+      "from": 19,
+      "group": "王子隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "王子隊",
+          "from": 19
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 19
+        },
+        {
+          "type": "臨時隊",
+          "text": "水上9番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_070",
+      "name": "橘高 羽矢",
+      "from": 19,
+      "group": "王子隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "王子隊",
+          "from": 19
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 19
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_071",
+      "name": "来馬 辰也",
+      "from": 7,
+      "group": "鈴鳴第一（来馬隊）",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "鈴鳴第一（来馬隊）",
+          "from": 7
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー／隊長",
+          "from": 7
+        },
+        {
+          "type": "臨時隊",
+          "text": "来馬5番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_072",
+      "name": "村上 鋼",
+      "from": 7,
+      "group": "鈴鳴第一（来馬隊）",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "鈴鳴第一（来馬隊）",
+          "from": 7
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 7
+        },
+        {
+          "type": "臨時隊",
+          "text": "村上10番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_073",
+      "name": "別役 太一",
+      "from": 7,
+      "group": "鈴鳴第一（来馬隊）",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "鈴鳴第一（来馬隊）",
+          "from": 7
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 7
+        },
+        {
+          "type": "臨時隊",
+          "text": "柿崎3番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_074",
+      "name": "今 結花",
+      "from": 12,
+      "group": "鈴鳴第一（来馬隊）",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "鈴鳴第一（来馬隊）",
+          "from": 12
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 12
+        },
+        {
+          "type": "臨時隊",
+          "text": "水上9番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_075",
+      "name": "東 春秋",
+      "from": 5,
+      "group": "東隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "東隊",
+          "from": 5
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー／隊長",
+          "from": 5
+        },
+        {
+          "type": "臨時隊",
+          "text": "二宮8番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_076",
+      "name": "小荒井 登",
+      "from": 14,
+      "group": "東隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "東隊",
+          "from": 14
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 14
+        },
+        {
+          "type": "臨時隊",
+          "text": "来馬5番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_077",
+      "name": "奥寺 常幸",
+      "from": 14,
+      "group": "東隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "東隊",
+          "from": 14
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 14
+        },
+        {
+          "type": "臨時隊",
+          "text": "古寺6番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_078",
+      "name": "人見 摩子",
+      "from": 14,
+      "group": "東隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "東隊",
+          "from": 14
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 14
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_079",
+      "name": "香取 葉子",
+      "from": 17,
+      "group": "香取隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "香取隊",
+          "from": 17
+        },
+        {
+          "type": "役割",
+          "text": "オールラウンダー／隊長",
+          "from": 17
+        },
+        {
+          "type": "呼び名",
+          "text": "葉子",
+          "from": 17
+        },
+        {
+          "type": "臨時隊",
+          "text": "諏訪7番隊",
+          "from": 23
+        },
+        {
+          "type": "関係",
+          "text": "染井華：幼なじみ",
+          "from": 17
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_080",
+      "name": "三浦 雄太",
+      "from": 17,
+      "group": "香取隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "香取隊",
+          "from": 17
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 17
+        },
+        {
+          "type": "臨時隊",
+          "text": "古寺6番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_081",
+      "name": "若村 麓郎",
+      "from": 17,
+      "group": "香取隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "香取隊",
+          "from": 17
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー",
+          "from": 17
+        },
+        {
+          "type": "臨時隊",
+          "text": "若村11番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_082",
+      "name": "染井 華",
+      "from": 17,
+      "group": "香取隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "香取隊",
+          "from": 17
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 17
+        },
+        {
+          "type": "臨時隊",
+          "text": "北添4番隊",
+          "from": 23
+        },
+        {
+          "type": "関係",
+          "text": "香取葉子：幼なじみ",
+          "from": 17
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_083",
+      "name": "諏訪 洸太郎",
+      "from": 6,
+      "group": "諏訪隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "諏訪隊",
+          "from": 6
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー／隊長",
+          "from": 6
+        },
+        {
+          "type": "臨時隊",
+          "text": "諏訪7番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_084",
+      "name": "堤 大地",
+      "from": 6,
+      "group": "諏訪隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "諏訪隊",
+          "from": 6
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー",
+          "from": 6
+        },
+        {
+          "type": "臨時隊",
+          "text": "村上10番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_085",
+      "name": "笹森 日佐人",
+      "from": 6,
+      "group": "諏訪隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "諏訪隊",
+          "from": 6
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 6
+        },
+        {
+          "type": "臨時隊",
+          "text": "若村11番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_086",
+      "name": "小佐野 瑠衣",
+      "from": 10,
+      "group": "諏訪隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "諏訪隊",
+          "from": 10
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 10
+        },
+        {
+          "type": "臨時隊",
+          "text": "来馬5番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_087",
+      "name": "荒船 哲次",
+      "from": 8,
+      "group": "荒船隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "荒船隊",
+          "from": 8
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー／隊長",
+          "from": 8
+        },
+        {
+          "type": "臨時隊",
+          "text": "水上9番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_088",
+      "name": "穂刈 篤",
+      "from": 11,
+      "group": "荒船隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "荒船隊",
+          "from": 11
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 11
+        },
+        {
+          "type": "臨時隊",
+          "text": "来馬5番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_089",
+      "name": "半崎 義人",
+      "from": 11,
+      "group": "荒船隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "荒船隊",
+          "from": 11
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 11
+        },
+        {
+          "type": "臨時隊",
+          "text": "若村11番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_090",
+      "name": "加賀美 倫",
+      "from": 11,
+      "group": "荒船隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "荒船隊",
+          "from": 11
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 11
+        },
+        {
+          "type": "臨時隊",
+          "text": "二宮8番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_091",
+      "name": "那須 玲",
+      "from": 12,
+      "group": "那須隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "那須隊",
+          "from": 12
+        },
+        {
+          "type": "役割",
+          "text": "シューター／隊長",
+          "from": 12
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_092",
+      "name": "熊谷 友子",
+      "from": 12,
+      "group": "那須隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "那須隊",
+          "from": 12
+        },
+        {
+          "type": "役割",
+          "text": "アタッカー",
+          "from": 12
+        },
+        {
+          "type": "臨時隊",
+          "text": "村上10番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_093",
+      "name": "日浦 茜",
+      "from": 12,
+      "group": "那須隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "那須隊",
+          "from": 12
+        },
+        {
+          "type": "役割",
+          "text": "スナイパー",
+          "from": 12
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_094",
+      "name": "志岐 小夜子",
+      "from": 12,
+      "group": "那須隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "那須隊",
+          "from": 12
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 12
+        },
+        {
+          "type": "臨時隊",
+          "text": "歌川1番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_095",
+      "name": "柿崎 国治",
+      "from": 16,
+      "group": "柿崎隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "柿崎隊",
+          "from": 16
+        },
+        {
+          "type": "役割",
+          "text": "オールラウンダー／隊長",
+          "from": 16
+        },
+        {
+          "type": "呼び名",
+          "text": "ザキさん",
+          "from": 16
+        },
+        {
+          "type": "呼び名",
+          "text": "柿崎",
+          "from": 16
+        },
+        {
+          "type": "臨時隊",
+          "text": "柿崎3番隊",
+          "from": 23
+        },
+        {
+          "type": "関係",
+          "text": "嵐山准：元同じ隊",
+          "from": 16
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_096",
+      "name": "照屋 文香",
+      "from": 16,
+      "group": "柿崎隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "柿崎隊",
+          "from": 16
+        },
+        {
+          "type": "役割",
+          "text": "オールラウンダー",
+          "from": 16
+        },
+        {
+          "type": "臨時隊",
+          "text": "水上9番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_097",
+      "name": "巴 虎太郎",
+      "from": 16,
+      "group": "柿崎隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "柿崎隊",
+          "from": 16
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー",
+          "from": 16
+        },
+        {
+          "type": "臨時隊",
+          "text": "歌川1番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_098",
+      "name": "宇井 真登華",
+      "from": 16,
+      "group": "柿崎隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "柿崎隊",
+          "from": 16
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 16
+        },
+        {
+          "type": "臨時隊",
+          "text": "諏訪7番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_099",
+      "name": "漆間 恒",
+      "from": 24,
+      "group": "漆間隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "漆間隊",
+          "from": 24
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー／隊長",
+          "from": 24
+        },
+        {
+          "type": "呼び名",
+          "text": "漆間",
+          "from": 24
+        },
+        {
+          "type": "臨時隊",
+          "text": "歌川1番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_100",
+      "name": "六田 梨香",
+      "from": 23,
+      "group": "漆間隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "漆間隊",
+          "from": 23
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 23
+        },
+        {
+          "type": "臨時隊",
+          "text": "古寺6番隊",
+          "from": 23
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_101",
+      "name": "茶野 真",
+      "from": 7,
+      "group": "茶野隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "茶野隊",
+          "from": 7
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー／隊長",
+          "from": 7
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_102",
+      "name": "藤沢 樹",
+      "from": 7,
+      "group": "茶野隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "茶野隊",
+          "from": 7
+        },
+        {
+          "type": "役割",
+          "text": "ガンナー",
+          "from": 7
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_103",
+      "name": "十倉 恵",
+      "from": 24,
+      "group": "茶野隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "茶野隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_104",
+      "name": "海老名 貴大",
+      "from": 24,
+      "group": "海老名隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "海老名隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_105",
+      "name": "乙川 由紀人",
+      "from": 24,
+      "group": "海老名隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "海老名隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_106",
+      "name": "茂手木 翔",
+      "from": 24,
+      "group": "海老名隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "海老名隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_107",
+      "name": "武富 桜子",
+      "from": 10,
+      "group": "海老名隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "海老名隊",
+          "from": 24
+        },
+        {
+          "type": "役割",
+          "text": "オペレーター",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_108",
+      "name": "松代 仁",
+      "from": 24,
+      "group": "松代隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "松代隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_109",
+      "name": "箱田 正邦",
+      "from": 24,
+      "group": "松代隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "松代隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_110",
+      "name": "土崎 祐也",
+      "from": 24,
+      "group": "松代隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "松代隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_111",
+      "name": "羽鳥 歩",
+      "from": 24,
+      "group": "松代隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "松代隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_112",
+      "name": "常磐 守",
+      "from": 24,
+      "group": "常磐隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "常磐隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_113",
+      "name": "斎藤 鴇哉",
+      "from": 24,
+      "group": "常磐隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "常磐隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_114",
+      "name": "宇都宮 和歌",
+      "from": 24,
+      "group": "常磐隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "常磐隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_115",
+      "name": "計良 佳伸",
+      "from": 24,
+      "group": "常磐隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "常磐隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_116",
+      "name": "七尾 葉月",
+      "from": 24,
+      "group": "常磐隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "常磐隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_117",
+      "name": "早川 悟",
+      "from": 24,
+      "group": "早川隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "早川隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_118",
+      "name": "船橋 了午",
+      "from": 24,
+      "group": "早川隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "早川隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_119",
+      "name": "丸井 星司",
+      "from": 24,
+      "group": "早川隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "早川隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_120",
+      "name": "田屋 麻美",
+      "from": 24,
+      "group": "早川隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "早川隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_121",
+      "name": "吉里 雄一郎",
+      "from": 24,
+      "group": "吉里隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "吉里隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_122",
+      "name": "北添 秀高",
+      "from": 24,
+      "group": "吉里隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "吉里隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_123",
+      "name": "月見 花緒",
+      "from": 24,
+      "group": "吉里隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "吉里隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_124",
+      "name": "朝霧 あすか",
+      "from": 24,
+      "group": "吉里隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "吉里隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_125",
+      "name": "間宮 桂三",
+      "from": 24,
+      "group": "間宮隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "間宮隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_126",
+      "name": "鯉沼 三弥",
+      "from": 24,
+      "group": "間宮隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "間宮隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_127",
+      "name": "秦 稔",
+      "from": 24,
+      "group": "間宮隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "間宮隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_128",
+      "name": "楠本 葵",
+      "from": 24,
+      "group": "間宮隊",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "間宮隊",
+          "from": 24
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_129",
+      "name": "城戸 正宗",
+      "from": 6,
+      "group": "ボーダー本部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ボーダー本部",
+          "from": 6
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_130",
+      "name": "忍田 真史",
+      "from": 6,
+      "group": "ボーダー本部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ボーダー本部",
+          "from": 6
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_131",
+      "name": "鬼怒田 本吉",
+      "from": 5,
+      "group": "ボーダー本部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ボーダー本部",
+          "from": 6
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_132",
+      "name": "根付 栄蔵",
+      "from": 10,
+      "group": "ボーダー本部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ボーダー本部",
+          "from": 10
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_133",
+      "name": "唐沢 克己",
+      "from": 10,
+      "group": "ボーダー本部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ボーダー本部",
+          "from": 10
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_134",
+      "name": "沢村 響子",
+      "from": 6,
+      "group": "ボーダー本部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ボーダー本部",
+          "from": 6
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_135",
+      "name": "寺島 雷蔵",
+      "from": 17,
+      "group": "ボーダー本部",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ボーダー本部",
+          "from": 17
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_136",
+      "name": "夏目 出穂",
+      "from": 5,
+      "group": "C級・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_137",
+      "name": "甲田 照輝",
+      "from": 5,
+      "group": "C級・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_138",
+      "name": "早乙女 文史",
+      "from": 5,
+      "group": "C級・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_139",
+      "name": "丙 秀英",
+      "from": 5,
+      "group": "C級・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_140",
+      "name": "最上 宗一",
+      "from": 19,
+      "group": "旧ボーダー関係",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_141",
+      "name": "ハイレイン",
+      "from": 8,
+      "group": "アフトクラトル",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "アフトクラトル",
+          "from": 8
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_142",
+      "name": "ミラ",
+      "from": 8,
+      "group": "アフトクラトル",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "アフトクラトル",
+          "from": 8
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_143",
+      "name": "ヴィザ",
+      "from": 8,
+      "group": "アフトクラトル",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "アフトクラトル",
+          "from": 8
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_144",
+      "name": "ランバネイン",
+      "from": 7,
+      "group": "アフトクラトル",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "アフトクラトル",
+          "from": 7
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_145",
+      "name": "エネドラ",
+      "from": 7,
+      "group": "アフトクラトル",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "アフトクラトル",
+          "from": 7
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_146",
+      "name": "ガトリン",
+      "from": 15,
+      "group": "ガロプラ",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ガロプラ",
+          "from": 15
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_147",
+      "name": "ラタリコフ",
+      "from": 15,
+      "group": "ガロプラ",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ガロプラ",
+          "from": 15
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_148",
+      "name": "ウェン・ソー",
+      "from": 15,
+      "group": "ガロプラ",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ガロプラ",
+          "from": 15
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_149",
+      "name": "コスケロ",
+      "from": 15,
+      "group": "ガロプラ",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ガロプラ",
+          "from": 15
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_150",
+      "name": "レギンデッツ",
+      "from": 15,
+      "group": "ガロプラ",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ガロプラ",
+          "from": 15
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_151",
+      "name": "ヨミ",
+      "from": 15,
+      "group": "ガロプラ",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "ガロプラ",
+          "from": 15
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_152",
+      "name": "ライモンド",
+      "from": 3,
+      "group": "カルワリア",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "カルワリア",
+          "from": 3
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_153",
+      "name": "イズカチャ",
+      "from": 3,
+      "group": "カルワリア",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "カルワリア",
+          "from": 3
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_154",
+      "name": "ヴィッターノ",
+      "from": 3,
+      "group": "カルワリア",
+      "facts": [
+        {
+          "type": "所属",
+          "text": "カルワリア",
+          "from": 3
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_155",
+      "name": "空閑 有吾",
+      "from": 3,
+      "group": "一般・その他",
+      "facts": [
+        {
+          "type": "呼び名",
+          "text": "有吾",
+          "from": 3
+        },
+        {
+          "type": "関係",
+          "text": "空閑遊真：息子",
+          "from": 3
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_156",
+      "name": "雨取 麟児",
+      "from": 2,
+      "group": "一般・その他",
+      "facts": [
+        {
+          "type": "関係",
+          "text": "雨取千佳：妹",
+          "from": 2
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_157",
+      "name": "春川 青葉",
+      "from": 2,
+      "group": "一般・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_158",
+      "name": "三雲 香澄",
+      "from": 10,
+      "group": "一般・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_159",
+      "name": "鳩原 未来",
+      "from": 13,
+      "group": "一般・その他",
+      "facts": [
+        {
+          "type": "関係",
+          "text": "二宮匡貴：元二宮隊の隊員",
+          "from": 20
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_160",
+      "name": "神田 忠臣",
+      "from": 21,
+      "group": "一般・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_161",
+      "name": "忍田 瑠花",
+      "from": 23,
+      "group": "一般・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_162",
+      "name": "水沼先生",
+      "from": 1,
+      "group": "一般・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_163",
+      "name": "森林先生",
+      "from": 1,
+      "group": "一般・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_164",
+      "name": "嵐山 佐補",
+      "from": 1,
+      "group": "一般・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_165",
+      "name": "嵐山 理沙",
+      "from": 1,
+      "group": "一般・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_166",
+      "name": "嵐山 福斗",
+      "from": 1,
+      "group": "一般・その他",
+      "facts": [],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    },
+    {
+      "id": "wt_full_167",
+      "name": "レプリカ",
+      "from": 1,
+      "group": "一般・その他",
+      "facts": [
+        {
+          "type": "関係",
+          "text": "空閑 遊真：行動を共にする相棒",
+          "from": 1
+        }
+      ],
+      "embeds": [],
+      "origin": "catalog-24",
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+    }
+  ]
+}
