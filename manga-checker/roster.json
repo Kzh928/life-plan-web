@@ -9236,41 +9236,14 @@
       "origin": "catalog-24",
       "source": "単行本19巻の旧ボーダー関係の登場人物．詳細経歴は表示しない",
       "profile": {
-        "position": "チーフエンジニア",
-        "positionFrom": 24
+        "position": "旧ボーダーの写真に写る人物（当時の役職は未確認）",
+        "positionFrom": 19
+      },
+      "reminder": {
+        "text": "19巻で見つかる旧ボーダーの集合写真に写る人物．この時点では詳細不明",
+        "from": 19,
+        "source": "https://www.shueisha.co.jp/books/items/contents.html?isbn=978-4-08-881697-5"
       }
-    },
-    {
-      "id": "wt_full_179",
-      "name": "望月 丸香",
-      "from": 24,
-      "group": "ボーダー本部",
-      "facts": [],
-      "embeds": [],
-      "origin": "catalog-24",
-      "profile": {
-        "position": "チーフエンジニア",
-        "positionFrom": 24
-      },
-      "profileSources": [
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
-      ]
-    },
-    {
-      "id": "wt_full_180",
-      "name": "水沼 誠二",
-      "from": 24,
-      "group": "ボーダー本部",
-      "facts": [],
-      "embeds": [],
-      "origin": "catalog-24",
-      "profile": {
-        "position": "人事部部長",
-        "positionFrom": 24
-      },
-      "profileSources": [
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
-      ]
     },
     {
       "id": "wt_full_181",
@@ -9286,14 +9259,19 @@
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
-      ]
+      ],
+      "reminder": {
+        "text": "エネドラに関係する記憶を持つ小型トリオン兵",
+        "from": 24,
+        "source": "https://worldtrigger.fandom.com/wiki/Enedorad"
+      }
     }
   ],
   "sourceScope": "公式の公開ページ上で名前の存在を目視確認できた人物だけsourceを付与．2026年時点の公式紹介文は24巻より先のネタバレを含むためアプリには取得しない．別名・所属・初登場巻の正確性は別途検証が必要．",
   "galleryIndexVersion": 7,
   "galleryCoverage": "東映アニメーションのキャラクター一覧に掲載された人物に公式ギャラリーページのリンクを追加．画像データを転載・複製するものではない．Google画像検索は各人物の詳細画面から利用．",
   "rosterResearchDate": "2026-10-11",
-  "rosterTimepoint": "第199話・3月5日時点の人物紹介データ（24巻以前）",
+  "rosterTimepoint": "第199話（24巻より前）を中心に確認したデータ．24巻以降で明らかになった設定は除外．",
   "rosterSource": "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
   "reminderRevision": 1,
   "reminderScope": "24巻までで確認できることに限定した人物判別用の要約．初登場巻の根拠ではないため24巻で解禁．"
