@@ -44,7 +44,7 @@
 <section id="settingsPage" class="hidden"><div class="panel"><div class="eyebrow">04 / SETTINGS</div><h1 class="h2">作品と保存</h1><div class="notice"><b>ネタバレ保護：常にON</b><div>すべての人物・あだ名・所属・関係は「判明する巻」の設定以内しか表示しません．巻内の後半の出来事は，その巻を読了するまでは表示されません．</div></div>
 <div class="field"><label for="newSeriesName">別の漫画を追加</label><input id="newSeriesName" placeholder="例：HUNTER×HUNTER"></div><button id="addSeries" class="btn pale full">この作品を追加する</button><div class="sectionline"></div><div class="stats"><div class="stat"><strong id="countPeople">0</strong><small>登録人物数（作品内）</small></div><div class="stat"><strong id="countSamples">0</strong><small>見た目の学習画像数</small></div></div><div class="sectionline"></div><div class="buttons"><button class="btn outline" id="exportData">↓ バックアップ保存</button><button class="btn outline" id="importDataBtn">↑ バックアップ読込</button></div><input id="importData" type="file" accept="application/json,.json" hidden><p class="hint">人物情報はこの端末に保存します．人物写真は別の端末内保存領域（IndexedDB）へ保存します．ブラウザデータ削除で消える場合があります．写真を含むバックアップは現在未対応のため，元画像も残してください．</p></div>
 <div class="panel"><h2 class="h2">このアプリの限界</h2><p class="hint">自動認識は名前のOCRと，あなたが登録した画像の特徴照合を組み合わせた試作です．漫画全作品の顔を最初から理解するAIではありません．iPhoneでの日本語OCRには初回に外部ライブラリのダウンロードが必要です．巻数ごとの人物情報は最初から網羅していないので，未登録情報は表示しません．</p><p class="hint">撮影画像・入力メモを運営者のサーバーに送信する機能はありません．AIとOCRのライブラリ・モデル取得時には外部CDNと通信します．</p><p class="hint">ワールドトリガー人物名簿は24巻までの情報を対象にした試作です．すべての背景人物や初登場巻の完全性は保証できません．不確かな公開巻は安全側に遅らせており，表示されない人物は検索追加もできます．公式ページには25巻以降のネタバレがあり得るため，本文はアプリに取り込みません．公式出典のリンクも警告と確認後にのみ開きます．</p><p class="hint">写真・漫画画像は権利を守って個人利用の範囲で扱ってください．</p></div></section>
-<footer>コマの人 β6.0 · 181人 / 詳細プロフィール・人物関係</footer>
+<footer>コマの人 β7.0 · 人物情報を大幅追加・24巻まで</footer>
 </main>
 </div>
 <nav class="tabs"><div class="tabwrap"><button class="tab active" data-page="scan"><b>⌗</b>カメラ</button><button class="tab" data-page="people"><b>♙</b>人物</button><button class="tab" data-page="teams"><b>♧</b>隊・所属</button><button class="tab" data-page="settings"><b>⚙</b>設定</button></div></nav>
@@ -396,12 +396,15 @@ function personProfileMarkup(p){
  var entries=[];
  if(pro.age!=null)entries.push(["年齢",pro.age+"歳"]);
  if(pro.position)entries.push(["役割",pro.position]);
+ if(pro.heightCm)entries.push(["身長",pro.heightCm+"cm"]);
+ if(pro.bloodType)entries.push(["血液型",pro.bloodType+"型"]);
+ if(pro.voiceActor)entries.push(["アニメ声優",pro.voiceActor]);
  if(pro.birthday&&pro.birthday.month&&pro.birthday.day)entries.push(["誕生日",pro.birthday.month+"月"+pro.birthday.day+"日"]);
  if(pro.commander)entries.push(["隊内","隊長"]);
  if(entries.length)parts.push('<div class="profile-grid">'+entries.map(function(d){return '<div class="profile-datum"><small>'+esc(d[0])+'</small>'+esc(d[1])+'</div>'}).join("")+'</div>');
  var links=(p.relations||[]).filter(function(t){return Number(t.from)<=vol()&&personById(t.target)&&Number(personById(t.target).from)<=vol()});
  if(links.length)parts.push('<div class="eyebrow" style="margin-top:12px">人物との関係</div><div class="profile-relations">'+links.map(function(q){return '<button class="btn light small" data-person="'+esc(q.target)+'">'+esc(q.name)+'<span style="font-weight:normal"> · '+esc(q.kind)+'</span></button>'}).join("")+'</div>');
- if(entries.length||links.length||p.reminder)parts.push('<div class="notes-spoiler">年齢・役割は第199話頃の資料を参照．人物判別用の説明と関係は安全側で24巻読了後に解禁．情報の正確性は引き続き照合中．</div>');
+ if(entries.length||links.length||p.reminder)parts.push('<div class="notes-spoiler">年齢・所属は第199話頃，人物メモは24巻までの資料を参照．安全のため詳細データは24巻読了後に表示．資料の未確認箇所は継続して照合中．</div>');
  return parts.join("")
 }
 function openPerson(id){var p=personById(id);if(!p||Number(p.from)>vol())return;var facts=shownFacts(p);var all=p.facts||[];
@@ -540,6 +543,9 @@ async function loadRoster(){
  var data=await response.json();
  if(data.version!==2||data.volumeLimit!==24||!Array.isArray(data.people))throw Error("名簿形式が不正");
  var wt=db.series.find(function(x){return x.id==="wt"});if(!wt){wt={id:"wt",name:"ワールドトリガー",volume:24,people:[]};db.series.unshift(wt)}
+ // 後の巻で初めて判明した設定を誤登録した旧版を安全側に戻す
+ wt.people=wt.people.filter(function(p){return !(["望月 丸香","水沼 誠二"].includes(p.name)&&p.origin==="catalog-24")});
+
  // スキーマ更新は名前と人物IDの双方で照合して重複登録を避ける
  var normName=function(t){return norm(t).replace(/[・･]/g,"")};
  var byName=new Map(wt.people.map(function(p){return [normName(p.name),p]}));
