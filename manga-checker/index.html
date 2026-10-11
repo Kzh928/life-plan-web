@@ -567,6 +567,14 @@ async function loadRoster(){
  var seen=new Set(person.facts.map(function(f){return f.type+"|"+f.text+"|"+f.from+"|"+(f.to||"")}));
  p.facts.forEach(function(f){var sig=f.type+"|"+f.text+"|"+f.from+"|"+(f.to||"");if(!seen.has(sig)&&(person.hiddenCatalogFacts||[]).indexOf(sig)<0){person.facts.push(Object.assign({},f,{origin:"catalog-24"}));seen.add(sig)}});
  });
+ // 初期版では人物IDが別だったため，名前で同一人物を照合して関係図を補正
+ var currentByName=new Map(wt.people.map(function(p){return [normName(p.name),p]}));
+ wt.people.forEach(function(p){
+  (p.relations||[]).forEach(function(rel){
+   var actual=currentByName.get(normName(rel.name||""));
+   if(actual){rel.target=actual.id;rel.name=actual.name}
+  })
+ });
  // ユーザーの意思で指定された24巻を既存v1アプリにも適用（以降の変更は維持）
  if(!wt.volumeSetV2){wt.volume=24;wt.volumeSetV2=true}
  db.version=2;save();refresh();
