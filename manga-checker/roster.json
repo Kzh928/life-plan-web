@@ -66,7 +66,30 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_001",
@@ -130,7 +153,30 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_002",
@@ -189,7 +235,30 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_003",
@@ -229,7 +298,30 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_004",
@@ -268,7 +360,23 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_005",
@@ -312,7 +420,23 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_006",
@@ -361,7 +485,23 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_007",
@@ -395,7 +535,30 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_008",
@@ -416,7 +579,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_009",
@@ -445,7 +624,16 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_010",
@@ -527,7 +715,30 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_014",
@@ -574,7 +785,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_016",
@@ -741,7 +968,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_023",
@@ -803,7 +1046,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_025",
@@ -986,7 +1245,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_032",
@@ -1017,7 +1292,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_033",
@@ -1043,7 +1334,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_034",
@@ -1190,7 +1497,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_041",
@@ -1216,7 +1539,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_042",
@@ -1242,7 +1581,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_043",
@@ -1273,7 +1628,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_044",
@@ -1747,7 +2118,16 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_059",
@@ -1781,7 +2161,16 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_060",
@@ -1812,7 +2201,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_061",
@@ -1846,7 +2244,16 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_062",
@@ -1877,7 +2284,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_063",
@@ -2049,7 +2465,16 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_068",
@@ -2088,7 +2513,16 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_069",
@@ -2114,7 +2548,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_070",
@@ -2135,7 +2578,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_071",
@@ -2406,7 +2858,16 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_080",
@@ -2440,7 +2901,16 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_081",
@@ -2474,7 +2944,16 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_082",
@@ -2505,7 +2984,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_083",
@@ -2544,7 +3032,23 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_084",
@@ -2901,7 +3405,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_096",
@@ -2927,7 +3440,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_097",
@@ -2953,7 +3475,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_098",
@@ -2979,7 +3510,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_099",
@@ -3520,7 +4060,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_130",
@@ -3541,7 +4097,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_131",
@@ -3562,7 +4134,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_132",
@@ -3583,7 +4171,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_133",
@@ -3604,7 +4208,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_134",
@@ -3625,7 +4245,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_135",
@@ -3707,7 +4343,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_142",
@@ -3723,7 +4375,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_143",
@@ -3739,7 +4407,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_144",
@@ -3755,7 +4439,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_145",
@@ -3771,7 +4471,23 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_146",
@@ -3787,7 +4503,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_147",
@@ -3803,7 +4528,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_148",
@@ -3819,7 +4553,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_149",
@@ -3835,7 +4578,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_150",
@@ -3851,7 +4603,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_151",
@@ -3867,7 +4628,16 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "imagePages": [
+        {
+          "title": "アニメ第2・3期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_152",
@@ -4113,7 +4883,23 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "アニメ第1期・キャラクター（東映公式）",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        },
+        {
+          "title": "TV作品・キャラクターと声優（東映公式）",
+          "url": "https://lineup.toei-anim.co.jp/ja/tv/worldtrigger_01/character/",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24,
+          "kind": "character_gallery_page"
+        }
+      ]
     },
     {
       "id": "wt_full_168",
@@ -4292,5 +5078,7 @@
       "source": "単行本19巻の旧ボーダー関係の登場人物．詳細経歴は表示しない"
     }
   ],
-  "sourceScope": "公式の公開ページ上で名前の存在を目視確認できた人物だけsourceを付与．2026年時点の公式紹介文は24巻より先のネタバレを含むためアプリには取得しない．別名・所属・初登場巻の正確性は別途検証が必要．"
+  "sourceScope": "公式の公開ページ上で名前の存在を目視確認できた人物だけsourceを付与．2026年時点の公式紹介文は24巻より先のネタバレを含むためアプリには取得しない．別名・所属・初登場巻の正確性は別途検証が必要．",
+  "galleryIndexVersion": 5,
+  "galleryCoverage": "東映アニメーションのキャラクター一覧に掲載された人物に公式ギャラリーページのリンクを追加．画像データを転載・複製するものではない．Google画像検索は各人物の詳細画面から利用．"
 }
