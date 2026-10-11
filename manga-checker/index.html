@@ -25,11 +25,11 @@
 <div class="notice" id="cropNote" hidden>調べたい人物を画像上で指で囲んでください．囲まない場合は画像全体を調べます．</div>
 <div class="buttons" style="margin-top:9px"><button id="recognize" class="btn primary full" disabled>この画像から人物を探す →</button></div><div class="status" id="scanStatus" aria-live="polite"></div>
 </div><div id="resultBox"></div>
-<div class="panel"><div class="row"><div><div class="eyebrow">学習する</div><h2 class="h2">顔を覚えさせる</h2></div><span class="chip safe">端末内に保存</span></div><p class="hint">画像を選び，顔を囲んでから人物を指定すると特徴を記憶．同じキャラの異なるコマを複数登録すると判定を改善できる場合があります．</p><div class="field"><label for="trainWho">この画像の人物</label><select id="trainWho"></select></div><button class="btn pale full" id="learnButton" disabled>選んだ人物として画像を登録</button><div class="status" id="learnStatus"></div>
+<div class="panel"><div class="row"><div><div class="eyebrow">学習する</div><h2 class="h2">顔を覚えさせる</h2></div><span class="chip safe">端末内に保存</span></div><p class="hint">画像を選び，顔を囲んでから人物を指定すると特徴を記憶．同じキャラの異なるコマを複数登録すると判定を改善できる場合があります．</p><div class="field"><label for="trainWho">この画像の人物</label><select id="trainWho"></select></div><button class="btn pale full" id="learnButton" disabled>選んだ人物の顔として登録</button><label class="hint" style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="saveTrainedPhoto" checked> 学習した顔画像も人物図鑑に保存（この端末のみ）</label><div class="status" id="learnStatus"></div>
 <div class="sectionline"></div>
 <div class="eyebrow">BATCH LEARNING</div><h3 class="h2" style="font-size:16px">画像をまとめて覚えさせる</h3>
 <p class="hint">① 上の「この画像の人物」を選ぶ → 複数の顔画像を選択．画像はなるべく一人ずつ写っているものを使用．</p>
-<button class="btn pale full" id="batchPick">＋ 同じ人物の画像をまとめて選択</button>
+<button class="btn pale full" id="batchPick">＋ 同じ人物の画像をまとめて選択</button><label class="hint" style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="batchSavePhotos" checked> 学習画像も人物図鑑に保存（この端末のみ）</label>
 <input id="batchImages" type="file" accept="image/*" multiple hidden>
 <div class="sectionline"></div>
 <p class="hint">② たくさんの人物をまとめるなら，人物の名前のフォルダごとに顔画像を入れ，その親フォルダを選択．例：<b>三雲 修/001.jpg</b>．名前を照合できなければ無視します．</p>
@@ -37,7 +37,7 @@
 <input id="batchFolder" type="file" accept="image/*" webkitdirectory directory multiple hidden>
 <div class="status" id="batchStatus" aria-live="polite"></div>
 <div class="notice warn">登録用の画像は，購入した漫画のスクショなど自分で利用できるものを選んでください．ネット画像を無許可で収集・再配布する機能はありません．</div>
-<p class="hint">見た目の照合は実験的な機能です．正答を保証しません．画像そのものは保存せず，特徴量のみ端末に保存します．AIの初回読み込みには通信が必要です．</p></div>
+<p class="hint">見た目の照合は実験的な機能です．正答を保証しません．画像も保存する場合は上のチェックをONにしてください．外部サーバーに送らず，端末内の写真図鑑に保存します．AIの初回読み込みには通信が必要です．</p></div>
 </section>
 <section id="peoplePage" class="hidden"><div class="panel"><div class="row"><div><div class="eyebrow">02 / PEOPLE</div><h1 class="h2">人物を探す</h1></div><button class="btn primary small" id="newChar">＋ 人物追加</button></div><p class="hint">読了巻までに登場した人物だけ表示．呼び名や所属の変更も時点に合わせて管理できます．</p><input id="searchPeople" class="searchbar" placeholder="名前・あだ名で検索" autocomplete="off"><div class="strip" style="margin-bottom:11px"><span class="chip safe" id="peopleCount">0人</span><span class="chip" id="peopleRange">巻数ごとに表示</span></div><div class="cards" id="peopleList"></div></div></section>
 <section id="teamsPage" class="hidden"><div class="panel"><div class="eyebrow">03 / GROUPS</div><h1 class="h2">どの隊の人？</h1><p class="hint">読了巻までに登録されている所属情報だけを集計．隊名が判明する前には表示しません．</p><div class="field"><label for="teamsMode">表示する部隊</label><select id="teamsMode"><option value="usual">普段の所属隊</option><option value="temporary">遠征選抜試験の臨時部隊（23巻〜）</option><option value="both">両方</option></select></div><div id="teamsList"></div></div></section>
@@ -155,6 +155,17 @@ function clearGalleryUrls(){
 function photoObjectURL(blob){
  var url=URL.createObjectURL(blob);photoObjectUrls.push(url);return url
 }
+async function saveTrainedCanvas(p,cnv){
+ var owner=photoKey(p),photos=await photosFor(owner);
+ if(photos.length>=200)return false;
+ var copy=document.createElement("canvas"),max=750,k=Math.min(1,max/Math.max(cnv.width,cnv.height));
+ copy.width=Math.max(1,Math.round(cnv.width*k));copy.height=Math.max(1,Math.round(cnv.height*k));
+ copy.getContext("2d").drawImage(cnv,0,0,copy.width,copy.height);
+ var blob=await new Promise(function(resolve,reject){copy.toBlob(function(b){b?resolve(b):reject(Error("保存用写真を生成できません"))},"image/jpeg",.78)});
+ await writePhoto(owner,blob,"学習画像.jpg");
+ return true
+}
+
 async function compressPhoto(file){
  if(!file.type.startsWith("image/")||file.size>20000000)throw Error("20MB以下の画像を選択してください");
  var img=await new Promise(function(resolve,reject){
@@ -417,7 +428,7 @@ try{
 if(available().some(function(p){return p.embeds&&p.embeds.length})){setStatus("学習した見た目と照合しています…");try{vec=await embed(c)}catch(e){errors.push("見た目の照合を読み込めませんでした")}}
 var ranked=rankPeople(text,vec);if(ranked.length){setResult('<div class="panel"><div class="row"><div><div class="eyebrow">CHECK RESULT</div><div class="h2">人物候補</div></div><span class="chip safe">'+vol()+'巻まで</span></div><p class="hint">候補は推定です．違った場合は下の人物一覧で正しい名前を選び，画像を覚えさせてください．</p><div class="result-list">'+ranked.map(function(x){return candidateHtml(x.p,x.why.join("・"))}).join("")+'</div><div class="sectionline"></div><div class="h2" style="font-size:15px">判定が違う？ 正しい人物を教える</div><div class="field"><label for="correctWho">実際に写っている人物</label><select id="correctWho">'+available().map(function(p){return '<option value="'+esc(p.id)+'">'+esc(p.name)+'</option>'}).join("")+'</select></div><button id="fixIdentity" class="btn pale full">この画像を正しい人物として覚える</button><div id="fixStatus" class="status"></div></div>')}else{setResult('<div class="panel"><div class="h2">人物を特定できませんでした</div><p class="hint">顔が大きく入るように囲むか，名前のあるコマを試してください．見た目を先に登録すると候補が出やすくなります．</p><button class="btn pale full" id="jumpPeople">人物一覧で探す →</button></div>');$("jumpPeople").onclick=function(){showPage("people")}}
 if(text){var safeText=esc(text).slice(0,700);$("resultBox").insertAdjacentHTML("beforeend",'<div class="panel"><div class="eyebrow">OCR / 読み取れた文字（検証用）</div><p class="hint" style="white-space:pre-wrap;overflow-wrap:anywhere">'+safeText+'</p></div>')}
-if($("fixIdentity"))$("fixIdentity").onclick=async function(){var p=personById($("correctWho").value);if(!p)return;var button=this;button.disabled=true;$("fixStatus").textContent="見た目を記憶中…";try{var v=await embed(crop());p.embeds=p.embeds||[];p.embeds.push(v);if(p.embeds.length>12)p.embeds.shift();save();renderStats();$("fixStatus").textContent=p.name+" として覚えました．次から判定の参考にします．"}catch(e){$("fixStatus").textContent="学習モデルを取得できませんでした．通信状況を確認してください．"}finally{button.disabled=false}};setStatus(errors.length?errors.join("．")+"．手動検索も使えます．":"読み取り完了．誤認識の可能性があるため候補を確認してください．");b.disabled=false};
+if($("fixIdentity"))$("fixIdentity").onclick=async function(){var p=personById($("correctWho").value);if(!p)return;var button=this;button.disabled=true;$("fixStatus").textContent="見た目を記憶中…";try{var faceCrop=crop(),v=await embed(faceCrop);if($("saveTrainedPhoto").checked){try{await saveTrainedCanvas(p,faceCrop)}catch(error){}}p.embeds=p.embeds||[];p.embeds.push(v);if(p.embeds.length>12)p.embeds.shift();save();renderStats();$("fixStatus").textContent=p.name+" として覚えました．次から判定の参考にします．"}catch(e){$("fixStatus").textContent="学習モデルを取得できませんでした．通信状況を確認してください．"}finally{button.disabled=false}};setStatus(errors.length?errors.join("．")+"．手動検索も使えます．":"読み取り完了．誤認識の可能性があるため候補を確認してください．");b.disabled=false};
 
 function normalizePersonName(s){return norm(String(s||"")).replace(/[・･_\-]/g,"")}
 function loadBatchImage(file){
@@ -454,6 +465,7 @@ async function learnBatch(files,mode){
  cnv.width=Math.round(img.width*ratio);cnv.height=Math.round(img.height*ratio);
  cnv.getContext("2d").drawImage(img,0,0,cnv.width,cnv.height);
  var vector=await embed(cnv);
+ if($("batchSavePhotos").checked){try{await saveTrainedCanvas(p,cnv)}catch(error){}}
  p.embeds=p.embeds||[];
  p.embeds.push(vector);if(p.embeds.length>12)p.embeds.shift();
  completed++;
@@ -468,7 +480,7 @@ $("batchPick").onclick=function(){$("batchImages").click()};
 $("batchImages").onchange=function(){if(this.files.length)learnBatch(this.files,"selected");this.value=""};
 $("folderPick").onclick=function(){$("batchFolder").click()};
 $("batchFolder").onchange=function(){if(this.files.length)learnBatch(this.files,"folders");this.value=""};
-$("learnButton").onclick=async function(){var id=$("trainWho").value,p=personById(id);if(!p||!currentImg)return;var b=this;b.disabled=true;$("learnStatus").textContent="画像の特徴を計算しています…";try{var v=await embed(crop());p.embeds=p.embeds||[];p.embeds.push(v);if(p.embeds.length>12)p.embeds.shift();if(save())$("learnStatus").textContent=p.name+" の見た目を覚えました（"+p.embeds.length+"枚分）．";renderStats()}catch(e){$("learnStatus").textContent="学習モデルを読み込めませんでした．通信接続を確認してください．"}finally{b.disabled=false}};
+$("learnButton").onclick=async function(){var id=$("trainWho").value,p=personById(id);if(!p||!currentImg)return;var b=this;b.disabled=true;$("learnStatus").textContent="画像の特徴を計算しています…";try{var faceCrop=crop(),v=await embed(faceCrop);if($("saveTrainedPhoto").checked){try{await saveTrainedCanvas(p,faceCrop)}catch(error){}}p.embeds=p.embeds||[];p.embeds.push(v);if(p.embeds.length>12)p.embeds.shift();if(save())$("learnStatus").textContent=p.name+" の見た目を覚えました（"+p.embeds.length+"枚分）．";renderStats()}catch(e){$("learnStatus").textContent="学習モデルを読み込めませんでした．通信接続を確認してください．"}finally{b.disabled=false}};
 // 既存のローカル保存を維持し，名簿から不足分のみを追加する
 async function loadRoster(){
  var banner=$("rosterBanner");
