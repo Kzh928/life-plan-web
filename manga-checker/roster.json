@@ -49,11 +49,29 @@
           "type": "関係",
           "text": "雨取千佳：幼なじみ",
           "from": 2
+        },
+        {
+          "type": "読み",
+          "text": "みくも おさむ",
+          "from": 1
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        },
+        {
+          "name": "ジャンプSQ. 公式作品紹介",
+          "url": "https://jumpsq-sp.shueisha.co.jp/rensai/worldtrigger/",
+          "kind": "official_profile"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_001",
@@ -100,11 +118,29 @@
           "type": "関係",
           "text": "レプリカ：行動を共にする相棒",
           "from": 1
+        },
+        {
+          "type": "読み",
+          "text": "くが ゆうま",
+          "from": 1
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        },
+        {
+          "name": "ジャンプSQ. 公式作品紹介",
+          "url": "https://jumpsq-sp.shueisha.co.jp/rensai/worldtrigger/",
+          "kind": "official_profile"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_002",
@@ -146,11 +182,29 @@
           "type": "関係",
           "text": "雨取麟児：兄",
           "from": 2
+        },
+        {
+          "type": "読み",
+          "text": "あまとり ちか",
+          "from": 2
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        },
+        {
+          "name": "ジャンプSQ. 公式作品紹介",
+          "url": "https://jumpsq-sp.shueisha.co.jp/rensai/worldtrigger/",
+          "kind": "official_profile"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_003",
@@ -182,7 +236,20 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        },
+        {
+          "name": "ジャンプSQ. 公式作品紹介",
+          "url": "https://jumpsq-sp.shueisha.co.jp/rensai/worldtrigger/",
+          "kind": "official_profile"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_004",
@@ -204,11 +271,24 @@
           "type": "呼び名",
           "text": "レイジさん",
           "from": 3
+        },
+        {
+          "type": "読み",
+          "text": "きざき れいじ",
+          "from": 3
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_005",
@@ -235,11 +315,24 @@
           "type": "呼び名",
           "text": "コナミ",
           "from": 3
+        },
+        {
+          "type": "読み",
+          "text": "こなみ きりえ",
+          "from": 3
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_006",
@@ -271,11 +364,24 @@
           "type": "関係",
           "text": "小南桐絵：玉狛第1の仲間",
           "from": 3
+        },
+        {
+          "type": "読み",
+          "text": "からすま きょうすけ",
+          "from": 3
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_007",
@@ -292,11 +398,29 @@
           "type": "役割",
           "text": "オペレーター",
           "from": 3
+        },
+        {
+          "type": "読み",
+          "text": "うさみ しおり",
+          "from": 3
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        },
+        {
+          "name": "ジャンプSQ. 公式作品紹介",
+          "url": "https://jumpsq-sp.shueisha.co.jp/rensai/worldtrigger/",
+          "kind": "official_profile"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_008",
@@ -308,11 +432,24 @@
           "type": "所属",
           "text": "玉狛支部",
           "from": 3
+        },
+        {
+          "type": "読み",
+          "text": "りんどう たくみ",
+          "from": 3
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_009",
@@ -333,7 +470,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_010",
@@ -398,11 +543,24 @@
           "type": "呼び名",
           "text": "迅さん",
           "from": 2
+        },
+        {
+          "type": "読み",
+          "text": "じん ゆういち",
+          "from": 2
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_014",
@@ -440,11 +598,24 @@
           "type": "呼び名",
           "text": "太刀川さん",
           "from": 4
+        },
+        {
+          "type": "読み",
+          "text": "たちかわ けい",
+          "from": 4
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_016",
@@ -602,11 +773,24 @@
           "type": "呼び名",
           "text": "風間さん",
           "from": 4
+        },
+        {
+          "type": "読み",
+          "text": "かざま そうや",
+          "from": 4
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_023",
@@ -659,11 +843,24 @@
           "type": "臨時隊",
           "text": "北添4番隊",
           "from": 23
+        },
+        {
+          "type": "読み",
+          "text": "きくちはら しろう",
+          "from": 4
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_025",
@@ -821,11 +1018,24 @@
           "type": "関係",
           "text": "嵐山 副：弟",
           "from": 1
+        },
+        {
+          "type": "読み",
+          "text": "あらしやま じゅん",
+          "from": 1
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_032",
@@ -847,11 +1057,24 @@
           "type": "臨時隊",
           "text": "古寺6番隊",
           "from": 23
+        },
+        {
+          "type": "読み",
+          "text": "きとら あい",
+          "from": 1
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_033",
@@ -868,11 +1091,24 @@
           "type": "役割",
           "text": "オールラウンダー",
           "from": 1
+        },
+        {
+          "type": "読み",
+          "text": "ときえだ みつる",
+          "from": 1
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_034",
@@ -1010,11 +1246,24 @@
           "type": "役割",
           "text": "オールラウンダー／隊長",
           "from": 2
+        },
+        {
+          "type": "読み",
+          "text": "みわ しゅうじ",
+          "from": 2
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_041",
@@ -1031,11 +1280,24 @@
           "type": "役割",
           "text": "アタッカー",
           "from": 2
+        },
+        {
+          "type": "読み",
+          "text": "よねや ようすけ",
+          "from": 2
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_042",
@@ -1052,11 +1314,24 @@
           "type": "役割",
           "text": "スナイパー",
           "from": 2
+        },
+        {
+          "type": "読み",
+          "text": "ならさか とおる",
+          "from": 2
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_043",
@@ -1078,11 +1353,24 @@
           "type": "臨時隊",
           "text": "古寺6番隊",
           "from": 23
+        },
+        {
+          "type": "読み",
+          "text": "こでら しょうへい",
+          "from": 2
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_044",
@@ -1473,11 +1761,24 @@
           "type": "臨時隊",
           "text": "王子2番隊",
           "from": 23
+        },
+        {
+          "type": "読み",
+          "text": "いこま たつひと",
+          "from": 18
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_059",
@@ -1503,7 +1804,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_060",
@@ -1534,7 +1843,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_061",
@@ -1560,7 +1877,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_062",
@@ -1591,7 +1916,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_063",
@@ -1722,11 +2055,24 @@
           "type": "臨時隊",
           "text": "王子2番隊",
           "from": 23
+        },
+        {
+          "type": "読み",
+          "text": "おうじ かずあき",
+          "from": 19
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_068",
@@ -1748,11 +2094,24 @@
           "type": "臨時隊",
           "text": "村上10番隊",
           "from": 23
+        },
+        {
+          "type": "読み",
+          "text": "くらうち かずき",
+          "from": 19
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_069",
@@ -1778,7 +2137,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_070",
@@ -1799,7 +2166,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_071",
@@ -2038,7 +2413,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_080",
@@ -2064,7 +2447,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_081",
@@ -2090,7 +2481,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_082",
@@ -2121,7 +2520,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_083",
@@ -2143,11 +2550,24 @@
           "type": "臨時隊",
           "text": "諏訪7番隊",
           "from": 23
+        },
+        {
+          "type": "読み",
+          "text": "すわ こうたろう",
+          "from": 6
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_084",
@@ -2464,7 +2884,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_096",
@@ -2490,7 +2918,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_097",
@@ -2516,7 +2952,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_098",
@@ -2542,7 +2986,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_099",
@@ -3074,11 +3526,24 @@
           "type": "所属",
           "text": "ボーダー本部",
           "from": 6
+        },
+        {
+          "type": "読み",
+          "text": "きど まさむね",
+          "from": 6
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_130",
@@ -3090,11 +3555,24 @@
           "type": "所属",
           "text": "ボーダー本部",
           "from": 6
+        },
+        {
+          "type": "読み",
+          "text": "しのだ まさふみ",
+          "from": 6
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_131",
@@ -3106,11 +3584,24 @@
           "type": "所属",
           "text": "ボーダー本部",
           "from": 6
+        },
+        {
+          "type": "読み",
+          "text": "きぬた もときち",
+          "from": 5
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_132",
@@ -3122,11 +3613,24 @@
           "type": "所属",
           "text": "ボーダー本部",
           "from": 10
+        },
+        {
+          "type": "読み",
+          "text": "ねつき えいぞう",
+          "from": 10
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_133",
@@ -3138,11 +3642,24 @@
           "type": "所属",
           "text": "ボーダー本部",
           "from": 10
+        },
+        {
+          "type": "読み",
+          "text": "からさわ かつみ",
+          "from": 10
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_134",
@@ -3154,11 +3671,24 @@
           "type": "所属",
           "text": "ボーダー本部",
           "from": 6
+        },
+        {
+          "type": "読み",
+          "text": "さわむら きょうこ",
+          "from": 6
         }
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_135",
@@ -3240,7 +3770,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_142",
@@ -3256,7 +3794,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_143",
@@ -3272,7 +3818,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_144",
@@ -3288,7 +3842,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_145",
@@ -3304,7 +3866,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_146",
@@ -3320,7 +3890,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_147",
@@ -3336,7 +3914,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_148",
@@ -3352,7 +3938,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_149",
@@ -3368,7 +3962,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_150",
@@ -3384,7 +3986,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_151",
@@ -3400,7 +4010,15 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/character/",
+          "kind": "official_name"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_152",
@@ -3480,6 +4098,11 @@
         {
           "type": "関係",
           "text": "雨取千佳：妹",
+          "from": 2
+        },
+        {
+          "type": "読み",
+          "text": "あまとり りんじ",
           "from": 2
         }
       ],
@@ -3609,7 +4232,20 @@
       ],
       "embeds": [],
       "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
+      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）",
+      "sources": [
+        {
+          "name": "東映アニメーション公式・キャラクター紹介",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt01/character/index.html",
+          "kind": "official_name"
+        },
+        {
+          "name": "ジャンプSQ. 公式作品紹介",
+          "url": "https://jumpsq-sp.shueisha.co.jp/rensai/worldtrigger/",
+          "kind": "official_profile"
+        }
+      ],
+      "nameVerified": true
     },
     {
       "id": "wt_full_168",
@@ -3787,5 +4423,6 @@
       "origin": "catalog-24",
       "source": "単行本19巻の旧ボーダー関係の登場人物．詳細経歴は表示しない"
     }
-  ]
+  ],
+  "sourceScope": "公式（東映アニメーション・集英社）の公開キャラクター一覧で名前が確認できた人には出典を付与．所属や別名の公開巻は暫定を含む．"
 }
