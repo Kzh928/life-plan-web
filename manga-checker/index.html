@@ -227,6 +227,85 @@ $("learnSavedPhoto").onclick=async function(){
  }catch(e){alert("特徴抽出ができませんでした："+e.message)}
  finally{button.disabled=false}
 };
+
+function imageSearchDefinitions(p){
+ var base=(db.active==="wt"?"ワールドトリガー ":"")+p.name;
+ var squad=shownFacts(p).find(function(f){return f.type==="所属"});
+ return [
+ {title:"画像をまとめて",detail:"Googleの画像一覧",query:base+" キャラクター アニメ",engine:"google"},
+ {title:"アニメ立ち絵",detail:"全身・制服",query:base+" 公式 アニメ 立ち絵",engine:"google"},
+ {title:"原作の絵",detail:"漫画・モノクロ",query:base+" 原作 漫画",engine:"google"},
+ {title:"顔・表情",detail:"別角度・顔アップ",query:base+" 顔 表情 アニメ",engine:"google"},
+ {title:"戦闘シーン",detail:"武器・トリガー",query:base+" 戦闘シーン",engine:"google"},
+ {title:"隊員集合",detail:"所属・仲間",query:"ワールドトリガー "+(squad?squad.text:p.name)+" 隊員 集合",engine:"google"},
+ {title:"描き下ろし",detail:"グッズ・新しい絵",query:base+" 描き下ろし イラスト",engine:"google"},
+ {title:"Yahoo画像",detail:"別の検索結果",query:base+" アニメ キャラクター",engine:"yahoo"},
+ {title:"Bing画像",detail:"別の検索結果",query:base+" 公式 アニメ",engine:"bing"}
+ ]
+}
+function wirePhotoDiscovery(p){
+ var choices=imageSearchDefinitions(p),root=$("imageDiscovery");
+ root.innerHTML=choices.map(function(x,i){return '<button class="search-choice" data-imagelookup="'+i+'">◫ '+esc(x.title)+'<span>'+esc(x.detail)+'</span></button>'}).join("");
+ var openSearch=function(ch){
+  if(!confirm("画像検索には，読了"+vol()+"巻より先のネタバレ画像が含まれる可能性があります．検索サイトを開きますか？"))return;
+  var query=encodeURIComponent(ch.query);
+  var url=ch.engine==="yahoo"?"https://search.yahoo.co.jp/image/search?p="+query:ch.engine==="bing"?"https://www.bing.com/images/search?q="+query:"https://www.google.com/search?tbm=isch&q="+query;
+  window.open(url,"_blank","noopener,noreferrer")
+ };
+ root.querySelectorAll("[data-imagelookup]").forEach(function(btn){btn.onclick=function(){openSearch(choices[Number(btn.dataset.imagelookup)])}});
+ $("searchPersonImages").onclick=function(){openSearch(choices[0])}
+}
+function safeImageLink(value){
+ try{var u=new URL(String(value||"").trim());return u.protocol==="https:"&&!u.username&&!u.password&&u.href.length<=2048?u.href:null}catch(e){return null}
+}
+function renderRemoteImages(p){
+ var root=$("remotePhotoGallery"),images=(p.remoteImages||[]).filter(safeImageLink);
+ $("remotePhotoCount").textContent="URLで追加した画像："+images.length+"件";
+ root.innerHTML=images.map(function(url,i){
+  return '<div class="photo-tile remote-tile"><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer" style="width:100%;height:100%" aria-label="元画像を開く"><img src="'+esc(url)+'" loading="lazy" referrerpolicy="no-referrer" alt="外部画像（見えない場合はタップ）"></a><button class="photo-remove" data-removeurl="'+i+'" aria-label="登録を削除">×</button></div>'
+ }).join("");
+ root.querySelectorAll("[data-removeurl]").forEach(function(btn){btn.onclick=function(){var url=images[Number(btn.dataset.removeurl)];p.remoteImages=p.remoteImages.filter(function(x){return x!==url});save();renderRemoteImages(p)}});
+ root.querySelectorAll("img").forEach(function(image){image.onerror=function(){image.style.display="none";var msg=document.createElement("span");msg.textContent="直接表示できません．タップで元画像";msg.style.cssText="font-size:11px;padding:8px;pointer-events:none;text-align:center";image.parentNode.appendChild(msg)}})
+}
+function wireRemotePhotos(p){
+ $("saveRemoteUrls").onclick=function(){
+  var arr=$("remotePhotoUrls").value.split(/[\r\n]+/).map(function(x){return x.trim()}).filter(Boolean);
+  var links=arr.map(safeImageLink).filter(Boolean);p.remoteImages=p.remoteImages||[];
+  var added=0;links.forEach(function(url){if(p.remoteImages.length<150&&!p.remoteImages.includes(url)){p.remoteImages.push(url);added++}});
+  save();renderRemoteImages(p);$("remotePhotoUrls").value="";
+  $("personPhotoStatus").textContent=added+"件のURLを追加しました．"+(arr.length-links.length)+"件は無効な形式．"
+ };
+ renderRemoteImages(p)
+}
+async function folderPhotos(files){
+ var list=Array.from(files||[]).filter(function(f){return f.type&&f.type.startsWith("image/")&&f.size<=20000000}).slice(0,800);
+ var status=$("personPhotoStatus");if(!list.length){status.textContent="画像が見つかりませんでした";return}
+ var lookup=new Map(),counts=new Map(),done=0,skipped=0,unknown=0;
+ available().forEach(function(p){aliases(p).forEach(function(name){lookup.set(norm(name).replace(/[・･]/g,""),p)})});
+ $("bulkPhotoFolder").disabled=true;
+ try{
+  for(var i=0;i<list.length;i++){
+   var file=list[i],parts=(file.webkitRelativePath||"").split("/");
+   var name=parts.length>=2?parts[parts.length-2]:"",p=lookup.get(norm(name).replace(/[・･]/g,""));
+   if(!p){unknown++;continue}
+   var key=photoKey(p),n=counts.get(key);
+   if(n===undefined){n=(await photosFor(key)).length;counts.set(key,n)}
+   if(n>=200){skipped++;continue}
+   status.textContent=(i+1)+"/"+list.length+"枚を追加中："+p.name;
+   try{var blob=await compressPhoto(file);await writePhoto(key,blob,file.name);counts.set(key,n+1);done++}catch(e){skipped++}
+  }
+  status.textContent="一括保存："+done+"枚．未対応のフォルダ："+unknown+"件，失敗・上限："+skipped+"件．"
+ }catch(e){status.textContent="一括保存できませんでした："+e.message}
+ finally{$("bulkPhotoFolder").disabled=false}
+}
+function wireFolderPhotoImport(p){
+ $("bulkPhotoFolder").onclick=function(){$("photoFolderInput").click()};
+ $("photoFolderInput").onchange=function(){
+  var files=this.files;this.value="";
+  if(files&&files.length)folderPhotos(files).then(function(){renderPhotoGallery(p)})
+ }
+}
+
 function wirePersonGallery(p){
  wirePhotoDiscovery(p);wireRemotePhotos(p);wireFolderPhotoImport(p);
  var curated=$("characterImagePages"),pages=Array.isArray(p.imagePages)?p.imagePages:[];
