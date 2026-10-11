@@ -121,11 +121,14 @@
         "position": "シューター",
         "squadAtCh199": "玉狛第2",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 168,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "戦術を工夫する玉狛第2の隊長．眼鏡が目印",
@@ -274,11 +277,13 @@
         "position": "アタッカー",
         "squadAtCh199": "玉狛第2",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 141
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "白髪の少年．近界での経験が豊富で近接戦が得意",
@@ -422,11 +427,14 @@
         "position": "スナイパー",
         "squadAtCh199": "玉狛第2",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 140,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "大きなトリオン能力を持つ玉狛第2のスナイパー",
@@ -558,11 +566,13 @@
         "position": "アタッカー",
         "squadAtCh199": "玉狛第2",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 171
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "角のあるアフトクラトル出身の隊員．剣を使う",
@@ -642,11 +652,14 @@
         "position": "パーフェクトオールラウンダー",
         "squadAtCh199": "玉狛第1",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 191,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "大柄で筋肉質．あらゆる距離に対応する玉狛第1の隊長",
@@ -740,11 +753,14 @@
         "position": "アタッカー",
         "squadAtCh199": "玉狛第1",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 157,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "玉狛第1のアタッカー．双月を使い，からかわれやすい",
@@ -850,11 +866,14 @@
         "position": "オールラウンダー",
         "squadAtCh199": "玉狛第1",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 178,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "修の師匠．時間制限つきのガイストを使う",
@@ -945,11 +964,14 @@
         "position": "オペレーター",
         "squadAtCh199": "玉狛第2",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 160,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "玉狛のオペレーター．眼鏡が好きで隊員をサポート",
@@ -996,14 +1018,19 @@
       ],
       "profile": {
         "position": "玉狛支部長",
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 179,
+        "bloodType": "AB"
       },
       "reminder": {
         "text": "玉狛支部長．飄々とした雰囲気の古参メンバー",
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "profileSources": [
+        "https://worldtrigger.info/article/border.php"
+      ]
     },
     {
       "id": "wt_full_009",
@@ -1213,11 +1240,14 @@
         "position": "アタッカー",
         "squadAtCh199": "S級・隊外",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 179,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "サングラスが目印の実力派．少し先の未来を予知できる",
@@ -1276,11 +1306,14 @@
         "position": "オールラウンダー",
         "squadAtCh199": "S級・隊外",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 165,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "強力なブラックトリガーを持つS級隊員",
@@ -1352,11 +1385,14 @@
         "position": "アタッカー",
         "squadAtCh199": "太刀川隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 180,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "ボーダーのNo.1アタッカー．剣の腕に優れる",
@@ -1411,11 +1447,14 @@
         "position": "シューター",
         "squadAtCh199": "太刀川隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 175,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "多彩な射撃と合成弾が得意な「弾バカ」",
@@ -1463,11 +1502,14 @@
         "position": "ガンナー",
         "squadAtCh199": "太刀川隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 169,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "太刀川隊のガンナー．少し自信過剰",
@@ -1511,11 +1553,14 @@
         "position": "オペレーター",
         "squadAtCh199": "太刀川隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 163,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "ゲーム好きの太刀川隊オペレーター",
@@ -1563,11 +1608,14 @@
         "position": "トラッパー",
         "squadAtCh199": "冬島隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 184,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "罠とワープを駆使する特殊工作兵",
@@ -1620,11 +1668,14 @@
         "position": "スナイパー",
         "squadAtCh199": "冬島隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 183,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "リーゼント頭が目印のNo.1スナイパー",
@@ -1663,11 +1714,14 @@
         "position": "オペレーター",
         "squadAtCh199": "冬島隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 161,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "冬島隊のオペレーター．年上の隊員にも物怖じしない",
@@ -1739,11 +1793,14 @@
         "position": "アタッカー",
         "squadAtCh199": "風間隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 158,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "小柄で寡黙なNo.2アタッカー．隠密戦を指揮",
@@ -1796,11 +1853,14 @@
         "position": "オールラウンダー",
         "squadAtCh199": "風間隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 173,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "風間隊の穏やかなオールラウンダー",
@@ -1886,11 +1946,14 @@
         "position": "アタッカー",
         "squadAtCh199": "風間隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 164,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "聞こえ方が鋭くなるサイドエフェクトを持つ",
@@ -1936,11 +1999,14 @@
         "position": "オペレーター",
         "squadAtCh199": "風間隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 152,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "風間隊のオペレーター．チームを支える",
@@ -1979,11 +2045,14 @@
         "position": "オペレーター",
         "squadAtCh199": "草壁隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 153,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "オペレーターながら隊長を務める",
@@ -2039,11 +2108,14 @@
         "position": "アタッカー",
         "squadAtCh199": "草壁隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 157,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "グラスホッパーを活用する元気な中学生",
@@ -2091,11 +2163,14 @@
         "position": "オールラウンダー",
         "squadAtCh199": "草壁隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 176,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "草壁隊のオールラウンダー．後輩の面倒を見る",
@@ -2147,11 +2222,14 @@
         "position": "ガンナー",
         "squadAtCh199": "草壁隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 178,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "No.1ガンナー．二宮と弓場の戦い方を手本にしている",
@@ -2206,11 +2284,14 @@
         "position": "スナイパー",
         "squadAtCh199": "草壁隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 182,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "ミラーグラスが目印の寡黙なスナイパー",
@@ -2287,11 +2368,14 @@
         "position": "オールラウンダー",
         "squadAtCh199": "嵐山隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 179,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "広報の顔として活動する嵐山隊長．連携が得意",
@@ -2379,11 +2463,14 @@
         "position": "オールラウンダー",
         "squadAtCh199": "嵐山隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 161,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "青髪のエリート隊員．修に厳しくも助言する",
@@ -2452,11 +2539,14 @@
         "position": "オールラウンダー",
         "squadAtCh199": "嵐山隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 167,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "味方の援護が上手な嵐山隊のオールラウンダー",
@@ -2504,11 +2594,14 @@
         "position": "スナイパー",
         "squadAtCh199": "嵐山隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 171,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "陽気なスナイパー．両手の銃での狙撃を得意とする",
@@ -2547,11 +2640,14 @@
         "position": "オペレーター",
         "squadAtCh199": "嵐山隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 163,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "嵐山隊のオペレーター．広報活動も支える",
@@ -2599,11 +2695,14 @@
         "position": "シューター",
         "squadAtCh199": "加古隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 173,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "加古隊の隊長．変化球を扱うシューター",
@@ -2651,11 +2750,14 @@
         "position": "アタッカー",
         "squadAtCh199": "加古隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 142,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "加古隊の小柄なアタッカー．素早い動きが得意",
@@ -2689,11 +2791,14 @@
         "position": "トラッパー",
         "squadAtCh199": "加古隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 155,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "加古隊のトラッパー．特殊なサイドエフェクトを持つ",
@@ -2732,11 +2837,14 @@
         "position": "オペレーター",
         "squadAtCh199": "加古隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 157,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "加古隊のオペレーター．整理整頓が得意",
@@ -2803,11 +2911,14 @@
         "position": "オールラウンダー",
         "squadAtCh199": "三輪隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 174,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "近界民への反感が強い三輪隊長．鉛弾を駆使する",
@@ -2883,11 +2994,14 @@
         "position": "アタッカー",
         "squadAtCh199": "三輪隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 175,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "槍の弧月を使う陽気な戦闘員",
@@ -2954,11 +3068,14 @@
         "position": "スナイパー",
         "squadAtCh199": "三輪隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 177,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "精密射撃が得意なNo.2スナイパー",
@@ -3046,11 +3163,14 @@
         "position": "スナイパー",
         "squadAtCh199": "三輪隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 167,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "三輪隊のスナイパー．状況判断が得意",
@@ -3089,11 +3209,14 @@
         "position": "オペレーター",
         "squadAtCh199": "三輪隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 165,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "三輪隊の作戦参謀的存在．戦術に明るい",
@@ -3132,11 +3255,14 @@
         "position": "ガンナー",
         "squadAtCh199": "片桐隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 173,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "元東隊で現在は片桐隊の隊長",
@@ -3184,11 +3310,14 @@
         "position": "アタッカー",
         "squadAtCh199": "片桐隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 170,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "片桐隊のアタッカー．元東隊",
@@ -3236,11 +3365,14 @@
         "position": "スナイパー",
         "squadAtCh199": "片桐隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 176,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "片桐隊のスナイパー",
@@ -3279,11 +3411,14 @@
         "position": "スポッター",
         "squadAtCh199": "片桐隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 158,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "珍しいポジションのスポッター（観測手）",
@@ -3322,11 +3457,14 @@
         "position": "オペレーター",
         "squadAtCh199": "片桐隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 162,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "隊員データに詳しい片桐隊オペレーター",
@@ -3423,11 +3561,14 @@
         "position": "シューター",
         "squadAtCh199": "二宮隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 184,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "黒いスーツ姿が目印．圧倒的な火力のNo.1シューター",
@@ -3532,11 +3673,14 @@
         "position": "ガンナー",
         "squadAtCh199": "二宮隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 176,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "笑顔と軽い口調が印象的．駆け引きも得意",
@@ -3618,11 +3762,14 @@
         "position": "アタッカー",
         "squadAtCh199": "二宮隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 178,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "落ち着いた剣士．味方の援護が巧みで女性が苦手",
@@ -3675,11 +3822,14 @@
         "position": "オペレーター",
         "squadAtCh199": "二宮隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 155,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "二宮隊のオペレーター．「ひゃみさん」とも呼ばれる",
@@ -3761,11 +3911,14 @@
         "position": "アタッカー",
         "squadAtCh199": "影浦隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 177,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "ギザギザの歯が特徴．感情を感じ取るサイドエフェクトを持つ",
@@ -3828,11 +3981,14 @@
         "position": "ガンナー",
         "squadAtCh199": "影浦隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 189,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "体格の大きなガンナー．広範囲へのメテオラ射撃が特徴",
@@ -3898,11 +4054,14 @@
         "position": "スナイパー",
         "squadAtCh199": "影浦隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 156,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "若い凄腕スナイパー．千佳や夏目と同級生",
@@ -3978,11 +4137,14 @@
         "position": "オペレーター",
         "squadAtCh199": "影浦隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 159,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "口調は強めだが仲間を大切にするオペレーター",
@@ -4069,11 +4231,14 @@
         "position": "アタッカー",
         "squadAtCh199": "生駒隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 173,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "関西弁と生駒旋空が印象的な隊長",
@@ -4164,11 +4329,14 @@
         "position": "シューター",
         "squadAtCh199": "生駒隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 178,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "冷静で頭の回転が速い生駒隊シューター",
@@ -4233,11 +4401,14 @@
         "position": "スナイパー",
         "squadAtCh199": "生駒隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 176,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "グラスホッパーで動き回る生駒隊スナイパー",
@@ -4312,11 +4483,14 @@
         "position": "アタッカー",
         "squadAtCh199": "生駒隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 170,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "元気で勢いのある生駒隊のアタッカー",
@@ -4381,11 +4555,14 @@
         "position": "オペレーター",
         "squadAtCh199": "生駒隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 157,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "生駒隊のオペレーター．関西弁で仲間を支える",
@@ -4437,11 +4614,14 @@
         "position": "ガンナー",
         "squadAtCh199": "弓場隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 182,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "早撃ちの拳銃を得意とするガンナー隊長",
@@ -4509,11 +4689,14 @@
         "position": "オールラウンダー",
         "squadAtCh199": "弓場隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 153,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "弓場隊の若いオールラウンダー．礼儀正しい",
@@ -4581,11 +4764,14 @@
         "position": "スナイパー",
         "squadAtCh199": "弓場隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 169,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "隠密行動が得意な弓場隊スナイパー",
@@ -4638,11 +4824,14 @@
         "position": "オペレーター",
         "squadAtCh199": "弓場隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 162,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "体育会系の弓場隊オペレーター",
@@ -4729,11 +4918,14 @@
         "position": "アタッカー",
         "squadAtCh199": "王子隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 177,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "独自のあだ名とアイコンを使う頭脳派隊長",
@@ -4829,11 +5021,14 @@
         "position": "シューター",
         "squadAtCh199": "王子隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 181,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "落ち着いた王子隊シューター．写真が趣味",
@@ -4909,11 +5104,14 @@
         "position": "アタッカー",
         "squadAtCh199": "王子隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 172,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "まじめな王子隊アタッカー",
@@ -4968,11 +5166,14 @@
         "position": "オペレーター",
         "squadAtCh199": "王子隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 165,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "王子隊のオペレーター．隊員アイコンもデザインする",
@@ -5040,11 +5241,14 @@
         "position": "ガンナー",
         "squadAtCh199": "鈴鳴第一（来馬隊）",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 176,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "仲間思いで穏やかな鈴鳴第一の隊長",
@@ -5121,11 +5325,14 @@
         "position": "アタッカー",
         "squadAtCh199": "鈴鳴第一（来馬隊）",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 172,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "学習能力が高いサイドエフェクトを持つアタッカー",
@@ -5194,11 +5401,14 @@
         "position": "スナイパー",
         "squadAtCh199": "鈴鳴第一（来馬隊）",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 168,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "鈴鳴第一のスナイパー．悪気のない失敗も多い",
@@ -5242,11 +5452,14 @@
         "position": "オペレーター",
         "squadAtCh199": "鈴鳴第一（来馬隊）",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 159,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "鈴鳴第一のオペレーター",
@@ -5307,11 +5520,14 @@
         "position": "スナイパー",
         "squadAtCh199": "東隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 186,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "ボーダー最初期のスナイパー．育成の名手",
@@ -5380,11 +5596,14 @@
         "position": "アタッカー",
         "squadAtCh199": "東隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 165,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "元気でアイデア先行の東隊アタッカー",
@@ -5453,11 +5672,14 @@
         "position": "アタッカー",
         "squadAtCh199": "東隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 167,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "小荒井を落ち着いて支える東隊アタッカー",
@@ -5505,11 +5727,14 @@
         "position": "オペレーター",
         "squadAtCh199": "東隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 162,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "小荒井・奥寺に助言する東隊オペレーター",
@@ -5610,11 +5835,14 @@
         "position": "オールラウンダー",
         "squadAtCh199": "香取隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 157,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "高い戦闘センスを持つ香取隊長．感情が顔に出やすい",
@@ -5719,11 +5947,14 @@
         "position": "アタッカー",
         "squadAtCh199": "香取隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 173,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "香取と若村の間で調整役になりがちな剣士",
@@ -5805,11 +6036,14 @@
         "position": "ガンナー",
         "squadAtCh199": "香取隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 172,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "真面目で努力家のガンナー．香取と衝突しがち",
@@ -5890,11 +6124,14 @@
         "position": "オペレーター",
         "squadAtCh199": "香取隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 155,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "香取の幼なじみで隊のまとめ役",
@@ -5990,11 +6227,14 @@
         "position": "ガンナー",
         "squadAtCh199": "諏訪隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 178,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "顎ひげと煙草が目印のガンナー隊長",
@@ -6062,11 +6302,14 @@
         "position": "ガンナー",
         "squadAtCh199": "諏訪隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 181,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "諏訪と組んで集中射撃を行うガンナー",
@@ -6134,11 +6377,14 @@
         "position": "アタッカー",
         "squadAtCh199": "諏訪隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 169,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "責任感の強い諏訪隊アタッカー",
@@ -6182,11 +6428,14 @@
         "position": "オペレーター",
         "squadAtCh199": "諏訪隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 155,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "「おサノ」の呼び名で親しまれるオペレーター",
@@ -6264,11 +6513,14 @@
         "position": "スナイパー",
         "squadAtCh199": "荒船隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 176,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "剣と狙撃に精通する理論派の隊長",
@@ -6344,11 +6596,14 @@
         "position": "スナイパー",
         "squadAtCh199": "荒船隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 180,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "荒船を支えるスナイパー",
@@ -6408,11 +6663,14 @@
         "position": "スナイパー",
         "squadAtCh199": "荒船隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 160,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "「ダルい」が口癖の精密なスナイパー",
@@ -6456,11 +6714,14 @@
         "position": "オペレーター",
         "squadAtCh199": "荒船隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 159,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "荒船隊のオペレーター．狙撃3人を支援",
@@ -6525,11 +6786,14 @@
         "position": "シューター",
         "squadAtCh199": "那須隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 159,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "バイパーを巧みに扱う那須隊のシューター",
@@ -6613,11 +6877,14 @@
         "position": "アタッカー",
         "squadAtCh199": "那須隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 171,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "頼れる姉御肌の那須隊アタッカー",
@@ -6682,11 +6949,14 @@
         "position": "スナイパー",
         "squadAtCh199": "那須隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 154,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "明るい那須隊のスナイパー．夏目の先輩",
@@ -6739,11 +7009,14 @@
         "position": "オペレーター",
         "squadAtCh199": "那須隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 156,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "人見知りでネット参加も多い那須隊オペレーター",
@@ -6827,11 +7100,14 @@
         "position": "オールラウンダー",
         "squadAtCh199": "柿崎隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 177,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "仲間を重んじる元嵐山隊の隊長",
@@ -6907,11 +7183,14 @@
         "position": "オールラウンダー",
         "squadAtCh199": "柿崎隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 157,
+        "bloodType": "O"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "柿崎を慕い入隊した積極的なオールラウンダー",
@@ -6980,11 +7259,14 @@
         "position": "ガンナー",
         "squadAtCh199": "柿崎隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 154,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "柿崎に憧れて入隊した若いガンナー",
@@ -7053,11 +7335,14 @@
         "position": "オペレーター",
         "squadAtCh199": "柿崎隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 158,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "落ち着いた柿崎隊オペレーター",
@@ -7113,11 +7398,14 @@
         "position": "ガンナー",
         "squadAtCh199": "漆間隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 166,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "少人数で戦う漆間隊のガンナー隊長",
@@ -7170,11 +7458,14 @@
         "position": "オペレーター",
         "squadAtCh199": "漆間隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 160,
+        "bloodType": "A"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "漆間隊を支えるオペレーター",
@@ -7222,11 +7513,14 @@
         "position": "ガンナー",
         "squadAtCh199": "茶野隊",
         "commander": true,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 168,
+        "bloodType": "B"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ]
     },
     {
@@ -7259,11 +7553,13 @@
         "position": "ガンナー",
         "squadAtCh199": "茶野隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "bloodType": "AB"
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ]
     },
     {
@@ -7403,11 +7699,13 @@
         "position": "オペレーター",
         "squadAtCh199": "海老名隊",
         "commander": false,
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 153
       },
       "profileSources": [
         "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
-        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/357.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "B級ランク戦の実況でおなじみのオペレーター",
@@ -7979,14 +8277,19 @@
       ],
       "profile": {
         "position": "最高司令官",
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 178,
+        "bloodType": "O"
       },
       "reminder": {
         "text": "ボーダー最高司令官．組織の指針を決める",
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "profileSources": [
+        "https://worldtrigger.info/article/border.php"
+      ]
     },
     {
       "id": "wt_full_130",
@@ -8033,14 +8336,19 @@
       ],
       "profile": {
         "position": "本部長",
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 181,
+        "bloodType": "A"
       },
       "reminder": {
         "text": "ボーダー本部長．剣の腕でも知られる",
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "profileSources": [
+        "https://worldtrigger.info/article/border.php"
+      ]
     },
     {
       "id": "wt_full_131",
@@ -8087,14 +8395,19 @@
       ],
       "profile": {
         "position": "開発室長",
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 161,
+        "bloodType": "B"
       },
       "reminder": {
         "text": "ボーダーの技術開発を統括する",
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "profileSources": [
+        "https://worldtrigger.info/article/border.php"
+      ]
     },
     {
       "id": "wt_full_132",
@@ -8141,14 +8454,19 @@
       ],
       "profile": {
         "position": "メディア対策室長",
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 167,
+        "bloodType": "A"
       },
       "reminder": {
         "text": "ボーダーの広報・報道対応を担う",
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "profileSources": [
+        "https://worldtrigger.info/article/border.php"
+      ]
     },
     {
       "id": "wt_full_133",
@@ -8188,14 +8506,19 @@
       ],
       "profile": {
         "position": "外務・営業部長",
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 177,
+        "bloodType": "B"
       },
       "reminder": {
         "text": "外務や企業との交渉を担う幹部",
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "profileSources": [
+        "https://worldtrigger.info/article/border.php"
+      ]
     },
     {
       "id": "wt_full_134",
@@ -8248,10 +8571,13 @@
           "day": 22
         },
         "position": "本部長補佐",
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 164,
+        "bloodType": "A"
       },
       "profileSources": [
-        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "本部長を補佐する元アタッカー",
@@ -8283,10 +8609,13 @@
           "day": 5
         },
         "position": "チーフエンジニア",
-        "positionFrom": 24
+        "positionFrom": 24,
+        "heightCm": 170,
+        "bloodType": "A"
       },
       "profileSources": [
-        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html"
+        "https://w.atwiki.jp/worldtrigger2ch/pages/406.html",
+        "https://worldtrigger.info/article/border.php"
       ],
       "reminder": {
         "text": "元アタッカーのエンジニア",
