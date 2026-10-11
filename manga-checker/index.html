@@ -16,10 +16,10 @@
 </head>
 <body>
 <div class="shell">
-<header class="mast"><div class="topline"><div class="brand">コマ<span>の</span>人</div><span class="tag">SPOILER SAFE / LOCAL</span></div><div class="sub">このコマ，誰だっけ？をその場で解決</div><div class="reading"><div class="grow"><label for="seriesSel">作品</label><select id="seriesSel"></select></div><div class="volbox"><label for="progressInput">読了巻数</label><input id="progressInput" type="number" min="0" max="99" value="1" inputmode="numeric" aria-label="読み終わった巻数"></div></div></header>
+<header class="mast"><div class="topline"><div class="brand">コマ<span>の</span>人</div><span class="tag">SPOILER SAFE / LOCAL</span></div><div class="sub">このコマ，誰だっけ？をその場で解決 · ワートリ24巻までの人物対応</div><div class="reading"><div class="grow"><label for="seriesSel">作品</label><select id="seriesSel"></select></div><div class="volbox"><label for="progressInput">読了巻数</label><input id="progressInput" type="number" min="0" max="99" value="1" inputmode="numeric" aria-label="読み終わった巻数"></div></div></header>
 <main class="content">
 <section id="scanPage">
-<div class="panel"><div class="eyebrow">01 / SCAN</div><h1 class="h2">かざして，思い出す</h1><p class="hint">カメラで撮影，またはスクショを読み込み．登場人物の顔を指で囲んで調べられる．</p>
+<div class="panel"><div class="strip" id="rosterBanner"><span class="chip">人物名簿を読み込み中…</span></div><div class="eyebrow">01 / SCAN</div><h1 class="h2">かざして，思い出す</h1><p class="hint">カメラで撮影，またはスクショを読み込み．登場人物の顔を指で囲んで調べられる．</p>
 <div class="camera-frame"><div id="camEmpty" class="camera-empty"><div class="scan-icon">◎</div><b>ここに漫画のコマを表示</b><small>人物の画像を登録すると，見た目から候補を探せるようになります</small></div><video id="video" autoplay playsinline muted hidden></video><canvas id="photoCanvas" hidden></canvas></div>
 <div class="buttons"><button id="openCamera" class="btn primary">◎ カメラを起動</button><button id="chooseImage" class="btn pale">▣ 写真・スクショ</button></div><input type="file" id="photoInput" accept="image/*" class="hidden"><div id="cameraButtons" class="buttons" hidden style="margin-top:8px"><button class="btn primary" id="shoot">● 撮影する</button><button class="btn light" id="stopCamera">閉じる</button></div>
 <div class="notice" id="cropNote" hidden>調べたい人物を画像上で指で囲んでください．囲まない場合は画像全体を調べます．</div>
@@ -27,12 +27,12 @@
 </div><div id="resultBox"></div>
 <div class="panel"><div class="row"><div><div class="eyebrow">学習する</div><h2 class="h2">顔を覚えさせる</h2></div><span class="chip safe">端末内に保存</span></div><p class="hint">画像を選び，顔を囲んでから人物を指定すると特徴を記憶．同じキャラの異なるコマを複数登録すると判定を改善できる場合があります．</p><div class="field"><label for="trainWho">この画像の人物</label><select id="trainWho"></select></div><button class="btn pale full" id="learnButton" disabled>選んだ人物として画像を登録</button><div class="status" id="learnStatus"></div><p class="hint">見た目の照合は実験的な機能です．正答を保証しません．画像そのものは保存しません．初回のAI読み込みには通信が必要です．</p></div>
 </section>
-<section id="peoplePage" class="hidden"><div class="panel"><div class="row"><div><div class="eyebrow">02 / PEOPLE</div><h1 class="h2">人物を探す</h1></div><button class="btn primary small" id="newChar">＋ 人物追加</button></div><p class="hint">読了巻までに登場した人物だけ表示．呼び名や所属の変更も時点に合わせて管理できます．</p><input id="searchPeople" class="searchbar" placeholder="名前・あだ名で検索" autocomplete="off"><div class="cards" id="peopleList"></div></div></section>
-<section id="teamsPage" class="hidden"><div class="panel"><div class="eyebrow">03 / GROUPS</div><h1 class="h2">どの隊の人？</h1><p class="hint">読了巻までに登録されている所属情報だけを集計．隊名が判明する前には表示しません．</p><div id="teamsList"></div></div></section>
+<section id="peoplePage" class="hidden"><div class="panel"><div class="row"><div><div class="eyebrow">02 / PEOPLE</div><h1 class="h2">人物を探す</h1></div><button class="btn primary small" id="newChar">＋ 人物追加</button></div><p class="hint">読了巻までに登場した人物だけ表示．呼び名や所属の変更も時点に合わせて管理できます．</p><input id="searchPeople" class="searchbar" placeholder="名前・あだ名で検索" autocomplete="off"><div class="strip" style="margin-bottom:11px"><span class="chip safe" id="peopleCount">0人</span><span class="chip" id="peopleRange">巻数ごとに表示</span></div><div class="cards" id="peopleList"></div></div></section>
+<section id="teamsPage" class="hidden"><div class="panel"><div class="eyebrow">03 / GROUPS</div><h1 class="h2">どの隊の人？</h1><p class="hint">読了巻までに登録されている所属情報だけを集計．隊名が判明する前には表示しません．</p><div class="field"><label for="teamsMode">表示する部隊</label><select id="teamsMode"><option value="usual">普段の所属隊</option><option value="temporary">遠征選抜試験の臨時部隊（23巻〜）</option><option value="both">両方</option></select></div><div id="teamsList"></div></div></section>
 <section id="settingsPage" class="hidden"><div class="panel"><div class="eyebrow">04 / SETTINGS</div><h1 class="h2">作品と保存</h1><div class="notice"><b>ネタバレ保護：常にON</b><div>すべての人物・あだ名・所属・関係は「判明する巻」の設定以内しか表示しません．巻内の後半の出来事は，その巻を読了するまでは表示されません．</div></div>
 <div class="field"><label for="newSeriesName">別の漫画を追加</label><input id="newSeriesName" placeholder="例：HUNTER×HUNTER"></div><button id="addSeries" class="btn pale full">この作品を追加する</button><div class="sectionline"></div><div class="stats"><div class="stat"><strong id="countPeople">0</strong><small>登録人物数（作品内）</small></div><div class="stat"><strong id="countSamples">0</strong><small>見た目の学習画像数</small></div></div><div class="sectionline"></div><div class="buttons"><button class="btn outline" id="exportData">↓ バックアップ保存</button><button class="btn outline" id="importDataBtn">↑ バックアップ読込</button></div><input id="importData" type="file" accept="application/json,.json" hidden><p class="hint">保存先はこの端末のブラウザです．ブラウザデータを削除すると失われる場合があるため，バックアップをおすすめします．作品データ・学習した特徴もJSONに保存されます．</p></div>
-<div class="panel"><h2 class="h2">このアプリの限界</h2><p class="hint">自動認識は名前のOCRと，あなたが登録した画像の特徴照合を組み合わせた試作です．漫画全作品の顔を最初から理解するAIではありません．iPhoneでの日本語OCRには初回に外部ライブラリのダウンロードが必要です．巻数ごとの人物情報は最初から網羅していないので，未登録情報は表示しません．</p><p class="hint">撮影画像・入力メモを運営者のサーバーに送信する機能はありません．AIとOCRのライブラリ・モデル取得時には外部CDNと通信します．</p><p class="hint">写真・漫画画像は権利を守って個人利用の範囲で扱ってください．</p></div></section>
-<footer>コマの人 β1.0 · データは端末内 · 誤認識は手動で修正可能</footer>
+<div class="panel"><h2 class="h2">このアプリの限界</h2><p class="hint">自動認識は名前のOCRと，あなたが登録した画像の特徴照合を組み合わせた試作です．漫画全作品の顔を最初から理解するAIではありません．iPhoneでの日本語OCRには初回に外部ライブラリのダウンロードが必要です．巻数ごとの人物情報は最初から網羅していないので，未登録情報は表示しません．</p><p class="hint">撮影画像・入力メモを運営者のサーバーに送信する機能はありません．AIとOCRのライブラリ・モデル取得時には外部CDNと通信します．</p><p class="hint">ワールドトリガー人物名簿は24巻までの情報を対象にした試作です．すべての背景人物や初登場巻の完全性は保証できません．不確かな公開巻は安全側に遅らせており，表示されない人物は検索追加もできます．</p><p class="hint">写真・漫画画像は権利を守って個人利用の範囲で扱ってください．</p></div></section>
+<footer>コマの人 β2.0 · 24巻対応 · 誤認識は手動で修正可能</footer>
 </main>
 </div>
 <nav class="tabs"><div class="tabwrap"><button class="tab active" data-page="scan"><b>⌗</b>カメラ</button><button class="tab" data-page="people"><b>♙</b>人物</button><button class="tab" data-page="teams"><b>♧</b>隊・所属</button><button class="tab" data-page="settings"><b>⚙</b>設定</button></div></nav>
@@ -41,8 +41,8 @@
 (function(){
 "use strict";
 var STORE="komanohito_data_v1";
-var seed={version:1,active:"wt",series:[
-{id:"wt",name:"ワールドトリガー",volume:1,people:[
+var seed={version:2,active:"wt",series:[
+{id:"wt",name:"ワールドトリガー",volume:24,people:[
 {id:"wt_osamu",name:"三雲 修",from:1,facts:[{type:"呼び名",text:"修",from:1},{type:"呼び名",text:"オサム",from:1}] ,embeds:[]},
 {id:"wt_yuma",name:"空閑 遊真",from:1,facts:[{type:"呼び名",text:"遊真",from:1},{type:"呼び名",text:"ユーマ",from:1}],embeds:[]},
 {id:"wt_arashiyama",name:"嵐山 准",from:1,facts:[{type:"所属",text:"嵐山隊",from:1},{type:"役割",text:"隊長",from:1}],embeds:[]},
@@ -74,10 +74,11 @@ var shownFacts=function(p){return (p.facts||[]).filter(function(f){return Number
 var aliases=function(p){return [p.name].concat(shownFacts(p).filter(function(f){return f.type==="呼び名"}).map(function(f){return f.text}))};
 var save=function(){try{localStorage.setItem(STORE,JSON.stringify(db));return true}catch(e){alert("端末の保存容量が不足しています．バックアップを作成して整理してください．");return false}};
 function refresh(){var s=series();$("seriesSel").innerHTML=db.series.map(function(x){return '<option value="'+esc(x.id)+'">'+esc(x.name)+'</option>'}).join("");$("seriesSel").value=s.id;$("progressInput").value=s.volume;renderPeople();renderTeams();updateSelects();renderStats()}
-function renderStats(){$("countPeople").textContent=series().people.length;$("countSamples").textContent=series().people.reduce(function(n,p){return n+(p.embeds||[]).length},0)}
+function renderStats(){$("countPeople").textContent=series().people.length;$("countSamples").textContent=series().people.reduce(function(n,p){return n+(p.embeds||[]).length},0);$("peopleCount").textContent=available().length+"人 / 登録"+series().people.length+"人";$("peopleRange").textContent=vol()+"巻読了時点"}
 function updateSelects(){var arr=available();$("trainWho").innerHTML=arr.length?arr.map(function(p){return '<option value="'+esc(p.id)+'">'+esc(p.name)+'</option>'}).join(""):'<option value="">表示できる人物がいません</option>';if(currentImg)$("learnButton").disabled=!arr.length}
-function renderPeople(){var q=norm($("searchPeople").value),arr=available().filter(function(p){return aliases(p).some(function(a){return norm(a).includes(q)})});$("peopleList").innerHTML=arr.length?arr.map(function(p){var a=shownFacts(p).filter(function(f){return f.type==="呼び名"}).map(function(f){return f.text}).join(" / "),t=shownFacts(p).filter(function(f){return f.type==="所属"}).map(function(f){return f.text}).join(" / ");return '<button class="person" data-person="'+esc(p.id)+'"><span class="avatar">'+esc(p.name.replace(/\s/g,"").slice(0,1))+'</span><span style="flex:1"><span class="name">'+esc(p.name)+'</span><span class="mini">'+esc(a||"別名の登録なし")+(t?'<br>'+esc(t):"")+'</span></span><span class="arrow">›</span></button>'}).join(""):'<div class="notice">この巻数で表示できる人物がいません．名前を追加するか，読了巻数を確認してください．</div>'}
-function renderTeams(){var map={};available().forEach(function(p){shownFacts(p).filter(function(f){return f.type==="所属"}).forEach(function(f){(map[f.text]||(map[f.text]=[])).push(p)})});var names=Object.keys(map).sort();$("teamsList").innerHTML=names.length?names.map(function(n){return '<div class="group"><div class="row"><strong>'+esc(n)+'</strong><span class="chip">'+map[n].length+'人</span></div><div class="sectionline"></div>'+map[n].map(function(p){return '<button class="btn light small" data-person="'+esc(p.id)+'" style="margin:3px">'+esc(p.name)+'</button>'}).join("")+'</div>'}).join(""):'<div class="notice">所属情報はまだ登録されていません．人物の詳細画面から追加できます．</div>'}
+function renderPeople(){var q=norm($("searchPeople").value),arr=available().filter(function(p){return aliases(p).some(function(a){return norm(a).includes(q)})||shownFacts(p).some(function(f){return (f.type==="所属"||f.type==="臨時隊"||f.type==="役割")&&norm(f.text).includes(q)})});$("peopleList").innerHTML=arr.length?arr.map(function(p){var a=shownFacts(p).filter(function(f){return f.type==="呼び名"}).map(function(f){return f.text}).join(" / "),t=shownFacts(p).filter(function(f){return f.type==="所属"}).map(function(f){return f.text}).join(" / ");return '<button class="person" data-person="'+esc(p.id)+'"><span class="avatar">'+esc(p.name.replace(/\s/g,"").slice(0,1))+'</span><span style="flex:1"><span class="name">'+esc(p.name)+'</span><span class="mini">'+esc(a||"別名の登録なし")+(t?'<br>'+esc(t):"")+'</span></span><span class="arrow">›</span></button>'}).join(""):'<div class="notice">この巻数で表示できる人物がいません．名前を追加するか，読了巻数を確認してください．</div>'}
+function renderTeams(){var mode=$("teamsMode").value,groups=[];if(mode!=="temporary")groups.push({type:"所属",label:"普段の所属隊"});if(mode!=="usual"&&vol()>=23)groups.push({type:"臨時隊",label:"遠征選抜試験の臨時部隊"});if(mode==="temporary"&&vol()<23){$("teamsList").innerHTML='<div class="notice">23巻を読み終えると，臨時部隊の編成が表示されます．</div>';return}var html="";groups.forEach(function(g){var map={};available().forEach(function(p){shownFacts(p).filter(function(f){return f.type===g.type}).forEach(function(f){(map[f.text]||(map[f.text]=[])).push(p)})});var names=Object.keys(map).sort(function(a,b){return a.localeCompare(b,"ja",{numeric:true})});if(!names.length)return;html+='<div class="eyebrow" style="margin:13px 0">'+esc(g.label)+'</div>'+names.map(function(n){return '<details class="group"><summary class="row" style="cursor:pointer"><strong>'+esc(n)+'</strong><span class="chip">'+map[n].length+'人　⌄</span></summary><div class="sectionline"></div>'+map[n].map(function(p){return '<button class="btn light small" data-person="'+esc(p.id)+'" style="margin:3px">'+esc(p.name)+'</button>'}).join("")+'</details>'}).join("")});$("teamsList").innerHTML=html||'<div class="notice">この読了巻までの所属情報は登録されていません．</div>'}
+$("teamsMode").addEventListener("change",renderTeams);
 function showPage(p){["scan","people","teams","settings"].forEach(function(n){$(n+"Page").classList.toggle("hidden",n!==p)});document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("active",x.dataset.page===p)});window.scrollTo({top:0,behavior:"smooth"})}
 document.querySelectorAll(".tab").forEach(function(x){x.addEventListener("click",function(){showPage(x.dataset.page)})});
 $("seriesSel").addEventListener("change",function(){db.active=this.value;save();refresh();$("resultBox").innerHTML="";showPage("scan")});
@@ -136,7 +137,36 @@ var ranked=rankPeople(text,vec);if(ranked.length){setResult('<div class="panel">
 if(text){var safeText=esc(text).slice(0,700);$("resultBox").insertAdjacentHTML("beforeend",'<div class="panel"><div class="eyebrow">OCR / 読み取れた文字（検証用）</div><p class="hint" style="white-space:pre-wrap;overflow-wrap:anywhere">'+safeText+'</p></div>')}
 if($("fixIdentity"))$("fixIdentity").onclick=async function(){var p=personById($("correctWho").value);if(!p)return;var button=this;button.disabled=true;$("fixStatus").textContent="見た目を記憶中…";try{var v=await embed(crop());p.embeds=p.embeds||[];p.embeds.push(v);if(p.embeds.length>12)p.embeds.shift();save();renderStats();$("fixStatus").textContent=p.name+" として覚えました．次から判定の参考にします．"}catch(e){$("fixStatus").textContent="学習モデルを取得できませんでした．通信状況を確認してください．"}finally{button.disabled=false}};setStatus(errors.length?errors.join("．")+"．手動検索も使えます．":"読み取り完了．誤認識の可能性があるため候補を確認してください．");b.disabled=false};
 $("learnButton").onclick=async function(){var id=$("trainWho").value,p=personById(id);if(!p||!currentImg)return;var b=this;b.disabled=true;$("learnStatus").textContent="画像の特徴を計算しています…";try{var v=await embed(crop());p.embeds=p.embeds||[];p.embeds.push(v);if(p.embeds.length>12)p.embeds.shift();if(save())$("learnStatus").textContent=p.name+" の見た目を覚えました（"+p.embeds.length+"枚分）．";renderStats()}catch(e){$("learnStatus").textContent="学習モデルを読み込めませんでした．通信接続を確認してください．"}finally{b.disabled=false}};
+// 既存のローカル保存を維持し，名簿から不足分のみを追加する
+async function loadRoster(){
+ var banner=$("rosterBanner");
+ try{
+ var response=await fetch("./roster.json?v=2",{cache:"no-store"});
+ if(!response.ok)throw Error("名簿取得に失敗");
+ var data=await response.json();
+ if(data.version!==2||data.volumeLimit!==24||!Array.isArray(data.people))throw Error("名簿形式が不正");
+ var wt=db.series.find(function(x){return x.id==="wt"});if(!wt){wt={id:"wt",name:"ワールドトリガー",volume:24,people:[]};db.series.unshift(wt)}
+ // スキーマ更新は名前と人物IDの双方で照合して重複登録を避ける
+ var normName=function(t){return norm(t).replace(/[・･]/g,"")};
+ var byName=new Map(wt.people.map(function(p){return [normName(p.name),p]}));
+ var special={"三雲修":"wt_osamu","空閑遊真":"wt_yuma","嵐山准":"wt_arashiyama","木虎藍":"wt_kitora","時枝充":"wt_tokieda","レプリカ":"wt_replica","迅悠一":"wt_jin","雨取千佳":"wt_chika","三輪秀次":"wt_miwa","米屋陽介":"wt_yoneya","奈良坂透":"wt_narasaka","古寺章平":"wt_kodera","空閑有吾":"wt_yugo","小南桐絵":"wt_konami","烏丸京介":"wt_karasuma","木崎レイジ":"wt_reiji","太刀川慶":"wt_tachikawa","風間蒼也":"wt_kazama"};
+ var newCount=0,updatedCount=0;
+ data.people.forEach(function(p){
+ if(!p||!p.name||!Array.isArray(p.facts)||!Number.isFinite(Number(p.from)))return;
+ var person=byName.get(normName(p.name))||wt.people.find(function(x){return x.id===special[normName(p.name)]});
+ if(!person){person={id:p.id,name:p.name,from:p.from,facts:[],embeds:[],origin:"catalog-24"};wt.people.push(person);newCount++;byName.set(normName(p.name),person)}
+ else{updatedCount++;if(!person.facts)person.facts=[];if(!person.embeds)person.embeds=[];if(person.origin==="catalog-24"){person.from=p.from;person.name=p.name;person.facts=person.facts.filter(function(f){return f.origin!=="catalog-24"})}}
+ var seen=new Set(person.facts.map(function(f){return f.type+"|"+f.text+"|"+f.from+"|"+(f.to||"")}));
+ p.facts.forEach(function(f){var sig=f.type+"|"+f.text+"|"+f.from+"|"+(f.to||"");if(!seen.has(sig)){person.facts.push(Object.assign({},f,{origin:"catalog-24"}));seen.add(sig)}});
+ });
+ // ユーザーの意思で指定された24巻を既存v1アプリにも適用（以降の変更は維持）
+ if(!wt.volumeSetV2){wt.volume=24;wt.volumeSetV2=true}
+ db.version=2;save();refresh();
+ banner.innerHTML='<span class="chip safe">24巻までの登場人物：'+wt.people.length+'人登録</span><span class="chip">通常所属＋臨時11隊</span>';
+ }catch(e){banner.innerHTML='<span class="chip">名簿の読み込みに失敗しました</span><button class="btn light small" id="reloadRoster">再試行</button>';$("reloadRoster").onclick=loadRoster}
+}
 refresh();
+loadRoster();
 if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js").catch(function(){})}
 })();
 </script>
