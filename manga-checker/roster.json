@@ -816,6 +816,16 @@
           "type": "役割",
           "text": "オールラウンダー／隊長",
           "from": 1
+        },
+        {
+          "type": "関係",
+          "text": "嵐山 佐補：妹",
+          "from": 1
+        },
+        {
+          "type": "関係",
+          "text": "嵐山 副：弟",
+          "from": 1
         }
       ],
       "embeds": [],
@@ -3563,27 +3573,29 @@
       "name": "嵐山 佐補",
       "from": 1,
       "group": "一般・その他",
-      "facts": [],
+      "facts": [
+        {
+          "type": "関係",
+          "text": "嵐山 准：兄",
+          "from": 1
+        }
+      ],
       "embeds": [],
       "origin": "catalog-24",
       "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
     },
     {
       "id": "wt_full_165",
-      "name": "嵐山 理沙",
+      "name": "嵐山 副",
       "from": 1,
       "group": "一般・その他",
-      "facts": [],
-      "embeds": [],
-      "origin": "catalog-24",
-      "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
-    },
-    {
-      "id": "wt_full_166",
-      "name": "嵐山 福斗",
-      "from": 1,
-      "group": "一般・その他",
-      "facts": [],
+      "facts": [
+        {
+          "type": "関係",
+          "text": "嵐山 准：兄",
+          "from": 1
+        }
+      ],
       "embeds": [],
       "origin": "catalog-24",
       "source": "単行本24巻までの人物リスト（情報公開巻は安全側の目安）"
