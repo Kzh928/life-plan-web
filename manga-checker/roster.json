@@ -102,6 +102,13 @@
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：諏訪7番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/7/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -248,6 +255,13 @@
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：歌川1番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/1/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -389,6 +403,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：二宮8番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/8/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -517,6 +538,13 @@
           "url": "https://prtimes.jp/main/html/rd/p/000000035.000059287.html",
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：若村11番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/11/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
           "safeThroughVolume": 24
         }
       ],
@@ -898,6 +926,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：運営補助メンバーのイラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/support/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -1772,7 +1807,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：歌川1番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/1/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_024",
@@ -1823,6 +1867,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：北添4番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/4/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -2308,6 +2359,13 @@
           "url": "https://prtimes.jp/main/html/rd/p/000000035.000059287.html",
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：古寺6番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/6/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
           "safeThroughVolume": 24
         }
       ],
@@ -2969,6 +3027,13 @@
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：古寺6番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/6/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -3339,6 +3404,13 @@
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：二宮8番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/8/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -3441,6 +3513,13 @@
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：柿崎3番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/3/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -3519,6 +3598,13 @@
           "url": "https://prtimes.jp/main/html/rd/p/000000035.000059287.html",
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：王子2番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/2/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
           "safeThroughVolume": 24
         }
       ],
@@ -3609,6 +3695,15 @@
           "from": 24,
           "source": "https://worldtrigger.info/article/border.php"
         }
+      ],
+      "imagePages": [
+        {
+          "title": "集英社公式：村上10番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/10/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
       ]
     },
     {
@@ -3677,7 +3772,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：柿崎3番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/3/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_055",
@@ -3735,7 +3839,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：北添4番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/4/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_056",
@@ -3812,6 +3925,15 @@
           "from": 24,
           "source": "https://worldtrigger.info/article/border.php"
         }
+      ],
+      "imagePages": [
+        {
+          "title": "集英社公式：二宮8番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/8/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
       ]
     },
     {
@@ -3867,7 +3989,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：王子2番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/2/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_058",
@@ -3919,6 +4050,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：王子2番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/2/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -4007,6 +4145,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：水上9番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/9/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -4069,6 +4214,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：諏訪7番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/7/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -4141,6 +4293,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：北添4番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/4/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -4203,6 +4362,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：若村11番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/11/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -4282,7 +4448,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：来馬5番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/5/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_064",
@@ -4345,7 +4520,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：王子2番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/2/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_065",
@@ -4408,7 +4592,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：北添4番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/4/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_066",
@@ -4456,7 +4649,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：柿崎3番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/3/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_067",
@@ -4508,6 +4710,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：王子2番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/2/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -4601,6 +4810,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：村上10番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/10/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -4674,6 +4890,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：水上9番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/9/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -4726,6 +4949,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：運営補助メンバーのイラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/support/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -4790,6 +5020,13 @@
           "url": "https://prtimes.jp/main/html/rd/p/000000035.000059287.html",
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：来馬5番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/5/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
           "safeThroughVolume": 24
         }
       ],
@@ -4865,6 +5102,13 @@
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：村上10番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/10/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -4930,6 +5174,13 @@
           "url": "https://prtimes.jp/main/html/rd/p/000000035.000059287.html",
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：柿崎3番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/3/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
           "safeThroughVolume": 24
         }
       ],
@@ -5002,7 +5253,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：水上9番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/9/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_075",
@@ -5074,6 +5334,15 @@
           "from": 24,
           "source": "https://worldtrigger.info/article/border.php"
         }
+      ],
+      "imagePages": [
+        {
+          "title": "集英社公式：二宮8番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/8/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
       ]
     },
     {
@@ -5131,6 +5400,15 @@
           "from": 24,
           "source": "https://worldtrigger.info/article/border.php"
         }
+      ],
+      "imagePages": [
+        {
+          "title": "集英社公式：来馬5番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/5/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
       ]
     },
     {
@@ -5186,7 +5464,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：古寺6番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/6/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_078",
@@ -5229,7 +5516,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：運営補助メンバーのイラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/support/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_079",
@@ -5294,6 +5590,13 @@
           "url": "https://prtimes.jp/main/html/rd/p/000000035.000059287.html",
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：諏訪7番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/7/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
           "safeThroughVolume": 24
         }
       ],
@@ -5397,6 +5700,13 @@
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：古寺6番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/6/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -5476,6 +5786,13 @@
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：若村11番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/11/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -5553,6 +5870,13 @@
           "url": "https://prtimes.jp/main/html/rd/p/000000035.000059287.html",
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：北添4番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/4/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
           "safeThroughVolume": 24
         }
       ],
@@ -5647,6 +5971,13 @@
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：諏訪7番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/7/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -5712,6 +6043,13 @@
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：村上10番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/10/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -5776,6 +6114,13 @@
           "url": "https://prtimes.jp/main/html/rd/p/000000035.000059287.html",
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：若村11番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/11/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
           "safeThroughVolume": 24
         }
       ],
@@ -5857,6 +6202,15 @@
           "from": 24,
           "source": "https://worldtrigger.info/article/border.php"
         }
+      ],
+      "imagePages": [
+        {
+          "title": "集英社公式：来馬5番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/5/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
       ]
     },
     {
@@ -5890,6 +6244,13 @@
           "url": "https://prtimes.jp/main/html/rd/p/000000035.000059287.html",
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：水上9番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/9/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
           "safeThroughVolume": 24
         }
       ],
@@ -5964,6 +6325,13 @@
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
           "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：来馬5番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/5/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -6020,6 +6388,13 @@
           "url": "https://prtimes.jp/main/html/rd/p/000000035.000059287.html",
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：若村11番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/11/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
           "safeThroughVolume": 24
         }
       ],
@@ -6092,7 +6467,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：二宮8番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/8/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_091",
@@ -6209,6 +6593,13 @@
           "url": "https://prtimes.jp/main/html/rd/p/000000035.000059287.html",
           "source": "東映アニメーション／PR TIMES",
           "kind": "image_and_cast_article",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "集英社公式：村上10番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/10/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
           "safeThroughVolume": 24
         }
       ],
@@ -6359,7 +6750,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：歌川1番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/1/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_095",
@@ -6408,6 +6808,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：柿崎3番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/3/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -6481,6 +6888,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：水上9番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/9/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -6547,6 +6961,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：歌川1番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/1/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -6613,6 +7034,13 @@
           "source": "東映アニメーション",
           "safeThroughVolume": 24,
           "kind": "character_gallery_page"
+        },
+        {
+          "title": "集英社公式：諏訪7番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/7/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
         }
       ],
       "profile": {
@@ -6696,7 +7124,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：歌川1番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/1/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_100",
@@ -6744,7 +7181,16 @@
         "from": 24,
         "source": "https://worldtrigger.info/article/border.php",
         "certainty": "secondary-research"
-      }
+      },
+      "imagePages": [
+        {
+          "title": "集英社公式：古寺6番隊・人物イラスト",
+          "url": "https://jumpsq.shueisha.co.jp/contents/worldtrigger_ensei/team/6/",
+          "source": "集英社 ジャンプSQ.",
+          "kind": "official_character_portraits",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_101",
@@ -8844,7 +9290,7 @@
     }
   ],
   "sourceScope": "公式の公開ページ上で名前の存在を目視確認できた人物だけsourceを付与．2026年時点の公式紹介文は24巻より先のネタバレを含むためアプリには取得しない．別名・所属・初登場巻の正確性は別途検証が必要．",
-  "galleryIndexVersion": 6,
+  "galleryIndexVersion": 7,
   "galleryCoverage": "東映アニメーションのキャラクター一覧に掲載された人物に公式ギャラリーページのリンクを追加．画像データを転載・複製するものではない．Google画像検索は各人物の詳細画面から利用．",
   "rosterResearchDate": "2026-10-11",
   "rosterTimepoint": "第199話・3月5日時点の人物紹介データ（24巻以前）",
