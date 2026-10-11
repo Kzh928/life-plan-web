@@ -1438,7 +1438,33 @@
           "kind": "confirmed_name_only"
         }
       ],
-      "nameVerified": true
+      "nameVerified": true,
+      "imagePages": [
+        {
+          "title": "東映公式：二宮匡貴のアニメ新ビジュアル",
+          "url": "https://www.toei-anim.co.jp/tv/wt/wt02/news/2021100701.php",
+          "source": "東映アニメーション",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "アニメ！アニメ！：3rdシーズンの二宮ビジュアル",
+          "url": "https://animeanime.jp/article/2021/10/07/64425.html",
+          "source": "アニメ！アニメ！",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "GEE!STORE：二宮の描き下ろしグッズ画像",
+          "url": "https://www.geestore.com/detail/id/00000118996",
+          "source": "ジーストア",
+          "safeThroughVolume": 24
+        },
+        {
+          "title": "ABEMA：二宮の場面画像",
+          "url": "https://times.abema.tv/articles/-/10011191",
+          "source": "アニメフリークス",
+          "safeThroughVolume": 24
+        }
+      ]
     },
     {
       "id": "wt_full_051",
