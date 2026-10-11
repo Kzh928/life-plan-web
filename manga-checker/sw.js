@@ -1,4 +1,4 @@
-const CACHE="komanohito-shell-v6";
+const CACHE="komanohito-shell-v7";
 const ASSETS=["./","./index.html","./manifest.webmanifest","./icon.svg","./roster.json"];
 self.addEventListener("install",event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));
