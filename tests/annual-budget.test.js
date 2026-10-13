@@ -1,0 +1,14 @@
+// 年間の期間設定，月別予算の引き継ぎ，未入力の扱いと長期の累計差を確認します．
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
+const ctx={window:{}};vm.createContext(ctx);vm.runInContext(fs.readFileSync(path.join(__dirname,'../annual-budget.js'),'utf8'),ctx);const B=ctx.window.PlanAnnualBudget,p={};
+const d=B.preview(p,{from:2026,to:2028,values:{income:3600000,expense:2400000,investment:600000,reserve:120000}});assert.equal(d.changes.length,12);assert.equal(Object.keys(B.state(p).years).length,0);B.apply(p,d);
+B.apply(p,B.preview(p,{from:2029,to:2030,values:{income:4000000,expense:2760000}}));assert.equal(B.state(p).years[2028].expense,2400000);assert.equal(B.state(p).years[2029].expense,2760000);
+B.apply(p,B.preview(p,{from:2027,to:2027,mode:'add',values:{expense:80000}}));assert.equal(B.state(p).years[2027].expense,2480000);B.undo(p);assert.equal(B.state(p).years[2027].expense,2400000);
+const comparison=B.compare(p,[{year:2026,income:3600000,expense:2500000,investment:999,reserve:111},{year:2027,income:3700000,expense:2700000,investment:0,reserve:0}]);assert.equal(comparison[0].diff,-100000);assert.equal(comparison[1].diff,-200000);assert.equal(comparison[1].cumulative,-300000);assert.equal(comparison[0].currentNet,1100000); // 積立は支出に二重加算しない．
+const gap=B.compare(p,[{year:2025,income:1,expense:0},{year:2026,income:3600000,expense:2400000}]);assert.equal(gap[0].diff,null);assert.equal(gap[1].cumulative,null);
+const legacy={budgetComparison:{baselines:{},forecasts:{'2026-04':{values:{expense:123}}}}};for(let i=0;i<12;i++){const month=`${2026+(i>=9?1:0)}-${String((i+3)%12+1).padStart(2,'0')}`;legacy.budgetComparison.baselines[month]={expense:200000,income:i===0?null:300000};}assert.equal(B.state(legacy).years[2026].expense,2400000);assert.equal(B.state(legacy).years[2026].income,null);assert.equal(legacy.budgetComparison.forecasts['2026-04'].values.expense,123);B.set(legacy,2026,'expense',1);assert.equal(B.state(legacy).years[2026].expense,1);assert.equal(legacy.budgetComparison.baselines['2026-04'].expense,200000);
+for(const args of [[2028,2026],[2026.5,2028],[2026,2106],[1899,2026]])assert.throws(()=>B.range(...args));assert.throws(()=>B.set(p,2026,'expense',-1));
+const stale=B.preview(p,{from:2026,to:2027,values:{expense:12}});B.set(p,2027,'expense',13);assert.throws(()=>B.apply(p,stale));assert.equal(B.state(p).years[2026].expense,2400000);
+assert.equal(B.state(JSON.parse(JSON.stringify(p))).years[2027].expense,13);
+const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');assert(html.includes('annual-budget.js'));assert(!html.includes('src="budget-ui.js'));assert(!html.includes('data-page="actuals"'));assert(html.includes('id="openHouseholdBook"'));
+console.log('PASS: annual ranges/changes, one-time expenses/undo, cumulative net differences, transfers excluded, missing years, 12-month migration without loss, validation and backup');
