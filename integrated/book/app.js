@@ -1,4 +1,8 @@
-(()=>{
+(async()=>{
+const disk=window.FinanceV3Store;
+try{await disk.ready;}catch(error){const el=document.getElementById('saveState')||document.getElementById('saveIndicator');if(el)el.textContent=disk.describe(error);return;}
+const localStorage=disk.storage;
+
 const KEY='finance-v3-book',PROFILE_INDEX_KEY='finance-v3-book-profiles',ACTIVE_PROFILE_KEY='finance-v3-book-active',$=id=>document.getElementById(id),n=x=>Number(String(x??'').replaceAll(',',''))||0,fmt=x=>new Intl.NumberFormat('ja-JP').format(Math.round(n(x))),yen=x=>fmt(x)+'円',signed=x=>(n(x)>0?'+':'')+yen(x),signClass=x=>n(x)>=0?'positive':'negative',esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const uuid=()=>crypto.randomUUID?.()||'id-'+Date.now()+'-'+Math.random().toString(16).slice(2),monthNow=()=>new Date().toISOString().slice(0,7),fiscal=m=>{const [y,mo]=m.split('-').map(Number);return mo>=4?y:y-1};
 const defaults=[
@@ -16,7 +20,7 @@ let profiles=[],activeProfileId='',data=fresh(),activeMonth='';
 try{profiles=JSON.parse(localStorage.getItem(PROFILE_INDEX_KEY)||'[]');if(!Array.isArray(profiles))profiles=[]}catch{profiles=[]}
 if(!profiles.length){try{const legacy=localStorage.getItem(KEY);if(legacy)data=migrate(JSON.parse(legacy))}catch{}activeProfileId=uuid();profiles=[{id:activeProfileId,name:data.name||'家計簿',updatedAt:data.updatedAt||new Date().toISOString()}];localStorage.setItem(profileKey(activeProfileId),JSON.stringify(data));localStorage.setItem(PROFILE_INDEX_KEY,JSON.stringify(profiles));localStorage.setItem(ACTIVE_PROFILE_KEY,activeProfileId)}else{activeProfileId=localStorage.getItem(ACTIVE_PROFILE_KEY)||profiles[0].id;if(!profiles.some(x=>x.id===activeProfileId))activeProfileId=profiles[0].id;try{data=migrate(JSON.parse(localStorage.getItem(profileKey(activeProfileId))))}catch{data=fresh()}}
 if(!data.analysisInitialized){data.analysisSelection=data.categories.filter(c=>c.active&&c.scope!=='month'&&c.type==='expense'&&c.group!=='特別支出').map(c=>c.id);data.analysisInitialized=true}
-function save(msg='自動保存済み'){data.updatedAt=new Date().toISOString();try{localStorage.setItem(profileKey(activeProfileId),JSON.stringify(data));localStorage.setItem(KEY,JSON.stringify(data));const p=profiles.find(x=>x.id===activeProfileId);if(p){p.name=data.name||'家計簿';p.updatedAt=data.updatedAt}localStorage.setItem(PROFILE_INDEX_KEY,JSON.stringify(profiles));localStorage.setItem(ACTIVE_PROFILE_KEY,activeProfileId);$('saveState').textContent=msg;parent.postMessage({type:'v3-change',kind:'book'},location.origin);return true}catch{$('saveState').textContent='保存できませんでした';parent.postMessage({type:'v3-error'},location.origin);return false}}
+function save(msg='自動保存済み'){data.updatedAt=new Date().toISOString();try{localStorage.setItem(profileKey(activeProfileId),JSON.stringify(data));localStorage.setItem(KEY,JSON.stringify(data));const p=profiles.find(x=>x.id===activeProfileId);if(p){p.name=data.name||'家計簿';p.updatedAt=data.updatedAt}localStorage.setItem(PROFILE_INDEX_KEY,JSON.stringify(profiles));localStorage.setItem(ACTIVE_PROFILE_KEY,activeProfileId);$('saveState').textContent=msg;parent.postMessage({type:'v3-change',kind:'book'},location.origin);return true}catch(error){$('saveState').textContent='保存できませんでした';parent.postMessage({type:'v3-error',error:{name:error.name,message:error.message}},location.origin);return false}}
 const categoryAvailable=(c,month='')=>c?.active!==false&&(!month||(!c.activeFrom||c.activeFrom<=month)&&(!c.inactiveFrom||month<c.inactiveFrom));
 const topGroupOrder=['給料','生活費','固定費','NISA','別枠貯金','定期支出','特別収入','特別支出'];
 function categoryGroupRanks(){const map=new Map(topGroupOrder.map((g,i)=>[g,i]));[...data.categories].filter(c=>c.scope!=='month').sort((a,b)=>n(a.order)-n(b.order)).forEach(c=>{if(!map.has(c.group))map.set(c.group,map.size)});return map}
@@ -173,3 +177,4 @@ parent.postMessage({type:'v3-ready',kind:'book'},location.origin);
 
 renderNav();render();
 })();
+

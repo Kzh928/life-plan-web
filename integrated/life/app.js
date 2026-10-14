@@ -1,7 +1,11 @@
 // このコードは，ライフプランの入力を保存し，資産推移を再計算して表示します．
-(()=>{
+(async()=>{
+const disk=window.FinanceV3Store;
+try{await disk.ready;}catch(error){const el=document.getElementById('saveState')||document.getElementById('saveIndicator');if(el)el.textContent=disk.describe(error);return;}
+const localStorage=disk.storage;
+
 const KEY='finance-v3-life';const A=window.PlanAdvice;const E=window.PlanEngine,M=window.PlanModel,I=window.PlanIncome,master=window.EDUCATION_MASTER;const $=id=>document.getElementById(id);const fmt=n=>new Intl.NumberFormat('ja-JP').format(Math.round(Number(n)||0));const yen=n=>fmt(n)+'円';const short=n=>Math.abs(n)>=1e8?(n/1e8).toFixed(1)+'億円':Math.abs(n)>=1e4?Math.round(n/1e4)+'万円':yen(n);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const num=x=>Number.isFinite(Number(String(x??'').replaceAll(',','')))?Number(String(x??'').replaceAll(',','')):0;
-let selectedSavingGroup='';let store={active:null,plans:{},draft:M.empty(),started:false},chosenYear='',chosenIncomeYear='',pendingAdvice=null,scenarioMode=false,currentYears=[],wizardStep=-1,wizardDetailStep=-1,guideNoticeShown=false,guideTargetPage='overview';try{const v=JSON.parse(localStorage.getItem(KEY));if(v&&v.draft&&v.plans)store=v}catch{}I.normalize(store.draft);Object.values(store.plans).forEach(p=>I.normalize(p));let plan=store.draft;const saveLocal=()=>{window.FinanceV3.ids(plan);budgetAnnualCache=null;I.normalize(plan);Object.values(store.plans).forEach(p=>I.normalize(p));store.draft=plan;if(scenarioMode&&store.active)store.plans[store.active]=M.clone(plan);try{localStorage.setItem(KEY,JSON.stringify(store));parent.postMessage({type:'v3-change',kind:'life'},location.origin);const indicator=$('saveIndicator');if(indicator)indicator.textContent='自動保存済み';return true}catch{const indicator=$('saveIndicator');if(indicator)indicator.textContent='保存できませんでした';parent.postMessage({type:'v3-error'},location.origin);return false}};
+let selectedSavingGroup='';let store={active:null,plans:{},draft:M.empty(),started:false},chosenYear='',chosenIncomeYear='',pendingAdvice=null,scenarioMode=false,currentYears=[],wizardStep=-1,wizardDetailStep=-1,guideNoticeShown=false,guideTargetPage='overview';try{const v=JSON.parse(localStorage.getItem(KEY));if(v&&v.draft&&v.plans)store=v}catch{}I.normalize(store.draft);Object.values(store.plans).forEach(p=>I.normalize(p));let plan=store.draft;const saveLocal=()=>{window.FinanceV3.ids(plan);budgetAnnualCache=null;I.normalize(plan);Object.values(store.plans).forEach(p=>I.normalize(p));store.draft=plan;if(scenarioMode&&store.active)store.plans[store.active]=M.clone(plan);try{localStorage.setItem(KEY,JSON.stringify(store));parent.postMessage({type:'v3-change',kind:'life'},location.origin);const indicator=$('saveIndicator');if(indicator)indicator.textContent='自動保存済み';return true}catch(error){const indicator=$('saveIndicator');if(indicator)indicator.textContent='保存できませんでした';parent.postMessage({type:'v3-error',error:{name:error.name,message:error.message}},location.origin);return false}};
 const modeOptions=['正社員','正社員２','パート','育休','専業主婦','無収入'];const option=(pairs,val)=>pairs.map(([v,l])=>`<option value="${esc(v)}" ${String(v)===String(val)?'selected':''}>${esc(l)}</option>`).join('');const input=(label,value,path,kind='number',extra='')=>`<label>${label}<input type="${kind}" value="${esc(value??'')}" data-path="${esc(path)}" ${extra}></label>`;const select=(label,options,value,path)=>`<label>${label}<select data-path="${esc(path)}">${option(options,value)}</select></label>`;const button=(label,action,index,klass='minor')=>`<button type="button" class="${klass}" data-action="${action}" data-index="${index}">${label}</button>`;
 function getPath(path){return path.split('.').reduce((o,k)=>o?.[k],plan)}function setPath(path,value){const keys=path.split('.');let o=plan;for(const k of keys.slice(0,-1))o=o[k];o[keys.at(-1)]=value}
 
@@ -173,6 +177,7 @@ parent.postMessage({type:'v3-ready',kind:'life'},location.origin);
 
 renderMaster();renderRoot();if(!store.started)$('startDialog').showModal();
 })();
+
 
 
 
