@@ -99,3 +99,12 @@ textarea[data-autoheight]{resize:vertical;min-height:88px;overflow-y:hidden;line
 .month-budget>summary{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.month-budget>summary small{font-size:.9rem}.budget-body{padding-top:16px}.budget-score small{display:block;margin-top:7px;font-size:.85rem}.budget-breakdown{margin-top:8px}
 
 .outlook-row>summary .outlook-change{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}.outlook-change>span{white-space:nowrap}.outlook-change>.hint{font-size:.8rem;font-weight:normal;margin:0}
+
+/* Mobile pass 2: legible form text and finger-sized targets. */
+@media(max-width:700px){
+input,select,textarea,input[data-money],input[data-numeric]{font-size:16px!important;min-width:0;max-width:100%}input:not([type=checkbox]):not([type=radio]),select{min-height:48px}button,.small,.minor,.file-button{min-height:44px}summary{min-height:44px;align-content:center;line-height:1.5}.comment-toggle>summary{display:flex;align-items:center;padding:8px 0}label:has(>input[type=checkbox]){min-height:44px;align-items:center}input[type=checkbox]{flex-shrink:0}textarea{min-height:88px}.entry-body,.item-body,.box-head,.row,.grid>*{min-width:0}.check{padding:6px 0}
+}
+
+@media(max-width:700px){
+.month-toolbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 8px;align-items:end}.month-toolbar>label{min-width:0}.month-toolbar>.year-month-picker{grid-column:1/-1}.month-toolbar>button{grid-column:1/-1}.year-month-picker label{font-size:14px}.special-edit-grid{grid-template-columns:1fr}.special-dialog-form{padding-bottom:max(24px,env(safe-area-inset-bottom))}
+}

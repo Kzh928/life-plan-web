@@ -164,6 +164,10 @@ function captureLifeBudget(a){if(a)window.PlanBudget.capture(plan,a.month,lifeBu
 const budgetWidget=window.PlanAnnualBudgetUI.mount({id:'budgetComparison',owner:()=>plan,rows:()=>E.annual(plan,master).map(r=>({year:r.year,income:r.totalIncome,expense:r.totalExpense,investment:r.contribution,reserve:r.reserveSetAside})),save:saveLocal});$('openHouseholdBook').onclick=()=>{parent.postMessage({type:'v3-page',page:'month'},location.origin)};
 
 
+// Mobile keyboard Done commits the current edit through the existing change handler.
+function mobileKeyboard(){document.querySelectorAll('input[data-money],input[data-numeric],input[inputmode]').forEach(t=>{t.enterKeyHint='done';t.autocomplete='off';t.spellcheck=false;const key=t.dataset.path||t.dataset.root||'';if(/(year|age|horizon|interval|month)/i.test(key)&&!t.dataset.money)t.inputMode='numeric';});}
+document.addEventListener('keydown',e=>{const t=e.target;if(e.key==='Enter'&&t.matches('input[data-money],input[data-numeric],input[inputmode]')&&!t.closest('form')){e.preventDefault();t.blur();}});
+new MutationObserver(()=>mobileKeyboard()).observe(document.body,{childList:true,subtree:true});mobileKeyboard();
 window.V3Life={get:()=>M.clone(store),plan:()=>M.clone(plan),open:page=>{document.querySelector(`[data-page="${page}"]`)?.click()},load:payload=>{store=M.clone(payload);plan=store.draft;I.normalize(plan);renderRoot();$('startDialog').close();},setAdjustments:values=>{if(JSON.stringify(window.V3AnnualAdjustments)!==JSON.stringify(values)){window.V3AnnualAdjustments=values;renderOverview();}},eventMonth:(id,month)=>{const e=plan.events.find(e=>e.v3Id===id);if(e){e.v3Month=Number(month);saveLocal();renderRoot();}}};
 parent.postMessage({type:'v3-ready',kind:'life'},location.origin);
 

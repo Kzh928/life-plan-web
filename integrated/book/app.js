@@ -164,6 +164,10 @@ function captureBudgetMonth(row){if(row)window.PlanBudget.capture(data,row.month
 const budgetWidget=window.PlanBudgetUI.mount({id:'budgetComparison',owner:()=>data,year:()=>fiscal(activeMonth||monthNow()),row:budgetRow,save,confirmActual:month=>{const row=ensureMonth(month);captureBudgetMonth(row);row.status=row.status==='closed'?'draft':'closed';save();render();}});
 
 
+// Mobile keyboard Done commits the current edit through the existing change handler.
+function mobileKeyboard(){document.querySelectorAll('input[data-money],input[data-numeric],input[inputmode]').forEach(t=>{t.enterKeyHint='done';t.autocomplete='off';t.spellcheck=false;const key=t.dataset.path||t.dataset.root||'';if(/(year|age|horizon|interval|month)/i.test(key)&&!t.dataset.money)t.inputMode='numeric';});}
+document.addEventListener('keydown',e=>{const t=e.target;if(e.key==='Enter'&&t.matches('input[data-money],input[data-numeric],input[inputmode]')&&!t.closest('form')){e.preventDefault();t.blur();}});
+new MutationObserver(()=>mobileKeyboard()).observe(document.body,{childList:true,subtree:true});mobileKeyboard();
 window.V3Book={get:()=>JSON.parse(JSON.stringify(data)),profile:()=>activeProfileId,profiles:()=>profiles.map(p=>({...p,book:JSON.parse(localStorage.getItem(profileKey(p.id))||'null')})),open:page=>document.querySelector(`[data-page="${page}"]`)?.click(),load:payload=>{data=migrate(JSON.parse(JSON.stringify(payload)));save();render();},sync:items=>{const before=JSON.stringify(data);window.FinanceV3.syncLinks(data,items);if(before!==JSON.stringify(data)&&save()===false)throw Error('v3を保存できませんでした．バックアップを書き出してください．');},refresh:()=>render(),flow:month=>planFor(month),plain:month=>window.FinanceV3.excludeMatched(data,plainPlanFor(month),month),baseline:(book,month)=>{const current=data;try{data=book;return window.FinanceV3.excludeMatched(current,plainPlanFor(month),month,true);}finally{data=current;}},timeline:()=>timeline()};
 parent.postMessage({type:'v3-ready',kind:'book'},location.origin);
 
