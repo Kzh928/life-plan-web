@@ -18,5 +18,6 @@ const driver=(map=new Map())=>({mode:'IndexedDB',readAll:async()=>new Map(map),w
  fail=false;await recovery.flush();assert.equal(failing.map.get('finance-v3-life'),'unsaved user input');assert.equal(statuses.at(-1),'saved');
  recovery.storage.setItem('finance-v3-life','first');recovery.storage.setItem('finance-v3-book','second');recovery.storage.setItem('finance-v3-life','latest');await recovery.flush();assert.equal(failing.map.get('finance-v3-life'),'latest');assert.equal(failing.map.get('finance-v3-book'),'second');
  const diskReload=createStore({native:memory(),driver:async()=>failing});await diskReload.ready;assert.equal(diskReload.storage.getItem('finance-v3-life'),'latest');
+ let originalReads=0;const fast=createStore({native:()=>{originalReads++;return native;},driver:async()=>driver(new Map([['finance-v3-storage-migrated','1'],['finance-v3-life','saved v3']]))});await fast.ready;assert.equal(originalReads,0,'normal startup must not scan the old v1/v2 storage');
  console.log('PASS: full original localStorage, 6MB v3 save, original keys unchanged, old v3 migration, durable precedence, read-back, transaction failure recovery, unsaved backup data and reload');
 })();

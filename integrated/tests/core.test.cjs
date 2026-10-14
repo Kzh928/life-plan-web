@@ -14,4 +14,11 @@ const delta=U.adjustments({startYear:2026,horizon:2},m=>({salary:100,living:m>='
 const source=fs.readFileSync(path.join(__dirname,'../book/app.js'),'utf8'),ctx={window:{FinanceV3:U},n:U.n,data:book,summaryKeys:['salary','specialIncome','living','fixed','nisa','regular','specialExpense','otherSaving','purposeSaving'],sortCategories:x=>x,categoryAvailable:(c,m)=>c.active!==false,catMap:()=>Object.fromEntries(ctx.data.categories.map(c=>[c.id,c])),value:(r,id)=>r.values[id]||{},visibleCats:r=>ctx.data.categories.filter(c=>c.active!==false&&(c.scope!=='month'||c.month===r.month)),isSpecialCategory:c=>['特別収入','特別支出'].includes(c.group)};vm.createContext(ctx);
 for(const name of ['blankSummary','categoryBucket','summaryFromMonth','categoryPlanAt','plannedAt','basePlan','plainPlanFor','planFor','displayedActual','actualBucketEntered','monthFlow']){const line=source.split('\n').find(l=>l.startsWith('function '+name+'('));assert(line,name);vm.runInContext(line,ctx);}
 assert.equal(ctx.planFor('2027-06').specialExpense,100);assert.equal(ctx.planFor('2027-04').specialExpense,0);assert.equal(ctx.summaryFromMonth(book.months.find(m=>m.month==='2027-04'),'actual').specialExpense,90);
+// A current-month summary must equal the matching prefix of the full forecast.
+vm.runInContext(source.split('\n').find(l=>l.startsWith('function timeline(')),ctx);
+ctx.data.planMonths.push({month:'2065-12',salary:100});
+const all=ctx.timeline(),prefix=ctx.timeline('2027-06');
+assert.deepEqual(prefix,all.filter(r=>r.month<='2027-06'));
+assert(prefix.length<all.length/10,'startup must avoid computing decades of future months');
 console.log('PASS: original keys untouched, all saved data copied, recurrence/fiscal months, idempotent event links, shifted plans keep actuals, matched events counted once, source updates/removal, sinking cycles, annual scope deltas and actual book calculations');
+
