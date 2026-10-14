@@ -108,3 +108,6 @@ input,select,textarea,input[data-money],input[data-numeric]{font-size:16px!impor
 @media(max-width:700px){
 .month-toolbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 8px;align-items:end}.month-toolbar>label{min-width:0}.month-toolbar>.year-month-picker{grid-column:1/-1}.month-toolbar>button{grid-column:1/-1}.year-month-picker label{font-size:14px}.special-edit-grid{grid-template-columns:1fr}.special-dialog-form{padding-bottom:max(24px,env(safe-area-inset-bottom))}
 }
+
+.month-totals>summary{min-height:44px;padding:8px 0}.month-totals #monthSummary{margin-top:10px}
+@media(min-width:701px){.month-totals{border:0;padding:0;background:transparent}.month-totals>summary{display:none}}

@@ -8,3 +8,8 @@ html{scroll-padding-bottom:120px}body{overflow-wrap:anywhere}header{display:bloc
 body>nav{position:fixed;inset:auto 0 0;z-index:100;grid-template-columns:repeat(3,minmax(0,1fr));padding:4px 6px max(4px,env(safe-area-inset-bottom));border-top:1px solid #c5d7d8;box-shadow:0 -3px 12px #18394712}body>nav button{font-size:13px;min-height:48px;line-height:1.3;padding:8px 4px}body>nav .active{border:0;border-radius:8px;background:#e0f1ee}
 main{padding-bottom:calc(120px + env(safe-area-inset-bottom))}.workspace-settings{margin-bottom:8px;border:1px solid #d6e4e3;background:white;border-radius:10px;padding:0 12px}.workspace-settings>summary{font-size:14px;min-height:46px}button,select,input:not([type=checkbox]){min-height:44px;max-width:100%}.box>summary{min-height:44px;display:flex;align-items:center}h2{font-size:20px;line-height:1.5}.event-row{min-width:0}.event-row>div{min-width:0}.actions button{min-height:46px}
 }
+
+/* Mobile pass 3: use a single page scroll and keep wide comparisons contained. */
+@media(max-width:600px){
+iframe{min-height:100px;max-width:100%}#frameHelp{font-size:13px;line-height:1.5;margin:4px 2px 12px}#embedded{min-width:0}.workspace-settings select{width:100%;min-width:0}.table-wrap{max-width:100%;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}button,a,input,select,summary{-webkit-tap-highlight-color:#176f7525}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #2a9d8f;outline-offset:2px}
+}
