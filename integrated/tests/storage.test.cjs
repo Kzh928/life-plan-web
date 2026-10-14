@@ -10,6 +10,7 @@ const driver=(map=new Map())=>({mode:'IndexedDB',readAll:async()=>new Map(map),w
  assert.equal(db.map.get('finance-v3-life'),'previous v3');
  s.storage.setItem('finance-v3-book','x'.repeat(6*1024*1024));await s.flush();assert.equal(db.map.get('finance-v3-book').length,6*1024*1024);assert.deepEqual([...native.map],before);
  assert.throws(()=>s.storage.setItem('lifeplan-v2','overwrite'));
+ s.storage.removeItem('finance-v3-life');await s.flush();const once=createStore({native,driver:async()=>db});await once.ready;assert.equal(once.storage.getItem('finance-v3-life'),null,'deleted v3 data must not be resurrected from the old localStorage copy');
  await s.verify();assert(![...db.map.keys()].some(k=>k.startsWith('finance-v3-check-')));
  const newer=driver(new Map([['finance-v3-life','database newer version']]));const reloaded=createStore({native,driver:async()=>newer});await reloaded.ready;assert.equal(reloaded.storage.getItem('finance-v3-life'),'database newer version');
  let fail=false;const statuses=[],failing=driver();const write=failing.write;failing.write=async batch=>{if(fail)throw Error('transaction aborted');return write(batch)};const recovery=createStore({native:memory(),driver:async()=>failing,onState:s=>statuses.push(s.phase)});await recovery.ready;
