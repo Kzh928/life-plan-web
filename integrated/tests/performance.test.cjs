@@ -10,6 +10,9 @@ const afterSource=fs.readFileSync(require('node:path').join(__dirname,'../book/a
 if(!fs.existsSync(beforePath)){console.log('SKIP before/after benchmark: set V3_BEFORE_BOOK and V3_BEFORE_CORE to the previous version.');process.exit(0);}
 const before=run(fs.readFileSync(beforePath,'utf8'),require(process.env.V3_BEFORE_CORE||'/tmp/core-before.js')),after=run(afterSource,U);
 assert.equal(JSON.stringify(after.book),JSON.stringify(before.book));assert.equal(JSON.stringify(after.timeline),JSON.stringify(before.timeline));
+// Current-plan and baseline reads alternate in one batch; their indexes must remain separate.
+function annualDelta(ctx){const current=ctx.data,baseline=U.baselineBook(fixture()),calculate=()=>U.adjustments(plan,m=>ctx.plainPlanFor(m),m=>{ctx.data=baseline;try{return ctx.plainPlanFor(m);}finally{ctx.data=current;}});return ctx.withBookRead?ctx.withBookRead(calculate):calculate();}
+assert.equal(JSON.stringify(annualDelta(after.ctx)),JSON.stringify(annualDelta(before.ctx)));
 // A read batch must not survive the next edit.
 after.ctx.data.categories[0].defaultPlanned+=999;assert.notEqual(after.ctx.timeline().at(-1).total,after.timeline.at(-1).total);
 console.log(JSON.stringify({months:480,regularCategories:48,events:83,generatedLinks:links.length,beforeMs:{eventSync:Math.round(before.syncMs),forecast:Math.round(before.timelineMs)},afterMs:{eventSync:Math.round(after.syncMs),forecast:Math.round(after.timelineMs)},identicalResults:true}));
