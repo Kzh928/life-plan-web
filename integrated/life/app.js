@@ -176,16 +176,8 @@ document.addEventListener('keydown',e=>{const t=e.target;if(e.key==='Enter'&&t.m
 new MutationObserver(records=>{for(const record of records)for(const node of record.addedNodes)if(node.nodeType===1)mobileKeyboard(node);}).observe(document.body,{childList:true,subtree:true});mobileKeyboard();
 let editorRendered=false;
 function ensureEditor(){if(!editorRendered){editorRendered=true;mountAnnualBudget();renderMaster();editorNeedsRender=true;}if(editorNeedsRender){editorNeedsRender=false;renderRoot();}}
-window.V3Life={annualFor:(p,adjustments={})=>{const old=window.V3AnnualAdjustments;try{window.V3AnnualAdjustments=adjustments;return E.annual(M.clone(p),master);}finally{window.V3AnnualAdjustments=old;}},listPlans:()=>({active:store.active,draft:{name:plan.name},plans:Object.fromEntries(Object.entries(store.plans||{}).map(([id,p])=>[id,{name:p.name}]))}),get:()=>M.clone(store),plan:()=>M.clone(plan),open:page=>{ensureEditor();if(overviewDirty&&['overview','assets'].includes(page))renderOverview();document.querySelector(`[data-page="${page}"]`)?.click()},load:(payload,render=true)=>{store=M.clone(payload);plan=store.draft;I.normalize(plan);editorNeedsRender=true;if(editorRendered&&render){editorNeedsRender=false;renderRoot();}else preparePlan();$('startDialog').close();},setAdjustments:(values,render=true)=>{if(JSON.stringify(window.V3AnnualAdjustments)!==JSON.stringify(values)){window.V3AnnualAdjustments=values;overviewDirty=true;if(editorRendered&&render)renderOverview();}},eventMonth:(id,month)=>{const e=plan.events.find(e=>e.v3Id===id);if(e){e.v3Month=Number(month);saveLocal();if(editorRendered)renderRoot();}}};
+window.V3Life={focusEvent:id=>{const i=plan.events.findIndex(e=>e.v3Id===id),target=document.querySelector(`[data-entry="event-${i}"]`);if(target){for(let el=target;el;el=el.parentElement)if(el.tagName==='DETAILS')el.open=true;target.scrollIntoView({block:'center'});}},commit:()=>document.activeElement?.blur(),annualFor:(p,adjustments={})=>{const old=window.V3AnnualAdjustments;try{window.V3AnnualAdjustments=adjustments;return E.annual(M.clone(p),master);}finally{window.V3AnnualAdjustments=old;}},listPlans:()=>({active:store.active,draft:{name:plan.name},plans:Object.fromEntries(Object.entries(store.plans||{}).map(([id,p])=>[id,{name:p.name}]))}),get:()=>M.clone(store),plan:()=>M.clone(plan),open:page=>{ensureEditor();if(overviewDirty&&['overview','assets'].includes(page))renderOverview();document.querySelector(`[data-page="${page}"]`)?.click()},load:(payload,render=true)=>{store=M.clone(payload);plan=store.draft;I.normalize(plan);editorNeedsRender=true;if(editorRendered&&render){editorNeedsRender=false;renderRoot();}else preparePlan();$('startDialog').close();},setAdjustments:(values,render=true)=>{if(JSON.stringify(window.V3AnnualAdjustments)!==JSON.stringify(values)){window.V3AnnualAdjustments=values;overviewDirty=true;if(editorRendered&&render)renderOverview();}},eventMonth:(id,month)=>{const e=plan.events.find(e=>e.v3Id===id);if(e){e.v3Month=Number(month);saveLocal();if(editorRendered)renderRoot();}}};
 parent.postMessage({type:'v3-ready',kind:'life'},location.origin);
 
 preparePlan();if(parent===window||!store.started)ensureEditor();if(!store.started)$('startDialog').showModal();
 })();
-
-
-
-
-
-
-
-
