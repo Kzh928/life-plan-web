@@ -29,6 +29,13 @@ click('pattern-create','housing');cc=current();const housing=cc.p.rules.find(r=>
 click('fund-new');submit({name:'家電',initial:''});cc=current();const fund=cc.n.purposes[0];click('sinking-new');submit({name:'冷蔵庫',fundId:fund.id,amount:'120,000',every:'120',month:'2026-10',purchaseMonth:'',end:'',deposit:'',autoPurchase:'on',enabled:'on'});cc=current();assert.equal(U.record(cc.n,cc.p,'2026-10').planned.reserve,1000);
 click('investment-edit');submit({annualCap:'1,000,000',lifetimeCap:'10,000,000',restore:'nextYear',cashFloor:'100,000',drawdown:'on'});cc=current();assert.equal(cc.p.investment.annualCap,1000000);assert(U.valid(cc.s));
 click('section','master');assert(element('app').innerHTML.includes('教育費マスタの確認'));click('section','income');assert(element('app').innerHTML.includes('本人・パートナーの収入'));click('section','funds');assert(element('app').innerHTML.includes('冷蔵庫'));click('export');assert(element('saveStatus').textContent.includes('JSON'));
+// Return one screen from self to the income list, retaining the previous scroll.
+click('section','income');ctx.window.scrollY=321;click('patterns',current().p.rules.find(r=>r.owner==='self').id);let restoredScroll=null;ctx.window.scrollTo=(x,y)=>restoredScroll=y;click('back');assert(element('app').innerHTML.includes('本人・パートナーの収入'));assert.equal(restoredScroll,321);
+// Income-only alternatives capture the complete owner bundle.
+const baseIncome=current().p.activeIncomeScenario;click('income-scenario-new');submit({name:'専業主婦の案'});assert.equal(current().p.incomeScenarios.length,2);assert(element('app').innerHTML.includes('専業主婦の案'));change({id:'incomeScenarioSelect',value:baseIncome});assert.equal(current().p.activeIncomeScenario,baseIncome);
+click('sinking-new');assert(element('editorFields').innerHTML.includes('everyUnit'));submit({name:'10年で買替',fundId:fund.id,amount:'120000',everyValue:'10',everyUnit:'12',month:'2026-10',purchaseMonth:'',end:'',deposit:'',autoPurchase:'on',enabled:'on'});assert.equal(current().p.events.at(-1).every,120);
+click('event-new');submit({name:'2年ごと',month:'2026-10',kind:'expense',amount:'1000',repeatMode:'1',everyValue:'2',everyUnit:'12',end:'',enabled:'on'});assert.equal(current().p.events.at(-1).every,24);
+nav('outlook');assert(element('app').innerHTML.includes('年度末資産の内訳と年間収支'));assert(element('app').innerHTML.includes('案ごとの年度末の総資産'));
 console.log('PASS restored UI flow: self/partner income estimates, living items, housing patterns, earmarked sinking purchase, investment conditions, master screens and complete JSON export');
 console.log('PASS UI flow: blank onboarding; independent state key; create income; move event; actual entry; branch; outlook; JSON export; new empty notebook preserves old; invalid import unchanged');
 })();

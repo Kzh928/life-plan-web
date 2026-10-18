@@ -1,0 +1,17 @@
+const a=require('node:assert/strict'),U=require('../core.js'),X=require('../patterns.js');
+const n=U.notebook({start:'2026-04',cash:100000,invest:200000,reserve:30000}),p=n.plans[n.activePlan];p.years=3;
+const income=(id,monthly)=>({id,kind:'income',owner:id,name:id,amount:monthly,start:n.start,end:'',changes:[],annualYears:{},patternType:'income',patterns:[{id:id+'full',name:'正社員',monthly,years:{},payouts:[]},{id:id+'zero',name:'専業・無収入',monthly:0,years:{},payouts:[]}],patternStages:[{id:id+'start',month:n.start,patternId:id+'full'}]});
+p.rules=[income('self',300000),income('partner',200000),{id:'rent',kind:'expense',name:'住居費',amount:80000,start:n.start,end:'',changes:[],annualYears:{}}];
+p.events=[{id:'trip',kind:'expense',name:'旅行',month:'2027-04',amount:50000,every:12}];
+n.actuals['2026-04']={status:'closed',values:{'rule:self':{kind:'income',name:'本人',amount:290000,entered:true},'rule:partner':{kind:'income',name:'パートナー',amount:190000,entered:true}}};
+const state=U.fresh(n),before=U.forecast(n,p);X.normalize(state);a.deepEqual(U.forecast(n,p),before,'upgrade preserves every projected row');const basic=p.activeIncomeScenario;
+const alt=X.copyIncome(p,'専業主婦の案');const partner=p.rules.find(r=>r.id==='partner');partner.patternStages.push({id:'leave',month:'2027-04',patternId:'partnerzero'});X.normalize(state);
+a.equal(U.record(n,p,'2026-05').planned.income,500000);a.equal(U.record(n,p,'2027-04').planned.income,300000);a.equal(U.record(n,p,'2026-04').used.income,480000,'actuals shared unchanged');a.equal(U.record(n,p,'2027-04').planned.expense,130000,'other plans unchanged');
+X.switchIncome(p,basic);a.equal(U.record(n,p,'2027-04').planned.income,500000);a.equal(p.rules.find(r=>r.id==='partner').patternStages.length,1);a.deepEqual(U.forecast(n,p),before);
+X.switchIncome(p,alt.id);a.equal(p.rules.find(r=>r.id==='partner').patternStages.length,2);a.equal(U.record(n,p,'2027-04').planned.income,300000);
+p.overrides['2028-05']={'rule:partner':123,'rule:rent':456};X.captureIncome(p);X.switchIncome(p,basic);a.equal(p.overrides['2028-05']['rule:partner'],undefined);a.equal(p.overrides['2028-05']['rule:rent'],456);X.switchIncome(p,alt.id);a.equal(p.overrides['2028-05']['rule:partner'],123);
+const branched=U.branch(n,'全体の別案');X.switchIncome(branched,basic);a.equal(p.activeIncomeScenario,alt.id);a.equal(U.record(n,branched,'2027-04').planned.income,500000);X.normalize(state);
+const restored=U.valid(JSON.parse(JSON.stringify(U.exportData(state))));a.equal(restored.notebooks[n.id].plans[p.id].incomeScenarios.length,2);a.equal(restored.notebooks[n.id].actuals['2026-04'].values['rule:self'].amount,290000);
+const bad=U.C(state);bad.notebooks[n.id].plans[p.id].incomeScenarios[0].rules[0].patterns[0].monthly=-1;a.throws(()=>U.valid(bad));
+a.equal(X.formatDuration(120),'10年');a.equal(X.formatDuration(15),'15か月');
+console.log('PASS income alternatives: lossless upgrade, independent self/partner timing, unchanged expenses/events, shared actuals, whole-plan branches, full JSON roundtrip and invalid snapshot rejection');

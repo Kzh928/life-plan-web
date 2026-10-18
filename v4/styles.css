@@ -4,3 +4,25 @@
 /* v4=2: a stable scale and a top navigation; all editable fields stay at 16px on iPhone. */
 body{padding-bottom:24px}input,select,textarea{font-size:16px!important}nav{position:sticky;top:0;bottom:auto;padding:8px 14px;justify-content:center;z-index:20;border-bottom:1px solid var(--line);border-top:0}nav button{width:min(30vw,180px)}.money-input{display:flex;align-items:center;gap:7px;min-width:0}.money-input input{flex:1;text-align:right;min-width:0;font-variant-numeric:tabular-nums}.money-input b{font-weight:400;font-size:13px;flex:none;color:var(--muted)}dialog{top:max(12px,env(safe-area-inset-top));bottom:auto;margin:0 auto;max-height:calc(100svh - 24px);overflow:auto;overscroll-behavior:contain}dialog footer{position:sticky;bottom:-24px;padding:12px 0;background:white}dialog .dialog-head{position:sticky;top:-24px;background:white;padding:8px 0;z-index:2}.pattern-row{padding:15px 0;border-top:1px solid var(--line)}.pattern-row h3{margin:0}.mini-table input{min-width:105px}.preview-number{font-size:18px;font-weight:bold;color:var(--green)}.group[data-group] summary .badge{white-space:normal}.fund-total{font-variant-numeric:tabular-nums}.pattern-detail{border-top:1px solid var(--line);padding:15px 0}.pattern-detail summary{font-size:16px;font-weight:600;min-height:44px}.pattern-detail .actions{margin-bottom:8px}#masterLabel{max-width:100%}.input-warning{color:#ab4a37;font-size:13px}
 @media(max-width:600px){nav{padding:7px 8px}nav button{flex:1;width:auto;font-size:13px;white-space:nowrap}.entry{grid-template-columns:minmax(0,1fr) 130px}.money-input{gap:4px}dialog .grid{grid-template-columns:1fr}dialog form{padding:18px}dialog .dialog-head{top:-18px}dialog footer{bottom:-18px}.scroll{scroll-margin-top:70px}.list-row .tools{flex-wrap:wrap}.pattern-row .grid{grid-template-columns:1fr}.grid3 .tile strong{overflow-wrap:anywhere}}
+
+/* v4=3: Keep actions readable at phone widths; contain native date fields. */
+.navigation{position:sticky;top:0;z-index:20;background:#f8faf5;border-bottom:1px solid #dce3d7}
+.navigation #nav{position:static;border:0}
+.screen-back{margin:6px max(16px,calc((100vw - 1080px)/2));padding:7px 12px;min-height:36px;font-size:14px;border:0;background:transparent;color:#245f50}
+.screen-back:disabled{opacity:.4}
+.planbar{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px}
+.planbar label{margin:0;min-width:0}.planbar small{grid-column:1/-1}.plan-tools{display:flex;gap:8px;flex-wrap:wrap}.plan-tools button{padding:10px 12px;font-size:14px}
+.income-bar label{margin-top:0}.income-bar .hint{margin-bottom:0}
+.pattern-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
+.pattern-actions .wide{grid-column:1/-1}.pattern-actions button,.pattern-actions .wide button{width:100%;min-width:0;padding:12px 10px;line-height:1.5;word-break:normal;white-space:normal}
+.stack-actions{display:grid;gap:10px;margin-top:12px}.stack-actions button{width:100%;min-width:0;white-space:normal}
+.secondary-tools{margin:16px 0}.secondary-tools summary{font-size:15px;color:#4d6b60;padding:12px 0}
+#editor,#editorForm,#editorFields{min-width:0;max-width:100%;box-sizing:border-box}#editor{overflow-x:hidden}
+#editor label,#editor .field-grid,#editor .grid2{min-width:0}#editor input,#editor select,#editor textarea{min-width:0;max-width:100%;width:100%;box-sizing:border-box}
+input[type=month],input[type=date]{min-width:0;max-width:100%;width:100%;box-sizing:border-box}
+input::-webkit-date-and-time-value{min-width:0;text-align:left}input::-webkit-datetime-edit{min-width:0;padding:0}input::-webkit-calendar-picker-indicator{flex-shrink:0;margin:0}
+.duration{border:1px solid #dce3d7;border-radius:14px;padding:12px;min-width:0;margin:16px 0}.duration legend{font-weight:600;padding:0 4px}.duration>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(90px,.6fr);gap:12px}.duration label{margin:0}
+.asset-scroll{overflow-x:auto;max-width:100%;overscroll-behavior-x:contain}.asset-chart{width:100%;min-width:580px;height:auto}.asset-chart text{font-size:15px}.asset-legend{font-size:14px;line-height:1.7}
+@media(max-width:600px){.planbar{grid-template-columns:minmax(0,1fr);padding:14px}.plan-tools{display:grid;grid-template-columns:1fr 1fr}.planbar small{grid-column:auto}.list-row{min-width:0}.list-row>div{min-width:0}.tools{flex-wrap:wrap}.navigation #nav button{min-height:50px}.pattern-actions button{font-size:16px}.card{min-width:0}}
+
+#editor input[type=checkbox]{width:20px;min-width:20px;flex:none}.screen-back:disabled{cursor:default}
