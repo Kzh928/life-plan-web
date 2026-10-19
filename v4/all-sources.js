@@ -34,6 +34,19 @@ const oldNormalize=X.normalize;
 function captureSource(n,type,id,p){const q=n.categoryCatalog[type].find(q=>q.id===id);if(!q)throw Error('編集中の元データが見つかりません．');Object.assign(q,extract(p,type));applyAll(n);return q;}
 function capturePlan(n,p){for(const type of types)Object.assign(source(n,p,type),extract(p,type));applyAll(n);}
 function adopt(n,p,type,id){if(!types.includes(type)||!n.categoryCatalog[type].some(q=>q.id===id))throw Error('採用する案が見つかりません．');p.categorySelections[type]=id;apply(n,p);}
+// Only income catalogs can be deleted here. Actual records never belong to a source.
+function removeSource(n,type,id,replacementId){
+ if(!['selfIncome','partnerIncome'].includes(type))throw Error('削除する収入の種類を確認してください．');
+ const list=n.categoryCatalog[type],q=list.find(q=>q.id===id);
+ if(!q)throw Error('削除する収入案が見つかりません．');
+ if(list.length===1)throw Error('最後の収入案は削除できません．先に別案を作成してください．');
+ const users=Object.values(n.plans).filter(p=>p.categorySelections[type]===id),replacement=list.find(q=>q.id===replacementId&&q.id!==id);
+ if(users.length&&!replacement)throw Error('影響する全体プランに適用する置換先の収入案を選んでください．');
+ for(const p of users){p.categorySelections[type]=replacement.id;apply(n,p);}
+ n.categoryCatalog[type]=list.filter(q=>q.id!==id);
+ for(const remaining of n.categoryCatalog[type])if(remaining.parentId===id)delete remaining.parentId;
+ return replacement?.id||n.categoryCatalog[type][0].id;
+}
 function draft(n,p,type,id){const copy=U.C(p);copy.categorySelections[type]=id;return apply(n,copy);}
 function validate(s){
  const clean=U.C(s);for(const n of Object.values(clean.notebooks))delete n.categoryCatalog;old.baseValidate(clean);
@@ -48,5 +61,6 @@ function validate(s){
  for(const p of Object.values(n.plans)){const ids=new Set();for(const q of types.map(t=>source(n,p,t)))for(const i of [...q.rules,...q.events,...q.children]){if(ids.has(i.id))throw Error('採用する項目IDが重複しています．');ids.add(i.id);}}
  }return s;
 }
-const oldValidate=X.validateExtensions,api={types,titles,category,source,apply,applyAll,captureSource,capturePlan,adopt,draft,extract,keys,copySource:old.copySource};Object.assign(X,{normalize,validateExtensions:validate,categories:api});if(typeof module!=='undefined')module.exports=api;
+const oldValidate=X.validateExtensions,api={types,titles,category,source,apply,applyAll,captureSource,capturePlan,adopt,removeSource,draft,extract,keys,copySource:old.copySource};Object.assign(X,{normalize,validateExtensions:validate,categories:api});if(typeof module!=='undefined')module.exports=api;
 })(typeof window==='undefined'?globalThis:window);
+

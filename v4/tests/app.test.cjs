@@ -30,7 +30,7 @@ click('begin');submit({name:'empty',start:'2026-10',cash:'',invest:'',reserve:''
 const before=stored.get('finance-v4-state');await element('importFile').onchange({target:{files:[{text:async()=>'{"format":"jp.finance.v3"}'}],value:'x'}});assert.equal(stored.get('finance-v4-state'),before);
 // Reintroduced feature screens and forms must also survive the full portable export.
 click('income-self');let cc=current(),self=cc.p.rules.find(r=>r.owner==='self'),profile=self.patterns[0];
-click('pattern-edit',self.id+':'+profile.id);submit({name:'正社員',netAnnual:'',monthly:'',grossMin:'4,000,000',grossMax:'6,000,000',rate:'80',pick:'mid'});cc=current();self=cc.p.rules.find(r=>r.owner==='self');assert.equal(U.planned(cc.n,cc.p,'2026-10').find(i=>i.id==='rule:'+self.id).amount,4000000/12);
+click('pattern-edit',self.id+':'+profile.id);submit({name:'正社員',netAnnual:'4,000,000',monthly:''});cc=current();self=cc.p.rules.find(r=>r.owner==='self');assert.equal(U.planned(cc.n,cc.p,'2026-10').find(i=>i.id==='rule:'+self.id).amount,4000000/12);
 click('section','income');click('income-partner');cc=current();assert(cc.p.rules.some(r=>r.owner==='partner'));click('section','living');click('pattern-create','living');cc=current();const living=cc.p.rules.find(r=>r.patternType==='living');click('living-item',living.id+':'+living.patterns[0].id);submit({name:'食費',monthly:'60,000',annual:'120,000'});cc=current();assert.equal(U.record(cc.n,cc.p,'2026-10').planned.expense,70000);
 click('section','housing');click('pattern-create','housing');cc=current();const housing=cc.p.rules.find(r=>r.patternType==='housing');click('pattern-edit',housing.id+':'+housing.patterns[0].id);submit({name:'今の家',monthly:'130,000',annual:'24,000'});cc=current();assert.equal(U.record(cc.n,cc.p,'2026-10').planned.expense,202000);
 click('section','funds');click('fund-new');submit({name:'家電',initial:''});cc=current();const fund=cc.n.purposes[0];click('sinking-new');submit({name:'冷蔵庫',fundId:fund.id,amount:'120,000',every:'120',month:'2026-10',purchaseMonth:'',end:'',deposit:'',autoPurchase:'on',enabled:'on'});cc=current();assert.equal(U.record(cc.n,cc.p,'2026-10').planned.reserve,1000);
@@ -99,6 +99,36 @@ click('edit-source','partnerIncome');const growthR=current().p.rules.find(r=>r.o
 console.log('PASS Apply and salary ranges: selected source preview differs from adoption, explicit application updates the correct month plans, shared actuals and other components intact, bulk raises retain payouts and switches');
 // Choose a new working style for the current month: replace that month's switch only.
 click('pattern-new',growthR.id);submit({name:'切替テスト',monthly:'50000',netAnnual:'',grossMin:'',grossMax:'',rate:'',pick:'mid'});const switchP=current().p.rules.find(r=>r.id===growthR.id).patterns.at(-1),stagesBefore=current().p.rules.find(r=>r.id===growthR.id).patternStages.length;click('income-use',growthR.id+':'+switchP.id);assert.equal(current().p.rules.find(r=>r.id===growthR.id).patternStages.length,stagesBefore,'opening a timing dialog does not change the data');submit({month:'2026-10',patternId:switchP.id});assert.equal(current().p.rules.find(r=>r.id===growthR.id).patternStages.length,stagesBefore);assert.equal(U.record(current().n,current().p,'2026-10').planned.income,50000);assert(U.valid(current().s));
+
+// v4=11: old estimates remain identical on load/view and can be edited as net amounts.
+click('edit-source','partnerIncome');
+const legacy=U.C(current().p.rules.find(r=>r.id===pr.id).patterns[0]);
+Object.assign(legacy,{netAnnual:null,monthly:90000,grossMin:4000000,grossMax:6000000,rate:80,pick:'mid',years:{2027:{grossMin:6000000,grossMax:8000000},2028:{netAnnual:0}}});
+await element('incomeFile').onchange({target:{dataset:{target:pr.id+':'+legacy.id},files:[{text:async()=>JSON.stringify({format:'jp.finance.income.pattern',version:1,pattern:legacy})}],value:'x'}});
+const incomeBeforeEdit=current(),forecastBefore=U.forecast(incomeBeforeEdit.n,incomeBeforeEdit.p),sourceBefore=JSON.stringify(incomeBeforeEdit.n.categoryCatalog.partnerIncome);
+click('pattern-edit',pr.id+':'+legacy.id);
+assert(!element('editorFields').innerHTML.includes('name="grossMin"'));assert(!element('editorFields').innerHTML.includes('name="rate"'));assert(element('editorFields').innerHTML.includes('value="4,000,000"'));
+assert.equal(JSON.stringify(current().n.categoryCatalog.partnerIncome),sourceBefore,'opening editor does not rewrite old estimates');
+element('editor').close();click('pattern-years',pr.id+':'+legacy.id);assert(!element('app').innerHTML.includes('data-key="grossMin"'));assert(element('app').innerHTML.includes('value="5600000"'));assert.deepEqual(U.forecast(current().n,current().p),forecastBefore);
+click('pattern-edit',pr.id+':'+legacy.id);submit({name:legacy.name,netAnnual:'4000000',monthly:'90000'});assert.deepEqual(U.forecast(current().n,current().p),forecastBefore,'saving unchanged effective net preserves entire forecast');
+click('pattern-edit',pr.id+':'+legacy.id);submit({name:legacy.name,netAnnual:'',monthly:'100000'});let converted=current().p.rules.find(r=>r.id===pr.id).patterns[0];assert.equal(U.patterns.net(converted,2026).amount,1200000);assert.equal(U.patterns.net(converted,2027).amount,5600000);assert.equal(U.patterns.net(converted,2028).amount,0);
+click('pattern-fill',pr.id+':'+legacy.id);assert(!element('editorFields').innerHTML.includes('name="rate"'));submit({from:'2029',to:'2030',netAnnual:'0'});converted=current().p.rules.find(r=>r.id===pr.id).patterns[0];assert.equal(converted.years[2029].netAnnual,0);assert.equal(U.patterns.net(converted,2027).amount,5600000);
+// Deletion is scoped to the owner, lists adopters, requires a replacement, preserves actuals.
+for(const type of ['partnerIncome','selfIncome']){
+ click('section',type);const initial=current(),original=initial.p.categorySelections[type],actualBefore=JSON.stringify(initial.n.actuals),other=type==='selfIncome'?'partnerIncome':'selfIncome',otherBefore=JSON.stringify(initial.n.categoryCatalog[other]);
+ click('source-delete',type);assert(!element('editor').open);assert(element('saveStatus').textContent.includes('最後の収入案'));
+ click('source-copy',type);submit({name:type+'置換先'});const replacement=current().n.categoryCatalog[type].at(-1).id;
+ click('source-delete',type);assert(element('editorFields').innerHTML.includes('影響する全体プラン（0件）'));const beforeCancel=stored.get('finance-v4-state');element('editor').close();assert.equal(stored.get('finance-v4-state'),beforeCancel);
+ change({dataset:{sourceSelect:type},value:original});click('branch');submit({name:type+'を共有するプラン'});click('section',type);change({dataset:{sourceSelect:type},value:original});
+ const affected=Object.values(current().n.plans).filter(p=>p.categorySelections[type]===original);click('source-delete',type);for(const p of affected)assert(element('editorFields').innerHTML.includes(p.name));
+ const beforeInvalid=stored.get('finance-v4-state');element('editorForm').onsubmit({preventDefault(){},target:[['replacement','']]});assert(element('formError').textContent.includes('置換先'));assert.equal(stored.get('finance-v4-state'),beforeInvalid);
+ submit({replacement});const after=current();assert(!after.n.categoryCatalog[type].some(q=>q.id===original));for(const p of affected)assert.equal(after.n.plans[p.id].categorySelections[type],replacement);assert.equal(JSON.stringify(after.n.actuals),actualBefore);assert.equal(JSON.stringify(after.n.categoryCatalog[other]),otherBefore);assert(U.valid(after.s));
+ click('source-copy',type);submit({name:'未使用の削除用'});click('source-delete',type);assert(element('editorFields').innerHTML.includes('影響する全体プラン（0件）'));submit({});assert.equal(current().n.categoryCatalog[type].length,1);assert.equal(current().p.categorySelections[type],replacement);assert.equal(JSON.stringify(current().n.actuals),actualBefore);
+ click('back');assert(!element('saveStatus').textContent.includes('見つかりません'));assert(U.valid(current().s));
+}
+console.log('PASS v4=11: legacy forecasts preserved; net-only base/year/bulk editing and zero; both owners delete unused/shared sources with explicit replacement, cancel/invalid no-op, common actuals and other owner unchanged');
+
 console.log('PASS restored UI flow: self/partner income estimates, living items, housing patterns, earmarked sinking purchase, investment conditions, master screens and complete JSON export');
 console.log('PASS UI flow: blank onboarding; independent state key; create income; move event; actual entry; branch; outlook; JSON export; new empty notebook preserves old; invalid import unchanged');
 })();
+
