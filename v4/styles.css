@@ -44,3 +44,19 @@ input::-webkit-date-and-time-value{min-width:0;text-align:left}input::-webkit-da
 .living-subgroup,.record-cost-group{border:1px solid var(--line);border-radius:12px;margin:12px 0;padding:0 12px;background:#fbfcf9;min-width:0}.living-subgroup>summary,.record-cost-group>summary{cursor:pointer;padding:14px 0;line-height:1.6;min-height:48px}.living-subgroup>summary span,.record-cost-group>summary small{display:block;color:var(--muted);font-size:12px;font-weight:400}.living-cost-item{border-top:1px solid var(--line);padding:14px 0}.living-cost-title{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}.living-cost-title small{color:var(--muted);font-size:11px}.living-cost-amounts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.living-cost-amounts input{min-width:0;text-align:right}.living-cost-amounts label{margin-bottom:8px}.living-cost-item .tools{display:flex;flex-wrap:wrap;gap:6px}.living-cost-item .tools button{font-size:12px;min-height:44px;padding:8px 10px}.inactive-cost{background:#f0f2ec}.living-mode{margin-top:8px}.record-cost-group .entry{background:white}.record-cost-group .entry b{overflow-wrap:anywhere}
 @media(max-width:600px){.chart-period{display:grid;grid-template-columns:minmax(0,1fr)}.chart-period select{width:100%}.record-cost-group .entry{grid-template-columns:minmax(0,1fr) 106px}.living-subgroup,.record-cost-group{padding:0 10px}}
 @media(max-width:600px){.composition-grid{grid-template-columns:minmax(0,1fr);gap:8px}.composition-grid>div{border-top:1px solid var(--line);padding-top:12px}.composition-grid select{max-width:100%}}
+
+
+/* v4=12: enclose each classification and its records in a continuous parent card. */
+.record-tree{border:1px solid #cededc;border-radius:15px;background:#fff;overflow:hidden}
+.record-tree.depth-1{padding:0;background:#fff;border-color:#bdcfca}
+.record-tree>summary{padding:15px 14px;list-style-position:inside;overflow-wrap:anywhere}
+.record-tree[open]>summary{border-bottom:1px solid #cededc;background:#f5f9f7}
+.record-tree>summary b{font-size:17px}.record-tree>summary small{margin-top:7px;line-height:1.7}
+.record-tree>.record-tree-body{padding:12px;background:#edf4f2;min-width:0}
+.record-tree.depth-2,.record-tree.depth-3{padding:0;margin:0 0 12px;border:1px solid #ccdcd8;border-radius:13px;background:#fff}
+.record-tree.depth-2:last-child,.record-tree.depth-3:last-child{margin-bottom:0}
+.record-tree .entry{padding:14px 12px;border:1px solid #d3e2de;border-radius:11px;margin:0 0 12px;background:#f9fcfb;min-width:0}
+.record-tree .entry:last-of-type{margin-bottom:10px}.record-tree .entry b{font-size:16px}
+.record-tree .entry label{margin-bottom:0}.record-tree .entry .source{padding:5px 0;min-height:32px}
+.record-tree .record-tree-body>.source{margin:0;max-width:100%;white-space:normal}
+@media(max-width:400px){.record-tree.depth-1{padding:0}.record-tree.depth-2,.record-tree.depth-3{padding:0}.record-tree>summary{padding:14px 11px}.record-tree>.record-tree-body{padding:9px}.record-tree .entry{padding:12px 10px}}

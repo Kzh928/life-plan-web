@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),U=require('../core.js');
 require('../patterns.js');require('../planning-helpers.js');require('../cost-ui.js');
 require('../scenarios.js');
-require('../all-sources.js');
+require('../all-sources.js');require('../income-transfer.js');
 require('../living-costs.js');
 require('../living-ui.js');
 require('../income-ui.js');
@@ -127,6 +127,17 @@ for(const type of ['partnerIncome','selfIncome']){
  click('back');assert(!element('saveStatus').textContent.includes('見つかりません'));assert(U.valid(current().s));
 }
 console.log('PASS v4=11: legacy forecasts preserved; net-only base/year/bulk editing and zero; both owners delete unused/shared sources with explicit replacement, cancel/invalid no-op, common actuals and other owner unchanged');
+
+
+// Import both owners at once, with explicit adoption and no changes before confirmation.
+click('section','income');assert(element('app').innerHTML.includes('年度別収入をまとめて読み込む'));
+const bundle={format:'jp.finance.income.sources',version:1,sources:['self','partner'].map(owner=>({owner,name:'テスト用年度別収入',start:'2026-04',patterns:[{id:'work',name:'正社員',years:{2026:{netAnnual:1200},2027:{netAnnual:0}}}],stages:[{month:'2026-04',patternId:'work'}]}))};
+const bundleBefore=stored.get('finance-v4-state'),bundleActuals=JSON.stringify(current().n.actuals),bundleOtherPlans=Object.fromEntries(Object.entries(current().n.plans).filter(([id])=>id!==current().p.id));
+const readBundle=()=>element('incomeSourcesFile').onchange({target:{files:[{text:async()=>JSON.stringify(bundle)}],value:'x'}});
+await readBundle();assert(element('editor').open);assert(element('editorFields').innerHTML.includes('正社員'));assert(element('editorFields').innerHTML.includes('1200円')||element('editorFields').innerHTML.includes('1,200円'));assert.equal(stored.get('finance-v4-state'),bundleBefore);element('editor').close();assert.equal(stored.get('finance-v4-state'),bundleBefore);
+await readBundle();submit({adopt:'on'});assert.equal(U.record(current().n,current().p,'2026-10').planned.income,200);assert.equal(U.record(current().n,current().p,'2027-04').planned.income,0);assert.equal(JSON.stringify(current().n.actuals),bundleActuals);for(const[id,p]of Object.entries(bundleOtherPlans))assert.deepEqual(current().n.plans[id],p);assert(U.valid(current().s));
+const importBeforeBad=stored.get('finance-v4-state');await element('incomeSourcesFile').onchange({target:{files:[{text:async()=>'{"format":"wrong"}'}],value:'x'}});assert.equal(stored.get('finance-v4-state'),importBeforeBad);assert(element('saveStatus').textContent.includes('取り込めません'));
+console.log('PASS income bundle UI: summary/confirmation, cancelled and invalid imports unchanged, both owner sources with explicit adoption, existing actuals and other plans preserved');
 
 console.log('PASS restored UI flow: self/partner income estimates, living items, housing patterns, earmarked sinking purchase, investment conditions, master screens and complete JSON export');
 console.log('PASS UI flow: blank onboarding; independent state key; create income; move event; actual entry; branch; outlook; JSON export; new empty notebook preserves old; invalid import unchanged');
