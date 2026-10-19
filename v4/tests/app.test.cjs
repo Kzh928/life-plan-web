@@ -3,6 +3,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 require('../patterns.js');
 require('../scenarios.js');
 require('../all-sources.js');
+require('../living-costs.js');
+require('../living-ui.js');
 const elements=new Map(),listeners={},stored=new Map(),status=[];const element=id=>{if(id==='conditionsForm')return null;if(!elements.has(id))elements.set(id,{id,innerHTML:'',textContent:'',dataset:{},hidden:false,querySelectorAll:()=>[],querySelector:()=>null,showModal(){this.open=true},close(){this.open=false},addEventListener(type,fn){this[type]=fn;},click(){}});return elements.get(id);};
 const document={getElementById:element,querySelectorAll:()=>[],activeElement:{blur(){}},addEventListener:(type,fn)=>listeners[type]=fn,createElement:()=>({click(){}})};
 const ctx={window:{MoneyV4:U,EDUCATION_MASTER:{ages:{}},FinanceV4Store:{ready:Promise.resolve(),storage:{getItem:k=>{assert(k.startsWith('finance-v4-'));return stored.get(k)||null},setItem:(k,v)=>stored.set(k,v)},flush:async()=>{},verify:async()=>{},describe:e=>e.message}},document,console,Date,Intl,Map,Set,FormData:class extends Map{constructor(map){super(map)}},Blob,URL:{createObjectURL:()=>'',revokeObjectURL(){}},setTimeout:()=>0,confirm:()=>true};ctx.window.scrollTo=()=>{};vm.createContext(ctx);
@@ -50,6 +52,20 @@ nav('outlook');change({dataset:{adopt:'housing'},value:housingB.id});assert.equa
 assert.equal(current().n.plans[planA].categorySelections.housing,baseHousing);assert.equal(current().n.plans[planB].categorySelections.housing,housingB.id);
 change({id:'planSelect',value:planA});assert.equal(U.record(current().n,current().p,'2026-10').planned.expense,baseExpense);assert(U.valid(current().s));
 console.log('PASS UI composition: source editing/copying does not adopt; two whole plans select independent income/housing combinations; switching plans restores their selections');
+// Chart range changes only the graph. Both zero labels share the vertical midpoint.
+assert.equal(current().p.endYear,2100);nav('outlook');let html=element('app').innerHTML;
+const asset=()=>{const h=element('app').innerHTML;return h.slice(h.indexOf('<svg class="chart asset-chart"'),h.indexOf('</svg>',h.indexOf('<svg class="chart asset-chart"')));};
+assert(asset().includes('2065年度'));assert(!asset().includes('2100年度'));assert(html.includes('<th>2100</th>'));
+assert.equal((asset().match(/y="169"[^>]*>0円/g)||[]).length,2);change({id:'chartRange',value:'life'});assert(asset().includes('2100年度'));assert(element('app').innerHTML.includes('<th>2100</th>'));
+change({id:'chartRange',value:'work'});assert(!asset().includes('2100年度'));
+// Grouped living-cost plan inputs and the actual record use the same item identity.
+click('section','living');const lr=current().p.rules.find(r=>r.patternType==='living'),lp=lr.patterns[0];click('patterns',lr.id);click('living-defaults',lr.id+':'+lp.id);
+let live=current().p.rules.find(r=>r.id===lr.id).patterns[0],home=live.items.find(i=>i.category==='食費'&&i.name==='家');assert(home);const oldExpense=U.record(current().n,current().p,'2026-10').planned.expense;
+const unchangedHTML=element('app').innerHTML;change({dataset:{livingItem:lr.id+':'+lp.id+':'+home.id,livingKey:'monthly'},value:'10000'});assert.equal(element('app').innerHTML,unchangedHTML,'inline living input preserves the page and expanded groups');
+assert.equal(U.record(current().n,current().p,'2026-10').planned.expense,oldExpense,'old food aggregate not duplicated');change({dataset:{livingMode:lr.id+':'+lp.id,livingGroup:'食費'},value:'details'});
+const homeItem=U.planned(current().n,current().p,'2026-10').find(i=>i.id==='rule:'+lr.id+':'+home.id);assert.equal(homeItem.amount,10000);nav('record');assert(element('app').innerHTML.includes('生活費 / 食費'));assert(element('app').innerHTML.includes('食費 / 家の実績'));
+const recordHTML=element('app').innerHTML;change({dataset:{actual:homeItem.id},value:'12345'});assert.equal(element('app').innerHTML,recordHTML);assert.equal(current().n.actuals['2026-10'].values[homeItem.id].amount,12345);assert.equal(current().n.actuals['2026-10'].values[homeItem.id].subgroup,'食費');assert(U.valid(current().s));
+console.log('PASS chart/living UI: default 2065 vs 2100 graph switch, both midpoint zeros, 2100 tables, inline detailed plans, no duplicate aggregate and matching actual inputs without page rebuild');
 console.log('PASS restored UI flow: self/partner income estimates, living items, housing patterns, earmarked sinking purchase, investment conditions, master screens and complete JSON export');
 console.log('PASS UI flow: blank onboarding; independent state key; create income; move event; actual entry; branch; outlook; JSON export; new empty notebook preserves old; invalid import unchanged');
 })();
