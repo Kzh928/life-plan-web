@@ -54,6 +54,6 @@ function validate(s){legacyValidate(s);for(const n of Object.values(s.notebooks)
  // Selected categories must not introduce duplicate IDs into the same whole plan.
  for(const p of Object.values(n.plans)){const ids=new Set();for(const r of [...p.rules.filter(r=>!category(r)),...types.flatMap(t=>source(n,p,t).rules),...p.events,...p.children]){if(ids.has(r.id))throw Error('採用する案の項目IDが重複しています．');ids.add(r.id);}}
 }return s;}
-Object.assign(X,{normalize:migrate,validateExtensions:validate,categories:{types,titles,category,itemKeys,subset,source,apply,applyAll,captureSource,capturePlan,adopt,copySource,draft}});
+Object.assign(X,{normalize:migrate,validateExtensions:validate,categories:{types,titles,category,itemKeys,subset,source,apply,applyAll,captureSource,capturePlan,adopt,copySource,draft,baseNormalize:legacyNormalize,baseValidate:legacyValidate}});
 if(typeof module!=='undefined')module.exports=X.categories;
 })(typeof window==='undefined'?globalThis:window);
