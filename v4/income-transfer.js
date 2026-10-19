@@ -22,9 +22,10 @@ function prepare(state,payload){
    months.add(s.month);return {id:U.uid(),month:s.month,patternId:map.get(s.patternId)};
   }).sort((a,b)=>a.month.localeCompare(b.month));
   if(patternStages[0].month>source.start)throw Error('収入開始月に使う働き方を指定してください．');
-  const r={id:U.uid(),name:X.categories.titles[type],kind:'income',owner:source.owner,group:'給与',amount:0,start:source.start,end:source.end||'',changes:[],annualYears:{},patternType:'income',patterns,patternStages};
+  const existing=X.categories.source(n,n.plans[n.activePlan],type).rules.filter(r=>r.kind==='income'),linked=existing[0];
+  const r={id:linked?.id||U.uid(),name:linked?.name||X.categories.titles[type],kind:'income',owner:source.owner,group:'給与',amount:0,start:source.start,end:source.end||'',changes:[],annualYears:{},patternType:'income',patterns,patternStages};
   const base=source.name.trim(),names=new Set(n.categoryCatalog[type].map(q=>q.name));let name=base,copy=2;while(names.has(name))name=base+'（'+copy+++'）';
-  const q={id:U.uid(),name,rules:[r],events:[],children:[],overrides:{}};n.categoryCatalog[type].push(q);added.push({type,id:q.id,name,rule:r});
+  const q={id:U.uid(),name,rules:[r],events:[],children:[],overrides:{}};n.categoryCatalog[type].push(q);added.push({type,id:q.id,name,rule:r,linkedRule:linked?.name||''});
  }
  U.valid(checked);return {state:checked,added};
 }
