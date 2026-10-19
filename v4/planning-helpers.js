@@ -1,0 +1,7 @@
+(function(root){
+'use strict';
+const U=root.MoneyV4||(typeof require==='function'?require('./core.js'):null),X=U.patterns;
+function periods(r,pid){const stages=(r.patternStages||[]).slice().sort((a,b)=>a.month.localeCompare(b.month)),before=stages.filter(s=>s.month<=r.start).at(-1),flow=[{...(before||{}),month:r.start,patternId:before?.patternId||r.patterns?.[0]?.id},...stages.filter(s=>s.month>r.start&&(!r.end||s.month<=r.end))];return flow.map((s,i)=>({from:s.month,to:flow[i+1]?X.addMonths(flow[i+1].month,-1):r.end||'',stageId:s.id||'',patternId:s.patternId})).filter(s=>pid===undefined||s.patternId===pid);}
+function growthRows({from,to,base,mode,increment=0}){from=Number(from);to=Number(to);base=Number(base);increment=Number(increment);if(!Number.isInteger(from)||!Number.isInteger(to)||from<1900||to>2100||to<from||to-from>80)throw Error('開始・終了年度は1900〜2100年度，期間は81年以内で指定してください．');if(!Number.isFinite(base)||base<0||!Number.isFinite(increment)||!['rate','amount','flat'].includes(mode)||mode==='rate'&&increment< -100)throw Error('開始年度の手取りと昇給率・昇給額を確認してください．');const out={};for(let y=from;y<=to;y++){const n=mode==='rate'?base*Math.pow(1+increment/100,y-from):mode==='amount'?base+increment*(y-from):base;if(!Number.isFinite(n)||n<0||n>Number.MAX_SAFE_INTEGER)throw Error('計算した手取りが範囲外です．期間・昇給の数値を確認してください．');out[y]={netAnnual:Math.round(n)};}return out;}
+U.planning={periods,growthRows};if(typeof module!=='undefined')module.exports=U.planning;
+})(typeof window==='undefined'?globalThis:window);
