@@ -69,7 +69,7 @@ function budgetFill(){modal('当初予算をまとめて入力',notice(year+'年
 // Pattern editors preserve the same rule identity so recorded actuals keep matching.
 let masterColumn='基本生活費';
 const X=U.patterns;
-function incomeGateway(){return breadcrumb('収入・働き方')+'<p class="sub">誰の収入を編集しますか？</p><div class="income-gateway">'+['selfIncome','partnerIncome'].map(type=>{const q=note().categoryCatalog[type].find(q=>q.id===wholePlan().categorySelections[type]);return '<section class="card"><h2>'+X.categories.titles[type]+'</h2><p>全体の案「'+esc(wholePlan().name)+'」で使う収入案：<b>'+esc(q?.name)+'</b></p>'+button('この収入案を開く','edit-source',type,'primary')+'</section>';}).join('')+'</div><div class="card"><h2>以前の年度別収入を取り込む</h2>'+button('年度別収入をまとめて読み込む','income-sources-import','','primary')+'<p class="hint">本人・パートナーの働き方と切替時期をまとめて，新しい収入案として追加します．</p></div><p class="hint">収入案の中に，働き方の金額と切り替える時期を登録します．本人とパートナーは別々に選べます．</p>';}
+function incomeGateway(){return breadcrumb('収入・働き方')+'<p class="sub">誰の収入を編集しますか？</p><div class="income-gateway">'+['selfIncome','partnerIncome'].map(type=>{const q=note().categoryCatalog[type].find(q=>q.id===wholePlan().categorySelections[type]);return '<section class="card"><h2>'+X.categories.titles[type]+'</h2><p>全体の案「'+esc(wholePlan().name)+'」で使う収入案：<b>'+esc(q?.name)+'</b></p>'+button('この収入案を開く','edit-source',type,'primary')+'</section>';}).join('')+'</div><div class="card"><h2>Excel・収入JSONから取り込む</h2>'+button('年度別収入をまとめて読み込む','income-sources-import','','primary')+'<p class="hint">本人・パートナーの働き方と切替時期をまとめて，新しい収入案として追加します．</p><p><a href="excel-to-json/">Excelから収入JSONを作る</a></p></div><p class="hint">収入案の中に，働き方の金額と切り替える時期を登録します．本人とパートナーは別々に選べます．</p>';}
 function enterSource(type,id){const q=note().categoryCatalog[type].find(q=>q.id===(id||editingSources[type]||wholePlan().categorySelections[type]))||note().categoryCatalog[type][0];editingSources[type]=q.id;sourceContext={type,id:q.id,draft:X.categories.draft(note(),wholePlan(),type,q.id)};}
 
 function ensurePatterns(r,type=r.kind==='income'?'income':r.group==='住居'?'housing':'living'){if(!r.patterns?.length){r.patternType=type;const id=U.uid(),base={id,name:type==='income'?'働き方1':type==='housing'?'現在の住まい':'生活費1'};if(type==='income')Object.assign(base,{monthly:r.amount,netAnnual:null,grossMin:null,grossMax:null,rate:null,pick:'mid',years:{},payouts:[]});else if(type==='housing')Object.assign(base,{monthly:r.amount,annual:null,inflation:!!r.inflation});else base.items=[{id:'base',name:r.name,monthly:r.amount,annual:null,inflation:!!r.inflation}];r.patterns=[base];r.patternStages=[{id:U.uid(),month:r.start,patternId:id}];for(const c of r.changes||[]){const next=U.C(base);next.id=U.uid();next.name=c.label||'変更後 '+c.month;if(type==='living')next.items[0].monthly=c.amount;else next.monthly=c.amount;r.patterns.push(next);r.patternStages.push({id:U.uid(),month:c.month,patternId:next.id});}}if(type==='income'&&Object.keys(r.annualYears||{}).length){for(const q of r.patterns)for(const[y,amount]of Object.entries(r.annualYears))q.years[y]={...(q.years[y]||{}),netAnnual:amount};r.annualYears={};}return r;}
@@ -170,15 +170,38 @@ actions['invest-rule-new']=()=>ruleEditor(null,'invest');actions['investment-rat
 actions['investment-edit']=()=>{const cfg=plan().investment||{};modal('投資の上限・取り崩し',amount('年度の購入上限（空欄＝上限なし）','annualCap',cfg.annualCap,'min="0"')+amount('保有取得元本の上限（空欄＝上限なし）','lifetimeCap',cfg.lifetimeCap,'min="0"')+select('売却した元本の枠を戻す時期','restore',[['never','戻さない'],['nextYear','翌年度'],['immediate','すぐに戻す']],cfg.restore||'never')+check('現金が足りないときに投資を自動で取り崩す','drawdown',cfg.drawdown)+amount('取り崩し後に確保したい現金','cashFloor',cfg.cashFloor,'min="0"')+notice('確定済みの実績月には自動取り崩しを追加しません．元本と利益の比率で売却し，税・手数料は別途の支出予定として入れてください．'),f=>{plan().investment={annualCap:f.get('annualCap')===''?null:U.N(f.get('annualCap')),lifetimeCap:f.get('lifetimeCap')===''?null:U.N(f.get('lifetimeCap')),restore:f.get('restore'),drawdown:f.has('drawdown'),cashFloor:f.get('cashFloor')===''?0:U.N(f.get('cashFloor'))};persist('投資の上限・取り崩し条件');});};
 actions['principal-edit']=()=>modal('開始時の投資元本',amount('開始時の残っている取得元本','principal',note().opening.investPrincipal,'min="0"')+notice('開始評価額とは別の金額です．空欄で保存すると，開始評価額と同額の仮置きへ戻ります．全案で共通です．'),f=>{if(f.get('principal')==='')delete note().opening.investPrincipal;else note().opening.investPrincipal=U.N(f.get('principal'));persist('開始時の投資元本');});
 
+
+function payrollEditor(key,bonus=false){
+ const[rid,pid,vid]=key.split(':'),p=plan().rules.find(r=>r.id===rid).patterns.find(p=>p.id===pid),list=bonus?(p.bonuses||[]):(p.salaryChanges||[]),old=list.find(v=>bonus?v.id===vid:v.from===vid);
+ if(bonus&&!p.salaryChanges?.length)throw Error('先に月給の変更予定を登録してください．年間手取りに含まれる賞与は二重に加算できません．');
+ modal(bonus?'賞与の手取り':'月給の変更月と手取り',input(bonus?'支給月':'この月以降に反映','month',old?.month||old?.from||selectedMonth,'month','required')+amount(bonus?'賞与の手取り':'月給の手取り','net',old?.amount??old?.netMonthly??'','required min="0"')+notice(bonus?'この支給月だけに計上します．共通の実績は変更しません．':'指定月から次の変更まで続きます．月給が設定された月は年間手取りより優先します．予定の変更で実績は変わりません．'),f=>{
+  const m=f.get('month'),v=f.get('net');if(!U.validMonth(m)||v===''||!Number.isFinite(Number(v))||Number(v)<0)throw Error('年月と手取りを確認してください．');
+  if(list.some(q=>q!==old&&(bonus?q.month:q.from)===m))throw Error('同じ月の予定があります．既存の予定を変更してください．');
+  if(old){if(bonus&&old.recordId&&old.month!==m)throw Error('従来の特別収入と対応する賞与は支給月を変更できません．削除し，新しい月を登録してください．');if(bonus)Object.assign(old,{month:m,amount:Number(v)});else Object.assign(old,{from:m,netMonthly:Number(v)});}
+  else if(bonus)(p.bonuses||=[]).push({id:U.uid(),month:m,amount:Number(v)});else(p.salaryChanges||=[]).push({from:m,netMonthly:Number(v)});
+  persist(bonus?'賞与の予定':'月給の変更予定');
+ });
+}
+actions['salary-edit']=key=>payrollEditor(key);
+actions['bonus-edit']=key=>payrollEditor(key,true);
+for(const type of ['salary','bonus'])actions[type+'-delete']=key=>{
+ const[rid,pid,vid]=key.split(':'),p=plan().rules.find(r=>r.id===rid).patterns.find(p=>p.id===pid),bonus=type==='bonus';
+ if(!bonus&&p.salaryChanges.length===1&&p.bonuses?.length)throw Error('最後の月給を削除する前に，賞与の予定を削除してください．');
+ if(!confirm((bonus?'賞与の予定を削除しますか？従来の特別収入と対応していた月は従来の予定が再び使われます．':'月給の変更を削除しますか？前の月給，または年間手取りの設定に戻ります．')+'共通の実績は残ります．'))return;
+ if(bonus)p.bonuses=p.bonuses.filter(v=>v.id!==vid);else p.salaryChanges=p.salaryChanges.filter(v=>v.from!==vid);
+ persist(bonus?'賞与の予定を削除':'月給の変更を削除');render();
+};
+
 actions['income-export']=key=>{const[rid,pid]=key.split(':'),p=plan().rules.find(r=>r.id===rid).patterns.find(p=>p.id===pid);downloadJSON({format:'jp.finance.income.pattern',version:1,pattern:U.C(p)},'income-pattern-v4.json');};
 actions['income-sources-import']=()=>{$('incomeSourcesFile').click();};
 $('incomeSourcesFile').onchange=async e=>{
  const file=e.target.files?.[0];if(!file||!state)return;
  try{
   const payload=JSON.parse(await file.text()),preview=U.incomeTransfer.prepare(state,payload),pname=wholePlan().name;
-  const cards=preview.added.map(q=>'<section class="income-import-review"><h3>'+esc(X.categories.titles[q.type])+'：'+esc(q.name)+'</h3>'+(q.linkedRule?'<p class="hint">既存の収入枠「'+esc(q.linkedRule)+'」の実績と対応付けます．</p>':'')+q.rule.patterns.map(p=>{const years=Object.keys(p.years).map(Number).sort((a,b)=>a-b);return '<p><b>'+esc(p.name)+'</b><br>'+years[0]+'〜'+years.at(-1)+'年度（'+years.length+'年分）<br>初年度の年間手取り：'+money(p.years[years[0]].netAnnual)+'</p>';}).join('')+'<h4>使う働き方の切替</h4><ul>'+q.rule.patternStages.map(s=>'<li>'+esc(s.month)+'から '+esc(q.rule.patterns.find(p=>p.id===s.patternId).name)+'</li>').join('')+'</ul></section>').join('');
-  modal('年度別収入を新しい案として取り込む',notice('既存の収入案は残し，新しい案を追加します．共通実績・住居費・生活費などは変更しません．')+cards+'<p class="hint">掲載されていない年度の手取りは0円です．このファイルには退職金を含めません．</p>'+check('現在の全体プラン「'+esc(pname)+'」にも適用する','adopt',false)+'<p class="hint">チェックしない場合は案の追加のみです．あとから「この案を適用」で使えます．</p>',f=>{
-   const result=U.incomeTransfer.commit(state,payload,f.has('adopt'));state=result.state;sourceContext=null;screenHistory=[];
+  const cards=preview.added.map(q=>'<section class="income-import-review"><h3>'+esc(X.categories.titles[q.type])+'：'+esc(q.name)+'</h3>'+(q.linkedRule?'<p class="hint">既存の収入枠「'+esc(q.linkedRule)+'」の実績と対応付けます．</p>':'')+q.rule.patterns.map(p=>{const years=Object.keys(p.years).map(Number).sort((a,b)=>a-b);if(p.salaryChanges?.length)return '<p><b>'+esc(p.name)+'</b><br>月給：'+p.salaryChanges.length+'回の変更 ／ 賞与：'+(p.bonuses||[]).length+'回<br>初回 '+esc(p.salaryChanges[0].from)+'から月 '+money(p.salaryChanges[0].netMonthly)+'（手取り）</p>';return '<p><b>'+esc(p.name)+'</b><br>'+years[0]+'〜'+years.at(-1)+'年度（'+years.length+'年分）<br>初年度の年間手取り：'+money(p.years[years[0]].netAnnual)+'</p>';}).join('')+'<h4>使う働き方の切替</h4><ul>'+q.rule.patternStages.map(s=>'<li>'+esc(s.month)+'から '+esc(q.rule.patterns.find(p=>p.id===s.patternId).name)+'</li>').join('')+'</ul></section>').join('');
+  const candidates=U.incomeTransfer.bonusCandidates(state,payload),bonusReview=candidates.length?'<h3>従来の特別収入と賞与の重複確認</h3><p class="hint">同じ賞与なら対応する人を選んでください．JSONに賞与がある支給月は1回だけ計上し，従来の実績と対応付けます．従来のイベント案は残します．JSONにない月は従来の予定が続きます．</p>'+candidates.map(e=>select(esc(e.name)+'（従来 '+money(e.amount)+'）','bonusLink:'+e.id,[['','選んでください'],['keep','別の収入として両方残す'],...e.owners.map(o=>[o,o==='self'?'本人の賞与と同じ':'パートナーの賞与と同じ'])],'')).join(''):'';
+  modal('収入を新しい案として取り込む',notice('既存の収入案は残し，新しい案を追加します．共通実績・住居費・生活費などは変更しません．')+cards+'<p class="hint">月給は次の変更まで続き，賞与は記載月だけに加算します．年間額だけの働き方は未記載の年度が0円です．</p>'+bonusReview+check('現在の全体プラン「'+esc(pname)+'」にも適用する','adopt',false)+'<p class="hint">チェックしない場合は案の追加のみです．あとから「この案を適用」で使えます．</p>',f=>{
+   const links={};for(const e of candidates){const v=f.get('bonusLink:'+e.id);if(!v)throw Error('従来の特別収入と賞与の対応を選んでください．');links[e.id]=v;}const result=U.incomeTransfer.commit(state,payload,f.has('adopt'),links);state=result.state;sourceContext=null;screenHistory=[];
    for(const q of result.added)editingSources[q.type]=q.id;
    const first=result.added[0];route='plan';section=first.type;enterSource(first.type,first.id);persist('年度別収入を新しい収入案として取り込み');
   });

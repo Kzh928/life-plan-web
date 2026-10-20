@@ -139,6 +139,22 @@ await readBundle();submit({adopt:'on'});assert.equal(U.record(current().n,curren
 const importBeforeBad=stored.get('finance-v4-state');await element('incomeSourcesFile').onchange({target:{files:[{text:async()=>'{"format":"wrong"}'}],value:'x'}});assert.equal(stored.get('finance-v4-state'),importBeforeBad);assert(element('saveStatus').textContent.includes('取り込めません'));
 console.log('PASS income bundle UI: summary/confirmation, cancelled and invalid imports unchanged, both owner sources with explicit adoption, existing actuals and other plans preserved');
 
+// Monthly salary and bonus dialogs retain annual fallback and common actuals.
+click('section','selfIncome');cc=current();const monthlyRule=cc.p.rules.find(r=>r.owner==='self'),monthlyKey=monthlyRule.id+':'+monthlyRule.patterns[0].id,monthlyActuals=JSON.stringify(cc.n.actuals);
+click('salary-edit',monthlyKey);submit({month:'2026-10',net:'250000'});
+assert.equal(U.record(current().n,current().p,'2026-10').planned.income,250100);
+click('salary-edit',monthlyKey);submit({month:'2027-04',net:'260000'});
+click('bonus-edit',monthlyKey);submit({month:'2026-12',net:'400000'});
+assert.equal(U.record(current().n,current().p,'2026-12').planned.income,650100);
+assert.equal(U.record(current().n,current().p,'2027-04').planned.income,260000);
+cc=current();const bonusId=cc.p.rules.find(r=>r.owner==='self').patterns[0].bonuses[0].id;
+click('bonus-edit',monthlyKey+':'+bonusId);submit({month:'2026-12',net:'410000'});
+assert.equal(U.record(current().n,current().p,'2026-12').planned.income,660100);
+click('bonus-delete',monthlyKey+':'+bonusId);
+assert.equal(U.record(current().n,current().p,'2026-12').planned.income,250100);
+assert.equal(JSON.stringify(current().n.actuals),monthlyActuals);assert(U.valid(current().s));
+console.log('PASS monthly dialogs: effective changes, dated bonuses, edit/delete and preserved actuals');
+
 console.log('PASS restored UI flow: self/partner income estimates, living items, housing patterns, earmarked sinking purchase, investment conditions, master screens and complete JSON export');
 console.log('PASS UI flow: blank onboarding; independent state key; create income; move event; actual entry; branch; outlook; JSON export; new empty notebook preserves old; invalid import unchanged');
 })();

@@ -5,7 +5,7 @@ const expenses=['生活費','固定費','NISA','別枠貯金','住居費','特�
 // A display taxonomy only: never rewrite accounting kinds, item IDs or stored history.
 function path(i,a){
  const v={...i,...a},kind=v.kind,g=v.group||'',sub=v.subgroup||'',name=v.leafName||v.name||'';
- if(kind==='income')return ['収入',g==='特別収入'||v.source==='event'||v.id?.startsWith('payout:')?'特別収入':'給料'];
+ if(kind==='income')return ['収入',g==='賞与'||i.group==='賞与'||/賞与|ボーナス/.test(name)?'賞与':g==='特別収入'||v.source==='event'||v.id?.startsWith('payout:')?'特別収入':'給料'];
  if(kind==='invest')return ['支出','NISA'];if(kind==='reserve')return ['支出','別枠貯金'];
  const aliases={'固定費':'固定費','定期支出':'定期支出','住居':'住居費','住居費':'住居費','住宅費':'住居費','特別支出':'特別支出'};
  if(aliases[g])return ['支出',aliases[g]];
@@ -16,12 +16,12 @@ function path(i,a){
 }
 function tree(rows,r){
  const roots=new Map(),add=parts=>{let map=roots,node;for(let k=0;k<parts.length;k++){const name=parts[k];if(!map.has(name))map.set(name,{name,path:parts.slice(0,k+1),planned:0,actual:0,items:[],children:new Map()});node=map.get(name);map=node.children;}return node;};
- for(const name of ['給料','特別収入'])add(['収入',name]);for(const name of expenses)add(['支出',name]);for(const name of living)add(['支出','生活費',name]);
+ for(const name of ['給料','賞与','特別収入'])add(['収入',name]);for(const name of expenses)add(['支出',name]);for(const name of living)add(['支出','生活費',name]);
  for(const i of rows){const a=r.row.values?.[i.id],parts=path(i,a),actual=a&&a.entered!==false?U.N(a.amount):0;add(parts).items.push(i);for(let k=1;k<=parts.length;k++){const n=add(parts.slice(0,k));n.planned+=U.N(i.amount);n.actual+=actual;}}
  return roots;
 }
 function manualContext(parts){
- if(parts[0]==='収入'&&['給料','特別収入'].includes(parts[1]))return {kind:'income',group:parts[1]};
+ if(parts[0]==='収入'&&['給料','賞与','特別収入'].includes(parts[1]))return {kind:'income',group:parts[1]};
  if(parts[0]!=='支出'||!expenses.includes(parts[1]))throw Error('記録する分類を選んでください．');
  if(parts[1]==='NISA')return {kind:'invest',group:'NISA'};if(parts[1]==='別枠貯金')return {kind:'reserve',group:'用途別積立'};
  if(parts[1]==='生活費'){if(!living.includes(parts[2]))throw Error('生活費の分類を選んでください．');return {kind:'expense',group:'生活費',subgroup:parts[2]};}
