@@ -113,3 +113,16 @@ input::-webkit-date-and-time-value{min-width:0;text-align:left}input::-webkit-da
 .education-school-fields,.education-year-entry{margin-top:20px;padding-top:12px;border-top:1px solid #dce1d7}.education-year-entry button{width:100%;min-height:44px}.education-annual .compact-row>summary>span{flex:1}.education-annual .compact-row>summary small{line-height:1.7}.education-child-detail h3{font-size:16px;margin:8px 0}.education-child-detail .list-row{font-size:14px;gap:12px;overflow-wrap:anywhere}
 
 .cost-structure h2,.cost-plan>h2{font-size:19px;line-height:1.6}.cost-sets,.cost-schedule{padding-top:12px;margin-top:16px;border-top:1px solid #dce1d7}.cost-sets>h3,.cost-schedule>h3{font-size:18px;margin:0 0 10px}.cost-set{margin:8px 0;border:1px solid #dce1d7;border-radius:12px;overflow:hidden;background:#fff}.cost-set>summary{display:flex;align-items:center;padding:12px;min-height:48px;cursor:pointer;list-style:none}.cost-set>summary::-webkit-details-marker{display:none}.cost-set>summary>span{min-width:0;flex:1;overflow-wrap:anywhere}.cost-set>summary b,.cost-set>summary small{display:block}.cost-set>summary small{font-size:13px;font-weight:400;line-height:1.6;color:#67766f}.cost-set>summary:after{content:"⌄";margin-left:8px}.cost-set[open]>summary:after{content:"⌃"}.cost-set-body{padding:0 12px 12px}.cost-rule+.cost-rule{margin-top:24px;padding-top:16px;border-top:2px solid #dce1d7}
+
+/* v4=19: readable controls and unbroken currency figures at phone widths. */
+.actions{align-items:stretch}
+.actions>button{flex:1 1 220px;min-width:min(100%,220px);max-width:100%;word-break:normal;overflow-wrap:break-word;white-space:normal;line-height:1.5}
+.tile strong{overflow-wrap:normal;word-break:normal;white-space:nowrap;font-size:clamp(18px,5vw,24px)}
+.money-value,.list-row>b{white-space:nowrap;overflow-wrap:normal;word-break:normal;font-variant-numeric:tabular-nums}
+.legend span{white-space:nowrap}
+.cost-flow .cost-schedule{border:0;margin:0;padding:0}.cost-flow h3{font-size:18px}
+.cost-source .source-state{margin:8px 0}.cost-plan .cost-sets{margin-top:8px;padding-top:8px}
+.investment-rule+.investment-rule{border-top:1px solid var(--line);margin-top:20px;padding-top:18px}
+.investment-rule>button,.investment-schedules>button{display:block;width:100%;margin-top:12px;min-height:44px;line-height:1.5}
+.investment-settings>summary{min-height:44px;line-height:1.6}.investment-settings .card{border:0;padding:12px 0;margin:8px 0}
+@media(max-width:600px){.outlook-metrics{grid-template-columns:minmax(0,1fr)}.outlook-metrics .tile:last-child{grid-column:auto}.investment-rule .compact-row-body{grid-template-columns:repeat(2,minmax(0,1fr))}}

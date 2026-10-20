@@ -173,6 +173,20 @@ change({dataset:{annual:'2031',owner:firstChild.id,type:'childyears'},value:'500
 assert.equal(JSON.stringify(current().n.actuals),educationActuals);assert(U.valid(current().s));
 console.log('PASS education: visible school fields, master/living defaults, annual edit from modal, combined and per-child amounts through 2100, manual year precedence and preserved actuals');
 
+
+// Investment deposits are configured here, with dated editable changes and common actuals intact.
+click('section','investment');const investActuals=JSON.stringify(current().n.actuals),investOther=JSON.stringify(current().n.categoryCatalog.children);
+assert(element('app').innerHTML.includes('毎月の積立・変更予定'));assert(element('app').innerHTML.includes('investment-settings'));
+click('invest-rule-new');assert.equal(element('editorTitle').textContent,'積立を追加');submit({name:'NISA積立',start:'2026-10',end:'',amount:'50000'});
+const deposit=current().p.rules.filter(r=>r.kind==='invest').at(-1);
+click('invest-change-edit',deposit.id);submit({month:'2028-04',amount:'70000',label:'増額'});assert.equal(U.ruleAmount(current().p.rules.find(r=>r.id===deposit.id),'2028-03',current().p),50000);assert.equal(U.ruleAmount(current().p.rules.find(r=>r.id===deposit.id),'2028-04',current().p),70000);
+click('invest-change-edit',deposit.id+':2028-04');submit({month:'2028-06',amount:'80000',label:'変更'});assert.equal(current().p.rules.find(r=>r.id===deposit.id).changes.length,1);assert.equal(U.ruleAmount(current().p.rules.find(r=>r.id===deposit.id),'2028-04',current().p),50000);
+click('invest-change-edit',deposit.id);const investBeforeInvalid=stored.get('finance-v4-state');element('editorForm').onsubmit({preventDefault(){},target:Object.entries({month:'2028-06',amount:'999',label:''})});assert(element('formError').textContent.includes('同じ月'));assert.equal(stored.get('finance-v4-state'),investBeforeInvalid);element('editor').close();
+click('invest-change-edit',deposit.id);submit({month:'2029-04',amount:'0',label:'停止'});assert.equal(U.ruleAmount(current().p.rules.find(r=>r.id===deposit.id),'2029-04',current().p),0);
+click('invest-change-delete',deposit.id+':2028-06');assert.equal(current().p.rules.find(r=>r.id===deposit.id).changes.length,1);assert.equal(U.ruleAmount(current().p.rules.find(r=>r.id===deposit.id),'2028-06',current().p),50000);
+assert.equal(JSON.stringify(current().n.actuals),investActuals);assert.equal(JSON.stringify(current().n.categoryCatalog.children),investOther);assert(U.valid(current().s));
+console.log('PASS investment schedule: create, add/edit/move/delete dated amounts, duplicate rejection, zero pause and preserved common actuals/other sources');
+
 console.log('PASS restored UI flow: self/partner income estimates, living items, housing patterns, earmarked sinking purchase, investment conditions, master screens and complete JSON export');
 console.log('PASS UI flow: blank onboarding; independent state key; create income; move event; actual entry; branch; outlook; JSON export; new empty notebook preserves old; invalid import unchanged');
 })();
