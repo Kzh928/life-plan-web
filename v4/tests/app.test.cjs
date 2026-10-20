@@ -156,6 +156,23 @@ assert.equal(U.record(current().n,current().p,'2026-12').planned.income,250100);
 assert.equal(JSON.stringify(current().n.actuals),monthlyActuals);assert(U.valid(current().s));
 console.log('PASS monthly dialogs: effective changes, dated bonuses, edit/delete and preserved actuals');
 
+
+// Education editing uses the master by default, with combined per-year summaries outside child cards.
+click('section','children');const educationActuals=JSON.stringify(current().n.actuals);
+ctx.window.EDUCATION_MASTER.ages={0:{基本生活費:360000},1:{基本生活費:360000},2:{基本生活費:360000}};
+const childFields=(name,birthYear)=>({name,birthYear,annual:'',useMaster:'1',includeLiving:'1','choice-preschool':'保育園・幼稚園','choice-primary':'小学校/公立','choice-middle':'中学校/公立','choice-high':'高校/公立','choice-university':'大学/国公立文系','choice-graduate':'院/なし','choice-middleJuku':'塾/中学校/なし','choice-highJuku':'塾/高校/なし',scholarship:'',scholarshipAge:'',scholarshipYears:''});
+click('child-new');let cf=element('editorFields').innerHTML;assert(cf.includes('type="hidden" name="useMaster"'));assert(!cf.includes('type="checkbox"'));assert(cf.includes('<section class="education-school-fields"><h3>進路・奨学金</h3>'));assert(cf.indexOf('data-child-years="true"')>cf.indexOf('name="scholarshipYears"'));
+submit(childFields('第一子','2029'));const firstChild=current().p.children.at(-1);assert(firstChild.useMaster&&firstChild.includeLiving);
+click('child-new');submit(childFields('第二子','2031'));let educationHtml=element('app').innerHTML;
+assert(educationHtml.indexOf('年度ごとの内訳')>educationHtml.indexOf('childrenPage:'+current().p.children.at(-1).id));
+assert(!educationHtml.includes('data-action="education-detail"'));assert(!educationHtml.includes('data-action="child-years"'));
+assert(educationHtml.includes('2031年度　合計 720,000円'));assert(educationHtml.includes('第一子 360,000円 ／ 第二子 360,000円'));assert(educationHtml.includes('2100年度'));
+click('child-edit',firstChild.id);
+element('editorForm').onsubmit({preventDefault(){},target:Object.entries(childFields('第一子','2029')),submitter:{dataset:{childYears:'true'}}});assert.equal(element('formError').textContent,'');assert(element('app').innerHTML.includes('第一子：年度別の金額'));
+change({dataset:{annual:'2031',owner:firstChild.id,type:'childyears'},value:'500000'});click('section','children');assert(element('app').innerHTML.includes('2031年度　合計 860,000円'));
+assert.equal(JSON.stringify(current().n.actuals),educationActuals);assert(U.valid(current().s));
+console.log('PASS education: visible school fields, master/living defaults, annual edit from modal, combined and per-child amounts through 2100, manual year precedence and preserved actuals');
+
 console.log('PASS restored UI flow: self/partner income estimates, living items, housing patterns, earmarked sinking purchase, investment conditions, master screens and complete JSON export');
 console.log('PASS UI flow: blank onboarding; independent state key; create income; move event; actual entry; branch; outlook; JSON export; new empty notebook preserves old; invalid import unchanged');
 })();

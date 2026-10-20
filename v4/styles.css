@@ -109,3 +109,5 @@ input::-webkit-date-and-time-value{min-width:0;text-align:left}input::-webkit-da
 .record-row-tools>summary{font-size:13px;color:#42695d;padding:5px 0;min-height:32px;cursor:pointer}
 .record-row-tools[open]{padding-bottom:4px}
 .record-row-tools .source{margin:3px 0}
+
+.education-school-fields,.education-year-entry{margin-top:20px;padding-top:12px;border-top:1px solid #dce1d7}.education-year-entry button{width:100%;min-height:44px}.education-annual .compact-row>summary>span{flex:1}.education-annual .compact-row>summary small{line-height:1.7}.education-child-detail h3{font-size:16px;margin:8px 0}.education-child-detail .list-row{font-size:14px;gap:12px;overflow-wrap:anywhere}
