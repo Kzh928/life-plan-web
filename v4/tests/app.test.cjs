@@ -198,6 +198,24 @@ assert.equal(JSON.stringify(Object.fromEntries(Object.entries(current().n.catego
 click('section','budget');click('budget-capture-all');submit({from:'2030',to:'2030',writeMode:'replace'});assert.equal(current().p.budgets[2030].months['2030-04'].invest,U.vector(U.planned(current().n,current().p,'2030-04',ctx.window.EDUCATION_MASTER)).invest);assert.equal(current().p.budgets[2026].months['2026-10'].income,0);assert.equal(JSON.stringify(current().n.actuals),budgetActuals);assert(U.valid(current().s));
 console.log('PASS bulk original budgets: full 2026-2100 capture from planned amounts, partial first year, explicit zero/missing preservation, fixed-value ranges, frozen baseline after plan edits, scoped replacement and unchanged actuals');
 
+// Notebook deletion is confirmed, scoped, recoverable and valid even after removing the last note.
+nav('manage');let notebookState=current().s;const notebookIds=Object.keys(notebookState.notebooks),activeNotebook=notebookState.active,unusedNotebook=notebookIds.find(id=>id!==activeNotebook);
+assert(unusedNotebook);const unusedSnapshot=JSON.stringify(notebookState.notebooks[unusedNotebook]),activeSnapshot=JSON.stringify(notebookState.notebooks[activeNotebook]);
+assert(element('app').innerHTML.includes('notebook:'+activeNotebook));
+click('note-delete',unusedNotebook);assert(element('editorFields').innerHTML.includes('共通実績'));assert(element('editorFields').innerHTML.includes(notebookState.notebooks[unusedNotebook].name));
+const beforeNoteDelete=stored.get('finance-v4-state');element('editor').close();assert.equal(stored.get('finance-v4-state'),beforeNoteDelete);
+click('note-delete',unusedNotebook);element('editorForm').onsubmit({preventDefault(){},target:[]});assert(element('formError').textContent.includes('確認'));assert.equal(stored.get('finance-v4-state'),beforeNoteDelete);assert(!stored.has('finance-v4-deleted-notebooks'));
+submit({confirmDelete:'on'});assert(!current().s.notebooks[unusedNotebook]);assert.equal(JSON.stringify(current().n),activeSnapshot);assert.equal(JSON.stringify(JSON.parse(stored.get('finance-v4-deleted-notebooks'))[unusedNotebook].note),unusedSnapshot);
+click('note-restore',unusedNotebook);assert.equal(current().s.active,unusedNotebook);assert.equal(JSON.stringify(current().n),unusedSnapshot);assert.equal(JSON.stringify(current().s.notebooks[activeNotebook]),activeSnapshot);assert(U.valid(current().s));
+const beforeBadNote=stored.get('finance-v4-state');click('note-delete','not-a-note');assert.equal(stored.get('finance-v4-state'),beforeBadNote);click('note-restore','not-a-note');assert.equal(stored.get('finance-v4-state'),beforeBadNote);
+click('note-delete',unusedNotebook);submit({confirmDelete:'on'});assert.notEqual(current().s.active,unusedNotebook);assert(current().s.notebooks[current().s.active]);assert.equal(JSON.stringify(current().s.notebooks[activeNotebook]),activeSnapshot);
+for(const id of Object.keys(current().s.notebooks)){click('note-delete',id);submit({confirmDelete:'on'});}
+assert.equal(data(),null);assert(element('app').innerHTML.includes('削除したノート'));assert(!element('app').innerHTML.includes('<h2>使うノート</h2>'));
+await vm.runInContext(fs.readFileSync(require('path').join(__dirname,'../app.js'),'utf8'),ctx);assert(element('app').innerHTML.includes('数字は，まだ何も入っていません'));assert(!element('saveStatus').textContent.includes('開けません'));
+nav('manage');assert(element('app').innerHTML.includes('削除したノート'));click('note-restore',activeNotebook);assert(U.valid(current().s));assert.equal(JSON.stringify(current().n),activeSnapshot);
+const restored=stored.get('finance-v4-state');await vm.runInContext(fs.readFileSync(require('path').join(__dirname,'../app.js'),'utf8'),ctx);assert.equal(stored.get('finance-v4-state'),restored);assert(element('app').innerHTML.includes('の実績'));
+console.log('PASS notebooks: hidden actions, exact confirmation/cancel, unused/current/last delete, unchanged other notes, exact restore including actuals and budgets, invalid targets and reload with/without notes');
+
 console.log('PASS restored UI flow: self/partner income estimates, living items, housing patterns, earmarked sinking purchase, investment conditions, master screens and complete JSON export');
 console.log('PASS UI flow: blank onboarding; independent state key; create income; move event; actual entry; branch; outlook; JSON export; new empty notebook preserves old; invalid import unchanged');
 })();
