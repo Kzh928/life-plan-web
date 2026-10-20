@@ -1,0 +1,10 @@
+const assert=require("node:assert/strict"),U=require("../core.js");
+require("../patterns.js");require("../planning-helpers.js");require("../cost-ui.js");const I=require("../income-ui.js");
+const ctx={esc:x=>String(x??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll('"',"&quot;"),money:x=>new Intl.NumberFormat("ja-JP").format(x)+"円",button:(t,a,id)=>`<button data-action="${a}" data-id="${id}">${t}</button>`};
+const p={id:"full",name:"本業",years:{},salaryChanges:[{from:"2026-04",netMonthly:270373},{from:"2026-06",netMonthly:284564}],bonuses:[{id:"summer",month:"2026-07",amount:400000}],payouts:[{id:"retire",year:2065,month:4,amount:10000000}]},r={id:"salary",start:"2026-04",patterns:[p],patternStages:[{id:"start",month:"2026-04",patternId:"full"}]};
+const before=JSON.stringify(r),html=I.payroll(r,p,ctx)+I.payouts(r,p,ctx)+I.yearFields(r,p,[2026],ctx)+U.costUI.timing(r,p,ctx,true);
+const rows=[...html.matchAll(/<details class="compact-row [^"]*"[^>]*>([\s\S]*?)<\/details>/g)];assert.equal(rows.length,6);
+for(const [whole,content] of rows){assert(!/^<details[^>]*\bopen\b/.test(whole),"rows initially closed");const summary=content.match(/^<summary>([\s\S]*?)<\/summary>/)?.[1];assert(summary,"native tap/keyboard disclosure");assert(!/<button|<input/.test(summary),"summary is content only");assert(/<button|<input/.test(content.slice(content.indexOf("</summary>"))),"editing remains available inside");}
+assert(html.includes("2026-04から"));assert(html.includes("270,373円"));assert(html.includes("284,564円"));assert(html.includes('data-id="salary:full:2026-06"'));assert(html.includes('data-id="salary:full:summer"'));assert(html.includes('data-income-payout="salary:full:retire"'));assert.equal(JSON.stringify(r),before);
+const escaped=U.listUI.row('a"<&',"<b>金額</b>","本文");assert(escaped.includes("row:a&quot;&lt;&amp;"));
+console.log("PASS compact rows: closed-first native disclosure, summary-only content, original dated edit/delete identities, preserved inline fields and financial data");

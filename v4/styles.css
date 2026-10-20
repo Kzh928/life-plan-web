@@ -87,3 +87,25 @@ input::-webkit-date-and-time-value{min-width:0;text-align:left}input::-webkit-da
  .income-plan .income-payouts{padding:10px}
  .housing-patterns .cost-profile>.tree-children{margin:0;padding:10px}
 }
+
+/* Compact, view-first rows: native disclosure keeps touch and keyboard access. */
+.compact-row{margin:0!important;padding:0!important;border:0!important;border-bottom:1px solid var(--line,#dce1d7)!important;border-radius:0!important;background:transparent!important;min-width:0}
+.compact-row>summary{display:flex!important;align-items:center;justify-content:space-between;gap:8px;padding:12px 2px!important;min-height:48px;list-style:none;cursor:pointer;font-size:16px;font-weight:400;line-height:1.5;overflow-wrap:anywhere}
+.compact-row>summary::-webkit-details-marker{display:none}
+.compact-row>summary:after{content:"⌄";flex:0 0 18px;color:#567269;text-align:center}
+.compact-row[open]>summary:after{content:"⌃"}
+.compact-row>summary>b{flex:1}
+.compact-row>summary>span{min-width:0}
+.compact-row>summary>span>b{display:block}
+.compact-row>summary small{display:block;font-size:13px;color:#67766f}
+.compact-row>summary:focus-visible{outline:2px solid #286354;outline-offset:-2px;border-radius:6px}
+.compact-row[open]{background:#f7f9f5!important}
+.compact-row-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:4px 2px 12px}
+.compact-row-body>p,.compact-row-body>section,.compact-row-body>div,.compact-row-body>label,.compact-row-body>details{grid-column:1/-1}
+.compact-row-body button{margin:0;min-height:44px;width:100%;padding:8px;font-size:16px}
+.compact-row-body .tools,.compact-row-body .income-source-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.compact-row-body .income-year{margin:0;padding:8px;border:0}
+.record-row-tools{margin-top:4px}
+.record-row-tools>summary{font-size:13px;color:#42695d;padding:5px 0;min-height:32px;cursor:pointer}
+.record-row-tools[open]{padding-bottom:4px}
+.record-row-tools .source{margin:3px 0}
