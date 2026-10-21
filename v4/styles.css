@@ -129,3 +129,12 @@ input::-webkit-date-and-time-value{min-width:0;text-align:left}input::-webkit-da
 
 .year-month-select{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:12px;width:100%;margin-top:6px}.year-month-select>span{display:block;min-width:0}.year-month-select>span>span{display:block;font-size:13px;margin-bottom:5px}.year-month-select select{width:100%;min-width:0;min-height:44px;font-size:16px!important}.plan-delta{display:block;font-weight:600;font-size:13px!important;line-height:1.6;white-space:nowrap}.plan-delta.delta-good{color:#075cad!important}.plan-delta.delta-bad{color:#b42318!important}.plan-delta.delta-same,.plan-delta.delta-neutral{color:#52645e!important}
 .year-month-select select{box-sizing:border-box}input[data-month-decorated="true"]{display:none!important}
+#editor[open]{display:flex;flex-direction:column;position:fixed;top:calc(var(--visible-top,0px) + 8px);bottom:auto;margin:0 auto;max-height:calc(var(--visible-height,100dvh) - 16px);overflow:hidden}
+#editor #editorForm{display:flex;flex-direction:column;width:100%;padding:0;min-height:0;max-height:calc(var(--visible-height,100dvh) - 16px);overflow:hidden}
+#editor .dialog-head{position:static;flex:none;margin:0;padding:14px 18px;background:#fff}
+#editor #editorFields{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:0 18px 10px;scroll-padding:12px}
+#editor footer{position:static;flex:none;margin:0;padding:10px 18px max(10px,env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line)}
+#editor #formError{flex:none;margin:0;padding:0 18px 8px}#editor #formError:empty{display:none}
+#editor .dialog-amounts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#editor .form-help{font-size:13px;line-height:1.7;margin:8px 0 12px}#editor .form-help summary{min-height:36px;padding:7px 0;color:var(--muted)}
+#editor input,#editor select,#editor textarea{scroll-margin-block:12px}

@@ -9,7 +9,17 @@ function decorateMonths(scope){for(const t of scope.querySelectorAll('input[type
 function normalize(form){for(const t of form.querySelectorAll(selector)){const value=raw(t.value);if(value==='')continue;if(!/^-?(?:\d+(?:\.\d*)?|\.\d+)$/.test(value))throw Error('数字の入力を確認してください．');const n=Number(value),min=t.getAttribute('min'),max=t.getAttribute('max');if(min!==null&&n<Number(min)||max!==null&&n>Number(max))throw Error('入力できる数値の範囲を確認してください．');const step=t.getAttribute('step');if(step&&step!=='any'&&Math.abs((n-Number(min||0))/Number(step)-Math.round((n-Number(min||0))/Number(step)))>1e-8)throw Error('年数・年度・周期は整数で入力してください．');t.value=value;}}
 let selecting=null;
 function choose(t){if(!t?.matches?.(selector))return;if(t.type==='number')return;t.value=raw(t.value);try{t.select();}catch{}selecting=t;}
-document.addEventListener('focusin',e=>choose(e.target));
+// iOS keeps the layout viewport tall while the keyboard reduces the visual
+// viewport. Size dialogs to that visible area, then scroll only the clipped
+// field container. Do not rebuild the form or change the focused value.
+function revealField(){const t=document.activeElement;if(!t?.matches?.('input:not([type="hidden"]),select,textarea')||!t.getBoundingClientRect)return;const box=t.getBoundingClientRect(),v=root.visualViewport,host=t.closest?.('#editorFields'),area=host?.getBoundingClientRect(),head=t.closest?.('dialog')?.querySelector('.dialog-head')?.getBoundingClientRect(),footer=t.closest?.('dialog')?.querySelector('footer')?.getBoundingClientRect(),top=Math.max((v?.offsetTop||0)+12,area?.top||0,head?.bottom||0),bottom=Math.min((v?.offsetTop||0)+(v?.height||root.innerHeight||Infinity)-12,area?.bottom??Infinity,footer?.top??Infinity);if(bottom<=top)return;const label=t.closest?.('label')?.getBoundingClientRect(),wantedTop=label&&box.bottom-label.top<=bottom-top?label.top:box.top,delta=box.bottom>bottom?box.bottom-bottom:wantedTop<top?wantedTop-top:0;if(Math.abs(delta)<1)return;if(host)host.scrollTop+=delta;else root.scrollBy?.({top:delta,left:0,behavior:'instant'});}
+let pending=false;
+function visibleViewport(reveal=true){const v=root.visualViewport,style=document.documentElement?.style,height=v?.height||root.innerHeight;if(height&&style){style.setProperty('--visible-height',height+'px');style.setProperty('--visible-top',(v?.offsetTop||0)+'px');}if(!reveal||pending||!root.requestAnimationFrame)return;pending=true;root.requestAnimationFrame(()=>{pending=false;revealField();});}
+document.addEventListener('focusin',e=>{choose(e.target);visibleViewport();});
+root.visualViewport?.addEventListener('resize',()=>visibleViewport());
+root.visualViewport?.addEventListener('scroll',()=>visibleViewport(false));
+root.addEventListener?.('resize',()=>visibleViewport());
+visibleViewport(false);
 document.addEventListener('pointerup',e=>{const t=e.target;if(t===selecting&&t.matches?.(selector)){e.preventDefault();try{t.select();}catch{}}});
 document.addEventListener('blur',e=>{const t=e.target;if(t.matches?.('[data-money]'))t.value=format(t.value);if(selecting===t)selecting=null;},true);
 root.MoneyInput={raw,format,decorate,normalize};if(typeof module!=='undefined')module.exports=root.MoneyInput;
