@@ -240,6 +240,16 @@ const afterLegacy=stored.get('finance-v4-state');click('legacy-browser-preview',
 await element('legacyHouseholdFile').onchange({target:{files:[{size:12,text:async()=>'{bad json'}],value:'x'}});assert.equal(stored.get('finance-v4-state'),afterLegacy);assert(element('saveStatus').textContent.includes('読み込めません'));assert(U.valid(current().s));
 console.log('PASS legacy UI: browser/profile preview and cancellation, exact new-note import, all existing notes/old storage unchanged, duplicate and invalid file rejection');
 
+// Effective expense lifecycle through the actual UI handlers, with no user data.
+click('section','living');click('pattern-create','living');let life=current(),lifeRule=life.p.rules.find(r=>r.patternType==='living'),lifeProfile=lifeRule.patterns[0],lifeKey=lifeRule.id+':'+lifeProfile.id;
+const lifeActual=JSON.stringify(life.n.actuals),lifeBudget=JSON.stringify(life.p.budgets);
+change({id:'plannedMonthPicker',value:'2026-06'});click('living-item',lifeKey);submit({category:'固定費',name:'期間テスト',month:'2026-06',monthly:'3000',annual:''});
+let lifeItem=current().p.rules.find(r=>r.id===lifeRule.id).patterns[0].items.find(i=>i.name==='期間テスト');const lifeId='rule:'+lifeRule.id+':'+lifeItem.id,lifeCost=m=>U.planned(current().n,current().p,m).find(i=>i.id===lifeId)?.amount;
+assert.equal(lifeCost('2026-05'),undefined);assert.equal(lifeCost('2026-06'),3000);
+change({id:'plannedMonthPicker',value:'2026-08'});const lifeHtml=element('app').innerHTML;change({dataset:{livingItem:lifeKey+':'+lifeItem.id,livingKey:'monthly'},value:'4000'});assert.equal(element('app').innerHTML,lifeHtml);assert.equal(lifeCost('2026-07'),3000);assert.equal(lifeCost('2026-08'),4000);assert.equal(lifeCost('2027-01'),4000);
+click('living-delete',lifeKey+':'+lifeItem.id);assert(element('editorFields').innerHTML.includes('この月から終了'));submit({month:'2026-10'});assert.equal(lifeCost('2026-09'),4000);assert.equal(lifeCost('2026-10'),undefined);change({id:'plannedMonthPicker',value:'2026-10'});assert(element('app').innerHTML.includes('過去・開始前の項目（1件）'));assert(!element('app').innerHTML.includes('data-living-item="'+lifeKey+':'+lifeItem.id+'"'));
+click('living-item',lifeKey+':'+lifeItem.id);submit({category:'固定費',name:'期間テスト',month:'2026-10',monthly:'4500',annual:'',endedFrom:''});assert.equal(lifeCost('2026-10'),4500);assert.equal(lifeCost('2026-07'),3000);assert.equal(JSON.stringify(current().n.actuals),lifeActual);assert.equal(JSON.stringify(current().p.budgets),lifeBudget);assert(U.valid(current().s));
+console.log('PASS cost lifecycle UI: dated add/change/end/restore, historical plans and common actuals/budgets preserved, stable input DOM, archived items and valid JSON');
 console.log('PASS restored UI flow: self/partner income estimates, living items, housing patterns, earmarked sinking purchase, investment conditions, master screens and complete JSON export');
 console.log('PASS UI flow: blank onboarding; independent state key; create income; move event; actual entry; branch; outlook; JSON export; new empty notebook preserves old; invalid import unchanged');
 })();
