@@ -11,7 +11,7 @@ function path(i,a){
  if(aliases[g])return ['支出',aliases[g]];
  if(aliases[sub])return ['支出',aliases[sub]];
  if(g==='子ども'||v.source==='child')return ['支出','特別支出','子ども・教育'];
- const category=living.includes(sub)?sub:living.includes(g)?g:living.includes(name)?name:'未分類';
+ const category=g==='生活費'&&sub?sub:living.includes(sub)?sub:living.includes(g)?g:living.includes(name)?name:'未分類';
  return ['支出','生活費',category];
 }
 function tree(rows,r){
@@ -24,7 +24,7 @@ function manualContext(parts){
  if(parts[0]==='収入'&&['給料','賞与','特別収入'].includes(parts[1]))return {kind:'income',group:parts[1]};
  if(parts[0]!=='支出'||!expenses.includes(parts[1]))throw Error('記録する分類を選んでください．');
  if(parts[1]==='NISA')return {kind:'invest',group:'NISA'};if(parts[1]==='別枠貯金')return {kind:'reserve',group:'用途別積立'};
- if(parts[1]==='生活費'){if(!living.includes(parts[2]))throw Error('生活費の分類を選んでください．');return {kind:'expense',group:'生活費',subgroup:parts[2]};}
+ if(parts[1]==='生活費'){if(typeof parts[2]!=='string'||!parts[2].trim()||parts[2].length>60||['__proto__','prototype','constructor'].includes(parts[2]))throw Error('生活費の分類を選んでください．');return {kind:'expense',group:'生活費',subgroup:parts[2]};}
  return {kind:'expense',group:parts[1]==='住居費'?'住居':parts[1]};
 }
 function render(rows,r,{esc,money,entry,button}){
