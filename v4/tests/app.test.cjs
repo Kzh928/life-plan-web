@@ -332,4 +332,10 @@ change({id:'fundChartUnit',value:'year'});assert(element('app').innerHTML.includ
 console.log('PASS purpose graph: filter, month/year switch, fiscal boundaries, touch/slider/buttons, exact period balance and stable data');
 
 
+// Composition is compact before tapping and adopted details live inside the matching category.
+nav('outlook');const overview=element('app').innerHTML;
+for(const type of U.patterns.categories.types){assert(overview.includes('data-keep="adopted-category:'+type+'"'));assert(!overview.includes('data-keep="adopted-category:'+type+'" open'));}
+assert(overview.includes('<summary>本人の収入</summary>'));assert(overview.includes('<summary>イベント</summary>'));assert(overview.includes('data-adopt="children"'));
+assert(!overview.includes('採用セットと切替時期の一覧'));
+console.log('PASS compact composition: all nine adopted categories start collapsed with category-only summaries');
 })();
