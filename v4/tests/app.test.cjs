@@ -8,6 +8,7 @@ require('../living-ui.js');
 require('../income-ui.js');
 require('../record-ui.js');
 require('../cost-ui.js');
+require('../legacy-import.js');
 const elements=new Map(),listeners={},stored=new Map(),status=[];const element=id=>{if(id==='conditionsForm')return null;if(!elements.has(id))elements.set(id,{id,innerHTML:'',textContent:'',dataset:{},hidden:false,querySelectorAll:()=>[],querySelector:()=>null,showModal(){this.open=true},close(){this.open=false},addEventListener(type,fn){this[type]=fn;},click(){}});return elements.get(id);};
 const document={getElementById:element,querySelectorAll:()=>[],activeElement:{blur(){}},addEventListener:(type,fn)=>listeners[type]=fn,createElement:()=>({click(){}})};
 const ctx={window:{MoneyV4:U,EDUCATION_MASTER:{ages:{}},FinanceV4Store:{ready:Promise.resolve(),storage:{getItem:k=>{assert(k.startsWith('finance-v4-'));return stored.get(k)||null},setItem:(k,v)=>stored.set(k,v)},flush:async()=>{},verify:async()=>{},describe:e=>e.message}},document,console,Date,Intl,Map,Set,FormData:class extends Map{constructor(map){super(map)}},Blob,URL:{createObjectURL:()=>'',revokeObjectURL(){}},setTimeout:()=>0,confirm:()=>true};ctx.window.scrollTo=()=>{};vm.createContext(ctx);
@@ -229,6 +230,15 @@ await vm.runInContext(fs.readFileSync(require('path').join(__dirname,'../app.js'
 nav('manage');assert(element('app').innerHTML.includes('削除したノート'));click('note-restore',activeNotebook);assert(U.valid(current().s));assert.equal(JSON.stringify(current().n),activeSnapshot);
 const restored=stored.get('finance-v4-state');await vm.runInContext(fs.readFileSync(require('path').join(__dirname,'../app.js'),'utf8'),ctx);assert.equal(stored.get('finance-v4-state'),restored);assert(element('app').innerHTML.includes('の実績'));
 console.log('PASS notebooks: hidden actions, exact confirmation/cancel, unused/current/last delete, unchanged other notes, exact restore including actuals and budgets, invalid targets and reload with/without notes');
+
+// Old household data is previewed first and added as a new note, without overwriting current notes.
+const legacySample={format:'jp.household.book',schemaVersion:13,name:'昔の家計簿',categories:[{id:'pay',name:'給与',group:'給料',type:'income',defaultPlanned:300000}],months:[{month:'2026-04',status:'closed',values:{pay:{actual:280000,planned:300000}},comment:'旧メモ'}],planMonths:[{month:'2026-04',salary:300000}],openingBalances:{cash:10000,invest:0,other:0}},oldRaw=JSON.stringify(legacySample),beforeLegacy=stored.get('finance-v4-state'),beforeLegacyNotes=current().s.notebooks;
+ctx.window.localStorage={getItem:k=>({'household-book-profiles-v1':'[{"id":"old","name":"昔の家計簿"}]','household-book-v1:old':oldRaw,'household-book-v1':oldRaw}[k]||null),setItem(){throw Error('旧データを書き換えない');},removeItem(){throw Error('旧データを削除しない');}};
+click('legacy-open');assert(element('editorFields').innerHTML.includes('昔の家計簿'));click('legacy-browser-preview','0');assert(element('editorFields').innerHTML.includes('記録 1か月'));element('editor').close();assert.equal(stored.get('finance-v4-state'),beforeLegacy);
+click('legacy-browser-preview','0');submit({name:'取り込んだノート'});let legacyCurrent=current();assert.equal(legacyCurrent.n.name,'取り込んだノート');assert.equal(legacyCurrent.n.actuals['2026-04'].note,'旧メモ');assert.equal(U.record(legacyCurrent.n,legacyCurrent.p,'2026-04').used.income,280000);for(const[id,n]of Object.entries(beforeLegacyNotes))assert.deepEqual(legacyCurrent.s.notebooks[id],n);assert.equal(ctx.window.localStorage.getItem('household-book-v1:old'),oldRaw);
+const afterLegacy=stored.get('finance-v4-state');click('legacy-browser-preview','0');assert.equal(stored.get('finance-v4-state'),afterLegacy);assert(element('saveStatus').textContent.includes('取り込み済み'));
+await element('legacyHouseholdFile').onchange({target:{files:[{size:12,text:async()=>'{bad json'}],value:'x'}});assert.equal(stored.get('finance-v4-state'),afterLegacy);assert(element('saveStatus').textContent.includes('読み込めません'));assert(U.valid(current().s));
+console.log('PASS legacy UI: browser/profile preview and cancellation, exact new-note import, all existing notes/old storage unchanged, duplicate and invalid file rejection');
 
 console.log('PASS restored UI flow: self/partner income estimates, living items, housing patterns, earmarked sinking purchase, investment conditions, master screens and complete JSON export');
 console.log('PASS UI flow: blank onboarding; independent state key; create income; move event; actual entry; branch; outlook; JSON export; new empty notebook preserves old; invalid import unchanged');
