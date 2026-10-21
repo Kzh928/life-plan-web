@@ -210,7 +210,7 @@ click('note-restore',unusedNotebook);assert.equal(current().s.active,unusedNoteb
 const beforeBadNote=stored.get('finance-v4-state');click('note-delete','not-a-note');assert.equal(stored.get('finance-v4-state'),beforeBadNote);click('note-restore','not-a-note');assert.equal(stored.get('finance-v4-state'),beforeBadNote);
 click('note-delete',unusedNotebook);submit({confirmDelete:'on'});assert.notEqual(current().s.active,unusedNotebook);assert(current().s.notebooks[current().s.active]);assert.equal(JSON.stringify(current().s.notebooks[activeNotebook]),activeSnapshot);
 for(const id of Object.keys(current().s.notebooks)){click('note-delete',id);submit({confirmDelete:'on'});}
-assert.equal(data(),null);assert(element('app').innerHTML.includes('削除したノート'));assert(!element('app').innerHTML.includes('<h2>使うノート</h2>'));
+assert.equal(data(),null);assert(element('app').innerHTML.includes('削除したノート'));assert(element('app').innerHTML.includes('まだノートがありません．'));
 await vm.runInContext(fs.readFileSync(require('path').join(__dirname,'../app.js'),'utf8'),ctx);assert(element('app').innerHTML.includes('数字は，まだ何も入っていません'));assert(!element('saveStatus').textContent.includes('開けません'));
 nav('manage');assert(element('app').innerHTML.includes('削除したノート'));click('note-restore',activeNotebook);assert(U.valid(current().s));assert.equal(JSON.stringify(current().n),activeSnapshot);
 const restored=stored.get('finance-v4-state');await vm.runInContext(fs.readFileSync(require('path').join(__dirname,'../app.js'),'utf8'),ctx);assert.equal(stored.get('finance-v4-state'),restored);assert(element('app').innerHTML.includes('の実績'));
