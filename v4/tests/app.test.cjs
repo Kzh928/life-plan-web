@@ -1,5 +1,5 @@
 // Exercise UI actions, form submissions and import/export with a minimal DOM, no browser.
-const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),U=require('../core.js');
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),U=require('../core.js');require('../fund-timeline.js');
 require('../patterns.js');require('../planning-helpers.js');require('../cost-ui.js');
 require('../scenarios.js');
 require('../all-sources.js');require('../income-transfer.js');
@@ -316,5 +316,20 @@ click('event-fund-edit',adoptedSaving);submit({name:'採用中の冷蔵庫',fund
 assert.equal(current().p.categorySelections.funds,adoptedFunds);assert.equal(current().p.events.find(e=>e.id===adoptedSaving).amount,150000);
 assert.equal(JSON.stringify(current().n.categoryCatalog.funds.find(q=>q.id===unusedFunds)),unusedBefore);assert.equal(JSON.stringify(current().n.actuals),actualBeforeGroup);assert.equal(JSON.stringify(current().p.budgets),budgetBeforeGroup);
 console.log('PASS event genres: recurrence grouping/defaults and reclassification; funds previews/editing use the adopted source and preserve unused sources, actuals and budgets');
+// The new purpose graph must inspect views without altering the recorded data.
+click('event-funds');assert(element('app').innerHTML.includes('用途別の積立・支出・残高を見る'));
+click('fund-new');submit({name:'家電グラフ専用',initial:''});const chartFund=current().n.purposes.at(-1).id;
+click('fund-rule',chartFund);submit({amount:'1000',start:'2026-04'});const beforeFundView=stored.get('finance-v4-state');
+change({id:'fundChartPurpose',value:chartFund});change({id:'fundChartUnit',value:'month'});change({id:'fundChartYear',value:'2030'});
+assert(element('app').innerHTML.includes('2030-04'));assert(element('app').innerHTML.includes('2031-03'));
+const fundHTML=element('app').innerHTML,fundSVG=element('fundChart');fundSVG.dataset={left:'54',step:String((760-70)/12)};fundSVG.viewBox={baseVal:{width:760}};fundSVG.getBoundingClientRect=()=>({left:10,width:380});
+listeners.pointerdown({type:'pointerdown',pointerType:'touch',buttons:1,clientX:10+(54+2.5*(760-70)/12)/2,target:{closest:selector=>selector==='#fundChart'?fundSVG:null}});
+assert(element('fundPointDetails').innerHTML.includes('2030-06'));assert(element('fundPointDetails').innerHTML.includes('51,000円'));assert(element('fundPointDetails').innerHTML.includes('1,000円'));
+click('fund-point-step','1');assert(element('fundPointDetails').innerHTML.includes('2030-07'));
+listeners.input({target:{id:'fundPointSlider',value:'0'}});assert(element('fundPointDetails').innerHTML.includes('2030-04'));
+assert.equal(element('app').innerHTML,fundHTML);assert.equal(stored.get('finance-v4-state'),beforeFundView);
+change({id:'fundChartUnit',value:'year'});assert(element('app').innerHTML.includes('年度ごと'));assert.equal(stored.get('finance-v4-state'),beforeFundView);
+console.log('PASS purpose graph: filter, month/year switch, fiscal boundaries, touch/slider/buttons, exact period balance and stable data');
+
 
 })();
