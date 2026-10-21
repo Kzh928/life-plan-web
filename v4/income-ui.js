@@ -9,7 +9,7 @@ function updatePayouts(el,plan,money){for(const e of el.querySelectorAll('[data-
 function payroll(r,p,{esc,money,button}){
  const key=r.id+':'+p.id;
  return '<section class="income-payouts"><h4>月給の変更予定</h4><p class="hint">社宅の家賃が給与天引きの場合は，家賃を引く前の手取り額を収入に入力し，天引きされた家賃を住居費にも入力します．税金・社会保険料を引く前の額面給与ではありません．</p><p class="hint">変更月から次の変更まで同額・手取りです．行をタップで変更できます．</p><details class="secondary-tools"><summary>月給・年収・賞与の計算について</summary><p class="hint">月給がある月は年間手取りより優先し，賞与を別に足します．すべて手取りです．</p></details>'+
- (p.salaryChanges||[]).slice().sort((a,b)=>a.from.localeCompare(b.from)).map(v=>D.row('salary:'+key+':'+v.from,'<b>'+esc(v.from)+'から</b><span>月 '+money(v.netMonthly)+'</span>',button('変更','salary-edit',key+':'+v.from)+button('削除','salary-delete',key+':'+v.from,'danger'))).join('')+button('月給の変更月を追加','salary-edit',key)+
+ (p.salaryChanges||[]).slice().sort((a,b)=>a.from.localeCompare(b.from)).map((v,i,rows)=>D.row('salary:'+key+':'+v.from,'<b>'+esc(v.from)+'から</b><span>月 '+money(v.netMonthly)+D.delta(i?rows[i-1].netMonthly:null,v.netMonthly,'income')+'</span>',button('変更','salary-edit',key+':'+v.from)+button('削除','salary-delete',key+':'+v.from,'danger'))).join('')+button('月給の変更月を追加','salary-edit',key)+
  '<h4>賞与の予定</h4><p class="hint">支給月だけ加算します．翌年分は別の行で登録します．</p>'+
  (p.bonuses||[]).slice().sort((a,b)=>a.month.localeCompare(b.month)).map(v=>D.row('bonus:'+key+':'+v.id,'<b>'+esc(v.month)+'</b><span>'+money(v.amount)+'</span>',(v.recordId?'<p class="hint">従来の特別収入と対応しています．</p>':'')+button('変更','bonus-edit',key+':'+v.id)+button('削除','bonus-delete',key+':'+v.id,'danger'))).join('')+button('賞与の支給月を追加','bonus-edit',key)+'</section>';
 }

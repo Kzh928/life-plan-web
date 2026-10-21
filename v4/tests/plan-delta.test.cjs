@@ -1,0 +1,2 @@
+const test=require('node:test'),assert=require('node:assert/strict'),D=require('../list-ui.js');
+test('直前との差額を収入増・支出減は青，収入減・支出増は赤で区別',()=>{assert.match(D.delta(270373,284564,'income'),/delta-good.*＋14,191円/);assert.match(D.delta(284564,281550,'income'),/delta-bad.*−3,014円/);assert.match(D.delta(170000,130000,'expense'),/delta-good.*−40,000円/);assert.match(D.delta(130000,170000,'expense'),/delta-bad.*＋40,000円/);assert.match(D.delta(0,0,'expense'),/delta-same.*変更なし/);assert.equal(D.delta(null,270373,'income'),'');assert.match(D.delta(50000,70000,'invest'),/delta-neutral/);});

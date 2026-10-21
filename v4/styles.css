@@ -126,3 +126,6 @@ input::-webkit-date-and-time-value{min-width:0;text-align:left}input::-webkit-da
 .investment-rule>button,.investment-schedules>button{display:block;width:100%;margin-top:12px;min-height:44px;line-height:1.5}
 .investment-settings>summary{min-height:44px;line-height:1.6}.investment-settings .card{border:0;padding:12px 0;margin:8px 0}
 @media(max-width:600px){.outlook-metrics{grid-template-columns:minmax(0,1fr)}.outlook-metrics .tile:last-child{grid-column:auto}.investment-rule .compact-row-body{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.year-month-select{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:12px;width:100%;margin-top:6px}.year-month-select>span{display:block;min-width:0}.year-month-select>span>span{display:block;font-size:13px;margin-bottom:5px}.year-month-select select{width:100%;min-width:0;min-height:44px;font-size:16px!important}.plan-delta{display:block;font-weight:600;font-size:13px!important;line-height:1.6;white-space:nowrap}.plan-delta.delta-good{color:#075cad!important}.plan-delta.delta-bad{color:#b42318!important}.plan-delta.delta-same,.plan-delta.delta-neutral{color:#52645e!important}
+.year-month-select select{box-sizing:border-box}input[data-month-decorated="true"]{display:none!important}
