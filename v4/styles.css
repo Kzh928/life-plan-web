@@ -138,3 +138,4 @@ input::-webkit-date-and-time-value{min-width:0;text-align:left}input::-webkit-da
 #editor .dialog-amounts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 #editor .form-help{font-size:13px;line-height:1.7;margin:8px 0 12px}#editor .form-help summary{min-height:36px;padding:7px 0;color:var(--muted)}
 #editor input,#editor select,#editor textarea{scroll-margin-block:12px}
+.actual-delta{display:block;font-size:13px;font-weight:650;line-height:1.7;margin-top:5px;font-variant-numeric:tabular-nums;overflow-wrap:normal}.actual-delta.delta-positive{color:#075cad!important}.actual-delta.delta-negative{color:#b42318!important}.actual-delta.delta-zero{color:#6b7871!important}td .actual-delta{margin-top:0;white-space:nowrap}
