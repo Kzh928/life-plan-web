@@ -4,7 +4,7 @@ const U=root.MoneyV4||(typeof require==='function'?require('./core.js'):null),X=
  types=['income','housing','living'],titles={income:'収入',housing:'住居費',living:'生活費'},
  legacyNormalize=X.normalize,legacyValidate=X.validateExtensions;
 function category(r){return r.kind==='income'?'income':r.kind==='expense'?(r.patternType==='housing'||r.group==='住居'?'housing':'living'):null;}
-function itemKeys(rules){return new Set(rules.flatMap(r=>['rule:'+r.id,...(r.patterns||[]).flatMap(q=>[...(q.payouts||[]).map(v=>'payout:'+r.id+':'+v.id),...(q.bonuses||[]).map(v=>v.recordId||'bonus:'+r.id+':'+v.id),...(q.items||[]).map(i=>i.id==='base'?'rule:'+r.id:'rule:'+r.id+':'+i.id)])]));}
+function itemKeys(rules){return new Set(rules.flatMap(r=>['rule:'+r.id,...(r.patterns||[]).flatMap(q=>[...(q.renewals||[]).map(c=>'renewal:'+r.id+':'+q.id+':'+c.id),...(q.payouts||[]).map(v=>'payout:'+r.id+':'+v.id),...(q.bonuses||[]).map(v=>v.recordId||'bonus:'+r.id+':'+v.id),...(q.items||[]).map(i=>i.id==='base'?'rule:'+r.id:'rule:'+r.id+':'+i.id)])]));}
 function subset(overrides,rules){const keys=itemKeys(rules);return Object.fromEntries(Object.entries(overrides||{}).map(([m,row])=>[m,Object.fromEntries(Object.entries(row).filter(([id])=>keys.has(id)))]).filter(([,row])=>Object.keys(row).length));}
 function source(n,p,type){return n.categoryCatalog?.[type]?.find(q=>q.id===p.categorySelections?.[type]);}
 function register(n,type,value){const list=n.categoryCatalog[type],signature=q=>JSON.stringify([q.name,q.rules,q.overrides||{}]),hit=list.find(q=>signature(q)===signature(value));if(hit)return hit;const q=U.C(value);if(!q.id||list.some(x=>x.id===q.id))q.id=U.uid();if(list.some(x=>x.name===q.name))q.name+='（'+(list.length+1)+'）';list.push(q);return q;}
