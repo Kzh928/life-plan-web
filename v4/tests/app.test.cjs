@@ -9,7 +9,7 @@ require('../income-ui.js');
 require('../record-ui.js');
 require('../cost-ui.js');
 require('../legacy-import.js');
-const elements=new Map(),listeners={},stored=new Map(),status=[];const element=id=>{if(id==='conditionsForm')return null;if(!elements.has(id))elements.set(id,{id,innerHTML:'',textContent:'',dataset:{},hidden:false,querySelectorAll:()=>[],querySelector:()=>null,showModal(){this.open=true},close(){this.open=false},addEventListener(type,fn){this[type]=fn;},click(){}});return elements.get(id);};
+const elements=new Map(),listeners={},stored=new Map(),status=[];const element=id=>{if(id==='conditionsForm')return null;if(!elements.has(id))elements.set(id,{id,innerHTML:'',textContent:'',dataset:{},hidden:false,querySelectorAll:()=>[],querySelector:()=>null,showModal(){this.open=true},close(){this.open=false},setAttribute(k,v){this[k]=v},removeAttribute(k){delete this[k]},addEventListener(type,fn){this[type]=fn;},click(){}});return elements.get(id);};
 const document={getElementById:element,querySelectorAll:()=>[],activeElement:{blur(){}},addEventListener:(type,fn)=>listeners[type]=fn,createElement:()=>({click(){}})};
 const ctx={window:{MoneyV4:U,EDUCATION_MASTER:{ages:{}},FinanceV4Store:{ready:Promise.resolve(),storage:{getItem:k=>{assert(k.startsWith('finance-v4-'));return stored.get(k)||null},setItem:(k,v)=>stored.set(k,v)},flush:async()=>{},verify:async()=>{},describe:e=>e.message}},document,console,Date,Intl,Map,Set,FormData:class extends Map{constructor(map){super(map)}},Blob,URL:{createObjectURL:()=>'',revokeObjectURL(){}},setTimeout:()=>0,confirm:()=>true};ctx.window.scrollTo=()=>{};vm.createContext(ctx);
 function click(action,id){listeners.click({target:{closest:()=>({dataset:{action,id}})}});}
@@ -60,8 +60,38 @@ console.log('PASS UI composition: source editing/copying does not adopt; two who
 assert.equal(current().p.endYear,2100);nav('outlook');let html=element('app').innerHTML;
 const asset=()=>{const h=element('app').innerHTML;return h.slice(h.indexOf('<svg class="chart asset-chart"'),h.indexOf('</svg>',h.indexOf('<svg class="chart asset-chart"')));};
 assert(asset().includes('2065年度'));assert(!asset().includes('2100年度'));assert(html.includes('<th>2100</th>'));
-assert.equal((asset().match(/y="169"[^>]*>0円/g)||[]).length,2);change({id:'chartRange',value:'life'});assert(asset().includes('2100年度'));assert(element('app').innerHTML.includes('<th>2100</th>'));
+const zeros=[...asset().matchAll(/y="([0-9.]+)"[^>]*>0円/g)].map(m=>Number(m[1]));assert.equal(zeros.length,2);assert(Math.abs(zeros[0]-zeros[1])<1e-8);change({id:'chartRange',value:'life'});assert(asset().includes('2100年度'));assert(element('app').innerHTML.includes('<th>2100</th>'));
 change({id:'chartRange',value:'work'});assert(!asset().includes('2100年度'));
+// Inspecting the plot and slider must update exact figures without saving or rerendering.
+const chartState=stored.get('finance-v4-state'),chartHTML=element('app').innerHTML;
+const svg=element('assetChart');svg.dataset={left:'54',step:String((760-108)/40)};
+svg.viewBox={baseVal:{width:760}};svg.getBoundingClientRect=()=>({left:10,width:380});
+const point=(index,type='pointerdown',pointerType='touch',buttons=1)=>listeners[type]({type,pointerType,buttons,clientX:10+(54+(index+.5)*(760-108)/40)/2,target:{closest:()=>svg}});
+point(0);assert(element('assetDetails').innerHTML.includes('2026年度'));
+point(19,'pointermove');assert(element('assetDetails').innerHTML.includes('2045年度'));
+const selectedYear=U.annual(U.forecast(current().n,current().p,{})).find(v=>v.year===2045);
+const yen=n=>new Intl.NumberFormat('ja-JP',{maximumFractionDigits:0}).format(n)+'円';
+assert(element('assetDetails').innerHTML.includes(yen(selectedYear.total)));
+assert(element('assetDetails').innerHTML.includes(yen(selectedYear.income-selectedYear.expense)));
+click('asset-year','2046');assert(element('assetDetails').innerHTML.includes('2046年度'));
+point(39);assert(element('assetDetails').innerHTML.includes('2065年度'));
+click('asset-year','2066');assert(element('assetDetails').innerHTML.includes('2065年度'));
+listeners.input({target:{id:'assetYearSlider',value:'1'}});assert(element('assetDetails').innerHTML.includes('2027年度'));
+assert.equal(element('app').innerHTML,chartHTML);assert.equal(stored.get('finance-v4-state'),chartState);
+console.log('PASS chart touch, drag, slider and adjacent years: exact annual figures, scaled coordinates, endpoints, no page rerender or saved data changes');
+click('nisa-open');let nisaHTML=element('app').innerHTML;
+assert(nisaHTML.includes('NISA・投資の年度ごとの変遷'));assert(nisaHTML.includes('翌年度初めの空き総枠'));assert(nisaHTML.includes('売却元本'));assert(nisaHTML.includes('保有元本'));
+const nisaSVG=element('nisaChart');nisaSVG.dataset={left:'54',step:String((760-70)/40)};nisaSVG.viewBox={baseVal:{width:760}};nisaSVG.getBoundingClientRect=()=>({left:10,width:380});
+listeners.pointerdown({type:'pointerdown',pointerType:'touch',buttons:1,clientX:10+(54+19.5*(760-70)/40)/2,target:{closest:selector=>selector==='#nisaChart'?nisaSVG:null}});
+assert(element('nisaDetails').innerHTML.includes('2045年度'));assert(element('nisaDetails').innerHTML.includes(yen(selectedYear.investBalance)));
+click('nisa-year','2046');assert(element('nisaDetails').innerHTML.includes('2046年度'));
+listeners.input({target:{id:'nisaYearSlider',value:'0'}});assert(element('nisaDetails').innerHTML.includes('2026年度'));
+assert.equal(element('app').innerHTML,nisaHTML);assert.equal(stored.get('finance-v4-state'),chartState);
+change({id:'chartRange',value:'life'});assert(element('app').innerHTML.includes('2100年度'));
+change({id:'chartRange',value:'work'});nav('outlook');
+console.log('PASS NISA annual chart/table and touch, slider and year buttons without saving or replacing the page');
+
+
 // Grouped living-cost plan inputs and the actual record use the same item identity.
 click('section','living');const lr=current().p.rules.find(r=>r.patternType==='living'),lp=lr.patterns[0];click('patterns',lr.id);click('living-defaults',lr.id+':'+lp.id);
 let live=current().p.rules.find(r=>r.id===lr.id).patterns[0],home=live.items.find(i=>i.category==='食費'&&i.name==='家');assert(home);const oldExpense=U.record(current().n,current().p,'2026-10').planned.expense;
@@ -262,5 +292,29 @@ nav('record');const deltaRows=U.planned(current().n,current().p,'2027-02'),delta
 console.log('PASS signed actual differences: live positive/negative/blank updates, stable input DOM and unchanged original budgets');
 console.log('PASS restored UI flow: self/partner income estimates, living items, housing patterns, earmarked sinking purchase, investment conditions, master screens and complete JSON export');
 console.log('PASS UI flow: blank onboarding; independent state key; create income; move event; actual entry; branch; outlook; JSON export; new empty notebook preserves old; invalid import unchanged');
-})();
 
+// Event genres must classify by recurrence and open the adopted funds source.
+click('begin');submit({name:'event groups',start:'2026-04',cash:'1000',invest:'',reserve:''});click('section','events');
+click('event-new');assert(element('editorFields').innerHTML.includes('value="0" selected'));
+submit({name:'一回のみテスト',month:'2026-06',kind:'expense',amount:'500',repeatMode:'0',end:'',enabled:'on'});
+click('event-new-repeat');assert(element('editorFields').innerHTML.includes('value="1" selected'));
+submit({name:'周期テスト',month:'2026-08',kind:'expense',amount:'30',repeatMode:'1',everyValue:'1',everyUnit:'12',end:'',enabled:'on'});
+let groupedHTML=element('app').innerHTML;
+const genre=(html,key,next)=>html.split('data-keep="events-category:'+key+'"')[1].split(next?'data-keep="events-category:'+next+'"':'</main>')[0];
+assert(genre(groupedHTML,'once','repeat').includes('一回のみテスト'));assert(!genre(groupedHTML,'once','repeat').includes('周期テスト'));
+assert(genre(groupedHTML,'repeat','funds').includes('周期テスト'));assert(!genre(groupedHTML,'repeat','funds').includes('一回のみテスト'));
+const repeatEvent=current().p.events.find(e=>e.name==='周期テスト');click('event-edit',repeatEvent.id);
+submit({name:'周期テスト',month:'2026-08',kind:'expense',amount:'30',repeatMode:'0',end:'',enabled:'on'});
+groupedHTML=element('app').innerHTML;assert(genre(groupedHTML,'once','repeat').includes('周期テスト'));assert(!genre(groupedHTML,'repeat','funds').includes('周期テスト'));
+click('event-sinking-new');submit({name:'採用中の冷蔵庫',fundId:'general',amount:'120000',everyValue:'10',everyUnit:'12',month:'2026-04',purchaseMonth:'',end:'',deposit:'',autoPurchase:'on',enabled:'on'});
+const adoptedFunds=current().p.categorySelections.funds,adoptedSaving=current().p.events.find(e=>e.name==='採用中の冷蔵庫').id;
+click('source-copy','funds');submit({name:'未採用の積立案'});const unusedFunds=current().n.categoryCatalog.funds.at(-1).id;
+click('sinking-new');submit({name:'未採用のテレビ',fundId:'general',amount:'60000',everyValue:'5',everyUnit:'12',month:'2026-04',purchaseMonth:'',end:'',deposit:'',autoPurchase:'on',enabled:'on'});
+const unusedBefore=JSON.stringify(current().n.categoryCatalog.funds.find(q=>q.id===unusedFunds)),actualBeforeGroup=JSON.stringify(current().n.actuals),budgetBeforeGroup=JSON.stringify(current().p.budgets);
+click('section','events');groupedHTML=element('app').innerHTML;assert(genre(groupedHTML,'funds').includes('採用中の冷蔵庫'));assert(!groupedHTML.includes('未採用のテレビ'));
+click('event-fund-edit',adoptedSaving);submit({name:'採用中の冷蔵庫',fundId:'general',amount:'150000',everyValue:'10',everyUnit:'12',month:'2026-04',purchaseMonth:'',end:'',deposit:'',autoPurchase:'on',enabled:'on'});
+assert.equal(current().p.categorySelections.funds,adoptedFunds);assert.equal(current().p.events.find(e=>e.id===adoptedSaving).amount,150000);
+assert.equal(JSON.stringify(current().n.categoryCatalog.funds.find(q=>q.id===unusedFunds)),unusedBefore);assert.equal(JSON.stringify(current().n.actuals),actualBeforeGroup);assert.equal(JSON.stringify(current().p.budgets),budgetBeforeGroup);
+console.log('PASS event genres: recurrence grouping/defaults and reclassification; funds previews/editing use the adopted source and preserve unused sources, actuals and budgets');
+
+})();
