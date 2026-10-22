@@ -354,4 +354,15 @@ change({id:'chartCustomStart',value:'bad'});assert(asset().includes('2042年度'
 change({id:'chartRange',value:'life'});assert(asset().includes('2100年度'));change({id:'chartRange',value:'work'});assert(asset().includes('2065年度'));
 assert.equal(stored.get('finance-v4-state'),beforeCustom);
 console.log('PASS custom chart ranges: exact start/end, aligned comparison axis, NISA/funds, calculated balance continuity, one-year/reversed/invalid bounds and unchanged saved data');
+{
+// Detail editing must use the adopted source even after browsing an unused copied source.
+nav('outlook');assert(element('app').innerHTML.includes('data-action="adopted-item-edit"'));
+const beforeDetailOpen=stored.get('finance-v4-state'),unusedBefore=JSON.stringify(current().n.categoryCatalog.funds.find(q=>q.id===unusedFunds)),actualBefore=JSON.stringify(current().n.actuals),budgetBefore=JSON.stringify(current().p.budgets);
+click('adopted-item-edit',JSON.stringify({type:'funds',id:adoptedSaving}));assert(element('editorFields').innerHTML.includes('採用中の冷蔵庫'));assert(!element('editorFields').innerHTML.includes('未採用のテレビ'));assert.equal(stored.get('finance-v4-state'),beforeDetailOpen);
+submit({name:'採用中の冷蔵庫',fundId:'general',amount:'120123',everyValue:'10',everyUnit:'12',month:'2026-04',purchaseMonth:'',end:'',deposit:'',autoPurchase:'on',enabled:'on'});
+assert.equal(current().p.events.find(e=>e.id===adoptedSaving).amount,120123);assert.equal(JSON.stringify(current().n.categoryCatalog.funds.find(q=>q.id===unusedFunds)),unusedBefore);assert.equal(JSON.stringify(current().n.actuals),actualBefore);assert.equal(JSON.stringify(current().p.budgets),budgetBefore);
+nav('outlook');const eventToEdit=current().p.events.find(e=>!e.sinking);click('adopted-item-edit',JSON.stringify({type:'events',id:eventToEdit.id}));assert(element('editorFields').innerHTML.includes(eventToEdit.name));element('editor').close();
+click('section','children');click('child-new');submit({...childFields('編集リンク確認の子','2029'),'choice-high':'高校/私立'});const linkedChild=current().p.children.at(-1);nav('outlook');click('adopted-item-edit',JSON.stringify({type:'children',id:linkedChild.id}));assert(element('editorFields').innerHTML.includes('編集リンク確認の子'));assert(element('editorFields').innerHTML.includes('高校/私立'));element('editor').close();
+console.log('PASS detail editing: adopted event/fund/child opens exact editor; unused source, shared actuals and budgets preserved');
+}
 })();
