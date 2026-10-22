@@ -365,4 +365,11 @@ nav('outlook');const eventToEdit=current().p.events.find(e=>!e.sinking);click('a
 click('section','children');click('child-new');submit({...childFields('編集リンク確認の子','2029'),'choice-high':'高校/私立'});const linkedChild=current().p.children.at(-1);nav('outlook');click('adopted-item-edit',JSON.stringify({type:'children',id:linkedChild.id}));assert(element('editorFields').innerHTML.includes('編集リンク確認の子'));assert(element('editorFields').innerHTML.includes('高校/私立'));element('editor').close();
 console.log('PASS detail editing: adopted event/fund/child opens exact editor; unused source, shared actuals and budgets preserved');
 }
+{
+nav('outlook');const beforeGenres=stored.get('finance-v4-state'),h=element('app').innerHTML,eventsHTML=h.slice(h.indexOf('data-keep="adopted-category:events"'),h.indexOf('data-keep="adopted-category:children"'));
+assert(eventsHTML.indexOf('adopted-events-genre:once')<eventsHTML.indexOf('adopted-events-genre:repeat'));assert(eventsHTML.indexOf('adopted-events-genre:repeat')<eventsHTML.indexOf('adopted-events-genre:funds'));
+const boundaries=['once','repeat','funds'];for(let k=0;k<2;k++){const genre=eventsHTML.slice(eventsHTML.indexOf('adopted-events-genre:'+boundaries[k]),eventsHTML.indexOf('adopted-events-genre:'+boundaries[k+1])),expected=current().p.events.filter(e=>!e.sinking&&(k?U.N(e.every)>0:U.N(e.every)<=0)).sort((a,b)=>a.month.localeCompare(b.month));let last=-1;for(const e of expected){const pos=genre.indexOf('adopted-item:events:'+e.id);assert(pos>last,'events follow their scheduled month inside their genre');last=pos;}assert(!genre.includes('data-keep="adopted-events-genre:'+boundaries[k]+'" open'));}
+assert(eventsHTML.includes('<summary>採用中の冷蔵庫</summary>'));assert(!eventsHTML.includes('<summary>未採用のテレビ</summary>'));assert(eventsHTML.includes('採用する用途別積立の案'));assert.equal(stored.get('finance-v4-state'),beforeGenres);
+console.log('PASS adopted event genres: one-off/recurring/funds order, exact date order, adopted savings only, collapsed titles and no saved data changes');
+}
 })();
