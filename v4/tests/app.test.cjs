@@ -338,4 +338,19 @@ for(const type of U.patterns.categories.types){assert(overview.includes('data-ke
 assert(overview.includes('<summary>本人の収入</summary>'));assert(overview.includes('<summary>イベント</summary>'));assert(overview.includes('data-adopt="children"'));
 assert(!overview.includes('採用セットと切替時期の一覧'));
 console.log('PASS compact composition: all nine adopted categories start collapsed with category-only summaries');
+// Custom display dates filter every annual chart without restarting balance calculations or saving.
+const beforeCustom=stored.get('finance-v4-state');
+change({id:'chartRange',value:'custom'});change({id:'chartCustomStart',value:'2035'});change({id:'chartCustomEnd',value:'2040'});
+assert(asset().includes('2035年度'));assert(asset().includes('2040年度'));assert(!asset().includes('2026年度'));assert(!asset().includes('2065年度'));
+assert(element('app').innerHTML.includes('id="assetYearSlider" type="range" min="0" max="5"'));
+const comparison=element('app').innerHTML.match(/<svg class="chart"[^>]*aria-label="案ごとの年度末の総資産">([\s\S]*?)<\/svg>/)[1];assert(comparison.includes('2035年度'));assert(comparison.includes('2040年度'));assert(!comparison.includes('2026年度'));
+click('asset-year','2035');const real2035=U.annual(U.forecast(current().n,current().p,ctx.window.EDUCATION_MASTER)).find(v=>v.year===2035);assert(element('assetDetails').innerHTML.includes(yen(real2035.total)));
+click('nisa-open');const customNisa=element('app').innerHTML.match(/<svg id="nisaChart"[\s\S]*?<\/svg>/)[0];assert(customNisa.includes('2035年度'));assert(customNisa.includes('2040年度'));assert(!customNisa.includes('2026年度'));
+click('event-funds');const customFund=element('app').innerHTML.match(/<svg id="fundChart"[\s\S]*?<\/svg>/)[0];assert(customFund.includes('2035年度'));assert(customFund.includes('2040年度'));assert(!customFund.includes('2026年度'));
+nav('outlook');change({id:'chartCustomEnd',value:'2030'});assert(asset().includes('2030年度'));assert(!asset().includes('2035年度'));assert(element('app').innerHTML.includes('id="assetYearSlider" type="range" min="0" max="0"'));
+change({id:'chartCustomStart',value:'2042'});assert(asset().includes('2042年度'));assert(!asset().includes('2030年度'));
+change({id:'chartCustomStart',value:'bad'});assert(asset().includes('2042年度'));
+change({id:'chartRange',value:'life'});assert(asset().includes('2100年度'));change({id:'chartRange',value:'work'});assert(asset().includes('2065年度'));
+assert.equal(stored.get('finance-v4-state'),beforeCustom);
+console.log('PASS custom chart ranges: exact start/end, aligned comparison axis, NISA/funds, calculated balance continuity, one-year/reversed/invalid bounds and unchanged saved data');
 })();
