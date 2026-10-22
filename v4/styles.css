@@ -162,3 +162,5 @@ input::-webkit-date-and-time-value{min-width:0;text-align:left}input::-webkit-da
 .chart-custom-period{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 18px}.chart-custom-period label{min-width:0;margin:0}.chart-custom-period select{width:100%}
 
 .outlook-event-genre{border-bottom:1px solid var(--line)}.outlook-event-genre>summary{padding:16px 0;font-weight:700;cursor:pointer;line-height:1.7}.outlook-event-genre-body{padding-left:12px}.outlook-event-genre .outlook-schedule-rule>summary{font-size:16px}
+
+.month-breakdown-group th{background:#edf3eb;color:var(--green);padding-top:16px;padding-bottom:12px}.month-breakdown-group span{display:block;font-size:13px;font-weight:400;margin-top:4px}.year-months table td{vertical-align:top}
