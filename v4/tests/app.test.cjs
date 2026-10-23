@@ -386,4 +386,24 @@ console.log('PASS adopted event genres: one-off/recurring/funds order, exact dat
  assert.equal(JSON.stringify(current().n.actuals),actuals);assert.equal(JSON.stringify(current().p.budgets),budgets);assert.equal(JSON.stringify(current().p.categorySelections),selections);assert(U.valid(current().s));
  console.log('PASS source spread UI: selected modal save, unchecked save stays local, footer selected apply, unchanged adopters/actuals/budgets and valid JSON');
 }
+{
+ click('begin');submit({name:'one-time income',start:'2026-04',cash:'0',invest:'0',reserve:'0'});click('section','partnerIncome');
+ click('income-first');submit({name:'パート',monthly:'90000',netAnnual:'',grossMin:'',grossMax:'',rate:'',pick:'mid'});
+ const base=current().p.categorySelections.partnerIncome,actuals=JSON.stringify(current().n.actuals),salary=current().p.rules[0];
+ click('source-copy','partnerIncome');submit({name:'パートのみ（産育休手当あり）'});const withBenefit=current().n.categoryCatalog.partnerIncome.at(-1).id;
+ click('income-once-edit');assert(element('editorFields').innerHTML.includes('最終振込月'));submit({name:'第一子・産育休手当',month:'2030-02',amount:'2500000'});
+ const benefit=current().n.categoryCatalog.partnerIncome.at(-1).rules.find(r=>r.incomeOneOff);assert(benefit);assert.equal(benefit.start,benefit.end);assert.equal(benefit.owner,'partner');assert(!benefit.patterns);
+ assert.equal(current().p.categorySelections.partnerIncome,base);assert.equal(U.record(current().n,current().p,'2030-02').planned.income,90000);
+ click('source-apply','partnerIncome');assert.equal(U.record(current().n,current().p,'2030-02').planned.income,2590000);
+ assert.equal(U.record(current().n,current().p,'2030-01').planned.income,90000);assert.equal(U.record(current().n,current().p,'2030-03').planned.income,90000);
+ assert.equal(U.incomeUI.annualTotal(current().p.rules,current().n.start,2029),3580000);assert(element('app').innerHTML.includes('第一子・産育休手当'));
+ click('adopted-item-edit',JSON.stringify({type:'partnerIncome',id:benefit.id}));assert(element('editorFields').innerHTML.includes('最終振込月'));
+ submit({name:'第一子・産育休手当',month:'2030-03',amount:'2400000'});assert.equal(U.record(current().n,current().p,'2030-02').planned.income,90000);assert.equal(U.record(current().n,current().p,'2030-03').planned.income,2490000);
+ click('income-rule-delete',salary.id);submit({});assert(!current().p.rules.some(r=>r.id===salary.id));assert.equal(U.record(current().n,current().p,'2030-03').planned.income,2400000);
+ assert(element('app').innerHTML.includes('産育休手当・一時収入を追加'));assert(!element('app').innerHTML.includes('働き方の名前：パート'));
+ change({dataset:{sourceSelect:'partnerIncome'},value:base});click('source-apply','partnerIncome');assert.equal(U.record(current().n,current().p,'2030-03').planned.income,90000);
+ change({dataset:{sourceSelect:'partnerIncome'},value:withBenefit});click('source-apply','partnerIncome');click('income-rule-delete',benefit.id);submit({});assert.equal(U.record(current().n,current().p,'2030-03').planned.income,0);
+ assert.equal(JSON.stringify(current().n.actuals),actuals);assert(U.valid(current().s));
+ console.log('PASS one-time income: source-scoped benefit, exact calendar month/fiscal total, edit from outlook, delete whole salary slot, source switching and unchanged actuals');
+}
 })();
