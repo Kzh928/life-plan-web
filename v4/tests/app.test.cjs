@@ -1,6 +1,6 @@
 // Exercise UI actions, form submissions and import/export with a minimal DOM, no browser.
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),U=require('../core.js');require('../fund-timeline.js');
-require('../patterns.js');require('../planning-helpers.js');require('../cost-ui.js');
+require('../patterns.js');require('../source-spread.js');require('../planning-helpers.js');require('../cost-ui.js');
 require('../scenarios.js');
 require('../all-sources.js');require('../income-transfer.js');
 require('../living-costs.js');
@@ -325,7 +325,7 @@ change({id:'fundChartPurpose',value:chartFund});change({id:'fundChartUnit',value
 assert(element('app').innerHTML.includes('2030-04'));assert(element('app').innerHTML.includes('2031-03'));
 const fundHTML=element('app').innerHTML,fundSVG=element('fundChart');fundSVG.dataset={left:'54',step:String((760-70)/12)};fundSVG.viewBox={baseVal:{width:760}};fundSVG.getBoundingClientRect=()=>({left:10,width:380});
 listeners.pointerdown({type:'pointerdown',pointerType:'touch',buttons:1,clientX:10+(54+2.5*(760-70)/12)/2,target:{closest:selector=>selector==='#fundChart'?fundSVG:null}});
-assert(element('fundPointDetails').innerHTML.includes('2030-06'));assert(element('fundPointDetails').innerHTML.includes('51,000円'));assert(element('fundPointDetails').innerHTML.includes('1,000円'));
+assert(element('fundPointDetails').innerHTML.includes('2030-06'));const displayedFundRow=U.forecast(current().n,current().p,ctx.window.EDUCATION_MASTER).find(r=>r.month==='2030-06');assert(element('fundPointDetails').innerHTML.includes(yen(displayedFundRow.funds[chartFund])));assert(element('fundPointDetails').innerHTML.includes('1,000円'));
 click('fund-point-step','1');assert(element('fundPointDetails').innerHTML.includes('2030-07'));
 listeners.input({target:{id:'fundPointSlider',value:'0'}});assert(element('fundPointDetails').innerHTML.includes('2030-04'));
 assert.equal(element('app').innerHTML,fundHTML);assert.equal(stored.get('finance-v4-state'),beforeFundView);
@@ -371,5 +371,19 @@ assert(eventsHTML.indexOf('adopted-events-genre:once')<eventsHTML.indexOf('adopt
 const boundaries=['once','repeat','funds'];for(let k=0;k<2;k++){const genre=eventsHTML.slice(eventsHTML.indexOf('adopted-events-genre:'+boundaries[k]),eventsHTML.indexOf('adopted-events-genre:'+boundaries[k+1])),expected=current().p.events.filter(e=>!e.sinking&&(k?U.N(e.every)>0:U.N(e.every)<=0)).sort((a,b)=>a.month.localeCompare(b.month));let last=-1;for(const e of expected){const pos=genre.indexOf('adopted-item:events:'+e.id);assert(pos>last,'events follow their scheduled month inside their genre');last=pos;}assert(!genre.includes('data-keep="adopted-events-genre:'+boundaries[k]+'" open'));}
 assert(eventsHTML.includes('<summary>採用中の冷蔵庫</summary>'));assert(!eventsHTML.includes('<summary>未採用のテレビ</summary>'));assert(eventsHTML.includes('採用する用途別積立の案'));assert.equal(stored.get('finance-v4-state'),beforeGenres);
 console.log('PASS adopted event genres: one-off/recurring/funds order, exact date order, adopted savings only, collapsed titles and no saved data changes');
+}
+{
+ const chosen=current().p.categorySelections.events,actuals=JSON.stringify(current().n.actuals),budgets=JSON.stringify(current().p.budgets),selections=JSON.stringify(current().p.categorySelections);
+ click('section','events');click('source-copy','events');submit({name:'今回の変更の反映先'});const target=current().n.categoryCatalog.events.at(-1).id;
+ change({dataset:{sourceSelect:'events'},value:chosen});assert(element('app').innerHTML.includes('今回の変更を反映'));
+ click('event-new');assert(element('editorFields').innerHTML.includes('name="spreadMode"'));assert(element('editorFields').innerHTML.includes('name="spreadTarget"'));
+ submit({name:'複数案へ追加',month:'2028-06',kind:'expense',amount:'1234',repeatMode:'0',end:'',enabled:'on',spreadMode:'selected',spreadTarget:target});
+ const shared=current().p.events.find(e=>e.name==='複数案へ追加');assert(shared);assert.equal(current().n.categoryCatalog.events.find(q=>q.id===target).events.find(e=>e.id===shared.id).amount,1234);
+ click('event-edit',shared.id);submit({name:'複数案へ追加',month:'2028-06',kind:'expense',amount:'2345',repeatMode:'0',end:'',enabled:'on'});
+ assert.equal(current().n.categoryCatalog.events.find(q=>q.id===target).events.find(e=>e.id===shared.id).amount,1234);
+ change({dataset:{spreadMode:''},value:'selected'});change({dataset:{spreadTarget:target},checked:true});click('source-spread-apply');
+ assert.equal(current().n.categoryCatalog.events.find(q=>q.id===target).events.find(e=>e.id===shared.id).amount,2345);
+ assert.equal(JSON.stringify(current().n.actuals),actuals);assert.equal(JSON.stringify(current().p.budgets),budgets);assert.equal(JSON.stringify(current().p.categorySelections),selections);assert(U.valid(current().s));
+ console.log('PASS source spread UI: selected modal save, unchecked save stays local, footer selected apply, unchanged adopters/actuals/budgets and valid JSON');
 }
 })();

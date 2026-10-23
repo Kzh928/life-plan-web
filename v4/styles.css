@@ -164,3 +164,4 @@ input::-webkit-date-and-time-value{min-width:0;text-align:left}input::-webkit-da
 .outlook-event-genre{border-bottom:1px solid var(--line)}.outlook-event-genre>summary{padding:16px 0;font-weight:700;cursor:pointer;line-height:1.7}.outlook-event-genre-body{padding-left:12px}.outlook-event-genre .outlook-schedule-rule>summary{font-size:16px}
 
 .month-breakdown-group th{background:#edf3eb;color:var(--green);padding-top:16px;padding-bottom:12px}.month-breakdown-group span{display:block;font-size:13px;font-weight:400;margin-top:4px}.year-months table td{vertical-align:top}
+.source-spread-options{margin:16px 0}.source-spread-options>summary{font-weight:700;color:var(--green);padding:12px 0;cursor:pointer}.source-spread-options .check{padding:8px 0;line-height:1.7}.source-spread{margin-top:24px}
