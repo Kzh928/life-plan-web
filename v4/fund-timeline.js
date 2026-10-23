@@ -2,5 +2,12 @@
 (function(root){'use strict';const U=root.MoneyV4||(typeof require==='function'?require('./core.js'):null),N=U.N;
 function series(note,rows,fundId='all',unit='year'){const match=id=>fundId==='all'||(id||'general')===fundId,initial=fundId==='all'?N(note.opening.reserve):fundId==='general'?Math.max(0,N(note.opening.reserve)-(note.purposes||[]).reduce((s,f)=>s+N(f.initial),0)):N(note.purposes?.find(f=>f.id===fundId)?.initial),out=[];let previous=initial;
 for(const r of rows){const key=unit==='month'?r.month:String(U.fy(r.month)),balance=fundId==='all'?Object.values(r.funds||{}).reduce((s,v)=>s+N(v),0):N(r.funds?.[fundId]),deposits=(r.items||[]).filter(i=>i.kind==='reserve'&&match(i.fundId)),activity=(r.fundActivity||[]).filter(i=>match(i.fundId));let v=out.at(-1);if(v?.key!==key){v={key,label:unit==='month'?r.month:key+'年度',year:U.fy(r.month),start:r.month,end:r.month,opening:previous,balance,deposit:0,withdrawal:0,paid:0,shortfall:0,expense:0,months:0,activity:[],deposits:[]};out.push(v);}v.months++;v.end=r.month;v.balance=balance;for(const i of deposits){v.deposit+=Math.max(0,N(i.amount));v.withdrawal+=Math.max(0,-N(i.amount));v.deposits.push({month:r.month,name:i.name,amount:N(i.amount)});}for(const i of activity){v.paid+=N(i.paid);v.shortfall+=N(i.shortfall);v.expense+=N(i.paid)+N(i.shortfall);v.activity.push({month:r.month,name:i.name,paid:N(i.paid),shortfall:N(i.shortfall)});}previous=balance;}return out;}
-U.fundTimeline={series};if(typeof module!=='undefined')module.exports=U.fundTimeline;
+// Group each movement once. Cash shortfalls belong to purchase detail, while
+// moving earmarked cash back to free cash is a transfer, not household spending.
+function detailGroups(v){return [
+ {key:'expense',title:'支出',items:v.activity.map(a=>({...a,amount:N(a.paid)+N(a.shortfall)}))},
+ {key:'income',title:'収入（積立への入金）',items:v.deposits.filter(a=>a.amount>0)},
+ {key:'transfer',title:'取り崩し・現金への移動',items:v.deposits.filter(a=>a.amount<0).map(a=>({...a,amount:-a.amount}))}
+].map(g=>{const months=new Map();for(const a of g.items){if(!a.amount)continue;if(!months.has(a.month))months.set(a.month,{month:a.month,total:0,items:[]});const m=months.get(a.month);m.total+=a.amount;m.items.push({...a});}const rows=[...months.values()].sort((a,b)=>a.month.localeCompare(b.month));return {key:g.key,title:g.title,total:rows.reduce((s,m)=>s+m.total,0),months:rows};});}
+U.fundTimeline={series,detailGroups};if(typeof module!=='undefined')module.exports=U.fundTimeline;
 })(typeof window!=='undefined'?window:globalThis);

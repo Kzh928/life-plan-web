@@ -6,3 +6,13 @@ const assert=require('node:assert/strict'),U=require('../core.js');require('../p
 // Unallocated opening balance and partial fiscal years.
 {const n=U.notebook({start:'2026-10',reserve:100}),p=n.plans[n.activePlan];n.purposes=[{id:'a',name:'家電',initial:40}];const years=series(n,U.forecast(n,p),'general','year');assert.equal(years[0].months,6);assert.equal(years[0].opening,60);assert.equal(years[0].balance,60);assert.deepEqual(series(n,[]),[]);}
 console.log('PASS fund timelines: screenshot balance, exact housing rounding, purpose isolation, actual priority, shortfalls, transfers, opening allocation, partial years and accounting conservation');
+{
+ const v={activity:[{month:'2030-05',name:'冷蔵庫',paid:800,shortfall:200},{month:'2030-04',name:'洗濯機',paid:300,shortfall:0},{month:'2030-04',name:'冷蔵庫',paid:100,shortfall:0}],deposits:[{month:'2030-05',name:'洗濯機積立',amount:20},{month:'2030-04',name:'冷蔵庫積立',amount:10},{month:'2030-04',name:'洗濯機積立',amount:30},{month:'2030-04',name:'不足に充当',amount:-15},{month:'2030-06',name:'休止',amount:0}]};
+ const before=JSON.stringify(v),g=U.fundTimeline.detailGroups(v);
+ assert.deepEqual(g.map(x=>x.key),['expense','income','transfer']);assert.deepEqual(g.map(x=>x.total),[1400,60,15]);
+ assert.deepEqual(g[0].months.map(m=>[m.month,m.total,m.items.length]),[['2030-04',400,2],['2030-05',1000,1]]);
+ assert.deepEqual(g[1].months.map(m=>[m.month,m.total]),[['2030-04',40],['2030-05',20]]);
+ assert.equal(g[0].months[1].items[0].shortfall,200);assert.equal(JSON.stringify(v),before);
+ assert(U.fundTimeline.detailGroups({activity:[],deposits:[]}).every(g=>!g.months.length&&g.total===0));
+ console.log('PASS movement hierarchy: type/month subtotals, fiscal order, cash shortfall detail, separate transfer, zero filtering and no mutation');
+}
