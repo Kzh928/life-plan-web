@@ -406,4 +406,13 @@ console.log('PASS adopted event genres: one-off/recurring/funds order, exact dat
  assert.equal(JSON.stringify(current().n.actuals),actuals);assert(U.valid(current().s));
  console.log('PASS one-time income: source-scoped benefit, exact calendar month/fiscal total, edit from outlook, delete whole salary slot, source switching and unchanged actuals');
 }
+{
+ click('begin');submit({name:'funded unexpected purchase',start:'2026-04',cash:'1000',invest:'0',reserve:'1000'});nav('record');
+ click('manual');assert(element('editorFields').innerHTML.includes('支出の支払元'));submit({name:'故障で冷蔵庫を購入',kind:'expense',amount:'200',funding:'fund:general'});
+ let c=current(),id=Object.keys(c.n.actuals['2026-04'].values)[0],row=U.forecast(c.n,c.p,null,'2026-04')[0];assert.equal(row.used.expense,200);assert.equal(row.release,200);assert.equal(row.reserve,800);assert.equal(row.cash,1000);assert(element('app').innerHTML.includes('用途別積立「用途未分類」'));
+ click('record-funding',id);submit({amount:'1200',funding:'fund:general'});c=current();row=U.forecast(c.n,c.p,null,'2026-04')[0];assert.equal(row.release,1000);assert.equal(row.reserveShortfall,200);assert.equal(row.cash,800);assert.equal(c.p.events.length,0);
+ click('record-funding',id);submit({amount:'100',funding:'cash'});c=current();assert.equal(c.n.actuals['2026-04'].values[id].useReserve,false);assert(U.valid(c.s));
+ change({id:'monthPicker',value:'2100-12'});assert(element('app').innerHTML.includes('value="2100-12" min="2026-01" max="2100-12"'));change({id:'monthPicker',value:'2026-01'});assert(element('app').innerHTML.includes('value="2026-01" min="2026-01" max="2100-12"'));change({id:'monthPicker',value:'2026-04'});assert.equal(current().n.actuals['2026-04'].values[id].amount,100);
+ console.log('PASS purchase funding and fixed record dates: explicit purpose label, reserve release/shortfall, cash override, 2100 to 2026 back-navigation and unchanged records');
+}
 })();
