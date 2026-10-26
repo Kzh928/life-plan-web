@@ -6,7 +6,7 @@ require('../all-sources.js');require('../income-transfer.js');
 require('../living-costs.js');
 require('../living-ui.js');
 require('../income-ui.js');
-require('../record-ui.js');
+require('../record-ui.js');require('../item-inspector.js');
 require('../cost-ui.js');
 require('../legacy-import.js');
 const elements=new Map(),listeners={},stored=new Map(),status=[];const element=id=>{if(id==='conditionsForm')return null;if(!elements.has(id))elements.set(id,{id,innerHTML:'',textContent:'',dataset:{},hidden:false,querySelectorAll:()=>[],querySelector:()=>null,showModal(){this.open=true},close(){this.open=false},setAttribute(k,v){this[k]=v},removeAttribute(k){delete this[k]},addEventListener(type,fn){this[type]=fn;},click(){}});return elements.get(id);};
