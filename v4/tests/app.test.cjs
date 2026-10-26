@@ -325,7 +325,7 @@ change({id:'fundChartPurpose',value:chartFund});change({id:'fundChartUnit',value
 assert(element('app').innerHTML.includes('2030-04'));assert(element('app').innerHTML.includes('2031-03'));
 const fundHTML=element('app').innerHTML,fundSVG=element('fundChart');fundSVG.dataset={left:'54',step:String((760-70)/12)};fundSVG.viewBox={baseVal:{width:760}};fundSVG.getBoundingClientRect=()=>({left:10,width:380});
 listeners.pointerdown({type:'pointerdown',pointerType:'touch',buttons:1,clientX:10+(54+2.5*(760-70)/12)/2,target:{closest:selector=>selector==='#fundChart'?fundSVG:null}});
-assert(element('fundPointDetails').innerHTML.includes('2030-06'));const displayedFundRow=U.forecast(current().n,current().p,ctx.window.EDUCATION_MASTER).find(r=>r.month==='2030-06');assert(element('fundPointDetails').innerHTML.includes(yen(displayedFundRow.funds[chartFund])));assert(element('fundPointDetails').innerHTML.includes('1,000円'));
+assert(element('fundPointDetails').innerHTML.includes('2030-06'));const displayedFundRow=U.forecast(current().n,current().p,ctx.window.EDUCATION_MASTER).find(r=>r.month==='2030-06');assert(element('fundPointDetails').innerHTML.includes(yen(displayedFundRow.funds[chartFund])));assert(element('fundPointDetails').innerHTML.includes(yen(displayedFundRow.items.filter(i=>i.kind==='reserve'&&i.fundId===chartFund&&i.amount>0).reduce((s,i)=>s+i.amount,0))));
 click('fund-point-step','1');assert(element('fundPointDetails').innerHTML.includes('2030-07'));
 listeners.input({target:{id:'fundPointSlider',value:'0'}});assert(element('fundPointDetails').innerHTML.includes('2030-04'));
 assert.equal(element('app').innerHTML,fundHTML);assert.equal(stored.get('finance-v4-state'),beforeFundView);

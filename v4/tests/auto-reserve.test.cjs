@@ -1,0 +1,6 @@
+const assert=require('node:assert/strict'),U=require('../core.js');require('../patterns.js');
+const n=U.notebook({start:'2026-04',cash:100}),p=n.plans[n.activePlan];p.rules=[{id:'saving',name:'家電積立',kind:'reserve',amount:200,start:n.start,end:'',fundId:'general',changes:[],annualYears:{}}];n.actuals[n.start]={status:'closed',values:{bill:{id:'bill',name:'支出',kind:'expense',amount:30,entered:true}}};
+const before=JSON.stringify(n),r=U.record(n,p,n.start),f=U.forecast(n,p,null,n.start)[0];assert.equal(r.used.reserve,200);assert.equal(r.items.find(i=>i.id==='rule:saving').autoReserve,true);assert.equal(f.used.reserve,70);assert.equal(f.reserve,70);assert.equal(f.cash,0);assert.equal(f.net,-30);assert.equal(f.total,70);assert.equal(JSON.stringify(n),before);
+n.opening.cash=0;const empty=U.forecast(n,p,null,n.start)[0];assert.equal(empty.reserve,0);assert.equal(empty.cash,-30);
+n.opening.cash=100;n.actuals[n.start].values['rule:saving']={id:'rule:saving',name:'過去の積立実績',kind:'reserve',amount:10,entered:true};assert.equal(U.forecast(n,p,null,n.start)[0].reserve,10);
+console.log('PASS automatic reserve: closed-month continuation, available-cash cap, no new actual records, no double counting and preserved historical explicit transfers');
