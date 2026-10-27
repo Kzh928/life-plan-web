@@ -9,3 +9,15 @@ const spans=[{dataset:{recordPath:JSON.stringify(['支出'])}},{dataset:{recordP
 for(const [parts,kind]of [[['支出','生活費','食費'],'expense'],[['支出','固定費'],'expense'],[['支出','NISA'],'invest'],[['支出','別枠貯金'],'reserve'],[['収入','特別収入'],'income']])assert.equal(R.manualContext(parts).kind,kind);assert.throws(()=>R.manualContext(['支出','生活費','']));
 console.log('PASS record hierarchy: exact requested categories, legacy items shown once, nested totals, absent vs zero, view-only data preservation, transfer kinds intact, scoped actual entry');
 
+
+assert.equal(R.entryState(rows.find(i=>i.id==='food'),r),'entered');
+assert.equal(R.entryState(rows.find(i=>i.id==='electric'),r),'missing');
+assert.equal(R.entryState({id:'zero',amount:0},r),'optional');
+assert.equal(R.entryState(rows.find(i=>i.id==='electric'),{...r,status:'closed'}),'closed');
+const progressSpan={dataset:{recordProgress:JSON.stringify(['支出','固定費'])}};
+const live={querySelectorAll:selector=>selector==='[data-record-progress]'?[progressSpan]:[]};
+R.updateTotals(live,r,x=>x+'円');assert.equal(progressSpan.textContent,'未入力 1件');assert.equal(progressSpan.dataset.recordState,'missing');
+r.row.values.electric={amount:0,entered:true};R.updateTotals(live,r,x=>x+'円');assert.equal(progressSpan.textContent,'入力済み');assert.equal(progressSpan.dataset.recordState,'entered');
+r.row.values.electric.entered=false;R.updateTotals(live,r,x=>x+'円');assert.equal(progressSpan.textContent,'未入力 1件');
+assert(html.includes('data-record-progress='));assert(html.includes('未入力 1件'));
+console.log('PASS recording progress: missing nonzero plans, explicit zero, optional zero plans, closed months and live clear/re-entry without rerender');
