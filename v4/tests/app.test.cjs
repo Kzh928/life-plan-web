@@ -415,4 +415,15 @@ console.log('PASS adopted event genres: one-off/recurring/funds order, exact dat
  change({id:'monthPicker',value:'2100-12'});assert(element('app').innerHTML.includes('value="2100-12" min="2026-01" max="2100-12"'));change({id:'monthPicker',value:'2026-01'});assert(element('app').innerHTML.includes('value="2026-01" min="2026-01" max="2100-12"'));change({id:'monthPicker',value:'2026-04'});assert.equal(current().n.actuals['2026-04'].values[id].amount,100);
  console.log('PASS purchase funding and fixed record dates: explicit purpose label, reserve release/shortfall, cash override, 2100 to 2026 back-navigation and unchanged records');
 }
+// Annual forecast comparison must use the same actual-plus-plan figures as the chart.
+{
+ click('begin');submit({name:'annual mixed',start:'2026-04',cash:'100000',invest:'0',reserve:'0'});
+ click('rule-new');submit({name:'給料',kind:'income',group:'給与',amount:'300000',start:'2026-04',end:''});
+ const rid=current().p.rules[0].id;nav('record');change({dataset:{actual:'rule:'+rid},value:'280000'});
+ nav('outlook');change({id:'yearSelect',value:'2026'});
+ const h=element('app').innerHTML.split('<div class="annual-forecast">')[1].split('</section>')[0];
+ assert(h.includes('2026年度の見通し（実績＋未入力分の予定）'));assert(h.includes('3,580,000円'));assert(h.includes('3,600,000円'));assert(h.includes('280,000円'));assert(h.includes('20,000円'));assert(h.includes('delta-negative'));assert(h.includes('<th>年間収支</th>'));assert.equal(U.annual(U.forecast(current().n,current().p))[0].income,3580000);assert.equal(current().p.budgets?.[2026],undefined);
+ console.log('PASS annual outlook comparison: partial actuals plus remaining plans, full year without budgets, same as chart, actual-only column and favorable/adverse difference');
+}
+
 })();
