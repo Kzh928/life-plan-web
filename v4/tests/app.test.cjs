@@ -426,4 +426,6 @@ console.log('PASS adopted event genres: one-off/recurring/funds order, exact dat
  console.log('PASS annual outlook comparison: partial actuals plus remaining plans, full year without budgets, same as chart, actual-only column and favorable/adverse difference');
 }
 
+nav('outlook');click('asset-year','2026');{const h=element('assetDetails').innerHTML;assert.equal((h.match(/class="asset-summary"/g)||[]).length,2);assert(!h.includes('class="asset-summary" open'));for(const label of ['現金合計の内訳','うち用途別積立','投資の保有元本','投資の運用損益（保有分）','期首の総資産','この年度の運用増減'])assert(h.includes(label));const y=U.annual(U.forecast(current().n,current().p))[0];assert(h.includes(yen(y.cash+y.reserveBalance)));assert(Math.abs(y.total-(U.N(current().n.opening.cash)+U.N(current().n.opening.reserve)+U.N(current().n.opening.invest)+y.income-y.expense+y.gain))<0.01);console.log('PASS compact annual asset breakdown and reconciliation');}
+
 })();
