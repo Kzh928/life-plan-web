@@ -8,10 +8,12 @@ async function exportComplete(argumentsText='') {
  await prefsPending;
  const snapshot={format:'photo-sets-complete',version:1,createdAt:new Date().toISOString(),sets:sets.map(s=>({...s,customOrder:(s.customOrder||[]).filter(id=>photos.some(p=>p.id===id&&p.setId===s.id))})),photos:[],preferences:{}};
  for(const key of PREF_KEYS) { const value=appStorage.getItem(key); if(value!==null) snapshot.preferences[key]=value; }
+ const {photos:unusedPhotos,...metadata}=snapshot; const fileParts=[JSON.stringify(metadata).slice(0,-1)+',\"photos\":['];
  const exportPhotos=await all('photos'); let preparedCount=0;
- for(const photo of exportPhotos) { const {blob,...fields}=photo; const bytes=await blob.arrayBuffer(); snapshot.photos.push({...fields,size:bytes.byteLength,data:await toBase64(blob),sha256:await digestBytes(bytes)}); preparedCount++; $('commandStatus').textContent=`写真をまとめています：${preparedCount} / ${exportPhotos.length}枚`; }
+ for(const photo of exportPhotos) { const {blob,...fields}=photo; const bytes=await blob.arrayBuffer(); fileParts.push((preparedCount?',':'')+JSON.stringify({...fields,size:bytes.byteLength,data:await toBase64(blob),sha256:await digestBytes(bytes)})); preparedCount++; $('commandStatus').textContent=`写真をまとめています：${preparedCount} / ${exportPhotos.length}枚`; if(preparedCount%5===0) await new Promise(resolve=>setTimeout(resolve,16)); }
  if(epoch!==privacyEpoch) throw Error('もう一度お試しください．');
- showBackupSave(new File([JSON.stringify(snapshot)],`photo-sets-complete-${new Date().toISOString().slice(0,10)}.json`,{type:'application/json'}));
+ fileParts.push(']}');
+ showBackupSave(new File(fileParts,`photo-sets-complete-${new Date().toISOString().slice(0,10)}.json`,{type:'application/json'}));
 }
 async function validateComplete(raw) {
  if(raw?.format!=='photo-sets-complete'||raw.version!==1||!Array.isArray(raw.sets)||!Array.isArray(raw.photos)||!raw.preferences||typeof raw.preferences!=='object'||Array.isArray(raw.preferences)) throw Error('形式が異なります');
@@ -46,9 +48,12 @@ async function importComplete(raw) {
 
 // 保存先は端末だけが把握するため，保存する操作と確認手順を残す．
 function showBackupSave(file) {
- // iPhoneで複数のモーダルを重ねない．合言葉・設定画面を閉じてから保存画面を開く．
- for(const opened of document.querySelectorAll('dialog[open]')) opened.close();
- const dialog=document.createElement('dialog');dialog.id='backupSaveDialog';dialog.className='sheet command-sheet';dialog.setAttribute('aria-labelledby','backupSaveTitle');
+ // 同じ画面の中身だけを保存操作へ切り替え，iPhoneのモーダル切替を避ける．
+ const host=$('commandDialog');
+ for(const opened of document.querySelectorAll('dialog[open]')) if(opened!==host) opened.close();
+ if(document.getElementById('backupSavePanel')) throw Error('開いている保存画面を先に閉じてください．');
+ const dialog=document.createElement('section');dialog.id='backupSavePanel';
+ $('commandForm').hidden=true; $('commandTools').hidden=true; $('commandTitle').hidden=true; $('commandStatus').textContent='';
  const title=document.createElement('h2');title.id='backupSaveTitle';title.textContent='バックアップの準備ができました';
  const filename=document.createElement('p');filename.textContent=file.name;filename.style.cssText='overflow-wrap:anywhere;font-weight:700';
  const help=document.createElement('p');help.className='setting-explain';help.textContent='このJSONには写真と設定が含まれ，暗号化されません．まだ端末への保存は完了していません．下のボタンを押し，共有画面の「ファイルに保存」を選んでください．保存先は「このiPhone内」→「ダウンロード」など，自分で選べます．';
@@ -57,7 +62,7 @@ function showBackupSave(file) {
  const url=URL.createObjectURL(file);fallback.href=url;
  const tips=document.createElement('p');tips.className='setting-explain';tips.style.marginTop='16px';tips.textContent='ダウンロードした場合：「ファイル」アプリ→「ブラウズ」→「iCloud Drive」または「このiPhone内」→「ダウンロード」で，上のファイル名を探してください．設定によって保存先は異なります．';
  const status=document.createElement('p');status.className='setting-explain';status.setAttribute('role','status');
- const close=document.createElement('button');close.type='button';close.className='secondary-button wide';close.textContent='閉じる';close.onclick=()=>dialog.close();
+ const close=document.createElement('button');close.type='button';close.className='secondary-button wide';close.textContent='保存画面を閉じる';close.onclick=()=>host.close();
  save.onclick=async()=>{
    if(!navigator.canShare?.({files:[file]})) {status.textContent='このブラウザでは保存先の選択に対応していません．「JSONをダウンロード」を押し，上の手順で探してください．';return;}
    save.disabled=true;
@@ -66,5 +71,5 @@ function showBackupSave(file) {
    finally{save.disabled=false;}
  };
  fallback.onclick=()=>{status.textContent='ダウンロードを開始しました．「ファイル」アプリの「ダウンロード」を確認してください．';};
- dialog.append(title,filename,help,save,fallback,tips,status,close);document.body.append(dialog);dialog.addEventListener('close',()=>{URL.revokeObjectURL(url);dialog.remove();},{once:true});dialog.showModal();
+ dialog.append(title,filename,help,save,fallback,tips,status,close);host.append(dialog);host.addEventListener('close',()=>{URL.revokeObjectURL(url);dialog.remove();$('commandTitle').hidden=false;},{once:true});if(!host.open)host.showModal();
 }
