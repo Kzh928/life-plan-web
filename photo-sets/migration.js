@@ -4,11 +4,12 @@ async function exportComplete(argumentsText='') {
  const epoch=privacyEpoch, supplied=argumentsText.trim().split(/\s+/).filter(Boolean);
  for(const profile of ['primary','secondary']) if(validGate(getGate(profile)) && !(await Promise.all(supplied.map(phrase=>verifyPhrase(phrase,profile)))).some(Boolean)) throw Error('入力を確認してください．');
  if(epoch!==privacyEpoch) throw Error('もう一度お試しください．');
- if(!confirm('全データを写真本体・設定と一緒に保存します．このJSONは暗号化されません．安全な場所に保管してください．')) return;
+ $('commandStatus').textContent='写真をまとめています．この画面のままお待ちください…';
  await prefsPending;
  const snapshot={format:'photo-sets-complete',version:1,createdAt:new Date().toISOString(),sets:sets.map(s=>({...s,customOrder:(s.customOrder||[]).filter(id=>photos.some(p=>p.id===id&&p.setId===s.id))})),photos:[],preferences:{}};
  for(const key of PREF_KEYS) { const value=appStorage.getItem(key); if(value!==null) snapshot.preferences[key]=value; }
- for(const photo of await all('photos')) { const {blob,...fields}=photo; const bytes=await blob.arrayBuffer(); snapshot.photos.push({...fields,size:bytes.byteLength,data:await toBase64(blob),sha256:await digestBytes(bytes)}); }
+ const exportPhotos=await all('photos'); let preparedCount=0;
+ for(const photo of exportPhotos) { const {blob,...fields}=photo; const bytes=await blob.arrayBuffer(); snapshot.photos.push({...fields,size:bytes.byteLength,data:await toBase64(blob),sha256:await digestBytes(bytes)}); preparedCount++; $('commandStatus').textContent=`写真をまとめています：${preparedCount} / ${exportPhotos.length}枚`; }
  if(epoch!==privacyEpoch) throw Error('もう一度お試しください．');
  showBackupSave(new File([JSON.stringify(snapshot)],`photo-sets-complete-${new Date().toISOString().slice(0,10)}.json`,{type:'application/json'}));
 }
@@ -45,11 +46,12 @@ async function importComplete(raw) {
 
 // 保存先は端末だけが把握するため，保存する操作と確認手順を残す．
 function showBackupSave(file) {
- document.getElementById('backupSaveDialog')?.close();
+ // iPhoneで複数のモーダルを重ねない．合言葉・設定画面を閉じてから保存画面を開く．
+ for(const opened of document.querySelectorAll('dialog[open]')) opened.close();
  const dialog=document.createElement('dialog');dialog.id='backupSaveDialog';dialog.className='sheet command-sheet';dialog.setAttribute('aria-labelledby','backupSaveTitle');
  const title=document.createElement('h2');title.id='backupSaveTitle';title.textContent='バックアップの準備ができました';
  const filename=document.createElement('p');filename.textContent=file.name;filename.style.cssText='overflow-wrap:anywhere;font-weight:700';
- const help=document.createElement('p');help.className='setting-explain';help.textContent='まだ端末への保存は完了していません．下のボタンを押し，共有画面の「ファイルに保存」を選んでください．保存先は「このiPhone内」→「ダウンロード」など，自分で選べます．';
+ const help=document.createElement('p');help.className='setting-explain';help.textContent='このJSONには写真と設定が含まれ，暗号化されません．まだ端末への保存は完了していません．下のボタンを押し，共有画面の「ファイルに保存」を選んでください．保存先は「このiPhone内」→「ダウンロード」など，自分で選べます．';
  const save=document.createElement('button');save.type='button';save.className='primary-button';save.textContent='保存先を選ぶ（ファイルに保存）';
  const fallback=document.createElement('a');fallback.className='secondary-button wide';fallback.textContent='JSONをダウンロード';fallback.style.cssText='display:flex;align-items:center;justify-content:center;text-decoration:none';fallback.download=file.name;
  const url=URL.createObjectURL(file);fallback.href=url;
