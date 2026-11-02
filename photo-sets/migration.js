@@ -10,7 +10,7 @@ async function exportComplete(argumentsText='') {
  for(const key of PREF_KEYS) { const value=appStorage.getItem(key); if(value!==null) snapshot.preferences[key]=value; }
  for(const photo of await all('photos')) { const {blob,...fields}=photo; const bytes=await blob.arrayBuffer(); snapshot.photos.push({...fields,size:bytes.byteLength,data:await toBase64(blob),sha256:await digestBytes(bytes)}); }
  if(epoch!==privacyEpoch) throw Error('もう一度お試しください．');
- const file=new Blob([JSON.stringify(snapshot)],{type:'application/json'}),url=URL.createObjectURL(file),link=document.createElement('a');link.href=url;link.download=`photo-sets-complete-${new Date().toISOString().slice(0,10)}.json`;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);toast('全データを書き出しました');
+ showBackupSave(new File([JSON.stringify(snapshot)],`photo-sets-complete-${new Date().toISOString().slice(0,10)}.json`,{type:'application/json'}));
 }
 async function validateComplete(raw) {
  if(raw?.format!=='photo-sets-complete'||raw.version!==1||!Array.isArray(raw.sets)||!Array.isArray(raw.photos)||!raw.preferences||typeof raw.preferences!=='object'||Array.isArray(raw.preferences)) throw Error('形式が異なります');
@@ -41,4 +41,28 @@ async function importComplete(raw) {
  await done;preferenceCache=valid.preferences;
  for(const key of PREF_KEYS)try{if(Object.hasOwn(preferenceCache,key))localStorage.setItem(key,preferenceCache[key]);else localStorage.removeItem(key);}catch{}
  photoOrder=appStorage.getItem('photo-order')||'newest';$('photoOrder').value=photoOrder;activeSetId=appStorage.getItem('active-photo-set');lockSession();await refresh();$('settingsDialog').close();toast('全データを復元しました');
+}
+
+// 保存先は端末だけが把握するため，保存する操作と確認手順を残す．
+function showBackupSave(file) {
+ document.getElementById('backupSaveDialog')?.close();
+ const dialog=document.createElement('dialog');dialog.id='backupSaveDialog';dialog.className='sheet command-sheet';dialog.setAttribute('aria-labelledby','backupSaveTitle');
+ const title=document.createElement('h2');title.id='backupSaveTitle';title.textContent='バックアップの準備ができました';
+ const filename=document.createElement('p');filename.textContent=file.name;filename.style.cssText='overflow-wrap:anywhere;font-weight:700';
+ const help=document.createElement('p');help.className='setting-explain';help.textContent='まだ端末への保存は完了していません．下のボタンを押し，共有画面の「ファイルに保存」を選んでください．保存先は「このiPhone内」→「ダウンロード」など，自分で選べます．';
+ const save=document.createElement('button');save.type='button';save.className='primary-button';save.textContent='保存先を選ぶ（ファイルに保存）';
+ const fallback=document.createElement('a');fallback.className='secondary-button wide';fallback.textContent='JSONをダウンロード';fallback.style.cssText='display:flex;align-items:center;justify-content:center;text-decoration:none';fallback.download=file.name;
+ const url=URL.createObjectURL(file);fallback.href=url;
+ const tips=document.createElement('p');tips.className='setting-explain';tips.style.marginTop='16px';tips.textContent='ダウンロードした場合：「ファイル」アプリ→「ブラウズ」→「iCloud Drive」または「このiPhone内」→「ダウンロード」で，上のファイル名を探してください．設定によって保存先は異なります．';
+ const status=document.createElement('p');status.className='setting-explain';status.setAttribute('role','status');
+ const close=document.createElement('button');close.type='button';close.className='secondary-button wide';close.textContent='閉じる';close.onclick=()=>dialog.close();
+ save.onclick=async()=>{
+   if(!navigator.canShare?.({files:[file]})) {status.textContent='このブラウザでは保存先の選択に対応していません．「JSONをダウンロード」を押し，上の手順で探してください．';return;}
+   save.disabled=true;
+   try{await navigator.share({files:[file],title:'写真セットのバックアップ'});status.textContent='共有画面を閉じました．「ファイル」アプリで，選んだ保存先にファイルがあることを確認してください．';}
+   catch(error){status.textContent=error.name==='AbortError'?'保存をキャンセルしました．もう一度保存先を選べます．':'保存画面を開けませんでした．「JSONをダウンロード」をお試しください．';}
+   finally{save.disabled=false;}
+ };
+ fallback.onclick=()=>{status.textContent='ダウンロードを開始しました．「ファイル」アプリの「ダウンロード」を確認してください．';};
+ dialog.append(title,filename,help,save,fallback,tips,status,close);document.body.append(dialog);dialog.addEventListener('close',()=>{URL.revokeObjectURL(url);dialog.remove();},{once:true});dialog.showModal();
 }
