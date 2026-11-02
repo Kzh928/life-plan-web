@@ -8,10 +8,10 @@ require('../living-ui.js');
 require('../income-ui.js');
 require('../record-ui.js');require('../item-inspector.js');
 require('../cost-ui.js');
-require('../legacy-import.js');require('../bonus-import.js');
+require('../legacy-import.js');require('../bonus-import.js');require('../overtime.js');
 const elements=new Map(),listeners={},stored=new Map(),status=[];const element=id=>{if(id==='conditionsForm')return null;if(!elements.has(id))elements.set(id,{id,innerHTML:'',textContent:'',dataset:{},hidden:false,querySelectorAll:()=>[],querySelector:()=>null,showModal(){this.open=true},close(){this.open=false},setAttribute(k,v){this[k]=v},removeAttribute(k){delete this[k]},addEventListener(type,fn){this[type]=fn;},click(){}});return elements.get(id);};
 const document={getElementById:element,querySelectorAll:()=>[],activeElement:{blur(){}},addEventListener:(type,fn)=>listeners[type]=fn,createElement:()=>({click(){}})};
-const ctx={window:{MoneyV4:U,EDUCATION_MASTER:{ages:{}},FinanceV4Store:{ready:Promise.resolve(),storage:{getItem:k=>{assert(k.startsWith('finance-v4-'));return stored.get(k)||null},setItem:(k,v)=>stored.set(k,v)},flush:async()=>{},verify:async()=>{},describe:e=>e.message}},document,console,Date,Intl,Map,Set,FormData:class extends Map{constructor(map){super(map)}},Blob,URL:{createObjectURL:()=>'',revokeObjectURL(){}},setTimeout:()=>0,confirm:()=>true};ctx.window.scrollTo=()=>{};vm.createContext(ctx);
+const ctx={window:{MoneyV4:U,EDUCATION_MASTER:{ages:{}},FinanceV4Store:{ready:Promise.resolve(),storage:{getItem:k=>{assert(k.startsWith('finance-v4-'));return stored.get(k)||null},setItem:(k,v)=>stored.set(k,v)},flush:async()=>{},verify:async()=>{},describe:e=>e.message}},document,console,Date,Intl,Map,Set,FormData:class extends Map{constructor(map){super(map)}},Blob,URL:{createObjectURL:()=>'',revokeObjectURL(){}},setTimeout:()=>0,confirm:()=>true};ctx.window.LocalXlsx=require('../excel-to-json/xlsx-reader.js');ctx.window.scrollTo=()=>{};vm.createContext(ctx);
 function click(action,id){listeners.click({target:{closest:()=>({dataset:{action,id}})}});}
 function nav(route){listeners.click({target:{closest:()=>({dataset:{route}})}});}
 function change(target){listeners.change({target:{dataset:{},...target}});}
@@ -449,6 +449,29 @@ console.log('PASS annual situation: nine display choices, persistent preferences
  let p=current().p.rules.find(v=>v.id===r.id).patterns[0];assert.equal(p.bonuses[0].id,id);assert.equal(p.bonuses[0].amount,120000);assert.equal(p.bonuses[1].amount,200000);assert.equal(JSON.stringify(p.salaryChanges),salary);assert.equal(JSON.stringify(current().n.actuals),actuals);
  click('bonus-bulk',key);const before=stored.get('finance-v4-state');element('editorForm').onsubmit({preventDefault(){},target:[['bonusTable','2026\t-1\t200000']]});assert(element('formError').textContent);assert.equal(stored.get('finance-v4-state'),before);
  console.log('PASS bonus bulk UI: paste preview, only bonus plans changed, stable IDs, unchanged salaries/actuals, invalid input atomic');
+}
+
+
+// Overtime direct import modal and annual hours preserve the existing income sources.
+{
+ click('begin');submit({name:'overtime UI',start:'2026-04',cash:'0',invest:'0',reserve:'0'});click('income-self');
+ const r=current().p.rules.find(r=>r.owner==='self'),key=r.id+':'+r.patterns[0].id;
+ click('salary-edit',key);submit({month:'2026-04',net:'250000'});
+ click('overtime-import',key);assert(element('editorFields').innerHTML.includes('A列＝年度'));
+ listeners.input({target:{id:'overtimeText',dataset:{},value:'年度\t単価\n2026\t19454\n2027\t20000'}});assert(element('overtimePreview').innerHTML.includes('19,454円'));
+ submit({overtimeText:'年度\t単価\n2026\t19454\n2027\t20000'});
+
+ click('overtime-import',key);const reader=ctx.window.LocalXlsx,oldRead=reader.read;
+ reader.read=async()=>({sheets:[{name:'別シート',maxRow:1,cells:new Map([['A1',{value:'説明'}]])},{name:'単価',maxRow:2,cells:new Map([['A1',{value:'年度'}],['B1',{value:'手取り'}],['A2',{value:2026}],['B2',{value:19000}]])}]});
+ click('overtime-file',key);await element('overtimeFile').onchange({target:{dataset:{target:key},files:[{name:'rates.xlsx',arrayBuffer:async()=>new ArrayBuffer(0)}],value:'x'}});assert(element('overtimeSheet').innerHTML.includes('単価'));change({id:'overtimeSheet',value:'1'});assert(element('overtimePreview').innerHTML.includes('19,000円'));submit({overtimeSheet:'1',overtimeText:''});reader.read=oldRead;
+ click('overtime-import',key);submit({overtimeText:'2026\t19454'});
+ const actualBefore=JSON.stringify(current().n.actuals);click('overtime-hours',key);submit({from:'2026',to:'2027',mode:'monthly',hours:'20'});
+ let c=current();assert.equal(U.record(c.n,c.p,'2026-05').planned.income,288908);assert(element('app').innerHTML.includes('残業代（給与に加算）'));
+ nav('record');assert(element('app').innerHTML.includes('給与予定の内訳'));change({dataset:{actual:'rule:'+r.id},value:'280000'});c=current();assert.equal(U.record(c.n,c.p,'2026-04').used.income,280000);
+ click('section','selfIncome');click('overtime-hours',key);const before=stored.get('finance-v4-state');element('editorForm').onsubmit({preventDefault(){},target:[['from','2026'],['to','2026'],['mode','annual'],['hours','bad']]});assert(element('formError').textContent);assert.equal(stored.get('finance-v4-state'),before);
+ click('overtime-hours',key);submit({from:'2026',to:'2026',mode:'annual',hours:'120'});c=current();assert.equal(U.record(c.n,c.p,'2026-05').planned.income,269454);assert.equal(U.record(c.n,c.p,'2026-04').used.income,280000);
+ click('overtime-clear',key);c=current();assert.equal(U.record(c.n,c.p,'2026-05').planned.income,250000);assert.equal(U.record(c.n,c.p,'2026-04').used.income,280000);assert(U.valid(c.s));
+ console.log('PASS overtime UI: preview and paste, fiscal range hours, monthly/yearly amounts, record salary actual priority, invalid save unchanged, safe clear');
 }
 
 })();

@@ -30,6 +30,7 @@ function prepare(state,payload){
      seen.add(v.month);return {id:'month-'+v.month,month:v.month,amount:v.net};
     });
    }
+   if(p.overtime!==undefined){U.overtime.validate(p.overtime);out.overtime=U.C(p.overtime);}
    return out;
   });
   const months=new Set(),patternStages=source.stages.map(s=>{
