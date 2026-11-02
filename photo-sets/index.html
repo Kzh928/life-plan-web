@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f9fc">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="写真セット">
+  <meta name="description" content="写真を選んだファイルのまま保存し，セットごとに整理します．">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icon.svg">
+  <link rel="stylesheet" href="./style.css?v=10">
+  <script defer src="./app.js?v=10"></script>
+  <title>写真セット</title>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div id="brand" class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8" cy="9" r="1.5"/><path d="m5 17 5-5 3 3 2-2 4 4"/></svg></span><h1>写真セット</h1></div>
+      <button id="moreButton" class="icon-button" aria-label="設定とバックアップ" title="設定とバックアップ"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button>
+    </header>
+    <main>
+      <div class="section-heading"><div><p class="eyebrow">MY COLLECTION</p><h2>保存セット</h2></div><div class="set-heading-actions"><button id="setOrderButton" class="text-button">順番</button><button id="addSetButton" class="text-button"><span aria-hidden="true">＋</span> 新しいセット</button></div></div>
+      <nav id="setList" class="set-list" aria-label="保存セット"></nav>
+
+      <section class="album" aria-labelledby="albumName">
+        <div class="album-header"><div><h2 id="albumName">読み込み中</h2><p id="albumMeta" class="muted"></p></div><button id="setOptionsButton" class="small-icon" aria-label="セットの名前変更と削除"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></div>
+        <div class="sort-row"><button id="reorderButton" class="text-button" type="button">並べ替え</button><label for="photoOrder">表示順</label><select id="photoOrder"><option value="newest">追加が新しい順</option><option value="oldest">追加が古い順</option><option value="name">ファイル名順</option><option value="custom">自分で並べた順</option></select></div>
+        <div id="gallery" class="gallery"></div>
+        <div id="emptyState" class="empty" hidden><div class="empty-art" aria-hidden="true"><svg viewBox="0 0 80 80"><rect x="12" y="17" width="56" height="46" rx="8"/><circle cx="28" cy="31" r="5"/><path d="m16 54 16-16 12 11 8-7 12 12"/></svg></div><h3>まだ写真がありません</h3><p>このセットに写真を追加できます．</p></div>
+      </section>
+      <p id="storageNote" class="storage-note">写真はこのiPhoneのブラウザ内に保存されます．</p>
+    </main>
+    <div class="bottom-action"><button id="addPhotosButton" class="primary-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>画像を追加</button></div>
+  </div>
+
+  <input id="photoInput" type="file" accept="image/*,.heic,.heif" multiple hidden>
+  <input id="backupInput" type="file" hidden>
+
+  <dialog id="reorderDialog" class="sheet reorder-sheet" aria-labelledby="reorderTitle"><div class="reorder-header"><h2 id="reorderTitle">写真を並べ替え</h2><p id="reorderHelp" class="setting-explain" role="status"></p><div class="reorder-edges"><button id="reorderFirst" class="secondary-button">先頭へ</button><button id="reorderLast" class="secondary-button">最後へ</button></div></div><div id="reorderScroll" class="reorder-scroll"><div id="reorderGrid" class="gallery reorder-grid"></div></div><div class="sheet-actions reorder-actions"><button id="reorderCancel" class="secondary-button" data-close="reorderDialog">キャンセル</button><button id="reorderSave" class="primary-button compact">この順番で保存</button></div></dialog>
+  <dialog id="nameDialog" class="sheet"><form method="dialog" id="nameForm"><div class="sheet-handle"></div><h2 id="nameTitle">新しいセット</h2><label for="setName">セットの名前</label><input id="setName" name="setName" maxlength="40" required autocomplete="off" placeholder="例：旅行の写真"><div class="sheet-actions"><button value="cancel" class="secondary-button" formnovalidate>キャンセル</button><button id="nameSubmit" value="save" class="primary-button compact">保存</button></div></form></dialog>
+
+  <dialog id="optionsDialog" class="sheet"><div class="sheet-handle"></div><h2>このセット</h2><div class="option-stack"><button id="renameSetButton" class="option-button">名前を変更</button><button id="duplicateSetButton" class="option-button">セットを複製</button><button id="deleteSetButton" class="option-button danger">セットと写真を削除</button></div><button class="secondary-button wide" data-close="optionsDialog">閉じる</button></dialog>
+
+  <dialog id="setOrderDialog" class="sheet set-order-sheet" aria-labelledby="setOrderTitle"><h2 id="setOrderTitle">セットの順番</h2><div id="setOrderList" class="set-order-list"></div><p id="setOrderStatus" class="setting-explain" role="status"></p><div class="sheet-actions"><button id="setOrderCancel" class="secondary-button" data-close="setOrderDialog">キャンセル</button><button id="setOrderSave" class="primary-button compact">保存</button></div></dialog>
+  <dialog id="commandDialog" class="sheet command-sheet" aria-labelledby="commandTitle">
+    <h2 id="commandTitle">操作</h2>
+    <form id="commandForm">
+      <label id="commandLabel" for="commandInput">合言葉（4文字以上）</label><input id="commandInput" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" minlength="4" maxlength="180" required>
+      <div id="commandConfirmRow" hidden><label for="commandConfirm">もう一度入力</label><input id="commandConfirm" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" minlength="4" maxlength="180"></div>
+      <div class="sheet-actions"><button id="commandBack" type="button" class="secondary-button">キャンセル</button><button id="commandSubmit" class="primary-button compact" type="submit">表示</button></div>
+    </form>
+    <div id="commandTools" hidden>
+      <p id="commandSetName" class="setting-explain"></p>
+      <div class="option-stack"><button id="secretHide" type="button" class="option-button">このセットを隠す</button><button id="secretShow" type="button" class="option-button">このセットを通常に戻す</button><button id="secretNew" type="button" class="option-button">隠しセットを作成</button><button id="secretChangeKey" type="button" class="option-button">合言葉を変更</button><button id="secretLock" type="button" class="option-button">隠しセットを閉じる</button></div>
+      <button class="secondary-button wide" type="button" data-close="commandDialog">一覧に戻る</button>
+    </div>
+    <p id="commandStatus" class="setting-explain" role="status"></p>
+  </dialog>
+
+  <dialog id="settingsDialog" class="sheet"><div class="sheet-handle"></div><h2>保存とバックアップ</h2><p id="usageText" class="setting-explain"></p><div class="option-stack"><button id="exportButton" class="option-button">表示中のセットをバックアップ</button><button id="importButton" class="option-button">バックアップから復元</button></div><p class="setting-explain">写真は選んだファイルのコピーを，このiPhoneのブラウザ内に保存します．元画像を消しても，保存済みのコピーは残ります．このアプリから写真をサーバーへ自動送信・同期することはありません．ブラウザのデータを削除したり，別の端末で開いたりすると表示されません．定期的にバックアップを「ファイル」に保存してください．</p><button class="secondary-button wide" data-close="settingsDialog">閉じる</button></dialog>
+
+  <dialog id="viewer" class="viewer"><div id="viewerStage" class="viewer-stage" role="button" tabindex="0" aria-label="写真をタップして操作ボタンを表示"><img id="viewerImage" alt="選択した写真"></div><div class="viewer-bar" aria-hidden="true"><button id="viewerClose" class="viewer-icon" aria-label="閉じる" tabindex="-1">×</button><div class="viewer-navigation"><button id="previousPhoto" class="viewer-icon" aria-label="前の写真" tabindex="-1">‹</button><span id="viewerCounter" aria-live="polite"></span><button id="nextPhoto" class="viewer-icon" aria-label="次の写真" tabindex="-1">›</button></div><button id="viewerMenu" class="viewer-icon" aria-label="この画像の操作" tabindex="-1">•••</button></div><div class="viewer-footer" aria-hidden="true"><span id="viewerFilename"></span><button id="shareButton" class="viewer-action" tabindex="-1">共有・保存</button></div></dialog>
+  <dialog id="photoOptionsDialog" class="sheet"><div class="sheet-handle"></div><h2>写真の操作</h2><div class="option-stack"><button id="moveButton" class="option-button">別のセットへ移動</button><button id="deletePhotoButton" class="option-button danger">この写真を削除</button></div><button class="secondary-button wide" data-close="photoOptionsDialog">閉じる</button></dialog>
+  <dialog id="moveDialog" class="sheet"><div class="sheet-handle"></div><h2>移動先のセット</h2><div id="moveTargets" class="option-stack"></div><button class="secondary-button wide" data-close="moveDialog">キャンセル</button></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script defer src="./migration.js?v=10"></script>
+</body>
+</html>
