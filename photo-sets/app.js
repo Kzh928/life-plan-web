@@ -580,8 +580,7 @@ async function backup() {
     if (epoch !== privacyEpoch) return;
     const data = { format: 'photo-sets-backup', version: 1, photoOrder, sets: selectedSets.map(s => ({ id: s.id, name: s.name, created: s.created, order: s.order, ...(s.hidden ? { hidden: true } : {}), customOrder: s.customOrder || [] })), photos: entries, ...(includesPrivate ? { commandKey: getGate() } : {}) };
     const file = new File([JSON.stringify(data)], `photo-sets-${new Date().toISOString().slice(0, 10)}.json`, { type: 'application/json' });
-    if (navigator.canShare?.({ files: [file] })) await navigator.share({ files: [file], title: '写真セットのバックアップ' });
-    else { const url = URL.createObjectURL(file); const a = document.createElement('a'); a.href = url; a.download = file.name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000); toast('バックアップを保存しました'); }
+    showBackupSave(file);
   } catch (error) { if (error.name !== 'AbortError') { console.error(error); toast('バックアップを作れませんでした'); } }
   finally { button.disabled = false; button.textContent = '表示中のセットをバックアップ'; }
 }
