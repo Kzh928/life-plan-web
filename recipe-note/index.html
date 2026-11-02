@@ -64,11 +64,13 @@ function settingsSnapshot(){return {filter,query,audience,variantId}}
 function validateBackup(data){
  if(!data||data.format!=='gohan-note'||![1,2].includes(data.version)||!Array.isArray(data.recipes))throw Error('対応するバックアップではありません');
  const ids=new Set;const out=clone(data);
+ const strings=(o,keys)=>{for(const k of keys)if(o[k]!==undefined&&typeof o[k]!=='string')throw Error('文字項目の形式が不正です：'+k)};
  for(const r of out.recipes){
   if(!r||typeof r.title!=='string'||!Array.isArray(r.variants)||!r.variants.length||!Array.isArray(r.logs||[]))throw Error('レシピの構造が不正です');
   if(typeof r.id!=='string'||!/^[\w-]{1,160}$/.test(r.id)||ids.has(r.id))throw Error('レシピIDが不正・重複しています');ids.add(r.id);
+  strings(r,['title','desc','category','tags','photo','photoNote','source','sourceName']);
   const vids=new Set;
-  for(const v of r.variants){if(!v||typeof v.id!=='string'||!/^[\w-]{1,160}$/.test(v.id)||vids.has(v.id)||!Number.isFinite(Number(v.amount))||Number(v.amount)<=0||!Array.isArray(v.ingredients)||!Array.isArray(v.steps))throw Error('分量データが不正です');vids.add(v.id);if(v.scope&&!['general','home'].includes(v.scope))throw Error('公開区分が不正です');v.scope=v.scope||'general';for(const f of ['active','wait'])if(!Number.isFinite(Number(v[f]||0))||Number(v[f]||0)<0)throw Error('時間が不正です');for(const i of v.ingredients)if(!i||typeof i.name!=='string')throw Error('材料が不正です');for(const st of v.steps)if(!st||typeof st.title!=='string'||typeof st.detail!=='string')throw Error('手順が不正です')}
+  for(const v of r.variants){if(!v||typeof v.id!=='string'||!/^[\w-]{1,160}$/.test(v.id)||vids.has(v.id)||!Number.isFinite(Number(v.amount))||Number(v.amount)<=0||!Array.isArray(v.ingredients)||!Array.isArray(v.steps))throw Error('分量データが不正です');vids.add(v.id);strings(v,['name','unit','equipment','prep','done','pitfalls','substitutions','storage','notes','parentName','parentId','branchNote']);if(v.scope&&!['general','home'].includes(v.scope))throw Error('公開区分が不正です');v.scope=v.scope||'general';for(const f of ['active','wait'])if(!Number.isFinite(Number(v[f]||0))||Number(v[f]||0)<0)throw Error('時間が不正です');for(const i of v.ingredients)if(!i||typeof i.name!=='string')throw Error('材料が不正です');for(const st of v.steps)if(!st||typeof st.title!=='string'||typeof st.detail!=='string')throw Error('手順が不正です')}
   for(const v of r.variants)if(v.parentId&&!vids.has(v.parentId))throw Error('分岐元が見つかりません');
   for(const l of r.logs||[])if(l.variantId&&!vids.has(l.variantId))throw Error('記録の分量リンクが不正です');
   r.logs=r.logs||[];r.tags=r.tags||'';r.desc=r.desc||'';
