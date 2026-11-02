@@ -407,7 +407,7 @@ $('commandForm').addEventListener('submit', async event => {
   $('commandInput').value = ''; $('commandConfirm').value = '';
   commandBusy = true; $('commandSubmit').disabled = true;
   try {
-    if (value.startsWith('/')) { await runCommand(value); if ($('backupSaveDialog')?.open) return; if (secretSession && $('commandDialog').open) renderCommandPanel('tools'); else $('commandDialog').close(); }
+    if (value.startsWith('/')) { await runCommand(value); if ($('backupSavePanel') && $('commandDialog').open) return; if (secretSession && $('commandDialog').open) renderCommandPanel('tools'); else $('commandDialog').close(); }
     else {
       if (mode === 'setup' || mode === 'change') {
         if (value !== repeated) throw Error('合言葉が一致しません．もう一度入力してください．');
