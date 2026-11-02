@@ -1,5 +1,11 @@
 // ## このコードは写真本体・2種類の隠しセット・設定を完全JSONとして安全に移す．
 async function digestBytes(bytes) { return [...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(v=>v.toString(16).padStart(2,'0')).join(''); }
+function splitPhotoBatches(items,batchSize,maxBytes) {
+ if(!Number.isSafeInteger(batchSize)||batchSize<1||batchSize>100||!Number.isSafeInteger(maxBytes)||maxBytes<0)throw Error('分割サイズが不正です');
+ const result=[];let batch=[],bytes=0;
+ for(const p of items){const size=p.blob?.size??p.size;if(batch.length&&(batch.length>=batchSize||(maxBytes>0&&bytes+size>maxBytes))){result.push(batch);batch=[];bytes=0;}batch.push(p);bytes+=size;}
+ if(batch.length||!result.length)result.push(batch);return result;
+}
 let multipartCleanup = null;
 async function exportComplete(argumentsText='') {
  const epoch=privacyEpoch, supplied=argumentsText.trim().split(/\s+/).filter(Boolean);
@@ -9,11 +15,9 @@ async function exportComplete(argumentsText='') {
  const exportPhotos=await all('photos'), byId=new Map(exportPhotos.map(p=>[p.id,p]));
  const metadata={sets:sets.map(s=>({...s,customOrder:(s.customOrder||[]).filter(id=>byId.get(id)?.setId===s.id)})),preferences:{}};
  for(const key of PREF_KEYS) {const value=appStorage.getItem(key);if(value!==null)metadata.preferences[key]=value;}
- const batches=[];let batch=[],bytes=0;
- for(const p of exportPhotos){const size=p.blob.size;if(batch.length&&(batch.length>=20||bytes+size>16*1024*1024)){batches.push(batch);batch=[];bytes=0;}batch.push(p);bytes+=size;}
- if(batch.length||!batches.length)batches.push(batch);
+ const batches=splitPhotoBatches(exportPhotos,100,0);
  const manifest=exportPhotos.map(p=>({id:p.id,setId:p.setId,size:p.blob.size}));
- const signature=await digestBytes(new TextEncoder().encode(JSON.stringify({metadata,manifest})));
+ const signature=await digestBytes(new TextEncoder().encode(JSON.stringify({metadata,manifest,batchSize:100,maxBytes:0})));
  let saved=null;try{saved=JSON.parse(localStorage.getItem('photo-export-checkpoint')||'null')}catch{}
  let id=saved?.signature===signature?saved.id:uid();let index=saved?.signature===signature?Math.min(saved.done||0,batches.length-1):0;
  async function prepare(){
@@ -21,7 +25,7 @@ async function exportComplete(argumentsText='') {
   multipartCleanup?.();multipartCleanup=null;
   const host=$('commandDialog');$('commandTitle').hidden=false;$('commandTitle').textContent='分割バックアップ';$('commandForm').hidden=true;$('commandTools').hidden=true;
   $('commandStatus').textContent=`ファイル ${index+1} / ${batches.length} を準備しています…`;if(!host.open)host.showModal();
-  const raw={format:'photo-sets-complete',version:1,...metadata,transfer:{id,part:index,parts:batches.length,manifest},photos:[]};let done=0;
+  const raw={format:'photo-sets-complete',version:1,...metadata,transfer:{id,part:index,parts:batches.length,batchSize:100,maxBytes:0,manifest},photos:[]};let done=0;
   for(const photo of batches[index]){const {blob,...fields}=photo;const data=await toBase64(blob);raw.photos.push({...fields,size:blob.size,data,sha256:await digestBytes(await blob.arrayBuffer())});done++;$('commandStatus').textContent=`ファイル ${index+1} / ${batches.length}：${done} / ${batches[index].length}枚`;await new Promise(r=>setTimeout(r,0));}
   if(epoch!==privacyEpoch)throw Error('もう一度合言葉を入力して，続きから書き出してください．');
   const file=new File([JSON.stringify(raw)],`photo-sets-${id.slice(0,8)}-part-${String(index+1).padStart(3,'0')}-of-${String(batches.length).padStart(3,'0')}.json`,{type:'application/json'});
@@ -90,12 +94,12 @@ function showBackupSave(file) {
 async function importPart(raw){
  const t=raw.transfer;
  if(!t||typeof t.id!=='string'||! /^[a-zA-Z0-9-]{8,80}$/.test(t.id)||!Number.isSafeInteger(t.parts)||t.parts<1||t.parts>100000||!Number.isSafeInteger(t.part)||t.part<0||t.part>=t.parts||!Array.isArray(t.manifest))throw Error('分割情報が不正です');
- const ids=new Set(),setIds=new Set((raw.sets||[]).map(s=>s.id));const expected=[];let batch=[],bytes=0;
- for(const p of t.manifest){if(typeof p.id!=='string'||ids.has(p.id)||!setIds.has(p.setId)||!Number.isSafeInteger(p.size)||p.size<0)throw Error('写真一覧が不正です');ids.add(p.id);if(batch.length&&(batch.length>=20||bytes+p.size>16*1024*1024)){expected.push(batch);batch=[];bytes=0;}batch.push(p);bytes+=p.size;}
- if(batch.length||!expected.length)expected.push(batch);
+ const ids=new Set(),setIds=new Set((raw.sets||[]).map(s=>s.id));
+ for(const p of t.manifest){if(typeof p.id!=='string'||ids.has(p.id)||!setIds.has(p.setId)||!Number.isSafeInteger(p.size)||p.size<0)throw Error('写真一覧が不正です');ids.add(p.id);}
+ const expected=splitPhotoBatches(t.manifest,t.batchSize??20,t.maxBytes??16*1024*1024);
  if(expected.length!==t.parts||!Array.isArray(raw.photos)||expected[t.part].length!==raw.photos.length||raw.photos.some((p,i)=>p.id!==expected[t.part][i].id||p.setId!==expected[t.part][i].setId||p.size!==expected[t.part][i].size))throw Error('分割の内容が一致しません');
  const valid=await validateComplete(raw);
- const signature=await digestBytes(new TextEncoder().encode(JSON.stringify({sets:valid.sets,preferences:valid.preferences,manifest:t.manifest,parts:t.parts})));
+ const signature=await digestBytes(new TextEncoder().encode(JSON.stringify({sets:valid.sets,preferences:valid.preferences,manifest:t.manifest,parts:t.parts,...(t.batchSize!==undefined?{batchSize:t.batchSize,maxBytes:t.maxBytes}:{})})));
  const metaKey=t.id+'-meta',prefix=t.id+'-photo-';
  const previous=await request(db.transaction('transfer').objectStore('transfer').get(metaKey));
  if(previous&&previous.signature!==signature)throw Error('別のバックアップが混ざっています');
