@@ -1,0 +1,5 @@
+node_modules/
+portable-build/
+.env*
+*backup*.json
+*before-import*.json

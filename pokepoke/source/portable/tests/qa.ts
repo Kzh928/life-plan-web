@@ -1,0 +1,22 @@
+import {emptyBundle,makeBackup,normalize,validateBackup} from '../model';
+import {loadLocal,replaceLocal,previousBackup,mutateLocal} from '../storage';
+import {installLocalApi} from '../api';
+installLocalApi();
+const out=document.querySelector('#results')!;
+const assert=(ok:unknown,label:string)=>{if(!ok)throw Error(label);out.textContent+='\nPASS '+label};
+const call=async(path:string,method:string,body?:unknown)=>{const r=await fetch(path,{method,body:body===undefined?undefined:JSON.stringify(body)});const data=await r.json();if(!r.ok)throw Error((data as {error:string}).error);return data};
+document.querySelector('#run')!.addEventListener('click',async()=>{out.textContent='Running';try{
+const b=emptyBundle();b.settings.accounts=['QA乙','QA甲'];b.settings.notebook={layoutVersion:5,fields:[{id:'note',name:'メモ',type:'text',options:[]},{id:'num',name:'日数',type:'number',options:[]},{id:'check',name:'チェック',type:'check',options:[]},{id:'points',name:'ポイント',type:'points',options:[]},{id:'gold',name:'金フレーム',type:'text',options:[]}],records:[{name:'QA甲',values:{note:'長文🌈\nhttps://example.com/',num:25,check:true,points:'{"A1":50}',gold:'手入力2'},updatedAt:123}]};b.settings.fields=[{id:'cardfield',name:'分類',type:'select',options:['A','B']}];b.settings.cards=[{name:'QAカード',watched:true,note:'カードメモ',values:{cardfield:'B'}}];b.items=[{id:'qa1',name:'QAカード',secondaryName:'QA甲',count:12,memo:'完了',confirmed:true,position:2,createdAt:1},{id:'qa2',name:'QAカード',secondaryName:'QA乙',count:3,memo:'未達',confirmed:false,position:1,createdAt:2}];
+localStorage.setItem('pokepoke-account-view','{"view":"fields","sort":"custom","focusFields":["num"]}');
+const backup=makeBackup(normalize(b));await replaceLocal(backup);const exported=makeBackup(await loadLocal());await replaceLocal(makeBackup(emptyBundle()));assert((await loadLocal()).items.length===0,'empty state');await replaceLocal(JSON.parse(JSON.stringify(exported)));const restored=await loadLocal();assert(JSON.stringify(restored)===JSON.stringify({settings:exported.settings,items:exported.items,revision:exported.revision}),'full round trip: values, order, completion, links');assert(localStorage.getItem('pokepoke-account-view')===exported.preferences['pokepoke-account-view'],'view settings restored');assert(restored.settings.notebook!.records[0].values.gold==='QAカード2、手入力2','manual and automatic gold frames');
+const stable=JSON.stringify(await loadLocal());for(const invalid of [{...exported,items:[{...b.items[0],count:99}]},{...exported,items:[b.items[0],b.items[0]]},{...exported,attachments:[{url:'https://example.com/test.pdf'}]}]){let rejected=false;try{await replaceLocal(invalid)}catch{rejected=true}assert(rejected&&JSON.stringify(await loadLocal())===stable,'invalid import preserves existing data')}
+let aborted=false;try{await mutateLocal(x=>{x.items[0].count=99})}catch{aborted=true}assert(aborted&&JSON.stringify(await loadLocal())===stable,'invalid write transaction rolls back');
+assert((await previousBackup())?.items.length===0,'pre-import recovery snapshot');
+await call('/api/accounts','PATCH',{name:'QA甲',nextName:'QA改名',revision:restored.revision});let current=await loadLocal();assert(current.items[0].secondaryName==='QA改名'&&current.settings.notebook!.records.some(r=>r.name==='QA改名'),'rename preserves related records');
+await call('/api/account-values','PATCH',{name:'QA改名',values:{num:27}});current=await loadLocal();assert(current.settings.notebook!.records.find(r=>r.name==='QA改名')!.values.num===27,'direct field autosave');
+await call('/api/items/qa2','PATCH',{action:'setCount',count:12});await call('/api/items/qa2','PATCH',{action:'confirm',confirmed:true});assert((await loadLocal()).items[1].confirmed,'count and confirm');
+await call('/api/items/reorder','POST',{category:'saved',ids:['qa2','qa1']});assert((await loadLocal()).items.find(i=>i.id==='qa2')!.position===1,'card ordering');
+await call('/api/accounts','DELETE',{name:'QA改名',revision:(await loadLocal()).revision});assert((await loadLocal()).items.length===1,'delete account and linked count');
+await Promise.all([call('/api/items','POST',{name:'QA並列1',secondaryName:'QA乙',count:1}),call('/api/items','POST',{name:'QA並列2',secondaryName:'QA乙',count:2})]);assert((await loadLocal()).items.length===3,'concurrent writes preserved');
+validateBackup({...exported,format:'pokepoke-collection'});assert(true,'legacy export accepted');out.textContent+='\nALL PASSED';
+}catch(e){out.textContent+='\nFAIL '+(e as Error).stack}});
