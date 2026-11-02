@@ -8,7 +8,7 @@ require('../living-ui.js');
 require('../income-ui.js');
 require('../record-ui.js');require('../item-inspector.js');
 require('../cost-ui.js');
-require('../legacy-import.js');
+require('../legacy-import.js');require('../bonus-import.js');
 const elements=new Map(),listeners={},stored=new Map(),status=[];const element=id=>{if(id==='conditionsForm')return null;if(!elements.has(id))elements.set(id,{id,innerHTML:'',textContent:'',dataset:{},hidden:false,querySelectorAll:()=>[],querySelector:()=>null,showModal(){this.open=true},close(){this.open=false},setAttribute(k,v){this[k]=v},removeAttribute(k){delete this[k]},addEventListener(type,fn){this[type]=fn;},click(){}});return elements.get(id);};
 const document={getElementById:element,querySelectorAll:()=>[],activeElement:{blur(){}},addEventListener:(type,fn)=>listeners[type]=fn,createElement:()=>({click(){}})};
 const ctx={window:{MoneyV4:U,EDUCATION_MASTER:{ages:{}},FinanceV4Store:{ready:Promise.resolve(),storage:{getItem:k=>{assert(k.startsWith('finance-v4-'));return stored.get(k)||null},setItem:(k,v)=>stored.set(k,v)},flush:async()=>{},verify:async()=>{},describe:e=>e.message}},document,console,Date,Intl,Map,Set,FormData:class extends Map{constructor(map){super(map)}},Blob,URL:{createObjectURL:()=>'',revokeObjectURL(){}},setTimeout:()=>0,confirm:()=>true};ctx.window.scrollTo=()=>{};vm.createContext(ctx);
@@ -432,5 +432,23 @@ nav('outlook');click('asset-year','2026');assert(element('assetDetails').innerHT
 change({dataset:{situationType:'housing'},checked:false});assert(!current().n.situationTypes.includes('housing'));assert(current().n.situationTypes.includes('children'));
 {const n=JSON.parse(JSON.stringify(current().n)),p=n.plans[n.activePlan];p.rules=[{id:'work',name:'仕事',kind:'income',amount:100,start:'2026-04',end:'',changes:[{month:'2026-10',amount:200}],annualYears:{}}];p.events=[{id:'past',name:'昔',month:'2025-05',kind:'expense',amount:10,every:0,enabled:true},{id:'now',name:'今年',month:'2026-05',kind:'expense',amount:10,every:0,enabled:true},{id:'future',name:'未来',month:'2028-05',kind:'expense',amount:10,every:0,enabled:true}];p.children=[{id:'child',name:'第一子',birthYear:2020,useMaster:false,annual:0}];const before=JSON.stringify(n),g=U.planning.yearSituation(n,p,2026,{});assert.equal(g.length,9);assert.equal(g.find(v=>v.type==='events').rules.length,1);assert.equal(g.find(v=>v.type==='events').rules[0].id,'now');assert(g.find(v=>v.type==='children').rules[0].rows[0].name.includes('6歳'));assert.equal(g.find(v=>v.type==='selfIncome').rules[0].rows.length,2);assert.equal(g.find(v=>v.type==='selfIncome').rules[0].rows[0].to,'2026-09');assert.equal(JSON.stringify(n),before);}
 console.log('PASS annual situation: nine display choices, persistent preferences, fiscal clipping, midyear changes, actual-year events, child age and no data mutation');
+
+
+// Bonus-only paste updates preserve salary, bonus identity and entered actuals.
+{
+ click('begin');submit({name:'bonus import',start:'2026-04',cash:'0',invest:'0',reserve:'0'});
+ click('income-self');const r=current().p.rules.find(r=>r.owner==='self'),key=r.id+':'+r.patterns[0].id;
+ click('salary-edit',key);submit({month:'2026-04',net:'250000'});
+ click('bonus-edit',key);submit({month:'2026-07',net:'100000'});
+ const old=current().p.rules.find(v=>v.id===r.id).patterns[0],id=old.bonuses[0].id;
+ const salary=JSON.stringify(old.salaryChanges),actuals=JSON.stringify(current().n.actuals);
+ click('bonus-bulk',key);assert(element('editorFields').innerHTML.includes('bonusTable'));
+ listeners.input({target:{dataset:{bonusBulk:key},value:'年度\t7月\t12月\n2026\t120000\t200000'}});
+ assert(element('bonusBulkPreview').innerHTML.includes('120,000円'));
+ submit({bonusTable:'年度\t7月\t12月\n2026\t120000\t200000'});
+ let p=current().p.rules.find(v=>v.id===r.id).patterns[0];assert.equal(p.bonuses[0].id,id);assert.equal(p.bonuses[0].amount,120000);assert.equal(p.bonuses[1].amount,200000);assert.equal(JSON.stringify(p.salaryChanges),salary);assert.equal(JSON.stringify(current().n.actuals),actuals);
+ click('bonus-bulk',key);const before=stored.get('finance-v4-state');element('editorForm').onsubmit({preventDefault(){},target:[['bonusTable','2026\t-1\t200000']]});assert(element('formError').textContent);assert.equal(stored.get('finance-v4-state'),before);
+ console.log('PASS bonus bulk UI: paste preview, only bonus plans changed, stable IDs, unchanged salaries/actuals, invalid input atomic');
+}
 
 })();

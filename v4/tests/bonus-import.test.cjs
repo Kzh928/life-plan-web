@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict'),U=require('../core.js'),B=require('../bonus-import.js');
+const rows=B.parse('年度\t7月\t12月\n2026\t100,000\t0\n2027\t\t200000');
+assert.deepEqual(rows,[{month:'2026-07',amount:100000},{month:'2026-12',amount:0},{month:'2027-12',amount:200000}]);
+assert.deepEqual(B.parse(JSON.stringify({format:'jp.finance.bonuses',version:1,years:[{year:2026,july:100000,december:0},{year:2027,december:200000}]})),rows);
+for(const text of ['', '2026\t-1\t2','2026\t1.5\t2','2101\t1\t2','2026\t1\t2\n2026\t3\t4','{}','2026年度\t1\t2'])assert.throws(()=>B.parse(text));
+const p={id:'p',salaryChanges:[{from:'2026-04',net:100}],bonuses:[{id:'a',recordId:'stable',month:'2026-07',amount:10},{id:'b',month:'2026-08',amount:20},{id:'c',month:'2026-12',amount:30}],retirement:42};
+const before=JSON.stringify(p),review=B.prepare(p,'2026\t50\t\n2027\t60\t0');
+assert.equal(JSON.stringify(p),before);assert.deepEqual(review.next.salaryChanges,p.salaryChanges);assert.equal(review.next.retirement,42);assert.deepEqual(review.next.bonuses.find(b=>b.id==='a'),{...p.bonuses[0],amount:50});assert.equal(review.next.bonuses.find(b=>b.id==='b').amount,20);assert.equal(review.next.bonuses.find(b=>b.id==='c').amount,30);assert.equal(B.prepare(review.next,'2027\t60\t0').next.bonuses.length,5);
+assert.throws(()=>B.prepare({...p,salaryChanges:[]},'2026\t1\t2'));assert.throws(()=>B.prepare(p,'2025\t1\t2'));
+console.log('PASS bonus import: TSV/JSON, blanks/zero, validation, stable IDs, nonbonus preservation, idempotence and no mutation');
