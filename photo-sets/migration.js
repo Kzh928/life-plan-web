@@ -44,7 +44,7 @@ async function validateComplete(raw) {
  if(raw.preferences['photo-order']&&!['custom','newest','oldest','name'].includes(raw.preferences['photo-order'])) throw Error('表示順が不正です');
  for(const s of raw.sets) if(s.hidden&&!raw.preferences[gateStorageKey(setProfile(s))]) throw Error('合言葉設定が不足しています');
  for(const p of raw.photos) {
- if(!str(p.id)||photoIds.has(p.id)||!ids.has(p.setId)||!str(p.name)||typeof p.type!=='string'||!Number.isFinite(p.created)||!Number.isSafeInteger(p.size)||p.size<0||typeof p.data!=='string'||!/^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(p.data)||! /^[a-f0-9]{64}$/.test(p.sha256)) throw Error('写真が不正です');
+ if(!str(p.id)||photoIds.has(p.id)||!ids.has(p.setId)||!str(p.name)||typeof p.type!=='string'||!Number.isFinite(p.created)||!Number.isSafeInteger(p.size)||p.size<0||typeof p.data!=='string'||(p.data.length%4!==0||!/^[A-Za-z0-9+/]*={0,2}$/.test(p.data))||! /^[a-f0-9]{64}$/.test(p.sha256)) throw Error('写真が不正です');
  const blob=fromBase64(p.data,p.type);if(blob.size!==p.size||await digestBytes(await blob.arrayBuffer())!==p.sha256) throw Error('写真が破損しています'); const {data,sha256,...fields}=p;prepared.push({...fields,blob});photoIds.add(p.id);
  }
  for(const s of raw.sets) if(s.customOrder&&(new Set(s.customOrder).size!==s.customOrder.length||s.customOrder.some(id=> raw.transfer ? !raw.transfer.manifest?.some(p=>p.id===id&&p.setId===s.id) : !prepared.some(p=>p.id===id&&p.setId===s.id)))) throw Error('写真の関連が不正です');
