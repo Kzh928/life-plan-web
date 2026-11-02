@@ -54,22 +54,15 @@ function showBackupSave(file) {
  if(document.getElementById('backupSavePanel')) throw Error('開いている保存画面を先に閉じてください．');
  const dialog=document.createElement('section');dialog.id='backupSavePanel';
  $('commandForm').hidden=true; $('commandTools').hidden=true; $('commandTitle').hidden=true; $('commandStatus').textContent='';
- const title=document.createElement('h2');title.id='backupSaveTitle';title.textContent='バックアップの準備ができました';
+ const title=document.createElement('h2');title.id='backupSaveTitle';title.textContent='ダウンロードを開始しました';
  const filename=document.createElement('p');filename.textContent=file.name;filename.style.cssText='overflow-wrap:anywhere;font-weight:700';
- const help=document.createElement('p');help.className='setting-explain';help.textContent='このJSONには写真と設定が含まれ，暗号化されません．まだ端末への保存は完了していません．下のボタンを押し，共有画面の「ファイルに保存」を選んでください．保存先は「このiPhone内」→「ダウンロード」など，自分で選べます．';
- const save=document.createElement('button');save.type='button';save.className='primary-button';save.textContent='保存先を選ぶ（ファイルに保存）';
- const fallback=document.createElement('a');fallback.className='secondary-button wide';fallback.textContent='JSONをダウンロード';fallback.style.cssText='display:flex;align-items:center;justify-content:center;text-decoration:none';fallback.download=file.name;
+ const help=document.createElement('p');help.className='setting-explain';help.textContent='保存先を選ぶ操作は不要です．ブラウザのダウンロード先に保存します．確認画面が出た場合は「ダウンロード」を押してください．';
+ const fallback=document.createElement('a');fallback.className='primary-button';fallback.textContent='もう一度ダウンロードする';fallback.style.cssText='display:flex;align-items:center;justify-content:center;text-decoration:none';fallback.download=file.name;
  const url=URL.createObjectURL(file);fallback.href=url;
- const tips=document.createElement('p');tips.className='setting-explain';tips.style.marginTop='16px';tips.textContent='ダウンロードした場合：「ファイル」アプリ→「ブラウズ」→「iCloud Drive」または「このiPhone内」→「ダウンロード」で，上のファイル名を探してください．設定によって保存先は異なります．';
- const status=document.createElement('p');status.className='setting-explain';status.setAttribute('role','status');
- const close=document.createElement('button');close.type='button';close.className='secondary-button wide';close.textContent='保存画面を閉じる';close.onclick=()=>host.close();
- save.onclick=async()=>{
-   if(!navigator.canShare?.({files:[file]})) {status.textContent='このブラウザでは保存先の選択に対応していません．「JSONをダウンロード」を押し，上の手順で探してください．';return;}
-   save.disabled=true;
-   try{await navigator.share({files:[file],title:'写真セットのバックアップ'});status.textContent='共有画面を閉じました．「ファイル」アプリで，選んだ保存先にファイルがあることを確認してください．';}
-   catch(error){status.textContent=error.name==='AbortError'?'保存をキャンセルしました．もう一度保存先を選べます．':'保存画面を開けませんでした．「JSONをダウンロード」をお試しください．';}
-   finally{save.disabled=false;}
- };
- fallback.onclick=()=>{status.textContent='ダウンロードを開始しました．「ファイル」アプリの「ダウンロード」を確認してください．';};
- dialog.append(title,filename,help,save,fallback,tips,status,close);host.append(dialog);host.addEventListener('close',()=>{URL.revokeObjectURL(url);dialog.remove();$('commandTitle').hidden=false;},{once:true});if(!host.open)host.showModal();
+ const tips=document.createElement('p');tips.className='setting-explain';tips.style.marginTop='16px';tips.textContent='探し方：「ファイル」アプリ→「ブラウズ」→「iCloud Drive」または「このiPhone内」→「ダウンロード」．見つからなければ「photo-sets」で検索してください．ブラウザの設定によって保存先は異なります．';
+ const status=document.createElement('p');status.className='setting-explain';status.setAttribute('role','status');status.textContent='ファイルがあることを確認するまで，この画面を残してください．見つからなければ上のボタンで再度ダウンロードできます．このJSONは暗号化されず写真を含むため，安全に保管してください．';
+ const close=document.createElement('button');close.type='button';close.className='secondary-button wide';close.textContent='確認できたので閉じる';close.onclick=()=>host.close();
+ fallback.onclick=()=>{title.textContent='ダウンロードを開始しました';};
+ dialog.append(title,filename,help,fallback,tips,status,close);host.append(dialog);host.addEventListener('close',()=>{setTimeout(()=>URL.revokeObjectURL(url),60000);dialog.remove();$('commandTitle').hidden=false;},{once:true});if(!host.open)host.showModal();
+ try { fallback.click(); } catch { title.textContent='準備できました．下のボタンで保存してください'; }
 }
