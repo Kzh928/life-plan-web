@@ -466,7 +466,7 @@ console.log('PASS annual situation: nine display choices, persistent preferences
  click('overtime-file',key);await element('overtimeFile').onchange({target:{dataset:{target:key},files:[{name:'rates.xlsx',arrayBuffer:async()=>new ArrayBuffer(0)}],value:'x'}});assert(element('overtimeSheet').innerHTML.includes('単価'));change({id:'overtimeSheet',value:'1'});assert(element('overtimePreview').innerHTML.includes('19,000円'));submit({overtimeSheet:'1',overtimeText:''});reader.read=oldRead;
  click('overtime-import',key);submit({overtimeText:'2026\t19454'});
  const actualBefore=JSON.stringify(current().n.actuals);click('overtime-hours',key);submit({from:'2026',to:'2027',mode:'monthly',hours:'20'});
- let c=current();assert.equal(U.record(c.n,c.p,'2026-05').planned.income,288908);assert(element('app').innerHTML.includes('残業代（給与に加算）'));
+ let c=current();assert.equal(U.record(c.n,c.p,'2026-05').planned.income,288908);assert(element('app').innerHTML.includes('<summary>残業代</summary>'));
  nav('record');assert(element('app').innerHTML.includes('給与予定の内訳'));change({dataset:{actual:'rule:'+r.id},value:'280000'});c=current();assert.equal(U.record(c.n,c.p,'2026-04').used.income,280000);
  click('section','selfIncome');click('overtime-hours',key);const before=stored.get('finance-v4-state');element('editorForm').onsubmit({preventDefault(){},target:[['from','2026'],['to','2026'],['mode','annual'],['hours','bad']]});assert(element('formError').textContent);assert.equal(stored.get('finance-v4-state'),before);
  click('overtime-hours',key);submit({from:'2026',to:'2026',mode:'annual',hours:'120'});c=current();assert.equal(U.record(c.n,c.p,'2026-05').planned.income,269454);assert.equal(U.record(c.n,c.p,'2026-04').used.income,280000);
