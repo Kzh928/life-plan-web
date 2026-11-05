@@ -474,4 +474,14 @@ console.log('PASS annual situation: nine display choices, persistent preferences
  console.log('PASS overtime UI: preview and paste, fiscal range hours, monthly/yearly amounts, record salary actual priority, invalid save unchanged, safe clear');
 }
 
+
+// Collapsed composition summaries must track adoption without exposing the selector.
+{
+ nav('outlook');const before=JSON.stringify(current().n.actuals);
+ for(const t of U.patterns.categories.types){const c=current(),id=c.p.categorySelections[t],q=c.n.categoryCatalog[t].find(q=>q.id===id),h=element('app').innerHTML.split('data-keep="adopted-category:'+t+'"')[1],summary=h.split('</summary>')[0];assert(summary.includes('class="adopted-plan-name"'));assert(summary.includes('採用中：'+q.name));assert(!summary.includes('<select'));}
+ click('section','selfIncome');click('source-copy','selfIncome');submit({name:'選択表示の別案'});const alt=current().n.categoryCatalog.selfIncome.at(-1).id;
+ nav('outlook');change({dataset:{adopt:'selfIncome'},value:alt});const summary=element('app').innerHTML.split('data-keep="adopted-category:selfIncome"')[1].split('</summary>')[0];assert(summary.includes('採用中：選択表示の別案'));assert.equal(JSON.stringify(current().n.actuals),before);
+ console.log('PASS collapsed adopted names: all categories, updated source selection, selectors stay inside details, unchanged actuals');
+}
+
 })();

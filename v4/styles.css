@@ -192,3 +192,6 @@ input::-webkit-date-and-time-value{min-width:0;text-align:left}input::-webkit-da
 .income-payroll-tabs>details>.tree-children,.income-payroll-year>.tree-children{margin:0 0 0 10px;padding:0 0 12px 12px;border-left:3px solid #b8c9bd}
 .income-payroll-year>summary{padding:14px 6px;font-weight:700;cursor:pointer}
 .income-payroll-tabs>details[open]>summary{border-bottom:1px solid #e0e5dc;margin-bottom:10px}
+
+/* Show the adopted source even when its category is collapsed. */
+.adopted-category-list>details>summary .adopted-plan-name{display:block;margin:6px 0 0 1.3em;font-size:14px;font-weight:400;color:var(--muted);line-height:1.6;overflow-wrap:anywhere;white-space:normal}
