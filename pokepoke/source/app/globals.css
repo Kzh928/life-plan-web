@@ -29,3 +29,5 @@
 .tab-list:has([id$="trigger-all"]){grid-template-columns:repeat(3,minmax(0,1fr))}
 
 .stock-group{min-width:0;background:#fff;border:1px solid #dce5f1;border-radius:14px;overflow:hidden}.stock-group>header{display:flex;gap:12px;align-items:start;justify-content:space-between;padding:16px 16px 6px}.stock-group h2{font-size:17px;font-weight:750;overflow-wrap:anywhere;min-width:0}.stock-group>header>strong{font-size:14px;white-space:nowrap;color:#365f47}.stock-summary{padding:0 16px 12px;font-size:13px;color:#55729f}.stock-summary span{display:block;font-size:11px;color:#7d8b9e;margin-top:4px}.group-stock .item-card{border:0;border-radius:0;box-shadow:none;border-top:1px solid #e7edf4;padding:12px 16px}.group-stock .card-field-label,.group-stock h3{display:none}.group-stock .secondary-name{margin-top:0;font-size:15px;font-weight:700}.group-stock .card-bottom{flex-wrap:wrap}.stock-intro{font-size:12px;color:#71809b;line-height:1.7;margin-top:7px}
+
+.simple-tabs a{min-width:0;overflow-wrap:anywhere}.gold-frame-workspace{max-width:1100px;margin:0 auto;padding:0 10px}.gold-frame-embed{display:block;width:100%;height:calc(100dvh - 72px);border:0;background:#f3f6fb}
