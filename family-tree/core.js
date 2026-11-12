@@ -5,6 +5,18 @@ const TYPES={parent:'実親子',adopt:'養親子',spouse:'配偶者',fiance:'婚
 const uid=()=>globalThis.crypto.randomUUID?.()||'id-'+Array.from(globalThis.crypto.getRandomValues(new Uint32Array(4)),v=>v.toString(16).padStart(8,'0')).join('');
 const clone=x=>JSON.parse(JSON.stringify(x));
 const ancestry=e=>e.type==='parent'||e.type==='adopt';
+function validDate(value){
+ if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value)||Number(value.slice(0,4))<1)return false;
+ const d=new Date(value+'T00:00:00Z');return !Number.isNaN(d.getTime())&&d.toISOString().slice(0,10)===value;
+}
+function validBirth(value){return typeof value==='string'&&(value===''||(/^\d{4}$/.test(value)&&Number(value)>0)||(/^--\d{2}-\d{2}$/.test(value)&&validDate('2000'+value.slice(1)))||validDate(value));}
+function birthParts(value=''){const m=/^(\d{4})?-(\d{2})-(\d{2})$/.exec(value.startsWith('--')?value.slice(1):value);return m?{year:m[1]||'',month:String(Number(m[2])),day:String(Number(m[3]))}:{year:value,month:'',day:''};}
+function birthValue(year,month,day){
+ if((month&&!day)||(!month&&day))throw Error('誕生日の月と日は両方入力してください．');
+ const value=month&&day?(year||'-')+'-'+String(month).padStart(2,'0')+'-'+String(day).padStart(2,'0'):year;
+ if(!validBirth(value))throw Error('誕生日を確認してください．年は空欄でも登録できます．');return value;
+}
+function birthLabel(value){if(!value)return '';const b=birthParts(value);return b.month?(b.year?b.year+'年':'')+b.month+'月'+b.day+'日'+(b.year?'生まれ':'生まれ（年不明）'):b.year+'年生まれ';}
 function fresh(){let id=uid();return {format:'family-tree',version:1,self:id,partner:null,people:[{id,name:'自分',gender:'unknown',birth:'',death:'',memo:'',photo:'',x:0,y:0}],edges:[]};}
 function validate(raw){
  if(!raw||raw.format!=='family-tree'||raw.version!==1||!Array.isArray(raw.people)||!Array.isArray(raw.edges))throw Error('対応する家系図JSON（バージョン1）ではありません．');
@@ -15,7 +27,7 @@ function validate(raw){
   if(!p||!str(p.id,100)||!p.id||ids.has(p.id)||!str(p.name,120)||!p.name.trim())throw Error('人物IDまたは名前が不正・重複しています．');ids.add(p.id);
   if(p.photo&&!/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(p.photo))throw Error('写真形式が不正です．');
   if((p.photo||'').length>4000000)throw Error('写真が大きすぎます．');
-  for(const k of ['birth','death'])if(p[k]&&(!str(p[k],10)||!/^\d{4}-\d{2}-\d{2}$/.test(p[k])||Number.isNaN(Date.parse(p[k]))))throw Error('日付が不正です．');
+  if(!validBirth(p.birth||'')||(p.death&&!validDate(p.death)))throw Error('日付が不正です．');
   if(!str(p.memo||'',10000))throw Error('メモが長すぎます．');
   return {id:p.id,name:p.name.trim(),gender:['male','female','other','unknown'].includes(p.gender)?p.gender:'unknown',birth:p.birth||'',death:p.death||'',memo:p.memo||'',photo:p.photo||'',x:Number.isFinite(p.x)?Math.max(-100000,Math.min(100000,p.x)):0,y:Number.isFinite(p.y)?Math.max(-100000,Math.min(100000,p.y)):0};
  });
@@ -72,5 +84,5 @@ function dock(current,incoming,{left=current.self,right=incoming.self,existingRi
  const r=map.get(right),prior=edges.find(e=>['spouse','fiance','partner'].includes(e.type)&&[e.a,e.b].includes(left)&&[e.a,e.b].includes(r));for(let i=edges.length-1;i>=0;i--)if(['spouse','fiance','partner'].includes(edges[i].type)&&[edges[i].a,edges[i].b].includes(left)&&[edges[i].a,edges[i].b].includes(r))edges.splice(i,1);
  edges.push({id:prior?.id||uid(),a:left,b:r,type,score:prior?.score??null,note:prior?.note||''});return layout(validate({...a,self:left,partner:r,people,edges}));
 }
-const api={TYPES,uid,clone,ancestry,fresh,validate,path,kinship,layout,dock,step};if(typeof module!=='undefined')module.exports=api;else root.Family=api;
+const api={validBirth,birthParts,birthValue,birthLabel,TYPES,uid,clone,ancestry,fresh,validate,path,kinship,layout,dock,step};if(typeof module!=='undefined')module.exports=api;else root.Family=api;
 })(globalThis);
