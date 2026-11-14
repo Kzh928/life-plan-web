@@ -62,12 +62,24 @@ function kinship(d,a,b){
  return `${label}（親子経路で${degree}親等相当）`;
 }
 function layout(d){
- const pos=new Map(),levels=new Map(),side=new Map();const seeds=[d.self,...(d.partner?[d.partner]:[])];
- seeds.forEach((id,i)=>{levels.set(id,0);side.set(id,i?1:-1);});let q=[...seeds];
- for(let i=0;i<q.length;i++){let id=q[i];for(const e of d.edges){const to=e.a===id?e.b:e.b===id?e.a:null;if(!to||levels.has(to))continue;levels.set(to,levels.get(id)+(ancestry(e)?(e.a===id?1:-1):0));side.set(to,side.get(id));q.push(to);}}
- let orphan=2;for(const p of d.people)if(!levels.has(p.id)){levels.set(p.id,orphan++);side.set(p.id,-1);}
- const rows=new Map();for(const p of d.people){const k=levels.get(p.id);if(!rows.has(k))rows.set(k,[]);rows.get(k).push(p);}
- for(const [level,row] of rows){const left=row.filter(p=>side.get(p.id)<0),right=row.filter(p=>side.get(p.id)>0);left.sort((a,b)=>(a.id===d.self?1:0)-(b.id===d.self?1:0));right.sort((a,b)=>(b.id===d.partner?1:0)-(a.id===d.partner?1:0));left.forEach((p,i)=>pos.set(p.id,{x:-110-(left.length-1-i)*195,y:level*180}));right.forEach((p,i)=>pos.set(p.id,{x:110+i*195,y:level*180}));}
+ // Reserve a separate horizontal span for each ancestral branch.
+ const gap=144,rowGap=172,parents=new Map(d.people.map(p=>[p.id,[]])),adj=new Map(d.people.map(p=>[p.id,[]]));
+ for(const e of d.edges){adj.get(e.a).push(e);adj.get(e.b).push(e);if(ancestry(e)&&!parents.get(e.b).includes(e.a))parents.get(e.b).push(e.a);}
+ const pos=new Map(),claimed=new Set();
+ function branch(id,depth=0){if(claimed.has(id)||depth>100)return null;claimed.add(id);const children=parents.get(id).map(x=>branch(x,depth+1)).filter(Boolean);return {id,children,width:Math.max(1,children.reduce((n,c)=>n+c.width,0))};}
+ function place(tree,left,level){pos.set(tree.id,{x:(left+tree.width/2)*gap,y:level*rowGap});for(const c of tree.children){place(c,left,level-1);left+=c.width;}}
+ const left=branch(d.self),right=d.partner?branch(d.partner):null;
+ if(right){place(left,-left.width,0);place(right,0,0);}else place(left,-left.width/2,0);
+ // Position descendants, siblings and other registered people near their family.
+ const levels=new Map([...pos].map(([id,p])=>[id,p.y/rowGap])),queue=[...pos.keys()];
+ for(let i=0;i<queue.length;i++){const id=queue[i];for(const e of adj.get(id)){const to=e.a===id?e.b:e.a;if(levels.has(to))continue;const level=levels.get(id)+(ancestry(e)?(e.a===id?1:-1):0);levels.set(to,level);queue.push(to);}}
+ const others=d.people.filter(p=>!pos.has(p.id)).sort((a,b)=>(levels.get(a.id)??1000)-(levels.get(b.id)??1000));
+ let unrelated=0;
+ for(const p of others){if(!levels.has(p.id)){levels.set(p.id,2+Math.floor(unrelated++/6));}
+ const level=levels.get(p.id),near=parents.get(p.id).filter(id=>pos.has(id)).map(id=>pos.get(id).x);
+ if(!near.length)for(const e of adj.get(p.id)){const to=e.a===p.id?e.b:e.a;if(pos.has(to))near.push(pos.get(to).x);}
+ let x=near.length?near.reduce((a,b)=>a+b,0)/near.length:unrelated*gap;
+ const occupied=[...pos.values()].filter(q=>q.y===level*rowGap);let offset=0;while(occupied.some(q=>Math.abs(q.x-(x+offset))<gap-1)){offset=offset<=0?-offset+gap:-offset;}x+=offset;pos.set(p.id,{x,y:level*rowGap});}
  return {...d,people:d.people.map(p=>({...p,...pos.get(p.id)}))};
 }
 function dock(current,incoming,{left=current.self,right=incoming.self,existingRight='',incomingLeft='',type='fiance'}={}){
