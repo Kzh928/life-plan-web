@@ -1,0 +1,86 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; img-src data:; base-uri 'none'; form-action 'none'"><title>収入の更新 · iPhone対応</title><style>body{margin:0;background:#f5f6ef;color:#23443c;font:16px system-ui;line-height:1.7}main{max-width:850px;margin:auto;padding:24px}section{background:white;border:1px solid #d5dfd2;border-radius:16px;padding:22px;margin:18px 0}h1{font-size:25px}h2{font-size:19px}label{display:block;margin:15px 0}input,button,select{font:inherit;max-width:100%;padding:10px;box-sizing:border-box}input[type=checkbox]{width:20px;height:20px;vertical-align:middle}button{background:#245f50;color:white;border:0;border-radius:10px;cursor:pointer;margin:8px 12px 8px 0}button:disabled{opacity:.4;cursor:default}small{display:block;color:#61756c}#status{white-space:pre-wrap}table{border-collapse:collapse;width:100%;white-space:nowrap}td,th{padding:9px;border-bottom:1px solid #ddd;text-align:right}td:first-child,th:first-child{text-align:left}.scroll{overflow:auto}.error{color:#b52d22}main{padding:20px 16px max(30px,env(safe-area-inset-bottom));box-sizing:border-box}section{padding:18px;min-width:0}input[type=file]{display:block;width:100%;margin-top:10px;background:#f1f5f1;border:1px solid #b9cdbf;border-radius:10px;white-space:normal}input::file-selector-button{font:inherit;min-height:44px;border:0;border-radius:7px;background:#e1ece4;color:#23443c;margin-right:10px;padding:8px}input[type=number],select{border:1px solid #b9cdbf;border-radius:9px;min-height:48px;background:white;color:#23443c}button{min-height:50px;width:100%;margin:8px 0}.secondary{background:#edf4ef;color:#245f50;border:1px solid #adc5b6}.hint{font-size:14px;color:#61756c}.scroll{max-width:100%;-webkit-overflow-scrolling:touch}small{overflow-wrap:anywhere}#saveStatus{font-size:14px} @media(min-width:650px){button{width:auto;padding-left:22px;padding-right:22px}} </style><main><h1>収入の更新 · iPhone対応</h1><p>iPhoneのSafariで，Excelから更新用JSONを作成します．ネットワークへの送信・AIの呼び出し・入力内容の保存はありません．月給／賞与／残業単価だけを，既存の働き方へ反映するJSONを作ります．</p><section><h2>1．ファイルを選択</h2><p class="hint">Excelと働き方JSONを，先にiPhoneの「ファイル」に保存してください．下のボタンから「ファイルを選択」で選べます．</p><label>入力したExcel（今回のテンプレート）<br><input id="excel" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></label><label>更新したい働き方のJSON<br><input id="base" type="file" accept=".json,application/json"></label><small>ライフプランで「予定を決める」→本人またはパートナーの収入→対象の案・働き方を開き，働き方のJSONを書き出してください．全データJSONではありません．本人・パートナーは1つずつ作成します．</small></section><section><h2>2．更新する項目と年度</h2><label><input id="salary" type="checkbox" checked> 月給</label><label><input id="overtime" type="checkbox" checked> 残業10時間あたりの手取り単価</label><label><input id="bonus" type="checkbox"> 賞与（7月・12月）</label><label>この年度以降を更新 <input id="from" type="number" min="2026" max="2100" value="2026"></label><label>月給の変更月 <select id="month"><option value="1">1月</option><option value="2">2月</option><option value="3">3月</option><option value="4">4月</option><option value="5">5月</option><option value="6" selected>6月</option><option value="7">7月</option><option value="8">8月</option><option value="9">9月</option><option value="10">10月</option><option value="11">11月</option><option value="12">12月</option></select></label><small>入力済みの年・項目だけ更新します．空欄は変更せず，0円は0円に更新します．月給は指定月の変更点を追加・上書きし，次の変更点まで適用されます．別の月にある既存の変更点は残します．賞与は同じ年の7月・12月，残業単価は4月〜翌3月の年度単位です．</small><small>働き方の名前・切替時期・残業時間・他の設定は保持します．実績はこのJSONに含めず，変更しません．</small><button id="preview">変換内容を確認</button></section><section><h2>3．確認して保存</h2><p id="status" role="status">まだ変換していません．</p><div class="scroll" id="review"></div><button id="share" disabled>共有して「ファイル」に保存</button><button id="save" class="secondary" disabled>ダウンロードで保存</button><p id="saveStatus" role="status"></p><small>共有画面で「ファイルに保存」を選びます．保存後，ライフプランの同じ働き方で「JSONを読み込む」を選び，そのJSONを取り込んでください．ダウンロードで保存した場合はSafariのダウンロード一覧から確認できます．作成後にライフプラン側を編集した場合は，最新の働き方JSONで作り直してください．</small></section></main><script>(function(root){
+'use strict';
+// Read cached OOXML values only. This reader never evaluates or exports formulas.
+const decode=s=>String(s||'').replace(/&(#x[0-9a-f]+|#\d+|amp|lt|gt|quot|apos);/gi,(_,v)=>v[0]==='#'?String.fromCodePoint(v[1].toLowerCase()==='x'?parseInt(v.slice(2),16):Number(v.slice(1))):({amp:'&',lt:'<',gt:'>',quot:'"',apos:"'"})[v.toLowerCase()]);
+function tags(xml,name){const re=new RegExp('<(?:[\\w.-]+:)?'+name+'\\b([^>]*?)(?:\\/>|>([\\s\\S]*?)<\\/(?:[\\w.-]+:)?'+name+'\\s*>)','g'),out=[];let m;while((m=re.exec(xml)))out.push({attrs:m[1],body:m[2]||''});return out;}
+function attrs(s){const out={};for(const m of s.matchAll(/([\w:.-]+)\s*=\s*(["'])([\s\S]*?)\2/g))out[m[1]]=decode(m[3]);return out;}
+const text=xml=>tags(xml.replace(/<(?:[\w.-]+:)?rPh\b[^>]*>[\s\S]*?<\/(?:[\w.-]+:)?rPh\s*>/g,''),'t').map(t=>decode(t.body)).join('');
+function column(s){if(!/^[A-Z]{1,3}$/i.test(s||''))throw Error('列はA，B，AAのように指定してください．');return [...s.toUpperCase()].reduce((v,c)=>v*26+c.charCodeAt(0)-64,0);}
+function columnName(n){let s='';while(n>0){n--;s=String.fromCharCode(65+n%26)+s;n=Math.floor(n/26);}return s;}
+function parseSheet(xml,strings,name){
+ const cells=new Map();let maxRow=0,maxCol=0;
+ for(const c of tags(xml,'c')){const a=attrs(c.attrs),m=/^([A-Z]+)(\d+)$/.exec(a.r||'');if(!m)continue;const row=Number(m[2]),col=column(m[1]);if(row>1048576||col>16384)throw Error('セルの位置が不正です．');
+  const v=tags(c.body,'v')[0],hasFormula=tags(c.body,'f').length>0;let value=null;
+  if(a.t==='inlineStr')value=text(c.body);else if(v){const raw=decode(v.body);if(a.t==='s')value=strings[Number(raw)]??null;else if(a.t==='str'||a.t==='d'||a.t==='e')value=raw;else if(a.t==='b')value=raw==='1';else value=raw.trim()===''?null:Number(raw);}
+  cells.set(a.r,{value,missing:hasFormula&&(value===null||value===''),error:a.t==='e'});maxRow=Math.max(maxRow,row);maxCol=Math.max(maxCol,col);
+ }
+ return {name,maxRow,maxCol,cells};
+}
+const crcTable=Array.from({length:256},(_,i)=>{for(let k=0;k<8;k++)i=i&1?0xedb88320^(i>>>1):i>>>1;return i>>>0;});
+function crc32(data){let c=0xffffffff;for(const b of data)c=crcTable[(c^b)&255]^(c>>>8);return (c^0xffffffff)>>>0;}
+async function unzip(buffer){
+ const bytes=new Uint8Array(buffer),v=new DataView(buffer);if(bytes.length>25*1024*1024)throw Error('Excelは25MB以下で選んでください．');let end=-1;
+ for(let i=bytes.length-22;i>=Math.max(0,bytes.length-65557);i--)if(v.getUint32(i,true)===0x06054b50&&i+22+v.getUint16(i+20,true)===bytes.length){end=i;break;}
+ if(end<0)throw Error('通常の.xlsxファイルを選んでください．暗号化・旧.xls形式には対応していません．');
+ const count=v.getUint16(end+10,true),offset=v.getUint32(end+16,true);if(count>4000||count===65535)throw Error('このExcelの圧縮形式には対応していません．');const files=new Map(),decoder=new TextDecoder();let at=offset,total=0;
+ for(let k=0;k<count;k++){
+  if(at+46>bytes.length||v.getUint32(at,true)!==0x02014b50)throw Error('Excelの圧縮データが壊れています．');
+  const flags=v.getUint16(at+8,true),method=v.getUint16(at+10,true),crc=v.getUint32(at+16,true),size=v.getUint32(at+20,true),expanded=v.getUint32(at+24,true),nl=v.getUint16(at+28,true),el=v.getUint16(at+30,true),cl=v.getUint16(at+32,true),local=v.getUint32(at+42,true),name=decoder.decode(bytes.slice(at+46,at+46+nl));at+=46+nl+el+cl;
+  if(flags&1)throw Error('パスワード付きExcelには対応していません．');if(expanded>32*1024*1024)throw Error('展開後のシートが大きすぎます．');
+  if(local+30>bytes.length||v.getUint32(local,true)!==0x04034b50)throw Error('Excelのファイル位置が不正です．');
+  const start=local+30+v.getUint16(local+26,true)+v.getUint16(local+28,true);if(start+size>bytes.length)throw Error('Excelのデータが途中で切れています．');
+  if(!/\.xml$|\.rels$/i.test(name))continue;let data;
+  if(method===0)data=bytes.slice(start,start+size);
+  else if(method===8){
+   let stream;try{stream=new Blob([bytes.slice(start,start+size)]).stream().pipeThrough(new DecompressionStream('deflate-raw'));}catch{throw Error('このブラウザではExcelの展開ができません．新しいSafari・Chrome・Braveをお使いください．');}
+   const reader=stream.getReader(),parts=[];let length=0;for(;;){const r=await reader.read();if(r.done)break;length+=r.value.length;if(length>32*1024*1024){await reader.cancel();throw Error('展開後のシートが大きすぎます．');}parts.push(r.value);}data=new Uint8Array(length);let pos=0;for(const part of parts){data.set(part,pos);pos+=part.length;}
+  }else throw Error('未対応のExcel圧縮形式です．');
+  total+=data.length;if(total>80*1024*1024)throw Error('展開後のExcelが大きすぎます．');if(data.length!==expanded||crc32(data)!==crc)throw Error('Excelのデータ検査に失敗しました．保存し直して選んでください．');
+  const xml=decoder.decode(data);if(/<!DOCTYPE|<!ENTITY/i.test(xml))throw Error('このXML形式には対応していません．');files.set(name,xml);
+ }
+ return files;
+}
+async function read(buffer){
+ const files=await unzip(buffer),book=files.get('xl/workbook.xml'),rels=files.get('xl/_rels/workbook.xml.rels');if(!book||!rels)throw Error('Excelのシート情報が見つかりません．');
+ const relations=new Map(tags(rels,'Relationship').map(x=>attrs(x.attrs)).filter(a=>a.TargetMode!=='External').map(a=>[a.Id,a.Target]));
+ const strings=tags(files.get('xl/sharedStrings.xml')||'','si').map(x=>text(x.body)),sheets=[];
+ for(const s of tags(book,'sheet')){const a=attrs(s.attrs),target=relations.get(a['r:id']);if(!target)continue;const parts=(target.startsWith('/')?target.slice(1):'xl/'+target).split('/'),safe=[];for(const p of parts){if(p==='..')safe.pop();else if(p!=='.'&&p)safe.push(p);}const xml=files.get(safe.join('/'));if(xml)sheets.push(parseSheet(xml,strings,a.name));}
+ if(!sheets.length)throw Error('読み込めるシートがありません．');return {sheets,date1904:attrs(tags(book,'workbookPr')[0]?.attrs||'').date1904==='1'};
+}
+const api={read,parseSheet,column,columnName};root.LocalXlsx=api;if(typeof module!=='undefined')module.exports=api;
+})(typeof window==='undefined'?globalThis:window);
+</script><script>(function(root){
+'use strict';
+const empty=v=>v===null||v===undefined||v==='';
+function num(v,label,rate=false){if(empty(v))return null;if(typeof v==='string')v=Number(v.replace(/[,，円\s]/g,''));if(typeof v!=='number'||!Number.isFinite(v)||v<0||rate&&v>1||!rate&&!Number.isSafeInteger(v))throw Error(label+'を確認してください．金額は0円以上の整数，率は0〜100％です．');return v;}
+function convert(book,base,opt){
+ if(base?.format!=='jp.finance.income.pattern'||base.version!==1||!base.pattern||!Array.isArray(base.pattern.salaryChanges)||!base.pattern.salaryChanges.length)throw Error('対象の働き方から書き出した月給方式のJSONを選んでください．年度年収のみの旧方式は対象外です．');
+ if(!Number.isInteger(opt.from)||opt.from<2026||opt.from>2100||!Number.isInteger(opt.month)||opt.month<1||opt.month>12)throw Error('開始年度・月給変更月を確認してください．');
+ if(!opt.salary&&!opt.bonus&&!opt.overtime)throw Error('更新する項目を選んでください．');
+ const result=JSON.parse(JSON.stringify(base)),p=result.pattern,changes=[];
+ const value=(s,c,r)=>{const cell=s.cells.get(c+r);if(cell?.error)throw Error(s.name+'!'+c+r+'がエラーです．');return cell?.value;};
+ function output(s,r,direct,gross,rate,cached){const d=num(value(s,direct,r),s.name+' '+r+'行の手取り');if(d!==null)return d;const g=num(value(s,gross,r),s.name+' '+r+'行の額面'),t=num(value(s,rate,r),s.name+' '+r+'行の率',true);if(g!==null&&t!==null)return Math.floor(g*t+1e-8);if(g!==null)throw Error(s.name+' '+r+'行の手取り率が未入力です．');return num(value(s,cached,r),s.name+' '+r+'行の計算結果');}
+ for(const name of ['月給','賞与']){
+  if(name==='月給'&&!opt.salary&&!opt.overtime||name==='賞与'&&!opt.bonus)continue;
+  const s=book.sheets.find(s=>s.name===name);if(!s)throw Error(name+'シートがありません．');const seen=new Set();
+  for(let r=2;r<=Math.min(s.maxRow,10000);r++){
+   const raw=value(s,'A',r);if(empty(raw))continue;const y=Number(raw);if(!Number.isInteger(y)||y<2026||y>2100)throw Error(name+' '+r+'行の年度を確認してください．');if(seen.has(y))throw Error(name+'の年度が重複しています．');seen.add(y);if(y<opt.from)continue;
+   if(name==='月給'){
+    if(opt.salary){const v=output(s,r,'F','D','E','B');if(v!==null){const from=y+'-'+String(opt.month).padStart(2,'0'),old=p.salaryChanges.find(x=>x.from===from)?.netMonthly;p.salaryChanges=p.salaryChanges.filter(x=>x.from!==from);p.salaryChanges.push({from,netMonthly:v});changes.push({when:from,kind:'月給',before:old,after:v});}}
+    if(opt.overtime){const v=output(s,r,'I','G','H','C');if(v!==null){p.overtime??={rates:{},hours:{}};p.overtime.rates??={};p.overtime.hours??={};const old=p.overtime.rates[y];p.overtime.rates[y]=v;changes.push({when:y+'年度',kind:'残業10時間単価',before:old,after:v});}}
+   }else{
+    const july=output(s,r,'F','D','E','B'),winter=num(value(s,'G',r),'冬の手取り'),december=winter??july??num(value(s,'C',r),'冬の計算結果');
+    for(const [m,v]of [['07',july],['12',december]])if(v!==null){p.bonuses??=[];const month=y+'-'+m,old=p.bonuses.find(b=>b.month===month);p.bonuses=p.bonuses.filter(b=>b.month!==month);p.bonuses.push({...old,id:old?.id||'month-'+month,month,amount:v});changes.push({when:month,kind:'賞与',before:old?.amount,after:v});}
+   }
+  }
+ }
+ if(!changes.length)throw Error('対象年度に入力済みの金額がありません．');p.salaryChanges.sort((a,b)=>a.from.localeCompare(b.from));if(p.bonuses)p.bonuses.sort((a,b)=>a.month.localeCompare(b.month));return {payload:result,changes};
+}
+root.IncomeFileConvert={convert};if(typeof module!=='undefined')module.exports=root.IncomeFileConvert;
+})(typeof window==='undefined'?globalThis:window);
+</script><script>
+const $=id=>document.getElementById(id);let ready=null;const clear=()=>{ready=null;$('save').disabled=true;$('share').disabled=true;$('saveStatus').textContent='';$('review').replaceChildren();$('status').textContent='設定が変わりました．もう一度確認してください．';};for(const id of ['excel','base','salary','overtime','bonus','from','month'])$(id).onchange=clear;
+$('preview').onclick=async()=>{clear();try{const e=$('excel').files[0],b=$('base').files[0];if(!e||!b)throw Error('Excelと働き方JSONの両方を選んでください．');if(b.size>5*1024*1024)throw Error('働き方JSONは5MB以下にしてください．');const book=await LocalXlsx.read(await e.arrayBuffer()),base=JSON.parse(await b.text()),result=IncomeFileConvert.convert(book,base,{from:Number($('from').value),month:Number($('month').value),salary:$('salary').checked,bonus:$('bonus').checked,overtime:$('overtime').checked});ready=result.payload;$('status').className='';$('status').textContent='対象：'+base.pattern.name+' ／ '+result.changes.length+'件の金額を更新します．';const t=document.createElement('table');for(const row of [['時期','項目','同月の既存値','更新後'],...result.changes.map(c=>[c.when,c.kind,c.before==null?'未登録':c.before.toLocaleString()+'円',c.after.toLocaleString()+'円'])]){const tr=t.insertRow();for(const v of row)tr.insertCell().textContent=v;}$('review').append(t);$('save').disabled=false;$('share').disabled=false;}catch(e){$('status').className='error';$('status').textContent=e.message;}};
+$('share').onclick=async()=>{if(!ready)return;try{const file=new File([JSON.stringify(ready,null,2)],'income-pattern-updated.json',{type:'application/json'});if(navigator.canShare?.({files:[file]})){await navigator.share({files:[file]});$('saveStatus').textContent='共有画面で「ファイルに保存」してください．';}else{$('saveStatus').textContent='このブラウザではファイル共有に対応していません．「ダウンロードで保存」を押してください．';}}catch(e){$('saveStatus').textContent=e.name==='AbortError'?'保存を取り消しました．もう一度保存できます．':'共有できませんでした．「ダウンロードで保存」を試してください．';}};
+$('save').onclick=()=>{if(!ready)return;const url=URL.createObjectURL(new Blob([JSON.stringify(ready,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='income-pattern-updated.json';document.body.append(a);a.click();a.remove();$('saveStatus').textContent='Safariのダウンロード一覧，または「ファイル」→「ダウンロード」を確認してください．';setTimeout(()=>URL.revokeObjectURL(url),30000);};
+</script></html>
