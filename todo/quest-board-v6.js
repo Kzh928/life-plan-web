@@ -16,7 +16,7 @@ function closeEdit(){ $('editor').close();render();if(missingMode){missingMode=f
 $('add').onclick=()=>{if(state.readError)return toast('保存データの読み込みエラーを解消してください。');const title=$('quickTitle').value.trim();if(!title)return $('quickTitle').focus();state.tasks.push({id:crypto.randomUUID(),title,due:'',detail:'',comment:'',status:'open',createdAt:new Date().toISOString()});persist();$('quickTitle').value='';render();toast('クエストを受注しました')};
 $('quickTitle').onkeydown=e=>{if(e.key==='Enter')e.preventDefault()};
 $('save').onclick=()=>{if(saveFields()){persist();closeEdit()}};$('closeEditor').onclick=closeEdit;$('editor').addEventListener('cancel',()=>{missingMode=false});
-$('start').onclick=()=>{const t=saveFields();if(!t)return;t.status='active';persist();closeEdit();effect('QUEST START',t.title,'start')};$('complete').onclick=()=>{const t=saveFields();if(!t)return;const completed=t.status!=='done';t.status=completed?'done':'open';persist();closeEdit();if(completed)effect('QUEST CLEAR',t.title,'clear')};
+$('start').onclick=()=>{const t=saveFields();if(!t)return;t.status='active';persist();closeEdit();if(state.settings.bgm!==false&&$('bgmCard')){startBgm();toast('クエスト開始！')}else effect('QUEST START',t.title,'start')};$('complete').onclick=()=>{const t=saveFields();if(!t)return;const completed=t.status!=='done';t.status=completed?'done':'open';persist();closeEdit();if(completed)effect('QUEST CLEAR',t.title,'clear')};
 $('delete').onclick=()=>{if(confirm('このクエストを削除しますか？')){state.tasks=state.tasks.filter(t=>t.id!==editing);persist();closeEdit()}};
 document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;selected=null;render()});$('missing').onclick=()=>$('missingDialog').showModal();$('closeMissing').onclick=()=>$('missingDialog').close();
 $('settingsBtn').onclick=()=>{$('effects').checked=state.settings.effects;$('sound').checked=state.settings.sound;$('settings').showModal()};$('closeSettings').onclick=()=>$('settings').close();for(const k of['effects','sound'])$(k).onchange=()=>{state.settings[k]=$(k).checked;persist()};
@@ -32,3 +32,28 @@ let previousFocus;function endFx(){clearTimeout(fxTimer);stopSound();$('fx').clo
 function effect(label,title,type){if(!state.settings.effects){toast(type==='clear'?'達成！ おつかれさま！':type==='start'?'クエスト開始！':'期日が近いクエストがあります');return}previousFocus=document.activeElement;$('fx').dataset.kind=type;$('resultCaption').textContent=type==='clear'?'目的を達成しました':type==='start'?'依頼を開始します':'期日が近づいています';$('sealEn').textContent=label;$('sealJp').textContent=type==='clear'?'クエスト達成':type==='start'?'クエスト開始':'期日接近';$('stamp').querySelector('.seal-caption').textContent=type==='clear'?'— HUNT COMPLETE —':type==='start'?'— YOUR QUEST BEGINS —':'— TIME TO ACT —';$('fxTitle').textContent=title;$('fx').querySelectorAll('.spark').forEach(e=>e.remove());for(let i=0;i<36;i++){const s=document.createElement('i');s.className='spark';s.style.setProperty('--a',i*10+'deg');$('fx').append(s)}$('fx').hidden=false;if(!$('fx').open)$('fx').showModal();$('fx').getAnimations({subtree:true}).forEach(a=>{a.cancel();a.play()});document.body.classList.add('impact');$('fx').focus();playSound(type);clearTimeout(fxTimer);fxTimer=setTimeout(endFx,5200)}$('fx').onclick=endFx;$('fx').onkeydown=e=>{if(['Escape','Enter',' '].includes(e.key)){e.preventDefault();endFx()}if(e.key==='Tab'){e.preventDefault();$('fx').focus()}};$('preview').onclick=()=>effect('QUEST CLEAR','ひとつ達成。次の冒険へ。','clear');
 $('export').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='quest-log-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};$('import').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{if(f.size>10000000)throw Error();const next=JSON.parse(await f.text());if(!valid(next))throw Error();if(confirm(next.tasks.length+'件のクエストで置き換えます。現在のJSONは書き出しましたか？')){state={version:1,tasks:next.tasks,settings:next.settings};persist();render();$('settings').close();toast('読み込みました')}}catch(e){toast('対応するJSONファイルではありません。データは変更していません。')}finally{$('importFile').value=''}};
 render();const urgent=state.tasks.filter(t=>t.status!=='done'&&days(t)<=3);if(urgent.length)setTimeout(()=>effect('TIME TO QUEST',urgent.length+'件のクエストの期日が迫っています','warning'),500);
+
+/* YouTube IFrame Player API: no Data API key or paid service. */
+let bgmPlayer=null,bgmReady=false;
+function bgmMessage(message){if($('bgmStatus'))$('bgmStatus').textContent=message}
+function startBgm(){
+ if(!$('bgmCard'))return;
+ $('bgmCard').scrollIntoView({block:'center',behavior:'smooth'});
+ if(!bgmReady){bgmMessage('準備ができたら「BGM再生」または動画の再生ボタンをタップしてください。');return}
+ try{bgmPlayer.unMute();bgmPlayer.setVolume(Number($('bgmVolume').value));bgmPlayer.playVideo();bgmMessage('再生を要求しました。音が出ない場合は動画の再生ボタンをタップしてください。')}catch(e){bgmMessage('動画の再生ボタンをタップしてください。')}
+}
+function stopBgm(){try{bgmPlayer?.pauseVideo()}catch(e){}bgmMessage('停止しました。')}
+if($('bgmPlayer')){
+ $('bgmToggle').checked=state.settings.bgm!==false;
+ $('bgmVolume').value=Number.isFinite(state.settings.bgmVolume)?Math.max(0,Math.min(100,state.settings.bgmVolume)):40;
+ $('bgmToggle').onchange=()=>{state.settings.bgm=$('bgmToggle').checked;if(!state.settings.bgm)stopBgm();persist()};
+ $('bgmVolume').oninput=()=>{const v=Number($('bgmVolume').value);state.settings.bgmVolume=v;try{bgmPlayer?.setVolume(v)}catch(e){}persist()};
+ $('bgmPlay').onclick=startBgm;$('bgmStop').onclick=stopBgm;
+ window.onYouTubeIframeAPIReady=()=>{bgmPlayer=new YT.Player('bgmPlayer',{events:{
+ onReady:()=>{bgmReady=true;bgmMessage('準備できました。「開始」または「BGM再生」で再生します。')},
+ onStateChange:e=>{if(e.data===1)bgmMessage('再生中');else if(e.data===2)bgmMessage('一時停止中');else if(e.data===0)bgmMessage('再生が終了しました。')},
+ onAutoplayBlocked:()=>bgmMessage('自動再生が制限されました。動画の再生ボタンをタップしてください。'),
+ onError:e=>bgmMessage([101,150].includes(e.data)?'この動画は埋め込み再生が許可されていません。「YouTubeで開く」をご利用ください。':'YouTubeを再生できませんでした。動画内の案内、または「YouTubeで開く」をご確認ください。')
+ }})};
+ const yt=document.createElement('script');yt.src='https://www.youtube.com/iframe_api';yt.async=true;document.head.append(yt);
+}
