@@ -1,5 +1,5 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f4f5ee"><title>お金のノート v4</title><link rel="stylesheet" href="styles.css?v4=63&build=72"></head><body>
-<header class="top"><a class="brand" href="./?v4=63&build=72"><span class="brand-icon">◒</span><span>お金のノート <small>v4=63</small></span></a><button id="manage" class="icon-button" aria-label="ノート・保存・設定">•••</button></header>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f4f5ee"><title>お金のノート v4</title><link rel="stylesheet" href="styles.css?v4=64&build=73"><style>.money-help{max-width:700px;width:calc(100% - 24px);max-height:85dvh;box-sizing:border-box;overflow:auto;padding:22px}.money-help p,.money-help li{line-height:1.85;overflow-wrap:anywhere}.money-help details{border-bottom:1px solid #d8dfd3;padding:16px 0}.money-help summary{font-weight:700;cursor:pointer;min-height:44px}.money-help-formula{padding:16px;background:#edf2e8;border-radius:12px;line-height:1.9}.money-help .dialog-head{position:static}.money-help ol{padding-left:24px}.money-help form{margin:0}</style></head><body>
+<header class="top"><a class="brand" href="./?v4=64&build=73"><span class="brand-icon">◒</span><span>お金のノート <small>v4=64</small></span></a><button id="moneyHelpOpen" type="button" aria-haspopup="dialog" style="margin-left:auto;white-space:nowrap;padding:10px 12px">使い方</button><button id="manage" class="icon-button" aria-label="ノート・保存・設定">•••</button></header>
 <div id="saveStatus" role="status" aria-live="polite">端末の保存を確認しています…</div>
 <div class="navigation"><button id="screenBack" class="screen-back" hidden>‹ 1つ前の画面へ</button><nav id="nav" aria-label="主な画面" hidden><button data-route="record">記録する</button><button data-route="plan">予定を決める</button><button data-route="outlook">先を見る</button></nav></div>
 <main id="app" aria-live="polite"></main>
@@ -10,5 +10,36 @@
 <input id="importMaster" type="file" accept=".json,application/json" hidden>
 <input id="legacyHouseholdFile" type="file" accept=".json,application/json" hidden>
 <input id="importFile" type="file" accept=".json,application/json" hidden>
-<script src="core.js?v4=63&build=72"></script><script src="overtime.js?v4=63&build=72"></script><script src="excel-to-json/xlsx-reader.js?v4=63&build=72"></script><script src="patterns.js?v4=63&build=72"></script><script src="scenarios.js?v4=63&build=72"></script><script src="all-sources.js?v4=63&build=72"></script><script src="living-costs.js?v4=63&build=72"></script><script src="list-ui.js?v4=63&build=72"></script><script src="living-ui.js?v4=63&build=72"></script><script src="planning-helpers.js?v4=63&build=72"></script><script src="income-ui.js?v4=63&build=72"></script><script src="record-ui.js?v4=63&build=72"></script><script src="cost-ui.js?v4=63&build=72"></script><script src="input-ui.js?v4=63&build=72"></script><script src="education.js?v4=63&build=72"></script><script src="storage.js?v4=63&build=72"></script><script src="income-transfer.js?v4=63&build=72"></script><script src="legacy-import.js?v4=63&build=72"></script><script src="fund-timeline.js?v4=63&build=72"></script><script src="source-spread.js?v4=63&build=72"></script><script src="item-inspector.js?v4=63&build=72"></script><script src="bonus-import.js?v4=63&build=72"></script><script src="app.js?v4=63&build=72"></script></body></html>
+<script src="core.js?v4=64&build=73"></script><script src="overtime.js?v4=64&build=73"></script><script src="excel-to-json/xlsx-reader.js?v4=64&build=73"></script><script src="patterns.js?v4=64&build=73"></script><script src="scenarios.js?v4=64&build=73"></script><script src="all-sources.js?v4=64&build=73"></script><script src="living-costs.js?v4=64&build=73"></script><script src="list-ui.js?v4=64&build=73"></script><script src="living-ui.js?v4=64&build=73"></script><script src="planning-helpers.js?v4=64&build=73"></script><script src="income-ui.js?v4=64&build=73"></script><script src="record-ui.js?v4=64&build=73"></script><script src="cost-ui.js?v4=64&build=73"></script><script src="input-ui.js?v4=64&build=73"></script><script src="education.js?v4=64&build=73"></script><script src="storage.js?v4=64&build=73"></script><script src="income-transfer.js?v4=64&build=73"></script><script src="legacy-import.js?v4=64&build=73"></script><script src="fund-timeline.js?v4=64&build=73"></script><script src="source-spread.js?v4=64&build=73"></script><script src="item-inspector.js?v4=64&build=73"></script><script src="bonus-import.js?v4=64&build=73"></script><script src="app.js?v4=64&build=73"></script><dialog id="moneyHelp" class="money-help" aria-labelledby="moneyHelpTitle"><div class="dialog-head"><h2 id="moneyHelpTitle">使い方・お金の入力</h2><form method="dialog"><button aria-label="使い方を閉じる">×</button></form></div>
+<p>給与・手当・家賃を二重に数えないための，このノートでの入力ルールです．項目をタップすると説明を開けます．</p>
+<details><summary>給与の実績：天引き家賃を戻し，手当を除く</summary>
+<p>収入の給与実績には，<strong>家賃天引き前で，住宅手当・家族手当を含まない手取り額</strong>を入力します．税金・社会保険を引く前の額面給与ではありません．</p>
+<div class="money-help-formula">給与の実績に入れる額<br>＝ 明細の差引支給額（振込額）<br>＋ 給与から天引きされた家賃<br>− イベントに別計上した住宅・家族手当の税引後受取額</div>
+<p>家賃の天引きがなければ，家賃を足す必要はありません．イベントに含めた手当だけを差し引きます．</p>
+</details>
+<details><summary>住宅手当・家族手当：イベントに別計上</summary>
+<p>住宅手当・家族手当は，イベントの「手当」欄に<strong>周期的な収入</strong>として登録して扱います．</p>
+<p>給与実績から引くのは，その月のイベントで別計上する<strong>税引後に受け取れている分</strong>です．<strong>給与明細の手当欄にある額面金額を，そのまま引くわけではありません．</strong></p>
+<p>給与に含まれる手当とイベントの手当を両方収入にすると二重計上になります．同じ月・同じ手当の受取額をそろえてください．税引後の手当相当額は明細に直接載っていない場合もあるため，別途見積もった手取り額を使うルールです．</p>
+</details>
+<details><summary>家賃・住居費：給与と分けて支出にする</summary>
+<p>家賃は「住居費」に支出として別に登録します．そのため給与実績には，天引きされた家賃を足して戻します．</p>
+<p>住居費には<strong>自分が負担する家賃</strong>を入力します．会社が直接負担していて自分が受け取らない分を，手当収入に足す扱いにはしません．住宅手当を収入として別計上する場合は，その分を家賃からも差し引いて二重に補助を反映しないようにしてください．</p>
+</details>
+<details><summary>6月：給与改定後の月給・残業単価を更新</summary>
+<p>6月の給与改定の内容が分かったら，<strong>その年以降の各年の額面月給</strong>をExcelに書き直します．昇給幅を一律で足すのではなく，評価などを踏まえた各年の金額を入力します．</p>
+<ol><li>額面手取り変換Excelの「額面入力」を変更します．税設定に従って月給と残業10時間あたりの手取りが出ます．</li><li>Excelで再計算・保存し，下の変換画面で，そのExcelと最新の働き方JSONを選びます．更新項目は「月給」「残業10時間あたりの手取り単価」，開始年度は今回更新する年です．</li><li>変換したJSONを，ライフプランの同じ収入案・同じ働き方に読み込んで完了です．</li></ol>
+<p>税計算テンプレートでは，1月と6月の両方の月給を反映します（2026年の初回は4月）．残業時間は単価と分けて，ライフプラン側で設定します．</p>
+</details>
+<details><summary>7月：賞与の詳細が出たら更新</summary>
+<ol><li>Excelに，その年以降の各年の賞与額面を入力します．夏と冬が同額の想定なら，同じ額面をそれぞれ入れます．現在のテンプレートは手取りを額面の65％で計算します．</li><li>Excelを再計算・保存し，変換画面で最新の働き方JSONと一緒に選びます．更新項目は「賞与」，開始年度は今回更新する年にします．</li><li>変換したJSONを，同じ働き方へ読み込んで完了です．</li></ol>
+<p>予定を見直す操作です．支給された賞与の実績は「記録する」に実際の手取り額を入力します．</p>
+</details>
+<details><summary>JSONの書き出し・読み込みと実績の扱い</summary>
+<p>「予定を決める」→収入・働き方→本人またはパートナー→対象の収入案→働き方を開き，その働き方のJSONを書き出します．</p>
+<p>変換後は，同じ働き方のJSON読み込みを使います．<strong>全データの復元とは別の操作</strong>です．更新前に最新の働き方JSONを書き出して使ってください．</p>
+<p>給与・賞与・残業単価の予定を更新しても，記録した実績は変更しません．変換時に選ばなかった項目，残業時間，働き方の切替時期も保持します．同じ収入案を採用する全体プランには，予定の変更が反映されます．</p>
+</details>
+<p><a href="income-update/?v=2" target="_blank" rel="noopener">Excelから更新用JSONを作る ↗</a></p><p class="hint">Excelの税計算は概算です．予定にも給与実績と同じく，家賃天引き前・別計上する手当を除いた金額を使い，入力後に二重計上がないか確認してください．</p>
+<form method="dialog"><button class="primary">閉じる</button></form></dialog><script>document.getElementById('moneyHelpOpen').addEventListener('click',()=>document.getElementById('moneyHelp').showModal());</script></body></html>
 
