@@ -38,7 +38,7 @@ let bgmPlayer=null,bgmReady=false;
 function bgmMessage(message){if($('bgmStatus'))$('bgmStatus').textContent=message}
 function startBgm(){
  if(!$('bgmCard'))return;
- $('bgmCard').scrollIntoView({block:'center',behavior:'smooth'});
+
  if(!bgmReady){bgmMessage('準備ができたら「BGM再生」または動画の再生ボタンをタップしてください。');return}
  try{bgmPlayer.unMute();bgmPlayer.setVolume(Number($('bgmVolume').value));bgmPlayer.playVideo();bgmMessage('再生を要求しました。音が出ない場合は動画の再生ボタンをタップしてください。')}catch(e){bgmMessage('動画の再生ボタンをタップしてください。')}
 }
