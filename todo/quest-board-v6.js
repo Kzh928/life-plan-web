@@ -16,7 +16,7 @@ function closeEdit(){ $('editor').close();render();if(missingMode){missingMode=f
 $('add').onclick=()=>{if(state.readError)return toast('保存データの読み込みエラーを解消してください。');const title=$('quickTitle').value.trim();if(!title)return $('quickTitle').focus();state.tasks.push({id:crypto.randomUUID(),title,due:'',detail:'',comment:'',status:'open',createdAt:new Date().toISOString()});persist();$('quickTitle').value='';render();toast('クエストを受注しました')};
 $('quickTitle').onkeydown=e=>{if(e.key==='Enter')e.preventDefault()};
 $('save').onclick=()=>{if(saveFields()){persist();closeEdit()}};$('closeEditor').onclick=closeEdit;$('editor').addEventListener('cancel',()=>{missingMode=false});
-$('start').onclick=()=>{const t=saveFields();if(!t)return;t.status='active';persist();closeEdit();if(state.settings.bgm!==false&&$('bgmCard')){startBgm();effect('QUEST START',t.title,'start')}else effect('QUEST START',t.title,'start')};$('complete').onclick=()=>{const t=saveFields();if(!t)return;const completed=t.status!=='done';t.status=completed?'done':'open';persist();closeEdit();if(completed)effect('QUEST CLEAR',t.title,'clear')};
+$('start').onclick=()=>{const t=saveFields();if(!t)return;t.status='active';persist();closeEdit();if(state.settings.bgm!==false&&$('bgmCard')){startBgm(true);effect('QUEST START',t.title,'start')}else effect('QUEST START',t.title,'start')};$('complete').onclick=()=>{const t=saveFields();if(!t)return;const completed=t.status!=='done';t.status=completed?'done':'open';persist();closeEdit();if(completed)effect('QUEST CLEAR',t.title,'clear')};
 $('delete').onclick=()=>{if(confirm('このクエストを削除しますか？')){state.tasks=state.tasks.filter(t=>t.id!==editing);persist();closeEdit()}};
 document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;selected=null;render()});$('missing').onclick=()=>$('missingDialog').showModal();$('closeMissing').onclick=()=>$('missingDialog').close();
 $('settingsBtn').onclick=()=>{$('effects').checked=state.settings.effects;$('sound').checked=state.settings.sound;$('settings').showModal()};$('closeSettings').onclick=()=>$('settings').close();for(const k of['effects','sound'])$(k).onchange=()=>{state.settings[k]=$(k).checked;persist()};
@@ -36,11 +36,11 @@ render();const urgent=state.tasks.filter(t=>t.status!=='done'&&days(t)<=3);if(ur
 /* YouTube IFrame Player API: no Data API key or paid service. */
 let bgmPlayer=null,bgmReady=false;
 function bgmMessage(message){if($('bgmStatus'))$('bgmStatus').textContent=message}
-function startBgm(){
+function startBgm(restart=false){
  if(!$('bgmCard'))return;
 
  if(!bgmReady){bgmMessage('準備ができたら「BGM再生」または動画の再生ボタンをタップしてください。');return}
- try{bgmPlayer.unMute();bgmPlayer.setVolume(Number($('bgmVolume').value));bgmPlayer.playVideo();bgmMessage('再生を要求しました。音が出ない場合は動画の再生ボタンをタップしてください。')}catch(e){bgmMessage('動画の再生ボタンをタップしてください。')}
+ try{bgmPlayer.unMute();bgmPlayer.setVolume(Number($('bgmVolume').value));if(restart===true)bgmPlayer.seekTo(0,true);bgmPlayer.playVideo();bgmMessage('再生を要求しました。音が出ない場合は動画の再生ボタンをタップしてください。')}catch(e){bgmMessage('動画の再生ボタンをタップしてください。')}
 }
 function stopBgm(){try{bgmPlayer?.pauseVideo()}catch(e){}bgmMessage('停止しました。')}
 if($('bgmPlayer')){
