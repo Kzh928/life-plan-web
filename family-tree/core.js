@@ -63,7 +63,7 @@ function kinship(d,a,b){
 }
 function layout(d){
  // Reserve a separate horizontal span for each ancestral branch.
- const gap=144,rowGap=172,parents=new Map(d.people.map(p=>[p.id,[]])),adj=new Map(d.people.map(p=>[p.id,[]]));
+ const gap=96,rowGap=180,parents=new Map(d.people.map(p=>[p.id,[]])),adj=new Map(d.people.map(p=>[p.id,[]]));
  for(const e of d.edges){adj.get(e.a).push(e);adj.get(e.b).push(e);if(ancestry(e)&&!parents.get(e.b).includes(e.a))parents.get(e.b).push(e.a);}
  const pos=new Map(),claimed=new Set();
  function branch(id,depth=0){if(claimed.has(id)||depth>100)return null;claimed.add(id);const children=parents.get(id).map(x=>branch(x,depth+1)).filter(Boolean);return {id,children,width:Math.max(1,children.reduce((n,c)=>n+c.width,0))};}

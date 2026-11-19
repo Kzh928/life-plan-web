@@ -15,7 +15,7 @@ async function apply(next,{backup=false}={}){next=F.validate(next);const before=
 function render(){
  data=F.layout(data);const xs=data.people.map(p=>p.x),ys=data.people.map(p=>p.y);bounds={x:80-Math.min(...xs),y:90-Math.min(...ys),w:Math.max(...xs)-Math.min(...xs)+160,h:Math.max(...ys)-Math.min(...ys)+180};
  $('count').textContent=data.people.length;$('centerLabel').textContent=data.partner?`${name(data.self)} が左 ／ ${name(data.partner)} が右`:`${name(data.self)} が中心`;
- $('nodes').innerHTML=data.people.map(p=>`<button class="node ${p.id===data.self?'self':''} ${p.id===data.partner?'partner':''} ${selected.includes(p.id)?'selected':''}" style="left:${p.x+bounds.x}px;top:${p.y+bounds.y}px" data-person="${esc(p.id)}" aria-label="${esc(p.name)}を${compare?'選択':'開く'}">${p.id===data.self?'<span class="badge">自分・左</span>':p.id===data.partner?'<span class="badge">相手・右</span>':''}${avatar(p)}<strong>${esc(p.name)}</strong><small>${p.birth?esc(F.birthLabel(p.birth)):(p.id===data.self?'ここから家族を追加':'タップして詳細')}</small></button>`).join('');
+ $('nodes').innerHTML=data.people.map(p=>`<button class="node ${p.photo?'has-photo':''} ${p.id===data.self?'self':''} ${p.id===data.partner?'partner':''} ${selected.includes(p.id)?'selected':''}" style="left:${p.x+bounds.x}px;top:${p.y+bounds.y}px" data-person="${esc(p.id)}" aria-label="${esc(p.name)}を${compare?'選択':'開く'}">${p.id===data.self?'<span class="badge">本人</span>':p.id===data.partner?'<span class="badge">相手</span>':''}${avatar(p)}<strong>${esc(p.name)}</strong><small>${p.birth?esc(F.birthLabel(p.birth)):(p.id===data.self?'ここから家族を追加':'タップして詳細')}</small></button>`).join('');
  drawLines();$('nodes').querySelectorAll('.node').forEach(el=>{el.onclick=()=>{if(compare){const id=el.dataset.person;selected=selected.includes(id)?selected.filter(v=>v!==id):[...selected,id].slice(-2);render();if(selected.length===2){compare=false;showRelation(selected[0],selected[1]);$('relationBtn').textContent='2人の関係';}}else editPerson(el.dataset.person);};});renderList();transform();
 }
 function drawLines(){
@@ -24,8 +24,8 @@ function drawLines(){
  for(const child of data.people){const es=data.edges.filter(e=>F.ancestry(e)&&e.b===child.id);if(!es.length)continue;const ids=[...new Set(es.map(e=>e.a))].sort(),key=ids.join('|');if(!families.has(key))families.set(key,{ids,children:[]});families.get(key).children.push(child.id);}
  for(const family of families.values()){
   const ps=family.ids.map(id=>by.get(id)).sort((a,b)=>a.x-b.x),cs=family.children.map(id=>by.get(id)),sameRow=ps.every(p=>p.y===ps[0].y);
-  if(ps.length>1&&sameRow){const x=(ps[0].x+ps[ps.length-1].x)/2,y=ps[0].y;add(`M ${ps[0].x} ${y} H ${ps[ps.length-1].x}`,'parents');for(const c of cs){const mid=c.y-84;add(`M ${x} ${y} V ${mid} H ${c.x} V ${c.y-58}`);}}
-  else for(const p of ps)for(const c of cs){const mid=(p.y+c.y)/2;add(`M ${p.x} ${p.y+58} V ${mid} H ${c.x} V ${c.y-58}`);}
+  if(ps.length>1&&sameRow){const x=(ps[0].x+ps[ps.length-1].x)/2,y=ps[0].y;add(`M ${ps[0].x} ${y} H ${ps[ps.length-1].x}`,'parents');for(const c of cs){const mid=c.y-84;add(`M ${x} ${y} V ${mid} H ${c.x} V ${c.y-62}`);}}
+  else for(const p of ps)for(const c of cs){const mid=(p.y+c.y)/2;add(`M ${p.x} ${p.y+62} V ${mid} H ${c.x} V ${c.y-62}`);}
  }
  for(const e of data.edges.filter(e=>!F.ancestry(e))){const a=by.get(e.a),b=by.get(e.b),couple=['spouse','fiance','partner','ex'].includes(e.type);if(couple&&[...families.values()].some(f=>f.ids.includes(e.a)&&f.ids.includes(e.b)))continue;add(`M ${a.x} ${a.y} H ${b.x} V ${b.y}`,couple?'couple':'other');}
  $('lines').innerHTML=lines.join('');
@@ -38,7 +38,7 @@ function transform(){
 }
 function focusAt(p){const vp=$('viewport'),left=Math.max(0,(vp.clientWidth-bounds.w*view.z)/2);vp.scrollLeft=(p.x+bounds.x)*view.z+left-vp.clientWidth/2;vp.scrollTop=(p.y+bounds.y)*view.z-vp.clientHeight/2;}
 function center(){view.z=1;transform();const p=person(data.self),r=data.partner?person(data.partner):p;focusAt({x:(p.x+r.x)/2,y:p.y});}
-function fit(){view.z=Math.min(1,Math.max(.2,($('viewport').clientWidth-12)/bounds.w));transform();$('viewport').scrollLeft=0;$('viewport').scrollTop=0;}
+function fit(){view.z=Math.min(1,Math.max(.2,Math.min(($('viewport').clientWidth-12)/bounds.w,600/bounds.h)));transform();$('viewport').scrollLeft=0;$('viewport').scrollTop=0;}
 
 function renderList(){const q=$('search').value.trim().toLowerCase();$('peopleList').innerHTML=data.people.filter(p=>(p.name+' '+p.memo).toLowerCase().includes(q)).map(p=>`<button class="personRow" data-id="${esc(p.id)}">${avatar(p)}<span><strong>${esc(p.name)}</strong><small>${p.id===data.self?'自分・左':p.id===data.partner?'結婚相手・右':esc(F.birthLabel(p.birth))||'詳細を開く'}</small></span></button>`).join('')||'<p class="sub">該当する人物はいません．</p>';$('peopleList').querySelectorAll('button').forEach(b=>b.onclick=()=>editPerson(b.dataset.id));}
 function setTab(t){tab=t;$('treeSection').hidden=t!=='tree';$('listSection').hidden=t!=='list';$('treeTab').classList.toggle('active',t==='tree');$('listTab').classList.toggle('active',t==='list');}
