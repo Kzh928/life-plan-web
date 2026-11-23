@@ -12,3 +12,36 @@
 .node{width:56px;height:124px;background:#5d514c;color:#fff;border:1px solid #ad9e90;border-radius:5px;box-shadow:none;padding:20px 5px 8px;gap:5px;justify-content:center}.node .avatar{display:none}.node.has-photo img.avatar{display:block;width:27px;height:27px;border-radius:3px;position:absolute;top:18px;left:14px}.node strong{writing-mode:vertical-rl;text-orientation:upright;letter-spacing:.12em;max-height:90px;max-width:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px;line-height:1.5}.node.has-photo strong{margin-top:32px;max-height:58px;font-size:12px}.node small{display:none}.node .badge{top:4px;left:0;width:100%;text-align:center;font-size:8px;color:#fff;letter-spacing:.1em}.node.self{background:#bd292c;border-color:#9f1b23}.node.partner{background:#205eaa;border-color:#174f94}.edge{stroke:#655d58;stroke-width:2}.edge.parents{stroke:#655d58}.edge.couple{stroke:#8a6268}.node:hover{filter:brightness(1.12)}.node.selected{outline-color:#e7b13e}.canvasHead{background:#fff}.intro{margin-bottom:18px}h1{font-size:25px}.canvasFoot{color:#655d58}
 
 #personForm>.buttonRow{position:sticky;bottom:0;background:#fffefa;padding:10px 0;margin-top:10px;z-index:2}#personForm>.buttonRow .primary{min-height:46px}#modalContent>.buttonRow button{white-space:normal;min-height:44px}.personRow span{min-width:0}.personRow strong{overflow-wrap:anywhere}@media(max-width:650px){.intro .primary{max-width:130px}.node{min-width:56px}.treeControls button{min-height:44px}}
+
+/* Keep native form controls and long labels within the dialog. */
+#modal {
+  box-sizing: border-box;
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+}
+body:has(#modal[open]) { overflow: hidden; }
+#modalContent { width: 100%; min-width: 0; overflow-wrap: anywhere; }
+#modal .formGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#modal .birthFields { grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(0, 1fr)); }
+#modal :is(input, select, textarea, fieldset, .photoRow > div, .buttonRow > button) {
+  min-width: 0;
+  max-width: 100%;
+}
+#modal .buttonRow > button { white-space: normal; }
+#modal input[type="date"] { display: block; appearance: none; -webkit-appearance: none; }
+#modal input[type="date"]::-webkit-date-and-time-value { min-height: 1.25em; text-align: left; }
+
+@media (max-width: 650px) {
+  #modal {
+    inset-inline: 0;
+    margin-inline: 0;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px;
+  }
+  #modalContent {
+    padding: 16px max(16px, env(safe-area-inset-right)) 16px max(16px, env(safe-area-inset-left));
+  }
+  #modal .birthFields { gap: 8px; }
+  #modal .birthFields :is(input, select) { padding-inline: 8px; }
+}
