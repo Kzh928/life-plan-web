@@ -75,42 +75,36 @@ async function uploadPhoto(input,k){const f=input.files[0];if(!f)return;capture(
 function branchDialog(){const v=getV();modal(titleBar('分量を変えて、別の版に')+`<p class="muted">「${esc(v.name)}」を残したまま、材料を計算してコピーします。</p>${field('bamount','新しい基準量',v.amount,'number')}<p class="help">単位：${esc(v.unit)} ／ 元は${esc(v.amount)}${esc(v.unit)}</p>${field('bname','分岐の名前（空欄なら自動）')}<div class="warning">水・加熱時間・道具の容量は単純な倍率では決まりません。工程内の分量表記もそのままコピーするため、分岐後に確認・編集してください。</div><div class="row" style="margin-top:20px"><button class="primary" onclick="makeBranch()">分岐して確認・編集</button></div>`)}
 function makeBranch(){const a=Number($('#bamount').value),v=getV();if(!Number.isFinite(a)||a<=0)return toast('0より大きい分量を入力してください');const n=clone(v),ratio=a/Number(v.amount);n.id=uid();n.name=$('#bname').value.trim()||a+v.unit+'版';n.amount=a;n.parentName=v.name;n.parentId=v.id;n.verified=false;n.branchNote=`${v.amount}${v.unit}から${a}${v.unit}へ（${Math.round(ratio*1000)/1000}倍）。材料の数値のみ仮計算。水加減・工程内の分量・加熱時間・機材の容量を確認してください。`;n.ingredients=n.ingredients.map(i=>{if(i.mode==='scale'&&String(i.qty).trim()!==''&&Number.isFinite(Number(i.qty)))return {...i,qty:Math.round(Number(i.qty)*ratio*100)/100};return {...i,mode:'manual'}});draft=clone(getR());draft.variants.push(n);variantId=n.id;closeModal();renderEditor();toast('分岐を作成しました。内容を確認して保存してください。')}
 async function copyText(t){try{await navigator.clipboard.writeText(t);toast('コピーしました')}catch{modal(titleBar('コピーする内容')+`<textarea style="width:100%;height:250px" readonly>${esc(t)}</textarea><p class="help">長押しして全選択・コピーしてください。</p>`)}}
-function copyShopping(){
- const r=getR(),v=getV();
- const lines=v.ingredients.map(i=>{
-  const quantity=[i.qty,i.unit].map(value=>String(value??'').trim()).filter(Boolean).join(' ');
-  return '□ '+i.name+(quantity?'：'+quantity:'');
+async function copyShopping(){
+ const recipe=getR(),variant=getV();
+ const lines=variant.ingredients.map(ingredient=>{
+  const quantity=[ingredient.qty,ingredient.unit].map(value=>String(value??'').trim()).filter(Boolean).join(' ');
+  return '□ '+ingredient.name+(quantity?'：'+quantity:'');
  });
- const list=[r.title+' / '+(v.scope==='home'?'わが家用':'一般用')+' / '+v.name,...lines].join('\n');
+ const version=variant.scope==='home'?'わが家用':'一般用';
+ const list=[recipe.title+' / '+version+' / '+variant.name,...lines].join('\n');
+ try{
+  await navigator.clipboard.writeText(list);
+  toast('買い物リストをコピーしました．');
+ }catch{
+  showShoppingCopyFallback(list);
+ }
+}
+function showShoppingCopyFallback(list){
  modal(titleBar('買い物リスト')+
-  '<label for="shopping-copy-text">コピーする内容</label>'+
-  '<textarea id="shopping-copy-text" readonly spellcheck="false" style="display:block;width:100%;height:clamp(9rem,35dvh,15rem);font-size:16px;margin:8px 0;"></textarea>'+
-  '<div class="row"><button class="primary" onclick="copyShoppingText()">コピー</button>'+
-  '<button onclick="selectShoppingText()">すべて選択</button></div>'+
-  '<p class="help" id="shopping-copy-status" role="status">自動コピーができないときは，「すべて選択」を押し，選んだ文字を長押しして端末の「コピー」を選んでください．</p>');
- $('#shopping-copy-text').value=list;
- void copyShoppingText();
+  '<p class="help" id="shopping-copy-help">自動コピーができませんでした．「全文を選ぶ」を押し，選んだ文字を長押しして「コピー」を選んでください．</p>'+
+  '<textarea id="shopping-copy-text" aria-label="買い物リストの全文" aria-describedby="shopping-copy-help" readonly spellcheck="false" style="display:block;width:100%;box-sizing:border-box;height:clamp(9rem,35dvh,15rem);font-size:16px;line-height:1.55;margin:8px 0;"></textarea>'+
+  '<button class="primary" onclick="selectShoppingText()">全文を選ぶ</button>');
+ const area=$('#shopping-copy-text');
+ area.value=list;
+ area.setSelectionRange(0,0);
+ area.scrollTop=0;
 }
 function selectShoppingText(){
  const area=$('#shopping-copy-text');
  area.focus({preventScroll:true});
  area.select();
  area.setSelectionRange(0,area.value.length);
-}
-async function copyShoppingText(){
- const area=$('#shopping-copy-text'),status=$('#shopping-copy-status');
- const attempt=String(Date.now())+Math.random();
- area.dataset.copyAttempt=attempt;
- try{
-  await navigator.clipboard.writeText(area.value);
-  if(area.isConnected&&area.dataset.copyAttempt===attempt)status.textContent='コピーしました．';
- }catch{
-  if(!area.isConnected||area.dataset.copyAttempt!==attempt||!$('#modal').open)return;
-  selectShoppingText();
-  let copied=false;
-  try{copied=document.execCommand('copy')}catch{}
-  status.textContent=copied?'コピーしました．':'全文を選択しました．選んだ文字を長押しして，iPhoneのメニューから「コピー」を選んでください．';
- }
 }
 function logDialog(){modal(titleBar('作った記録')+field('ldate','日付',new Date().toLocaleDateString('sv-SE'),'date')+field('lnote','味・実際の時間・次回変えたいこと','','textarea')+'<button class="primary" onclick="saveLog()">記録を保存</button>')}
 function saveLog(){if(!$('#lnote').value.trim())return toast('記録を入力してください');const r=getR(),v=getV();r.logs.push({date:$('#ldate').value,variant:v.name,variantId:v.id,note:$('#lnote').value});if(!persist()){r.logs.pop();return}closeModal();openRecipe(current)}
