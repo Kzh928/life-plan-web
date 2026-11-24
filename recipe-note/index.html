@@ -23,6 +23,16 @@
  body:has(#print-host:not(:empty)) > :not(#print-host){display:none!important}
  #print-host:not(:empty){display:block!important;margin:0!important;padding:0!important}
 }
+
+.editor .formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.editor .formgrid>*,.field{min-width:0}
+.field input,.field textarea,.field select,.editor input[type=file]{display:block;box-sizing:border-box;max-width:100%;min-width:0}
+@media(max-width:800px){
+ .editor .formgrid{grid-template-columns:minmax(0,1fr)}
+ .editor .field input,.editor .field textarea,.editor .field select{font-size:16px}
+ .editor .stickyactions{flex-wrap:wrap;gap:6px}
+ .editor .stickyactions button{padding:8px 10px}
+}
 </style></head><body><header class="top"><button class="brand" onclick="safeHome()"><span class="mark">食</span>ごはんの手帖</button><nav class="topnav" aria-label="メイン"><button id="navhome" onclick="safeHome()">レシピ</button><button onclick="findRecipes()">探す ↗</button><button onclick="backupDialog()">保存・取込</button></nav></header><main id="app"></main><dialog id="modal"></dialog><div id="print-host" aria-hidden="true"></div><div id="toast" role="status"></div><script id="shared-data" type="application/json">null</script><script id="curated-data" type="application/json">[]</script><script>
 'use strict';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),uid=()=>crypto.randomUUID?crypto.randomUUID():Array.from(crypto.getRandomValues(new Uint8Array(16)),n=>n.toString(16).padStart(2,'0')).join(''),clone=o=>JSON.parse(JSON.stringify(o));
@@ -65,7 +75,7 @@ function tick(){timers.forEach((t,k)=>{const n=Math.max(0,Math.ceil((t.end-Date.
 function field(id,label,value='',type='text',hint=''){return `<div class="field"><label for="${id}">${label}</label>${type==='textarea'?`<textarea id="${id}">${esc(value)}</textarea>`:`<input id="${id}" type="${type}" value="${esc(value)}" ${type==='number'?'min="0" step="any"':''}>`}${hint?`<span class="help">${hint}</span>`:''}</div>`}
 function editRecipe(id){draft=id?clone(recipes.find(r=>r.id===id)):{id:uid(),title:'',desc:'',category:'',tags:'',photo:'',source:'',sourceName:'',variants:[{id:uid(),scope:'home',name:'基本の分量',amount:2,unit:'人分',active:0,wait:0,equipment:'',ingredients:[],steps:[],prep:'',done:'',pitfalls:'',substitutions:'',storage:'',notes:'',verified:false}],logs:[]};if(id)current=id;const v=draft.variants.find(v=>v.id===variantId)||draft.variants[0];variantId=v.id;renderEditor()}
 function dv(){return draft.variants.find(v=>v.id===variantId)}
-function renderEditor(){const r=draft,v=dv();$('#app').innerHTML=`<div class="editor"><button class="back" onclick="cancelEdit()">← 編集をやめて戻る</button><div class="eyebrow">RECIPE EDITOR</div><h1 style="font-size:30px">${recipes.some(x=>x.id===r.id)?'レシピを整える':'新しいレシピを残す'}</h1><p class="muted">まずは料理名と手順から。詳しい情報は後から足せます。</p><section class="panel"><h2>共通の基本情報</h2><p class="help">料理名・概要・写真・出典は一般用にも使われます。家の機材名や自分専用の情報は、下の「わが家用」の手順・道具欄に書いてください。</p><div class="formgrid">${field('etitle','料理名 *',r.title)}${field('ecategory','分類',r.category,'text','ごはん、おかず、スープなど')}<div class="wide">${field('edesc','どんな料理？',r.desc,'textarea')}</div>${field('etags','タグ（カンマ区切り）',r.tags)}${field('esource','参考URL・元の投稿',r.source,'url')}${field('esourcename','出典・投稿者名',r.sourceName)}${field('ephotonote','写真の説明・出典',r.photoNote)}<div class="wide"><label>完成写真</label><div style="height:150px;width:200px;margin:10px 0">${image(r.photo,r.title)}</div><input type="file" accept="image/*" aria-label="完成写真を選ぶ" onchange="uploadPhoto(this,'cover')"><button class="small" onclick="capture();draft.photo='';renderEditor()">写真を外す</button><p class="help">自分の写真、または利用許可のある写真を選んでください。</p></div></div></section><section class="panel"><div class="eyebrow">${esc(v.name)}</div><h2>${v.scope==='home'?'🔒 わが家用':'一般用'}のレシピ</h2>${recipes.some(x=>x.id===r.id)?`<p class="help">${v.scope==='home'?'わが家用は共有対象外です。一般用には自動で反映しません。':'この版は人に渡すデータに含まれます。'}</p>`:`<div class="field"><label for="escope">この版の用途</label><select id="escope"><option value="home" ${v.scope==='home'?'selected':''}>🔒 わが家用（共有しない）</option><option value="general" ${v.scope!=='home'?'selected':''}>一般用（共有できる）</option></select></div>`}<p class="help">別の分量は、保存後に「分量を変えて分岐」から追加できます。</p><div class="formgrid">${field('evname','分量の名前',v.name)}<div class="row">${field('eamount','基準量 *',v.amount,'number')}${field('eunit','単位',v.unit)}</div>${field('eactive','作業時間（分）',v.active,'number')}${field('ewait','待ち時間（分）',v.wait,'number')}</div><label class="check"><input id="everified" type="checkbox" ${v.verified?'checked':''}>この分量で実際に作って確認した</label><h3 class="sectiontitle">材料</h3><p class="help">「倍率で計算」は分量変更時に自動計算。「手動で調整」は水加減・塩少々など。</p><div id="ingrows">${v.ingredients.map((i,k)=>`<div class="ingredientEdit"><input aria-label="材料名" placeholder="材料名" data-i="${k}" data-f="name" value="${esc(i.name)}"><input aria-label="量" placeholder="量" data-i="${k}" data-f="qty" value="${esc(i.qty)}"><input aria-label="単位" placeholder="g・大さじ" data-i="${k}" data-f="unit" value="${esc(i.unit)}"><button class="small" aria-label="材料を削除" onclick="capture();dv().ingredients.splice(${k},1);renderEditor()">✕</button><select class="mode" aria-label="分量変更時の計算方法" data-i="${k}" data-f="mode"><option value="scale" ${i.mode==='scale'?'selected':''}>分量の倍率で計算</option><option value="manual" ${i.mode==='manual'?'selected':''}>手動で調整（自動計算しない）</option></select></div>`).join('')}</div><button class="small" onclick="capture();dv().ingredients.push({name:'',qty:'',unit:'',mode:'scale'});renderEditor()">＋ 材料</button>${field('eequipment',v.scope==='home'?'わが家の機材名・型番・設定':'必要な道具・機材（サイズ・容量も）',v.equipment,'textarea',v.scope==='home'?'例：うちの象印○○／炊き込みモード、いつもの24cm鍋。機材の型番・容量を具体的に。':'例：直径24cmフライパン、ふた、電子レンジ600W')}${field('eprep','下準備・始める前に',v.prep,'textarea')}<h3 class="sectiontitle">大まかな流れ → 詳しい手順</h3><p class="help">見出しは短く。詳細には、分量・火加減・時間・見た目の目安を具体的に。</p><div id="steprows">${v.steps.map((s,k)=>`<div class="stepedit"><div class="row between"><span class="tag">STEP ${k+1}</span><div class="row"><button class="small" onclick="moveStep(${k},-1)" ${k===0?'disabled':''} aria-label="手順を上へ">↑</button><button class="small" onclick="moveStep(${k},1)" ${k===v.steps.length-1?'disabled':''} aria-label="手順を下へ">↓</button><button class="small danger" onclick="capture();dv().steps.splice(${k},1);renderEditor()">削除</button></div></div>${field('st'+k,'流れの見出し',s.title)}${field('sd'+k,'詳しい作り方',s.detail,'textarea')}${field('sm'+k,'この工程の時間（分・任意）',s.minutes,'number')}${field('sp'+k,'コツ・注意・失敗したとき',s.tip,'textarea')}${s.photo?`<div style="height:100px;width:140px">${image(s.photo,s.title)}</div><button class="small" onclick="capture();dv().steps[${k}].photo='';renderEditor()">写真を外す</button>`:''}<div class="field"><label>工程の写真</label><input type="file" accept="image/*" onchange="uploadPhoto(this,${k})"></div></div>`).join('')}</div><button onclick="capture();dv().steps.push({title:'',detail:'',minutes:0,tip:'',photo:''});renderEditor()">＋ 工程を追加</button></section><details class="panel"><summary>もっと詳しく：完成の目安・保存・代用</summary>${field('edone','完成の見分け方',v.done,'textarea')}${field('epitfalls','失敗しやすい点・対処',v.pitfalls,'textarea')}${field('esubstitutions','代用・アレンジ',v.substitutions,'textarea')}${field('estorage','保存方法・期限・温め直し',v.storage,'textarea')}${field('enotes','この分量のメモ',v.notes,'textarea')}</details><div class="stickyactions">${recipes.some(x=>x.id===r.id)?'<button class="danger" onclick="deleteRecipe()">削除</button>':''}<button onclick="cancelEdit()">キャンセル</button><button class="primary" onclick="saveRecipe()">保存する</button></div></div>`}
+function renderEditor(){const r=draft,v=dv();$('#app').innerHTML=`<div class="editor"><button class="back" onclick="cancelEdit()">← 編集をやめて戻る</button><div class="eyebrow">RECIPE EDITOR</div><h1 style="font-size:30px">${recipes.some(x=>x.id===r.id)?'レシピを整える':'新しいレシピを残す'}</h1><p class="muted">まずは料理名と手順から。詳しい情報は後から足せます。</p><section class="panel"><h2>共通の基本情報</h2><p class="help">料理名・概要・写真・出典は一般用にも使われます。家の機材名や自分専用の情報は、下の「わが家用」の手順・道具欄に書いてください。</p><div class="formgrid">${field('etitle','料理名 *',r.title)}${field('ecategory','分類',r.category,'text','ごはん、おかず、スープなど')}<div class="wide">${field('edesc','どんな料理？',r.desc,'textarea')}</div>${field('etags','タグ（カンマ区切り）',r.tags)}${field('esource','参考URL・元の投稿',r.source,'url')}${field('esourcename','出典・投稿者名',r.sourceName)}${field('ephotonote','写真の説明・出典',r.photoNote)}<div class="wide"><label>完成写真</label><div style="height:150px;width:200px;margin:10px 0">${image(r.photo,r.title)}</div><input type="file" accept="image/*" aria-label="完成写真を選ぶ" onchange="uploadPhoto(this,'cover')"><button class="small" onclick="capture();draft.photo='';renderEditor()">写真を外す</button><p class="help">自分の写真、または利用許可のある写真を選んでください。</p></div></div></section><section class="panel"><div class="eyebrow">${esc(v.name)}</div><h2>${v.scope==='home'?'🔒 わが家用':'一般用'}のレシピ</h2>${recipes.some(x=>x.id===r.id)?`<p class="help">${v.scope==='home'?'わが家用は共有対象外です。一般用には自動で反映しません。':'この版は人に渡すデータに含まれます。'}</p>`:`<div class="field"><label for="escope">この版の用途</label><select id="escope"><option value="home" ${v.scope==='home'?'selected':''}>🔒 わが家用（共有しない）</option><option value="general" ${v.scope!=='home'?'selected':''}>一般用（共有できる）</option></select></div>`}<p class="help">別の分量は、保存後に「分量を変えて分岐」から追加できます。</p><div class="formgrid">${field('evname','分量の名前',v.name)}<div class="row">${field('eamount','基準量 *',v.amount,'number')}${field('eunit','単位',v.unit)}</div>${field('eactive','作業時間（分）',v.active,'number')}${field('ewait','待ち時間（分）',v.wait,'number')}</div><label class="check"><input id="everified" type="checkbox" ${v.verified?'checked':''}>この分量で実際に作って確認した</label><h3 class="sectiontitle">材料</h3><p class="help">「倍率で計算」は分量変更時に自動計算。「手動で調整」は水加減・塩少々など。</p><div id="ingrows">${v.ingredients.map((i,k)=>`<div class="ingredientEdit"><input aria-label="材料名" placeholder="材料名" data-i="${k}" data-f="name" value="${esc(i.name)}"><input aria-label="量" placeholder="量" data-i="${k}" data-f="qty" value="${esc(i.qty)}"><input aria-label="単位" placeholder="g・大さじ" data-i="${k}" data-f="unit" value="${esc(i.unit)}"><button class="small" aria-label="材料を削除" onclick="capture();dv().ingredients.splice(${k},1);renderEditor()">✕</button><select class="mode" aria-label="分量変更時の計算方法" data-i="${k}" data-f="mode"><option value="scale" ${i.mode==='scale'?'selected':''}>分量の倍率で計算</option><option value="manual" ${i.mode==='manual'?'selected':''}>手動で調整（自動計算しない）</option></select></div>`).join('')}</div><button class="small" onclick="capture();dv().ingredients.push({name:'',qty:'',unit:'',mode:'scale'});renderEditor()">＋ 材料</button>${field('eequipment',v.scope==='home'?'わが家の機材名・型番・設定':'必要な道具・機材（サイズ・容量も）',v.equipment,'textarea',v.scope==='home'?'例：うちの象印○○／炊き込みモード、いつもの24cm鍋。機材の型番・容量を具体的に。':'例：直径24cmフライパン、ふた、電子レンジ600W')}${field('eprep','下準備・始める前に',v.prep,'textarea')}<h3 class="sectiontitle">大まかな流れ → 詳しい手順</h3><p class="help">見出しは短く。詳細には、分量・火加減・時間・見た目の目安を具体的に。</p><div id="steprows">${v.steps.map((s,k)=>`<div class="stepedit"><div class="row between"><span class="tag">STEP ${k+1}</span><div class="row"><button class="small" onclick="moveStep(${k},-1)" ${k===0?'disabled':''} aria-label="手順を上へ">↑</button><button class="small" onclick="moveStep(${k},1)" ${k===v.steps.length-1?'disabled':''} aria-label="手順を下へ">↓</button><button class="small danger" onclick="capture();dv().steps.splice(${k},1);renderEditor()">削除</button></div></div>${field('st'+k,'流れの見出し',s.title)}${field('sd'+k,'詳しい作り方',s.detail,'textarea')}${field('sm'+k,'この工程の時間（分・任意）',s.minutes,'number')}${field('sp'+k,'コツ・注意・失敗したとき',s.tip,'textarea')}${s.photo?`<div style="height:100px;width:140px">${image(s.photo,s.title)}</div><button class="small" onclick="capture();dv().steps[${k}].photo='';renderEditor()">写真を外す</button>`:''}<div class="field"><label>工程の写真</label><input type="file" accept="image/*" onchange="uploadPhoto(this,${k})"></div></div>`).join('')}</div><button onclick="capture();dv().steps.push({title:'',detail:'',minutes:0,tip:'',photo:''});renderEditor()">＋ 工程を追加</button></section><details class="panel"><summary>もっと詳しく：完成の目安・保存・代用</summary>${field('edone','完成の見分け方',v.done,'textarea')}${field('epitfalls','失敗しやすい点・対処',v.pitfalls,'textarea')}${field('esubstitutions','代用・アレンジ',v.substitutions,'textarea')}${field('estorage','保存方法・期限・温め直し',v.storage,'textarea')}${field('enotes','この分量のメモ',v.notes,'textarea')}</details><div class="stickyactions"><button onclick="printFromEditor()">A4・PDF</button>${recipes.some(x=>x.id===r.id)?'<button class="danger" onclick="deleteRecipe()">削除</button>':''}<button onclick="cancelEdit()">キャンセル</button><button class="primary" onclick="saveRecipe()">保存する</button></div></div>`}
 function capture(){const v=dv();if($('#escope'))v.scope=$('#escope').value;for(const [f,id]of Object.entries({title:'etitle',category:'ecategory',desc:'edesc',tags:'etags',source:'esource',sourceName:'esourcename',photoNote:'ephotonote'}))draft[f]=$('#'+id).value;for(const [f,id]of Object.entries({name:'evname',amount:'eamount',unit:'eunit',active:'eactive',wait:'ewait',equipment:'eequipment',prep:'eprep',done:'edone',pitfalls:'epitfalls',substitutions:'esubstitutions',storage:'estorage',notes:'enotes'}))v[f]=$('#'+id).value;v.verified=$('#everified').checked;$('#ingrows').querySelectorAll('[data-i]').forEach(e=>v.ingredients[Number(e.dataset.i)][e.dataset.f]=e.value);v.steps.forEach((s,k)=>{s.title=$('#st'+k).value;s.detail=$('#sd'+k).value;s.minutes=Number($('#sm'+k).value);s.tip=$('#sp'+k).value})}
 function saveRecipe(){capture();const v=dv();if(!draft.title.trim()){toast('料理名を入力してください');$('#etitle').focus();return}if(!(Number(v.amount)>0)||!v.unit.trim()){toast('0より大きい基準量と単位を入力してください');return}v.steps=v.steps.filter(s=>s.title.trim()||s.detail.trim());if([v.active,v.wait,...v.steps.map(s=>s.minutes)].some(n=>!Number.isFinite(Number(n))||Number(n)<0)){toast('時間は0以上の数値で入力してください');return}v.amount=Number(v.amount);v.active=Number(v.active);v.wait=Number(v.wait);v.ingredients=v.ingredients.filter(i=>i.name.trim());draft.updated=new Date().toISOString();const before=recipes;recipes=recipes.some(r=>r.id===draft.id)?recipes.map(r=>r.id===draft.id?clone(draft):r):recipes.concat(clone(draft));if(!persist()){recipes=before;return}openRecipe(draft.id,variantId);toast('レシピを保存しました')}
 function cancelEdit(){if(confirm('保存していない変更を破棄して戻りますか？')){if(current&&recipes.some(r=>r.id===current))openRecipe(current);else home()}}
@@ -123,8 +133,8 @@ function exportOne(){const r=publicRecipe();if(!r)return toast('共有できる�
 async function exportHTML(){const r=publicRecipe();if(!r)return toast('共有できる一般用がありません');try{const doc=document.documentElement.cloneNode(true);if(doc.querySelector('#curated-data'))doc.querySelector('#curated-data').textContent='[]';doc.querySelector('#shared-data').textContent=JSON.stringify(r).replace(/</g,'\\u003c');doc.querySelector('#app').innerHTML='';doc.querySelector('#print-host').innerHTML='';doc.querySelector('#modal').innerHTML='';doc.querySelector('#modal').removeAttribute('open');doc.querySelector('#toast').textContent='';doc.querySelector('#toast').style.display='none';doc.querySelector('title').textContent=r.title+'｜ごはんの手帖';const file=new File(['<!doctype html>'+doc.outerHTML],filename(r.title)+'_一般用.html',{type:'text/html'});if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:r.title});return}catch(e){if(e.name==='AbortError')return}}download(file,file.name);toast('一般用だけのレシピHTMLを保存しました')}catch{toast('HTMLの保存に失敗しました。JSON保存をお試しください。')}}
 
 let printContext=null;
-function printRecipe(generalOnly=false){
- const recipe=generalOnly?publicRecipe():getR();
+function printRecipe(generalOnly=false,editorRecipe=null){
+ const recipe=editorRecipe||(generalOnly?publicRecipe():getR());
  if(!recipe)return;
  printContext={recipe,edits:new Map()};
  const selected=recipe.variants.find(v=>v.id===variantId)||recipe.variants[0];
@@ -134,12 +144,22 @@ function printRecipe(generalOnly=false){
   '<div class="field"><label for="print-variant">印刷する分量（1つ）</label><select id="print-variant" onchange="updatePrintEditor()">'+choices+'</select></div>'+
   '<div class="row"><label><input type="checkbox" id="print-photo" onchange="updatePrintPreview()" '+(photoAvailable?'checked':'disabled')+'> 完成写真</label>'+
   '<label><input type="checkbox" id="print-dense" onchange="updatePrintPreview()"> 文字を少し小さく</label></div>'+
-  '<p class="help">用紙はA4・縦向きです．印刷設定にヘッダー／フッターがあればオフにしてください．</p>'+
+  '<p class="help">PDFは作成後に「PDFを開く・保存」を押してください．印刷する場合は，用紙サイズにA4を選んでください．</p>'+
   '<details class="print-editor"><summary>紙に載せる文章を短くする</summary><p class="help">ここでの編集は印刷だけに反映されます．</p><div id="print-edits"></div></details>'+
-  '<p id="print-fit" role="status"></p><button class="primary" id="print-now" onclick="sendToPrinter()">印刷・PDFにする</button>'+
+  '<p id="print-fit" role="status"></p><div class="row"><button class="primary" id="save-pdf" onclick="savePrintPdf()">A4 PDFを作成</button><button id="print-now" onclick="sendToPrinter()">印刷</button></div>'+
+  '<div id="pdf-result" role="status" hidden></div>'+
   '<div class="print-preview" id="print-preview" aria-label="印刷プレビュー"></div>';
  if($('#modal').open)$('#modal').innerHTML=body;else modal(body);
  updatePrintEditor();
+}
+function printFromEditor(){
+ capture();
+ if(!draft.title.trim()){toast('料理名を入力してください．');$('#etitle').focus();return}
+ const recipe=clone(draft);
+ const variant=recipe.variants.find(v=>v.id===variantId);
+ variant.ingredients=variant.ingredients.filter(i=>i.name.trim());
+ variant.steps=variant.steps.filter(step=>step.title.trim()||step.detail.trim());
+ printRecipe(false,recipe);
 }
 function printVariant(){
  return printContext.recipe.variants.find(v=>v.id===$('#print-variant').value);
@@ -182,6 +202,8 @@ function printSheet(recipe,v,e,photo,dense){
 }
 function updatePrintPreview(){
  const v=printVariant(), preview=$('#print-preview');
+ $('#pdf-result').hidden=true;
+ $('#pdf-result').pendingPdf=null;
  preview.innerHTML=printSheet(printContext.recipe,v,printEdits(),$('#print-photo').checked,$('#print-dense').checked);
  const sheet=preview.firstElementChild;
  const width=sheet.offsetWidth;
@@ -193,7 +215,122 @@ function updatePrintPreview(){
  const fits=height<=Math.floor(269*96/25.4);
  $('#print-fit').textContent=fits?'A4・1枚に収まる見込みです．':'A4・1枚に収まりません．写真を外す，文字を小さくする，または印刷用の文章を短くしてください．';
  $('#print-now').disabled=!fits;
+ $('#save-pdf').disabled=!fits;
 }
+
+function singlePagePdf(jpeg,width,height){
+ const enc=new TextEncoder(),chunks=[],offsets=[0];
+ let length=0;
+ function write(value){
+  const bytes=typeof value==='string'?enc.encode(value):value;
+  chunks.push(bytes);length+=bytes.length;
+ }
+ function object(id,value){offsets[id]=length;write(id+' 0 obj\n');write(value);write('\nendobj\n')}
+ write('%PDF-1.4\n');
+ object(1,'<< /Type /Catalog /Pages 2 0 R >>');
+ object(2,'<< /Type /Pages /Kids [3 0 R] /Count 1 >>');
+ object(3,'<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.276 841.89] /Resources << /XObject << /Recipe 4 0 R >> >> /Contents 5 0 R >>');
+ offsets[4]=length;
+ write('4 0 obj\n<< /Type /XObject /Subtype /Image /Width '+width+' /Height '+height+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+jpeg.length+' >>\nstream\n');
+ write(jpeg);
+ write('\nendstream\nendobj\n');
+ const drawing='q\n595.276 0 0 841.89 0 0 cm\n/Recipe Do\nQ\n';
+ object(5,'<< /Length '+enc.encode(drawing).length+' >>\nstream\n'+drawing+'endstream');
+ const xref=length;
+ write('xref\n0 6\n0000000000 65535 f \n'+offsets.slice(1).map(n=>String(n).padStart(10,'0')+' 00000 n \n').join(''));
+ write('trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n'+xref+'\n%%EOF\n');
+ return new Blob(chunks,{type:'application/pdf'});
+}
+function recipePrintCanvas(sheet){
+ const pxPerMm=96/25.4,resolution=2.5;
+ const canvas=document.createElement('canvas');
+ canvas.width=Math.round(210*pxPerMm*resolution);
+ canvas.height=Math.round(297*pxPerMm*resolution);
+ const ctx=canvas.getContext('2d',{alpha:false});
+ ctx.scale(resolution,resolution);
+ ctx.fillStyle='white';
+ ctx.fillRect(0,0,210*pxPerMm,297*pxPerMm);
+ const origin=sheet.getBoundingClientRect(),margin=12*pxPerMm;
+ ctx.translate(margin,margin);
+ if(sheet.offsetHeight>269*pxPerMm)throw Error('A4・1枚に収まりません．');
+ const range=document.createRange(),walker=document.createTreeWalker(sheet,NodeFilter.SHOW_TEXT);
+ for(let node=walker.nextNode();node;node=walker.nextNode()){
+  const style=getComputedStyle(node.parentElement);
+  ctx.font=style.fontWeight+' '+style.fontSize+' '+style.fontFamily;
+  ctx.fillStyle=style.color;
+  ctx.textBaseline='middle';
+  let index=0;
+  for(const char of node.textContent){
+   range.setStart(node,index);
+   index+=char.length;
+   range.setEnd(node,index);
+   const rect=range.getBoundingClientRect();
+   if(char.trim()&&rect.width>0)ctx.fillText(char,rect.left-origin.left,rect.top-origin.top+rect.height/2);
+  }
+ }
+ for(const el of sheet.querySelectorAll('header,h2,.sheet-foot')){
+  const rect=el.getBoundingClientRect(),foot=el.classList.contains('sheet-foot');
+  const y=(foot?rect.top:rect.bottom)-origin.top;
+  ctx.fillStyle='#aeb7ad';
+  ctx.fillRect(rect.left-origin.left,y,rect.width,0.7);
+ }
+ for(const item of sheet.querySelectorAll('li')){
+  const rect=item.getBoundingClientRect();
+  ctx.font='bold '+getComputedStyle(item).fontSize+' system-ui,sans-serif';
+  ctx.fillStyle='#365d45';
+  const marker=item.parentElement.tagName==='OL'?String(Array.prototype.indexOf.call(item.parentElement.children,item)+1)+'.':'•';
+  ctx.fillText(marker,rect.left-origin.left-17,rect.top-origin.top+parseFloat(getComputedStyle(item).lineHeight)/2);
+ }
+ for(const img of sheet.querySelectorAll('img')){
+  if(!img.complete||!img.naturalWidth||!/^data:image\//i.test(img.src))continue;
+  const box=img.getBoundingClientRect();
+  const scale=Math.max(box.width/img.naturalWidth,box.height/img.naturalHeight);
+  const w=box.width/scale,h=box.height/scale;
+  ctx.drawImage(img,(img.naturalWidth-w)/2,(img.naturalHeight-h)/2,w,h,box.left-origin.left,box.top-origin.top,box.width,box.height);
+ }
+ return canvas;
+}
+async function savePrintPdf(){
+ updatePrintPreview();
+ if($('#save-pdf').disabled)return;
+ const button=$('#save-pdf'),recipe=printContext.recipe,result=$('#pdf-result');
+ const request=Symbol();
+ result.pendingPdf=request;
+ const sheet=$('#print-preview').firstElementChild.cloneNode(true);
+ sheet.style.cssText='position:fixed;left:-2000px;top:0;pointer-events:none';
+ sheet.setAttribute('aria-hidden','true');
+ // Only on-device image data can be included in a canvas export.
+ for(const img of sheet.querySelectorAll('img')){
+  if(!/^data:image\//i.test(img.src))img.parentElement.remove();
+ }
+ document.body.append(sheet);
+ button.disabled=true;
+ try{
+  await Promise.all(Array.from(sheet.querySelectorAll('img'),img=>img.decode().catch(()=>img.parentElement.remove())));
+  const canvas=recipePrintCanvas(sheet);
+  const base64=canvas.toDataURL('image/jpeg',0.92).split(',')[1];
+  const jpeg=Uint8Array.from(atob(base64),c=>c.charCodeAt(0));
+  if(!result.isConnected||!$('#modal').open||result.pendingPdf!==request)return;
+  const link=document.createElement('a');
+  link.className='btn primary';
+  link.textContent='PDFを開く・保存';
+  link.href=URL.createObjectURL(singlePagePdf(jpeg,canvas.width,canvas.height));
+  link.download=(filename(recipe.title)||'recipe')+'.pdf';
+  link.target='_blank';
+  link.rel='noopener';
+  const previous=result.querySelector('a');
+  if(previous)URL.revokeObjectURL(previous.href);
+  result.replaceChildren(link);
+  result.hidden=false;
+  $('#modal').addEventListener('close',()=>setTimeout(()=>URL.revokeObjectURL(link.href),60000),{once:true});
+ }catch(e){
+  toast(e.message||'PDFを保存できませんでした．');
+ }finally{
+  sheet.remove();
+  if(button.isConnected&&result.pendingPdf===request)button.disabled=$('#print-now').disabled;
+ }
+}
+
 function sendToPrinter(){
  updatePrintPreview();
  if($('#print-now').disabled)return;
